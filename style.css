@@ -1038,3 +1038,37 @@ body {
     color: #a7aac5;
     margin-top: 6px;
 }
+
+/* NAV: versión móvil con scroll horizontal */
+@media (max-width: 768px) {
+  .main-nav {
+    overflow-x: auto;        /* permite hacer scroll horizontal */
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;     /* evita que se vayan a segunda línea */
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;           /* oculta barra en iOS/Chrome */
+  }
+  .main-nav {
+    scrollbar-width: none;   /* oculta barra en Firefox */
+  }
+
+  .nav-list {
+    display: inline-flex;    /* pone los <li> en fila horizontal */
+    gap: 1.5rem;             /* separación entre opciones */
+    padding: 0 1.5rem;       /* respira un poquito a los lados */
+    margin: 0;
+  }
+
+  .nav-list li {
+    list-style: none;
+    flex: 0 0 auto;          /* que no se estiren raro */
+  }
+
+  .nav-list a {
+    display: inline-block;
+    font-size: 0.9rem;       /* un poquito más pequeño en móvil */
+    padding: 0.75rem 0;      /* ajusta altura del header */
+  }
+}
