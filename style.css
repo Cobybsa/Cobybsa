@@ -1072,3 +1072,40 @@ body {
     padding: 0.75rem 0;      /* ajusta altura del header */
   }
 }
+
+/* =========================
+   AJUSTE HERO EN MÓVIL
+   ========================= */
+@media (max-width: 768px) {
+
+  /* 1. El layout pasa a columna:
+        texto arriba, tanque abajo  */
+  .hero-inner,
+  .hero-content,
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* 2. El bloque de texto usa todo el ancho */
+  .hero-text {
+    max-width: 100%;
+  }
+
+  /* 3. Quitamos cualquier posición absoluta del tanque en móvil */
+  .hero-image {
+    position: static;
+    width: 100%;
+    margin-top: 2.5rem;   /* espacio entre texto y tanque */
+    display: flex;
+    justify-content: flex-end; /* lo empuja a la derecha */
+  }
+
+  .hero-image img {
+    position: static;
+    max-width: 65vw;   /* tamaño del tanque (≈65% del ancho) */
+    height: auto;
+    object-fit: contain;
+  }
+}
