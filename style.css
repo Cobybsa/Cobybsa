@@ -1215,6 +1215,97 @@ text-align: justify;
 .project-next {
     right: 10px;
 }
+/* ============================================
+   Correcciones del carrusel de PROYECTOS
+   COBYBSA – versión estable
+   ============================================ */
+
+/* Contenedor principal del carrusel */
+.project-slider {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+}
+
+/* Fila de imágenes que se desliza */
+.project-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 0 !important;
+}
+
+.project-track::-webkit-scrollbar {
+    display: none; /* Oculta scrollbar */
+}
+
+/* Imágenes del carrusel */
+.project-image img {
+    width: 360px;
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   Botones del carrusel
+   ============================================ */
+.project-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
+}
+
+.project-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Flecha izquierda */
+.project-prev {
+    left: 16px;
+}
+
+/* Flecha derecha */
+.project-next {
+    right: 16px;
+}
+
+/* ============================================
+   Responsive – Ajustes en móvil
+   ============================================ */
+@media (max-width: 768px) {
+    .project-image img {
+        width: 260px;
+    }
+
+    .project-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .project-prev { left: 8px; }
+    .project-next { right: 8px; }
+}
+
 
 
 
