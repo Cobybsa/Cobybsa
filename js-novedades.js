@@ -20,3 +20,24 @@ document.addEventListener("DOMContentLoaded", () => {
     track.scrollBy({ left: cardWidth(), behavior: "smooth" });
   });
 });
+
+// ===============================
+// Carrusel para proyectos COBYBSA
+// ===============================
+function scrollProyecto(id, direction) {
+    const track = document.getElementById(id);
+    if (!track) return;
+
+    // Calcula el ancho de la tarjeta
+    const card = track.querySelector(".project-image img");
+    if (!card) return;
+
+    const gap = 16; // ajustalo si tu CSS usa otro gap
+    const scrollAmount = card.offsetWidth + gap;
+
+    track.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth"
+    });
+}
+
