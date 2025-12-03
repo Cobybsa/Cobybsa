@@ -530,6 +530,43 @@ body {
         max-width: 260px;
     }
 }
+.project-gallery {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 16px;
+}
+
+.project-gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.project-gallery-track img {
+  max-width: 260px;
+  border-radius: 16px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.proj-arrow {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.proj-arrow:hover {
+  background: rgba(255,255,255,0.16);
+}
 /* ===== HISTORIA COBYBSA ===== */
 
 .history-section {
@@ -1110,6 +1147,7 @@ body {
   }
 }
 text-align: justify;
+
 
 
 
