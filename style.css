@@ -1344,6 +1344,23 @@ text-align: justify;
 .project-track {
     flex-wrap: nowrap !important;
 }
+/* 🔥 ELIMINA LA ALTURA FORZADA QUE ROMPE EL LAYOUT */
+.project-image {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    aspect-ratio: unset !important;
+    display: inline-block !important;
+}
+
+/* Asegura que el contenedor se ajuste a las imágenes */
+.project-image img {
+    width: 100%;
+    height: auto !important;
+    object-fit: cover;
+    display: block;
+}
+
 
 
 
