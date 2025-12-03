@@ -562,8 +562,8 @@ body {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 55%),
-        rgba(0,0,0,0.28);
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 55%),
+        rgba(0,0,0,0.18);
     z-index: 1;
 }
 
@@ -1110,5 +1110,6 @@ body {
   }
 }
 text-align: justify;
+
 
 
