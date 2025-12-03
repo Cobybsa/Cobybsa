@@ -1147,6 +1147,75 @@ body {
   }
 }
 text-align: justify;
+/* ===========================================
+   CARRUSEL DE PROYECTOS – COBYBSA
+   =========================================== */
+
+.project-slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 20px 40px; /* espacio lateral para flechas */
+}
+
+.project-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    /* Oculta la barra de scroll */
+    scrollbar-width: none; /* Firefox */
+}
+.project-track::-webkit-scrollbar {
+    display: none; /* Chrome / Edge / Safari */
+}
+
+/* Tamaño uniforme de imágenes */
+.project-track img {
+    width: 320px;     /* podes subirlo o bajarlo */
+    height: 320px;    /* misma altura para que el slider sea parejo */
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* =========================
+   Flechas del carrusel
+   ========================= */
+
+.project-prev,
+.project-next {
+    position: absolute;
+    top: 50%;  
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s;
+    z-index: 20;
+}
+
+.project-prev:hover,
+.project-next:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.project-prev {
+    left: 10px;
+}
+
+.project-next {
+    right: 10px;
+}
+
 
 
 
