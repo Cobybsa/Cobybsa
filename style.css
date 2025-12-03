@@ -1324,6 +1324,27 @@ text-align: justify;
 .project-image {
     margin-bottom: 0 !important;
 }
+/* 🔥 FIX DEFINITIVO: elimina el espacio gigante debajo del carrusel */
+.project-slider,
+.project-track,
+.project-card,
+.project-image {
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.project-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+}
+
+.project-track {
+    flex-wrap: nowrap !important;
+}
+
 
 
 
