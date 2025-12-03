@@ -1305,6 +1305,26 @@ text-align: justify;
     .project-prev { left: 8px; }
     .project-next { right: 8px; }
 }
+/* FIX extra spacing debajo del carrusel */
+.project-slider {
+    height: auto !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.project-track {
+    height: auto !important;
+    padding-bottom: 0 !important;
+}
+
+.project-card {
+    margin-top: 0 !important;
+}
+
+.project-image {
+    margin-bottom: 0 !important;
+}
+
 
 
 
