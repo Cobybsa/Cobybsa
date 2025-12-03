@@ -553,7 +553,7 @@ body {
     background-position: center;
     filter: blur(4px);
     transform: scale(1.06);          /* compensa el blur en bordes */
-    opacity: 0.55;                   /* qué tanto se ve la imagen */
+    opacity: 0.40;                   /* qué tanto se ve la imagen */
     z-index: 0;
 }
 
@@ -563,7 +563,7 @@ body {
     inset: 0;
     background:
         radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 55%),
-        rgba(0,0,0,0.55);
+        rgba(0,0,0,0.28);
     z-index: 1;
 }
 
@@ -1110,4 +1110,5 @@ body {
   }
 }
 text-align: justify;
+
 
