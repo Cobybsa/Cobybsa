@@ -1088,7 +1088,6 @@ body {
 /* Fix distorsión de imágenes en proyectos (sin recortar) */
 .project-image {
     width: 100%;
-    aspect-ratio: 4 / 3;   /* misma “forma” en todos los proyectos */
     overflow: hidden;
 }
 
@@ -1100,6 +1099,7 @@ body {
     border-radius: 12px;
     flex-shrink: 0;
 }
+
 
 
 
