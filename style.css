@@ -1099,18 +1099,6 @@ body {
     }
 }
 
-/* Fix distorsión de imágenes en proyectos */
-.project-image {
-    width: 100%;
-    overflow: hidden;
-}
-
-.project-image img {
-    width: 100%;
-    height: 380px;      /* Ajusta si quieres más alto o más bajo */
-    object-fit: cover;  /* Evita distorsión y recorta solo lo necesario */
-    border-radius: 12px;
-}
 
 
 
