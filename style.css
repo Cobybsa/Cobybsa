@@ -1146,7 +1146,6 @@ body {
     object-fit: contain;
   }
 }
-text-align: justify;
 /* ===========================================
    CARRUSEL DE PROYECTOS – COBYBSA
    =========================================== */
@@ -1372,6 +1371,7 @@ text-align: justify;
     object-fit: cover;  /* Evita distorsión y recorta solo lo necesario */
     border-radius: 12px;
 }
+
 
 
 
