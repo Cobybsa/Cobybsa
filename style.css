@@ -142,6 +142,7 @@ body {
   margin-bottom: 1.25rem;
   letter-spacing: 0.02em;
 }
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -240,6 +241,7 @@ body {
 .hero-card 
 {border-radius: 2rem;
   background: radial-}
+
 .capacidades-section {
     width: 100%;
     padding: 4rem 0;
@@ -329,6 +331,7 @@ body {
         margin: 0 auto;
     }
 }
+
 /* ==== IMÁGENES DE HISTORIA (Historia 1, 2 y 3) ==== */
 .historia-img {
     width: 200px;   /* AJUSTA ESTE VALOR COMO QUIERAS */
@@ -337,6 +340,7 @@ body {
     display: block;
     margin-bottom: 20px;
 }
+
 /* ===== Tipografía global más grande y responsive ===== */
 html {
   font-size: clamp(15px, 1.05vw + 10px, 18px);
@@ -360,6 +364,7 @@ body {
 .section p {
   font-size: 1.05rem;
 }
+
 /* ===== Contenedor principal de cada sección ===== */
 .section .container,
 .hero .container {
@@ -367,6 +372,7 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
 }
+
 /* ===== Hero en pantallas anchas ===== */
 @media (min-width: 1440px) {
   .hero {
@@ -382,6 +388,7 @@ body {
     max-width: 520px;   /* baja el tamaño máximo del tanque */
   }
 }
+
 /* =========================
    PROYECTOS – GRID DE TARJETAS
    ========================= */
@@ -456,6 +463,7 @@ body {
   margin: 0 1.25rem 1.3rem;
   color: var(--color-text-soft, #c7d0e0);
 }
+
 .cap-section {
     max-width: 900px; /* controla lo ancho del texto */
     margin: 0 auto;  /* centra horizontalmente */
@@ -470,6 +478,7 @@ body {
 .cap-section p {
     font-size: 1.2rem;
 }
+
 /* Sección general de capacidades */
 .capabilities-section {
     background-color: #020819;      /* o su color actual */
@@ -530,6 +539,7 @@ body {
         max-width: 260px;
     }
 }
+
 .project-gallery {
   display: flex;
   align-items: center;
@@ -567,6 +577,7 @@ body {
 .proj-arrow:hover {
   background: rgba(255,255,255,0.16);
 }
+
 /* ===== HISTORIA COBYBSA ===== */
 
 .history-section {
@@ -664,6 +675,7 @@ body {
         line-height: 1.7;
     }
 }
+
 /* ===== Timeline dentro de la historia ===== */
 
 .history-timeline {
@@ -744,143 +756,7 @@ body {
         min-height: 130px;
     }
 }
-/* ===== NOVEDADES ===== */
 
-.news-section {
-    padding: 80px 8vw;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 60%);
-}
-
-.news-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
-}
-
-.news-header h2 {
-    font-size: 2rem;
-    margin-bottom: 8px;
-}
-
-.news-header p {
-    font-size: 1rem;
-    color: #c5c7d5;
-}
-
-/* Botones de navegación */
-.news-controls {
-    display: flex;
-    gap: 10px;
-}
-
-.news-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(8, 15, 40, 0.9);
-    color: #ffffff;
-    font-size: 1.4rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
-}
-
-.news-btn:hover {
-    background: rgba(33, 150, 243, 0.18);
-    border-color: rgba(255,255,255,0.35);
-    transform: translateY(-1px);
-}
-
-.news-btn:active {
-    transform: translateY(0);
-}
-
-/* Carrusel */
-.news-carousel {
-    position: relative;
-    margin-top: 28px;
-    overflow: hidden;
-}
-
-.news-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-}
-
-/* Ocultar barra en algunos navegadores (opcional) */
-.news-track::-webkit-scrollbar {
-    height: 6px;
-}
-.news-track::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.14);
-    border-radius: 999px;
-}
-
-.news-card {
-    position: relative;
-    min-width: 280px;
-    max-width: 320px;
-    padding: 18px 18px 20px;
-    border-radius: 18px;
-    scroll-snap-align: start;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 55%),
-                rgba(5, 12, 30, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.news-tag {
-    font-size: 0.74rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #8ab4ff;
-}
-
-.news-card h3 {
-    font-size: 1.05rem;
-    margin: 0;
-}
-
-.news-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.news-date {
-    font-size: 0.8rem;
-    margin-top: 6px;
-    color: #a7aac5;
-}
-
-/* Responsivo */
-@media (max-width: 900px) {
-    .news-section {
-        padding: 60px 6vw;
-    }
-
-    .news-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .news-card {
-        min-width: 240px;
-        max-width: 260px;
-    }
-}
 /* ===== NOVEDADES ===== */
 
 .news-section {
@@ -917,6 +793,7 @@ body {
 .news-track::-webkit-scrollbar {
     height: 6px;
 }
+
 .news-track::-webkit-scrollbar-thumb {
     background: rgba(255,255,255,0.15);
     border-radius: 999px;
@@ -1146,6 +1023,7 @@ body {
     object-fit: contain;
   }
 }
+
 /* ===========================================
    CARRUSEL DE PROYECTOS – COBYBSA
    =========================================== */
@@ -1167,6 +1045,7 @@ body {
     /* Oculta la barra de scroll */
     scrollbar-width: none; /* Firefox */
 }
+
 .project-track::-webkit-scrollbar {
     display: none; /* Chrome / Edge / Safari */
 }
@@ -1179,10 +1058,7 @@ body {
     border-radius: 12px;
 }
 
-/* =========================
-   Flechas del carrusel
-   ========================= */
-
+/* Flechas del carrusel */
 .project-prev,
 .project-next {
     position: absolute;
@@ -1214,151 +1090,15 @@ body {
 .project-next {
     right: 10px;
 }
-/* ============================================
-   Correcciones del carrusel de PROYECTOS
-   COBYBSA – versión estable
-   ============================================ */
 
-/* Contenedor principal del carrusel */
-.project-slider {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    height: auto !important;
-}
-
-/* Fila de imágenes que se desliza */
-.project-track {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 0 !important;
-}
-
-.project-track::-webkit-scrollbar {
-    display: none; /* Oculta scrollbar */
-}
-
-/* Imágenes del carrusel */
-.project-image img {
-    width: 360px;
-    height: auto;
-    border-radius: 16px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-/* ============================================
-   Botones del carrusel
-   ============================================ */
-.project-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.4);
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(6px);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s ease-in-out;
-}
-
-.project-btn:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-/* Flecha izquierda */
-.project-prev {
-    left: 16px;
-}
-
-/* Flecha derecha */
-.project-next {
-    right: 16px;
-}
-
-/* ============================================
-   Responsive – Ajustes en móvil
-   ============================================ */
+/* Responsive carrusel */
 @media (max-width: 768px) {
-    .project-image img {
+    .project-track img {
         width: 260px;
+        height: 260px;
     }
-
-    .project-btn {
-        width: 30px;
-        height: 30px;
-    }
-
-    .project-prev { left: 8px; }
-    .project-next { right: 8px; }
-}
-/* FIX extra spacing debajo del carrusel */
-.project-slider {
-    height: auto !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
 }
 
-.project-track {
-    height: auto !important;
-    padding-bottom: 0 !important;
-}
-
-.project-card {
-    margin-top: 0 !important;
-}
-
-.project-image {
-    margin-bottom: 0 !important;
-}
-/* 🔥 FIX DEFINITIVO: elimina el espacio gigante debajo del carrusel */
-.project-slider,
-.project-track,
-.project-card,
-.project-image {
-    height: auto !important;
-    min-height: 0 !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-.project-slider {
-    display: flex;
-    flex-direction: column;
-    gap: 0 !important;
-}
-
-.project-track {
-    flex-wrap: nowrap !important;
-}
-/* 🔥 ELIMINA LA ALTURA FORZADA QUE ROMPE EL LAYOUT */
-.project-image {
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    aspect-ratio: unset !important;
-    display: inline-block !important;
-}
-
-/* Asegura que el contenedor se ajuste a las imágenes */
-.project-image img {
-    width: 100%;
-    height: auto !important;
-    object-fit: cover;
-    display: block;
-}
 /* Fix distorsión de imágenes en proyectos */
 .project-image {
     width: 100%;
@@ -1371,6 +1111,8 @@ body {
     object-fit: cover;  /* Evita distorsión y recorta solo lo necesario */
     border-radius: 12px;
 }
+
+
 
 
 
