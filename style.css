@@ -1099,6 +1099,34 @@ body {
     border-radius: 12px;
     flex-shrink: 0;
 }
+/* ==== Scrollbar bonito para el carrusel de proyectos ==== */
+
+/* Firefox */
+.project-gallery-track {
+  scrollbar-width: thin;                                      /* barra finita */
+  scrollbar-color: rgba(148, 163, 184, 0.55) transparent;     /* thumb + fondo */
+}
+
+/* Chrome / Edge / Safari */
+.project-gallery-track::-webkit-scrollbar {
+  height: 6px;                                                /* grosor */
+}
+
+.project-gallery-track::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.9);                          /* fondo oscuro */
+  border-radius: 999px;
+}
+
+.project-gallery-track::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.3),
+    rgba(248, 250, 252, 0.7)
+  );
+  border-radius: 999px;                                       /* redondito */
+  border: 1px solid rgba(15, 23, 42, 0.9);
+}
+
 
 
 
