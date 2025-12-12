@@ -180,6 +180,13 @@ body {
   letter-spacing: 0.02em;
 }
 
+.hero-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -824,6 +831,7 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
+
 
 
 
