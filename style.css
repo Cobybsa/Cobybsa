@@ -171,7 +171,7 @@ body {
   color: var(--text-main);
   position: relative;
   z-index: 2;
-  margin-top: -20px;
+  margin-top: 0px;
 }
 
 .hero-content h1 {
@@ -823,5 +823,6 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
+
 
 
