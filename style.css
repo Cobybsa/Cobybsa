@@ -97,9 +97,41 @@ body {
   height: 100%;
 }
 
+/* Logo: tamaño controlado (antes 225px rompía layout) */
 .logo img {
-  height: 225px;
-  display: inline-block;
+  height: 78px;
+  width: auto;
+  display: block;
+}
+
+/* Brand meta al lado del logo (40+ años + sectores) */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.15;
+  color: rgba(229, 231, 235, 0.88);
+  white-space: nowrap;
+}
+
+.brand-exp {
+  font-size: 0.78rem;
+  color: rgba(229, 231, 235, 0.78);
+}
+
+.brand-sectors {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(229, 231, 235, 0.95);
 }
 
 .main-nav {
@@ -138,7 +170,7 @@ body {
   width: 100%;
 }
 
-/* NAV: versión móvil con scroll horizontal */
+/* NAV: versión móvil con scroll horizontal + ocultar meta para no chocar */
 @media (max-width: 768px) {
   .main-nav {
     overflow-x: auto;
@@ -149,6 +181,14 @@ body {
 
   .main-nav::-webkit-scrollbar {
     display: none;
+  }
+
+  .brand-meta {
+    display: none;
+  }
+
+  .logo img {
+    height: 64px;
   }
 }
 
@@ -180,13 +220,7 @@ body {
   letter-spacing: 0.02em;
 }
 
-.hero-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
+/* Badge */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -263,20 +297,25 @@ body {
   color: #e5e7eb;
 }
 
-/* Imagen hero */
+/* ===== HERO MEDIA (LIMPIO, SIN DUPLICADOS) ===== */
 .hero-media {
   position: relative;
-  transform: translateX(-100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100px); /* mantiene su estética original */
 }
 
 .hero-card {
   border-radius: 2rem;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-/* Controla el tamaño de la imagen del tanque + gabinete */
+/* Imagen tanque: estable (antes width:160% lo descontrolaba) */
 .hero-card img {
-  width: 160%;
+  width: clamp(380px, 42vw, 560px);
   height: auto;
   max-height: 650px;
   object-fit: contain;
@@ -293,10 +332,6 @@ body {
   .hero-inner {
     gap: 3rem;
   }
-
-  .hero-media img {
-    max-width: 520px;
-  }
 }
 
 /* AJUSTE HERO EN MÓVIL */
@@ -307,19 +342,18 @@ body {
     align-items: flex-start;
   }
 
-.hero-media {
-  transform: none;
-  width: 100%;
-  margin-top: 1.5rem;     
-  display: flex;
-  justify-content: center; 
-  align-items: flex-start; 
-}
+  .hero-media {
+    transform: none;
+    width: 100%;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
-  .hero-media img {
-    max-width: 65vw;
-    height: auto;
-    object-fit: contain;
+  .hero-card img {
+    width: min(420px, 85vw);
+    max-height: none;
   }
 }
 
@@ -333,7 +367,6 @@ body {
 }
 
 /* ===== HISTORIA COBYBSA ===== */
-
 .history-section {
   position: relative;
   min-height: 80vh;
@@ -624,7 +657,6 @@ body {
 }
 
 /* Scrollbar bonito para carrusel de proyectos */
-
 /* Firefox */
 .project-gallery-track {
   scrollbar-width: thin;
@@ -831,8 +863,3 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
-
-
-
-
-
