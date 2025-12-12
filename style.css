@@ -300,13 +300,14 @@ body {
     align-items: flex-start;
   }
 
-  .hero-media {
-    transform: none;
-    width: 100%;
-    margin-top: 2.5rem;
-    display: flex;
-    justify-content: flex-end;
-  }
+.hero-media {
+  transform: none;
+  width: 100%;
+  margin-top: 1.5rem;     
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+}
 
   .hero-media img {
     max-width: 65vw;
@@ -823,6 +824,7 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
+
 
 
 
