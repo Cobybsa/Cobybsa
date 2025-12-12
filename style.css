@@ -99,7 +99,7 @@ body {
 
 /* Logo: tamaño controlado (antes 225px rompía layout) */
 .logo img {
-  height: 78px;
+  height: 220px;
   width: auto;
   display: block;
 }
@@ -188,7 +188,7 @@ body {
   }
 
   .logo img {
-    height: 220px;
+    height: 150px;
   }
 }
 
@@ -863,4 +863,5 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
+
 
