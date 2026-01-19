@@ -863,5 +863,11 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
+.logo img{
+  height: 48px;   /* ajuste a gusto */
+  width: auto;
+  display: block;
+}
+
 
 
