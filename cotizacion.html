@@ -178,10 +178,13 @@
       <div class="divider"></div>
 
       <form action="https://formspree.io/f/mjgreedw" method="POST">
-        <!-- Pro: asunto + reply-to -->
-        <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA">
-        <input type="hidden" name="_replyto" value="{{email}}">
 
+  <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA">
+  <input type="hidden" name="_next" value="https://cobybsa.com/gracias.html">
+        <!-- campos visibles -->
+  <input type="email" name="email" required>
+</form>
+      
         <div class="grid">
           <div>
             <label>Nombre completo</label>
