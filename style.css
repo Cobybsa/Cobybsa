@@ -863,16 +863,26 @@ body {
   color: #c0c4dd;
   opacity: 1;
 }
-.seo-h1, .seo-h2{
-  position:absolute;
-  width:1px;
-  height:1px;
-  margin:-1px;
-  padding:0;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
+/* SEO invisible (Google-safe y accesible) */
+.seo-h1,
+.seo-h2{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Título visual del hero (mantiene el look pro y evita que se vea encogido) */
+.hero-title{
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
 }
 
 
