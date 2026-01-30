@@ -2,40 +2,186 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solicitud de Cotización | COBYBSA</title>
+
   <style>
-    body{font-family:Arial, sans-serif; margin:0; padding:0; background:#0b0f1a; color:#fff;}
-    .wrap{max-width:900px; margin:0 auto; padding:40px 16px;}
-    .card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:22px;}
-    h1{margin:0 0 10px 0; font-size:28px;}
-    p{margin:0 0 18px 0; opacity:.9}
-    label{display:block; margin:14px 0 8px; font-weight:600;}
-    input, select, textarea{
-      width:100%; padding:12px 12px; border-radius:10px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(0,0,0,.25); color:#fff; outline:none;
+    :root{
+      --bg:#0b0f1a;
+      --card: rgba(255,255,255,.07);
+      --card2: rgba(255,255,255,.03);
+      --border: rgba(255,255,255,.10);
+      --border2: rgba(255,255,255,.16);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.52);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
     }
-    textarea{resize:vertical; min-height:120px;}
+
+    *{box-sizing:border-box}
+
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0; padding:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(56,189,248,.18), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(245,158,11,.14), transparent 55%),
+        var(--bg);
+    }
+
+    .wrap{max-width: 960px; margin:0 auto; padding:56px 16px;}
+
+    .card{
+      position:relative;
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    /* borde sutil tipo “glass” */
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: var(--radius);
+      padding:1px;
+      background: linear-gradient(135deg, rgba(56,189,248,.35), rgba(245,158,11,.30), rgba(255,255,255,.10));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events:none;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing: .2px;
+      line-height:1.15;
+    }
+
+    .subtitle{
+      margin:8px 0 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.08);
+      margin: 16px 0 10px 0;
+    }
+
     .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-    .btn{
-      margin-top:18px; width:100%; padding:12px 14px; border:none; border-radius:12px;
-      cursor:pointer; font-weight:700; font-size:16px;
-      background:linear-gradient(90deg,#f59e0b,#38bdf8);
-      color:#0b0f1a;
+
+    label{
+      display:block;
+      margin: 12px 0 8px;
+      font-weight: 650;
+      font-size: 13px;
+      color: rgba(255,255,255,.86);
+      letter-spacing:.2px;
     }
-    .note{margin-top:10px; font-size:12px; opacity:.8;}
-    @media (max-width:700px){ .grid{grid-template-columns:1fr;} }
+
+    input, select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      outline:none;
+      transition: border-color .15s ease, background .15s ease, box-shadow .15s ease, transform .05s ease;
+    }
+
+    input::placeholder, textarea::placeholder{color: var(--muted2);}
+
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(56,189,248,.55);
+      box-shadow: 0 0 0 4px rgba(56,189,248,.12);
+      background: rgba(0,0,0,.26);
+    }
+
+    textarea{resize:vertical; min-height:140px;}
+
+    .btn{
+      margin-top:18px;
+      width:100%;
+      padding: 13px 16px;
+      border:none;
+      border-radius: 14px;
+      cursor:pointer;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: .2px;
+      background: linear-gradient(90deg, #f59e0b, #38bdf8);
+      color: #0b0f1a;
+      transition: transform .06s ease, filter .15s ease;
+    }
+    .btn:hover{filter: brightness(1.05);}
+    .btn:active{transform: translateY(1px);}
+
+    .note{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted2);
+      line-height:1.45;
+    }
+
+    @media (max-width: 760px){
+      .grid{grid-template-columns:1fr;}
+      .wrap{padding:40px 14px;}
+      .card{padding:22px;}
+      .badge{display:none;}
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="card">
-      <h1>Solicitud de Cotización</h1>
-      <p>Complete el formulario y le respondemos con una cotización o preguntas de precisión.</p>
+      <div class="topbar">
+        <div>
+          <h1>Solicitud de Cotización</h1>
+          <p class="subtitle">Complete el formulario y le respondemos con una cotización o preguntas de precisión.</p>
+        </div>
+        <div class="badge">Respuesta rápida • COBYBSA</div>
+      </div>
 
-      <!-- FORM: pegue aquí su endpoint de Formspree -->
+      <div class="divider"></div>
+
       <form action="https://formspree.io/f/mjgreedw" method="POST">
+        <!-- Pro: asunto + reply-to -->
+        <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA">
+        <input type="hidden" name="_replyto" value="{{email}}">
+
         <div class="grid">
           <div>
             <label>Nombre completo</label>
@@ -54,7 +200,7 @@
           </div>
           <div>
             <label>WhatsApp</label>
-            <input type="text" name="whatsapp" required />
+            <input type="tel" name="whatsapp" placeholder="+506..." required />
           </div>
         </div>
 
@@ -96,10 +242,10 @@
           </div>
         </div>
 
-        <!-- (Opcional) campo anti-spam -->
+        <!-- anti-spam -->
         <input type="text" name="_gotcha" style="display:none" />
 
-        <!-- Redirigir a página de gracias -->
+        <!-- redirección -->
         <input type="hidden" name="_next" value="gracias.html" />
 
         <button class="btn" type="submit">Enviar solicitud</button>
