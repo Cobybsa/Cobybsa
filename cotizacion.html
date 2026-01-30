@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Solicitud de Cotización | COBYBSA</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:0; padding:0; background:#0b0f1a; color:#fff;}
+    .wrap{max-width:900px; margin:0 auto; padding:40px 16px;}
+    .card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:22px;}
+    h1{margin:0 0 10px 0; font-size:28px;}
+    p{margin:0 0 18px 0; opacity:.9}
+    label{display:block; margin:14px 0 8px; font-weight:600;}
+    input, select, textarea{
+      width:100%; padding:12px 12px; border-radius:10px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25); color:#fff; outline:none;
+    }
+    textarea{resize:vertical; min-height:120px;}
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    .btn{
+      margin-top:18px; width:100%; padding:12px 14px; border:none; border-radius:12px;
+      cursor:pointer; font-weight:700; font-size:16px;
+      background:linear-gradient(90deg,#f59e0b,#38bdf8);
+      color:#0b0f1a;
+    }
+    .note{margin-top:10px; font-size:12px; opacity:.8;}
+    @media (max-width:700px){ .grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Solicitud de Cotización</h1>
+      <p>Complete el formulario y le respondemos con una cotización o preguntas de precisión.</p>
+
+      <!-- FORM: pegue aquí su endpoint de Formspree -->
+      <form action="https://formspree.io/f/XXXXYYYY" method="POST">
+        <div class="grid">
+          <div>
+            <label>Nombre completo</label>
+            <input type="text" name="nombre" required />
+          </div>
+          <div>
+            <label>Empresa (opcional)</label>
+            <input type="text" name="empresa" />
+          </div>
+        </div>
+
+        <div class="grid">
+          <div>
+            <label>Correo</label>
+            <input type="email" name="email" required />
+          </div>
+          <div>
+            <label>WhatsApp</label>
+            <input type="text" name="whatsapp" required />
+          </div>
+        </div>
+
+        <label>Tipo de servicio</label>
+        <select name="servicio" required>
+          <option value="" disabled selected>Seleccione…</option>
+          <option>Corte láser</option>
+          <option>CNC</option>
+          <option>Hidroforming</option>
+          <option>Fabricación / ensamble</option>
+          <option>Gabinetes / paneles eléctricos</option>
+          <option>Otro</option>
+        </select>
+
+        <label>Detalle de lo que necesita</label>
+        <textarea name="detalle" placeholder="Medidas, material, cantidad, uso, ubicación, referencias, etc." required></textarea>
+
+        <div class="grid">
+          <div>
+            <label>Cantidad aproximada</label>
+            <select name="cantidad" required>
+              <option value="" disabled selected>Seleccione…</option>
+              <option>1</option>
+              <option>2–10</option>
+              <option>11–50</option>
+              <option>Más de 50</option>
+              <option>No definido</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha objetivo</label>
+            <select name="fecha_objetivo" required>
+              <option value="" disabled selected>Seleccione…</option>
+              <option>Urgente (menos de 1 semana)</option>
+              <option>1–2 semanas</option>
+              <option>1 mes</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- (Opcional) campo anti-spam -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <!-- Redirigir a página de gracias -->
+        <input type="hidden" name="_next" value="gracias.html" />
+
+        <button class="btn" type="submit">Enviar solicitud</button>
+
+        <div class="note">
+          Al enviar este formulario, usted acepta que lo contactemos para aclarar detalles y enviarle la cotización.
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
