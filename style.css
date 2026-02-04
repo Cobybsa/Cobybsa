@@ -551,7 +551,69 @@ body {
   .capability-image img {
     max-width: 260px;
   }
+/* ===== LINK CAPACIDAD (CTA) ===== */
+.capability-link{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #3a8bff;          /* ajuste al azul que ya use */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+
+  opacity: 0.95;
+  transition: opacity .25s ease, transform .25s ease, color .25s ease;
 }
+
+.capability-link:hover{
+  opacity: 1;
+  color: #66a6ff;
+}
+
+.capability-link:active{
+  transform: translateY(1px);
+}
+
+.capability-link .arrow-icon{
+  flex: 0 0 auto;
+  transition: transform .25s ease;
+}
+
+.capability-link:hover .arrow-icon{
+  transform: translateX(8px);
+}
+
+/* Subrayado limpio solo en hover (no el feo por defecto) */
+.capability-link{
+  position: relative;
+}
+
+.capability-link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: currentColor;
+  opacity: .35;
+  transition: width .25s ease;
+}
+
+.capability-link:hover::after{
+  width: 100%;
+}
+
+/* En móvil, que se vea centrado si el texto está centrado */
+@media (max-width: 900px){
+  .capability-link{
+    justify-content: center;
+  }
+}
+
 
 /* =========================
    PROYECTOS – GRID DE TARJETAS
@@ -884,6 +946,7 @@ body {
   line-height: 1.15;
   margin: 0 0 1rem 0;
 }
+
 
 
 
