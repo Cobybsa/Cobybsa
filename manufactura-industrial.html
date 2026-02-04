@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Manufactura Industrial en Costa Rica | Fabricación Metalmecánica | COBYBSA</title>
 
-  <meta name="description" content="Manufactura industrial en Costa Rica. Fabricación metalmecánica a medida, ensambles industriales y soluciones técnicas bajo control de calidad. COBYBSA." />
+  <meta name="description" content="Manufactura industrial en Costa Rica. Fabricación metalmecánica a medida, ensambles industriales y soluciones técnicas para proyectos industriales. COBYBSA." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="canonical" href="https://cobybsa.com/manufactura-industrial" />
 
@@ -12,198 +12,393 @@
     :root{
       --bg:#020819;
       --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.08);
       --stroke:rgba(255,255,255,.10);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.72);
       --accent:#3a8bff;
       --accent2:#66a6ff;
+      --shadow: 0 20px 45px rgba(0,0,0,.45);
       --radius:18px;
-      --shadow:0 20px 45px rgba(0,0,0,.45);
       --max:1100px;
     }
 
     body{
       margin:0;
       font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(58,139,255,.14), transparent 60%),
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(58,139,255,.16), transparent 60%),
+                  radial-gradient(900px 500px at 85% 30%, rgba(255,255,255,.06), transparent 55%),
                   var(--bg);
       color:var(--text);
       line-height:1.65;
     }
 
     .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:64px 7vw 90px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 64px 7vw 90px;
     }
 
     .hero{
-      border:1px solid var(--stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-radius:calc(var(--radius) + 6px);
-      box-shadow:var(--shadow);
-      padding:34px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding: 34px 34px 28px;
+      overflow:hidden;
+      position: relative;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(600px 260px at 15% 0%, rgba(58,139,255,.18), transparent 60%);
+      pointer-events:none;
+    }
+
+    .kicker{
+      font-weight: 650;
+      letter-spacing:.2px;
+      color: var(--muted);
+      margin:0 0 10px;
     }
 
     h1{
-      margin:0 0 12px;
-      font-size:clamp(2rem,3vw,2.6rem);
+      margin:0 0 10px;
+      font-size: clamp(2rem, 3vw, 2.6rem);
       line-height:1.15;
     }
 
     .subtitle{
-      color:var(--muted);
-      font-size:1.08rem;
-      max-width:75ch;
-      margin-bottom:18px;
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 72ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top: 16px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:650;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
       text-decoration:none;
-      border:1px solid var(--stroke);
-      transition:all .2s ease;
+      color: var(--text);
+      font-weight: 650;
+      letter-spacing:.2px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
     }
 
     .btn-primary{
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      background: linear-gradient(90deg, rgba(58,139,255,.95), rgba(102,166,255,.95));
+      border-color: rgba(102,166,255,.55);
       color:#061029;
-      border-color:rgba(102,166,255,.5);
     }
+    .btn-primary:hover{ transform: translateY(-1px); }
 
-    .btn-primary:hover{ transform:translateY(-1px); }
-
-    .section{
-      margin-top:40px;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.05);
-      border-radius:var(--radius);
-      padding:26px;
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
     }
-
-    h2{
-      margin:0 0 12px;
-      font-size:1.35rem;
+    .btn-ghost:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
+      transform: translateY(-1px);
     }
-
-    p{ margin:0 0 12px; }
-
-    ul{
-      margin:12px 0 0;
-      padding-left:18px;
-      color:var(--muted);
-    }
-
-    li{ margin-bottom:8px; }
 
     .grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      margin-top: 26px;
     }
 
-    .step{
-      border:1px solid var(--stroke);
-      border-radius:14px;
-      padding:14px;
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
+    .card{
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 22px 22px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.28);
     }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      line-height:1.2;
+    }
+
+    p{ margin: 0 0 12px; color: var(--text); }
+    .muted{ color: var(--muted); }
+
+    .bullets{
+      margin: 12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .bullets li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: var(--muted);
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: rgba(58,139,255,.9);
+      margin-top: 6px;
+      flex: 0 0 auto;
+      box-shadow: 0 0 0 4px rgba(58,139,255,.12);
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .pill{
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      padding: 12px 12px;
+      color: var(--muted);
+    }
+
+    .icon-row{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .item{
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 14px 14px;
+      color: var(--muted);
+    }
+
+    .steps{
+      margin: 12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap: 12px;
+    }
+    .step{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 14px 14px;
+    }
+    .num{
+      width:34px;height:34px;border-radius: 12px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(58,139,255,.18);
+      border: 1px solid rgba(58,139,255,.35);
+      color: rgba(255,255,255,.92);
+      font-weight:800;
+      flex: 0 0 auto;
+    }
+    .step p{ margin:0; color: var(--muted); }
 
     .cta{
-      margin-top:24px;
-      padding:22px;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(58,139,255,.12), rgba(255,255,255,.04));
-      border:1px solid rgba(102,166,255,.25);
+      margin-top: 18px;
+      border: 1px solid rgba(102,166,255,.28);
+      background: linear-gradient(180deg, rgba(58,139,255,.12), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      padding: 20px 20px;
     }
 
-    @media(max-width:900px){
-      .grid{ grid-template-columns:1fr; }
-      .wrap{ padding:46px 6vw 70px; }
+    .cta-title{
+      margin:0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+
+    .link{
+      color: var(--accent);
+      text-decoration:none;
+      font-weight:650;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      position:relative;
+      opacity:.95;
+      transition: color .2s ease, opacity .2s ease, transform .2s ease;
+    }
+    .link:hover{ color: var(--accent2); opacity:1; }
+    .link:active{ transform: translateY(1px); }
+    .link::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-6px;
+      height:2px; width:0%;
+      background: currentColor;
+      opacity:.35;
+      transition: width .2s ease;
+    }
+    .link:hover::after{ width:100%; }
+    .arrow{
+      transition: transform .2s ease;
+      flex:0 0 auto;
+    }
+    .link:hover .arrow{ transform: translateX(8px); }
+
+    @media (max-width: 900px){
+      .wrap{ padding: 46px 6vw 70px; }
+      .grid{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+      .icon-row{ grid-template-columns: 1fr; }
+      .hero{ padding: 26px 18px 22px; }
     }
   </style>
 </head>
 
 <body>
-<main class="wrap">
+  <main class="wrap">
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Manufactura Industrial</h1>
-    <p class="subtitle">
-      Fabricación metalmecánica a medida para soluciones industriales confiables, funcionales y duraderas.
-    </p>
-    <p>
-      En <strong>COBYBSA</strong> ofrecemos manufactura industrial en Costa Rica, orientada a la fabricación de
-      componentes, ensambles y soluciones metalmecánicas bajo control técnico y estándares industriales.
-    </p>
-    <a href="/cotizacion" class="btn btn-primary">Solicitar evaluación técnica</a>
-  </section>
+    <!-- HERO -->
+    <section class="hero" aria-label="Manufactura Industrial">
+      <p class="kicker">COBYBSA | Capacidades</p>
+      <h1>Manufactura Industrial</h1>
+      <p class="subtitle">
+        Fabricación metalmecánica a medida para soluciones industriales confiables, funcionales y duraderas.
+      </p>
+      <p class="muted" style="max-width:78ch;margin-bottom:0;">
+        En <strong>COBYBSA</strong> ofrecemos <strong>manufactura industrial en Costa Rica</strong>, orientada a la fabricación de
+        componentes, ensambles y soluciones metalmecánicas bajo control técnico y estándares industriales. Integramos procesos
+        para reducir retrabajos, mejorar tiempos de entrega y asegurar resultados consistentes.
+      </p>
 
-  <!-- QUÉ HACEMOS -->
-  <section class="section">
-    <h2>¿Qué es la manufactura industrial?</h2>
-    <p>
-      La manufactura industrial se enfoca en la fabricación de piezas y sistemas metálicos diseñados para
-      operar de forma continua, segura y confiable en entornos industriales exigentes.
-    </p>
-    <p>
-      En COBYBSA abordamos la manufactura como un proceso integral que combina diseño, fabricación,
-      control dimensional y ensamblaje.
-    </p>
-  </section>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/cotizacion">Solicitar evaluación técnica</a>
+        <a class="btn btn-ghost" href="/capacidades">Ver todas las capacidades</a>
+      </div>
+    </section>
 
-  <!-- CAPACIDADES -->
-  <section class="section">
-    <h2>Capacidades de manufactura industrial</h2>
-    <div class="grid">
-      <div class="step">Fabricación metalmecánica a medida</div>
-      <div class="step">Producción de piezas y conjuntos industriales</div>
-      <div class="step">Integración con corte láser y CNC</div>
-      <div class="step">Ensambles industriales funcionales</div>
-      <div class="step">Preparación de piezas para procesos posteriores</div>
-      <div class="step">Enfoque en durabilidad y uso industrial real</div>
-    </div>
-  </section>
+    <!-- CONTENIDO -->
+    <section class="grid" aria-label="Contenido de manufactura industrial">
 
-  <!-- APLICACIONES -->
-  <section class="section">
-    <h2>Aplicaciones industriales</h2>
-    <ul>
-      <li>Equipos y estructuras industriales</li>
-      <li>Componentes para industria alimentaria y manufacturera</li>
-      <li>Proyectos industriales personalizados</li>
-      <li>Soportes, gabinetes, bases y estructuras técnicas</li>
-    </ul>
-  </section>
+      <!-- Qué es -->
+      <article class="card">
+        <h2>¿Qué es la manufactura industrial?</h2>
+        <p class="muted">
+          La manufactura industrial se enfoca en la fabricación de piezas, conjuntos y soluciones metálicas diseñadas para
+          operar de forma segura y confiable en entornos industriales exigentes. No se trata únicamente de producir, sino de
+          asegurar funcionalidad, durabilidad y consistencia en cada entrega.
+        </p>
+        <p class="muted" style="margin-bottom:0;">
+          En COBYBSA abordamos la manufactura como un proceso integral: análisis técnico, planificación, fabricación y control.
+        </p>
 
-  <!-- PROCESO -->
-  <section class="section">
-    <h2>Proceso de trabajo</h2>
-    <ol class="grid">
-      <li class="step">Análisis técnico del requerimiento</li>
-      <li class="step">Definición del alcance de manufactura</li>
-      <li class="step">Planificación del proceso productivo</li>
-      <li class="step">Fabricación y control de calidad</li>
-    </ol>
-  </section>
+        <div class="two-col" aria-label="Puntos clave">
+          <div class="pill">Soluciones a medida</div>
+          <div class="pill">Integración de procesos</div>
+          <div class="pill">Control técnico y calidad</div>
+          <div class="pill">Resultados consistentes</div>
+        </div>
+      </article>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Manufactura industrial confiable</h2>
-    <p>
-      Si su proyecto requiere fabricación industrial seria y bien ejecutada,
-      nuestro equipo puede evaluar su requerimiento técnico.
-    </p>
-    <a href="/cotizacion" class="btn btn-primary">Solicitar evaluación técnica</a>
-  </section>
+      <!-- Problemas -->
+      <aside class="card">
+        <h2>Problemas que resolvemos</h2>
+        <ul class="bullets">
+          <li><span class="dot"></span><span>Retrabajos por falta de control en fabricación</span></li>
+          <li><span class="dot"></span><span>Proyectos retrasados por múltiples proveedores</span></li>
+          <li><span class="dot"></span><span>Ensambles que no encajan o no cumplen función</span></li>
+          <li><span class="dot"></span><span>Componentes con baja durabilidad en operación</span></li>
+          <li><span class="dot"></span><span>Falta de trazabilidad y claridad técnica</span></li>
+        </ul>
+      </aside>
 
-</main>
+      <!-- Capacidades -->
+      <article class="card">
+        <h2>Capacidades de manufactura industrial en COBYBSA</h2>
+        <div class="icon-row" aria-label="Capacidades">
+          <div class="item">Fabricación metalmecánica a medida</div>
+          <div class="item">Producción de piezas y conjuntos industriales</div>
+          <div class="item">Integración con corte láser y corte CNC</div>
+          <div class="item">Preparación de piezas para procesos posteriores</div>
+          <div class="item">Ensambles industriales funcionales</div>
+          <div class="item">Enfoque en durabilidad y uso industrial real</div>
+        </div>
+      </article>
+
+      <!-- Aplicaciones -->
+      <article class="card">
+        <h2>Aplicaciones industriales</h2>
+        <div class="icon-row" aria-label="Aplicaciones">
+          <div class="item">Estructuras y soportes industriales</div>
+          <div class="item">Gabinetes, bases y componentes técnicos</div>
+          <div class="item">Equipos industriales personalizados</div>
+          <div class="item">Industria alimentaria y manufacturera</div>
+          <div class="item">Proyectos industriales a medida</div>
+          <div class="item">Integración de piezas para ensamblaje</div>
+        </div>
+      </article>
+
+      <!-- Proceso -->
+      <article class="card" style="grid-column: 1 / -1;">
+        <h2>Proceso de trabajo</h2>
+        <ol class="steps">
+          <li class="step"><span class="num">1</span><p>Análisis técnico del requerimiento</p></li>
+          <li class="step"><span class="num">2</span><p>Definición del alcance de manufactura y materiales</p></li>
+          <li class="step"><span class="num">3</span><p>Planificación del proceso productivo</p></li>
+          <li class="step"><span class="num">4</span><p>Fabricación e integración de procesos</p></li>
+          <li class="step"><span class="num">5</span><p>Control de calidad y entrega</p></li>
+        </ol>
+      </article>
+
+      <!-- Ventaja + CTA -->
+      <article class="card" style="grid-column: 1 / -1;">
+        <h2>Ventaja competitiva en manufactura industrial</h2>
+        <p class="muted">
+          En COBYBSA priorizamos la ejecución técnica y la consistencia. Integramos procesos para reducir tiempos, minimizar
+          errores y entregar resultados funcionales, resistentes y listos para operación industrial.
+        </p>
+
+        <div class="cta">
+          <p class="cta-title"><strong>¿Necesita fabricar una solución industrial a medida?</strong></p>
+          <p class="muted" style="margin:0;">
+            Envíenos su requerimiento y le respondemos con una evaluación técnica clara.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/cotizacion">Solicitar evaluación técnica</a>
+            <a class="link" href="/ingenieria-de-precision">
+              Ver Ingeniería de Precisión
+              <svg class="arrow" width="18" height="10" viewBox="0 0 18 10" aria-hidden="true">
+                <path d="M13 1l4 4-4 4M1 5h16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
 </body>
 </html>
