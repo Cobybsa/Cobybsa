@@ -536,21 +536,6 @@ body {
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
 }
 
-/* Versión móvil capacidades */
-@media (max-width: 900px) {
-  .capability {
-    flex-direction: column;
-    text-align: center;
-    gap: 32px;
-  }
-
-  .capability:nth-child(even) {
-    flex-direction: column;
-  }
-
-  .capability-image img {
-    max-width: 260px;
-  }
 /* ===== LINK CAPACIDAD (CTA) ===== */
 .capability-link{
   margin-top: 14px;
@@ -558,7 +543,7 @@ body {
   align-items: center;
   gap: 10px;
 
-  color: #3a8bff;          /* ajuste al azul que ya use */
+  color: #3a8bff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.05rem;
@@ -586,7 +571,7 @@ body {
   transform: translateX(8px);
 }
 
-/* Subrayado limpio solo en hover (no el feo por defecto) */
+/* Subrayado limpio solo en hover */
 .capability-link{
   position: relative;
 }
@@ -607,13 +592,26 @@ body {
   width: 100%;
 }
 
-/* En móvil, que se vea centrado si el texto está centrado */
-@media (max-width: 900px){
+/* Versión móvil capacidades */
+@media (max-width: 900px) {
+  .capability {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .capability:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .capability-image img {
+    max-width: 260px;
+  }
+
   .capability-link{
     justify-content: center;
   }
 }
-
 
 /* =========================
    PROYECTOS – GRID DE TARJETAS
@@ -946,6 +944,7 @@ body {
   line-height: 1.15;
   margin: 0 0 1rem 0;
 }
+
 
 
 
