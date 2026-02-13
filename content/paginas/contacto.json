@@ -1,7 +1,8 @@
 {
   "titulo": "Contacto",
   "descripcion": "Solicite una evaluación técnica o cotización.",
-  "email": "info@cobybsa.com",
   "telefono": "+506 2268-9797",
-  "whatsapp": ""
+  "email": "info@cobybsa.com",
+  "ubicacion": "Concepción, San Rafael, Heredia, Costa Rica",
+  "texto_extra": "También podemos coordinar una visita a planta o reunión presencial para revisar detalles técnicos de su proyecto."
 }
