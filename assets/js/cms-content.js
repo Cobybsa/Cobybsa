@@ -1,27 +1,15 @@
 (async function () {
   try {
-    const path = (window.location.pathname || "/").toLowerCase();
+    const fetchJson = async (url) => {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) return null;
+      return await res.json();
+    };
 
-    // Detectar página (ajuste aquí si usa rutas distintas)
-    let page = "inicio";
-    if (path.includes("capacidades")) page = "capacidades";
-    if (path.includes("contacto")) page = "contacto";
-
-    const res = await fetch(`/content/paginas/${page}.json`, { cache: "no-store" });
-    if (!res.ok) return;
-    const data = await res.json();
-
-    // Helpers
     const setText = (id, value) => {
       const el = document.getElementById(id);
       if (!el) return;
-      if (typeof value === "string") el.textContent = value;
-    };
-
-    const setHTML = (id, value) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (typeof value === "string") el.innerHTML = value;
+      if (typeof value === "string" && value.trim().length) el.textContent = value;
     };
 
     const setHref = (id, value) => {
@@ -33,49 +21,48 @@
     // ======================
     // INICIO
     // ======================
-    if (page === "inicio") {
-      setText("cms-hero-badge", data.badge);
-      setText("cms-hero-title", data.titulo);
-      setText("cms-hero-desc", data.descripcion);
+    const inicio = await fetchJson("/content/paginas/inicio.json");
+    if (inicio) {
+      setText("cms-hero-badge", inicio.badge);
+      setText("cms-hero-title", inicio.titulo);
+      setText("cms-hero-desc", inicio.descripcion);
 
-      setText("cms-hero-cta1-text", data.cta_principal_texto);
-      setHref("cms-hero-cta1", data.cta_principal_link);
+      setText("cms-hero-cta1-text", inicio.cta_principal_texto);
+      setHref("cms-hero-cta1", inicio.cta_principal_link);
 
-      setText("cms-hero-cta2-text", data.cta_secundario_texto);
-      setHref("cms-hero-cta2", data.cta_secundario_link);
+      setText("cms-hero-cta2-text", inicio.cta_secundario_texto);
+      setHref("cms-hero-cta2", inicio.cta_secundario_link);
 
-      if (data.hero_image) {
+      if (inicio.hero_image) {
         const img = document.getElementById("cms-hero-image");
-        if (img) img.src = data.hero_image;
+        if (img) img.src = inicio.hero_image;
       }
-    }
-
-    // ======================
-    // CAPACIDADES
-    // ======================
-    if (page === "capacidades") {
-      setText("cms-cap-title", data.titulo);
-      setText("cms-cap-desc", data.descripcion);
-
-      // OJO: "contenido" viene markdown en su JSON.
-      // Aquí lo metemos como texto simple por seguridad.
-      // Si quiere que se vea como HTML bonito, le hago un conversor markdown->HTML después.
-      setText("cms-cap-body", data.contenido);
     }
 
     // ======================
     // CONTACTO
     // ======================
-    if (page === "contacto") {
-      setText("cms-contact-title", data.titulo);
-      setText("cms-contact-desc", data.descripcion);
+    const contacto = await fetchJson("/content/paginas/contacto.json");
+    if (contacto) {
+      setText("cms-contact-title", contacto.titulo);
+      setText("cms-contact-desc", contacto.descripcion);
 
-      setText("cms-contact-phone", data.telefono);
-      setText("cms-contact-email", data.email);
-      setText("cms-contact-location", data.ubicacion);
+      setText("cms-contact-phone", contacto.telefono);
+      setText("cms-contact-email", contacto.email);
+      setText("cms-contact-location", contacto.ubicacion);
 
       // opcional
-      setText("cms-contact-extra", data.texto_extra);
+      setText("cms-contact-extra", contacto.texto_extra);
+    }
+
+    // ======================
+    // CAPACIDADES (solo si luego pone IDs)
+    // ======================
+    const capacidades = await fetchJson("/content/paginas/capacidades.json");
+    if (capacidades) {
+      setText("cms-cap-title", capacidades.titulo);
+      setText("cms-cap-desc", capacidades.descripcion);
+      // setText("cms-cap-body", capacidades.contenido); // cuando exista ese div
     }
   } catch (e) {
     // Silencioso: si falla no rompe el sitio
