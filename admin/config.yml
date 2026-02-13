@@ -15,6 +15,7 @@ collections:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Fecha", name: "date", widget: "datetime" }
       - { label: "Contenido", name: "body", widget: "markdown" }
+
   - name: "proyectos"
     label: "Proyectos"
     folder: "content/proyectos"
@@ -26,43 +27,25 @@ collections:
       - { label: "Ubicación (opcional)", name: "ubicacion", widget: "string", required: false }
       - { label: "Fecha", name: "date", widget: "datetime" }
       - { label: "Imagen principal", name: "image", widget: "image" }
-      - { label: "Galería (opcional)", name: "gallery", widget: "list", required: false, field: { label: "Imagen", name: "image", widget: "image" } }
+      - label: "Galería (opcional)"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Imagen", name: "image", widget: "image" }
       - { label: "Descripción", name: "body", widget: "markdown" }
 
-  - name: "pages"
+  - name: "paginas"
     label: "Páginas"
     files:
       - label: "Inicio"
         name: "inicio"
-        file: "content/pages/inicio.md"
+        file: "content/paginas/inicio.json"
         fields:
-          - { label: "Título (Hero)", name: "title", widget: "string" }
-          - { label: "Subtítulo", name: "subtitle", widget: "text" }
-          - { label: "Imagen Hero", name: "hero_image", widget: "image" }
-          - { label: "Texto principal", name: "body", widget: "markdown" }
-
-      - label: "Capacidades"
-        name: "capacidades"
-        file: "content/pages/capacidades.md"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Contenido", name: "body", widget: "markdown" }
-
-      - label: "Contacto"
-        name: "contacto"
-        file: "content/pages/contacto.md"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Contenido", name: "body", widget: "markdown" }
-
-  - name: "settings"
-    label: "Ajustes del sitio"
-    files:
-      - label: "Información general"
-        name: "general"
-        file: "content/settings/general.yml"
-        fields:
-          - { label: "Teléfono", name: "phone", widget: "string" }
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
-          - { label: "Dirección", name: "address", widget: "string", required: false }
+          - { label: "Badge", name: "badge", widget: "string" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "text" }
+          - { label: "CTA principal (texto)", name: "cta_principal_texto", widget: "string" }
+          - { label: "CTA principal (link)", name: "cta_principal_link", widget: "string" }
+          - { label: "CTA secundario (texto)", name: "cta_secundario_texto", widget: "string" }
+          - { label: "CTA secundario (link)", name: "cta_secundario_link", widget: "string" }
