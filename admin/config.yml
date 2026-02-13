@@ -15,3 +15,54 @@ collections:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Fecha", name: "date", widget: "datetime" }
       - { label: "Contenido", name: "body", widget: "markdown" }
+  - name: "proyectos"
+    label: "Proyectos"
+    folder: "content/proyectos"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Cliente (opcional)", name: "cliente", widget: "string", required: false }
+      - { label: "Ubicación (opcional)", name: "ubicacion", widget: "string", required: false }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Imagen principal", name: "image", widget: "image" }
+      - { label: "Galería (opcional)", name: "gallery", widget: "list", required: false, field: { label: "Imagen", name: "image", widget: "image" } }
+      - { label: "Descripción", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Páginas"
+    files:
+      - label: "Inicio"
+        name: "inicio"
+        file: "content/pages/inicio.md"
+        fields:
+          - { label: "Título (Hero)", name: "title", widget: "string" }
+          - { label: "Subtítulo", name: "subtitle", widget: "text" }
+          - { label: "Imagen Hero", name: "hero_image", widget: "image" }
+          - { label: "Texto principal", name: "body", widget: "markdown" }
+
+      - label: "Capacidades"
+        name: "capacidades"
+        file: "content/pages/capacidades.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Contenido", name: "body", widget: "markdown" }
+
+      - label: "Contacto"
+        name: "contacto"
+        file: "content/pages/contacto.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "settings"
+    label: "Ajustes del sitio"
+    files:
+      - label: "Información general"
+        name: "general"
+        file: "content/settings/general.yml"
+        fields:
+          - { label: "Teléfono", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
+          - { label: "Dirección", name: "address", widget: "string", required: false }
