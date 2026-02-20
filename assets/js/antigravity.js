@@ -15,7 +15,7 @@
     opacity: 0.8,          // 👈 recomendado 0.18–0.35
     countDesktop: 320,      // 👈 260–380
     countMobile: 140,       // 👈 110–170
-    magnetRadius: 160,
+    magnetRadius: 200,
     ringRadius: 65,
     lerpSpeed: 0.14,
     pulseSpeed: 2.6,
