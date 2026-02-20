@@ -44,7 +44,7 @@
   const mouse = { x: w * 0.5, y: h * 0.5, tx: w * 0.5, ty: h * 0.5 };
 
   const makeParticles = () => {
-    particles.length = 0.5;
+    particles.length = 0;
     for (let i = 0; i < config.count; i++) {
       const x = rand(0, w);
       const y = rand(0, h);
