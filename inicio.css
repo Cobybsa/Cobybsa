@@ -48,3 +48,50 @@
   position: relative;
   z-index: 2;
 }
+/* ===== HERO: el “cuadro azul oscuro” ===== */
+.hero{
+  position: relative !important;
+  overflow: hidden !important;      /* recorta las partículas */
+  isolation: isolate;               /* aísla z-index dentro */
+  background: #050b1a;              /* su azul oscuro */
+}
+
+/* El layer del canvas vive SOLO dentro del hero */
+.hero-antigravity{
+  position: absolute !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* El canvas ocupa el hero y NO se sale */
+#antigravity-canvas{
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* El contenido del hero arriba del canvas */
+.hero-inner,
+.hero-content,
+.hero-media{
+  position: relative;
+  z-index: 2;
+}
+
+/* (Opcional) Velo para legibilidad */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background: radial-gradient(
+    circle at 30% 35%,
+    rgba(0,0,0,0.00),
+    rgba(0,0,0,0.35) 55%,
+    rgba(0,0,0,0.60) 100%
+  );
+}
