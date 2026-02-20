@@ -8,12 +8,12 @@
   // ===== CONFIG (AQUÍ ajusta color/tamaño) =====
   const config = {
     color: "#b88a3b",      // color
-    particleSize: 4.0,     // tamaño base (0.7–1.3 recomendado)
+    particleSize: 4.5,     // tamaño base (0.7–1.3 recomendado)
     opacity: 0.45,         // 0.35–0.75 (más bajo = más elegante)
     countDesktop: 300,     // 200–350
     countMobile: 150,      // 100–180
-    magnetRadius: 140,     // px
-    ringRadius: 70,        // px
+    magnetRadius: 150,     // px
+    ringRadius: 60,        // px
     lerpSpeed: 0.14,       // 0.10–0.18
     pulseSpeed: 2.8,       // menor = menos vibración
     particleVariance: 0.25,// 0.15–0.35
