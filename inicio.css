@@ -6,14 +6,16 @@
 /* Asegura que el hero pueda contener el canvas atrás */
 .hero {
   position: relative;
-  overflow: hidden; /* importante para que el canvas no “ensucie” todo */
+  overflow: hidden;     /* clave: recorta el canvas al hero */
+  isolation: isolate;   /* clave: aísla z-index adentro del hero */
+  min-height: 640px;    /* evita hero "aplastado" */
 }
 
 /* Capa del fondo Antigravity */
 .hero-antigravity {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 0;           /* fondo real */
   pointer-events: none;
 }
 
@@ -24,25 +26,25 @@
   display: block;
 }
 
-/* Subimos el contenido del hero encima del canvas */
-.hero-inner,
-.hero-content,
-.hero-media {
-  position: relative;
-  z-index: 1;
-}
-
-/* Un pequeño “velo” opcional para mejorar legibilidad del texto encima del fondo */
+/* Velo: SIEMPRE arriba del canvas, pero debajo del contenido */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;           /* antes estaba en 0: podía competir con el canvas */
   background: radial-gradient(
     circle at 30% 35%,
-    rgba(0, 0, 0, 0.0),
+    rgba(0, 0, 0, 0.00),
     rgba(0, 0, 0, 0.35) 55%,
-    rgba(0, 0, 0, 0.6) 100%
+    rgba(0, 0, 0, 0.60) 100%
   );
   pointer-events: none;
+}
+
+/* Contenido del hero encima de todo */
+.hero-inner,
+.hero-content,
+.hero-media {
+  position: relative;
+  z-index: 2;
 }
