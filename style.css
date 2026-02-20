@@ -944,6 +944,34 @@ body {
   line-height: 1.15;
   margin: 0 0 1rem 0;
 }
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-antigravity {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+#antigravity-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero .container.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-antigravity { display: none; }
+}
+
 
 
 
