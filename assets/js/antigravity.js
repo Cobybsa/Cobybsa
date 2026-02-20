@@ -9,9 +9,9 @@
   // CONFIG (limpio / elegante)
   // =========================
   const config = {
-    count: 400,
+    count: 300,
     color: "#cd5b0e",
-    particleSize: 4.5,     // más pequeño
+    particleSize: 5,     // más pequeño
     magnetRadius: 150,     // px
     ringRadius: 120,        // px
     lerpSpeed: 0.16,
@@ -44,7 +44,7 @@
   const mouse = { x: w * 0.5, y: h * 0.5, tx: w * 0.5, ty: h * 0.5 };
 
   const makeParticles = () => {
-    particles.length = 0;
+    particles.length = 0.5;
     for (let i = 0; i < config.count; i++) {
       const x = rand(0, w);
       const y = rand(0, h);
