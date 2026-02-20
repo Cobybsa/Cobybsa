@@ -10,16 +10,16 @@
 
   // ===== CONFIG (AQUÍ ajusta color/tamaño) =====
   const config = {
-    color: "#b88a3b",
-    particleSize: 1.6,      // 👈 recomendado 1.2–2.2 (4.5 se ve como “cacas”)
-    opacity: 0.22,          // 👈 recomendado 0.18–0.35
+    color: "#c28f2c",
+    particleSize: 1.4,      // 👈 recomendado 1.2–2.2 (4.5 se ve como “cacas”)
+    opacity: 0.20,          // 👈 recomendado 0.18–0.35
     countDesktop: 320,      // 👈 260–380
     countMobile: 140,       // 👈 110–170
-    magnetRadius: 150,
-    ringRadius: 62,
+    magnetRadius: 160,
+    ringRadius: 65,
     lerpSpeed: 0.14,
     pulseSpeed: 2.6,
-    particleVariance: 0.22,
+    particleVariance: 0.18,
     fpsCap: 55,             // 👈 50–60
     blend: true             // 👈 true = look más “glow” premium
   };
