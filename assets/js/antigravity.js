@@ -10,8 +10,8 @@
     color: "#ff8a3c",      // color
     particleSize: 4.0,     // tamaño base (0.7–1.3 recomendado)
     opacity: 0.55,         // 0.35–0.75 (más bajo = más elegante)
-    countDesktop: 260,     // 200–350
-    countMobile: 140,      // 100–180
+    countDesktop: 300,     // 200–350
+    countMobile: 150,      // 100–180
     magnetRadius: 140,     // px
     ringRadius: 70,        // px
     lerpSpeed: 0.14,       // 0.10–0.18
