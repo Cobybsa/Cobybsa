@@ -9,8 +9,8 @@
   const config = {
     color: "#b88a3b",      // color
     particleSize: 4.5,     // tamaño base (0.7–1.3 recomendado)
-    opacity: 0.45,         // 0.35–0.75 (más bajo = más elegante)
-    countDesktop: 300,     // 200–350
+    opacity: 0.15,         // 0.35–0.75 (más bajo = más elegante)
+    countDesktop: 400,     // 200–350
     countMobile: 150,      // 100–180
     magnetRadius: 150,     // px
     ringRadius: 60,        // px
