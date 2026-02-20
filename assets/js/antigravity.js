@@ -12,7 +12,7 @@
   const config = {
     color: "#c28f2c",
     particleSize: 1.4,      // 👈 recomendado 1.2–2.2 (4.5 se ve como “cacas”)
-    opacity: 0.20,          // 👈 recomendado 0.18–0.35
+    opacity: 0.70,          // 👈 recomendado 0.18–0.35
     countDesktop: 320,      // 👈 260–380
     countMobile: 140,       // 👈 110–170
     magnetRadius: 160,
