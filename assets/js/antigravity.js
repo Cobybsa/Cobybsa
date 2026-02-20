@@ -11,9 +11,9 @@
   const config = {
     count: 450,
     color: "#cd5b0e",
-    particleSize: 1.1,     // más pequeño
-    magnetRadius: 120,     // px
-    ringRadius: 40,        // px
+    particleSize: 4.5,     // más pequeño
+    magnetRadius: 150,     // px
+    ringRadius: 120,        // px
     lerpSpeed: 0.16,
     waveSpeed: 0.9,
     waveAmplitude: 0,      // lo dejamos en 0 como usted
