@@ -14,7 +14,7 @@
 
   /* Hacer el hero "más ancho hacia abajo" (más alto) */
   min-height: 86vh;                /* antes 640px -> esto se adapta a pantalla */
-  padding-bottom: 110px;           /* extiende el área azul hacia abajo */
+  padding-bottom: 140px;           /* extiende el área azul hacia abajo */
 }
 
 /* Layer del canvas SOLO dentro del hero */
@@ -88,7 +88,7 @@
   z-index: 3;
 
   /* Esto es lo que la BAJA (lo que usted quiere) */
-  margin-top: 90px;                /* suba a 120px si quiere más espacio */
+  margin-top: 120px;                /* suba a 120px si quiere más espacio */
   padding-top: 30px;
 
   /* opcional: que novedades tenga su propio “bloque” limpio */
