@@ -9,7 +9,7 @@
   // CONFIG (limpio / elegante)
   // =========================
   const config = {
-    count: 450,
+    count: 400,
     color: "#cd5b0e",
     particleSize: 4.5,     // más pequeño
     magnetRadius: 150,     // px
