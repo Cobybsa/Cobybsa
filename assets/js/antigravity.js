@@ -8,7 +8,7 @@
   // ===== CONFIG (AQUÍ ajusta color/tamaño) =====
   const config = {
     color: "#ff8a3c",      // color
-    particleSize: 1.0,     // tamaño base (0.7–1.3 recomendado)
+    particleSize: 4.0,     // tamaño base (0.7–1.3 recomendado)
     opacity: 0.55,         // 0.35–0.75 (más bajo = más elegante)
     countDesktop: 260,     // 200–350
     countMobile: 140,      // 100–180
