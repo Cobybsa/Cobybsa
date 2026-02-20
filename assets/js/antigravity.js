@@ -12,11 +12,11 @@
   const config = {
     color: "#ffffff",
     particleSize: 2.4,      // 👈 recomendado 1.2–2.2 (4.5 se ve como “cacas”)
-    opacity: 0.8,          // 👈 recomendado 0.18–0.35
+    opacity: 9,          // 👈 recomendado 0.18–0.35
     countDesktop: 320,      // 👈 260–380
     countMobile: 140,       // 👈 110–170
     magnetRadius: 200,
-    ringRadius: 65,
+    ringRadius: 105,
     lerpSpeed: 0.14,
     pulseSpeed: 2.6,
     particleVariance: 0.18,
