@@ -2,116 +2,138 @@
   const canvas = document.getElementById("antigravity-canvas");
   if (!canvas) return;
 
-  const ctx = canvas.getContext("2d", { alpha: true });
+  const ctx = canvas.getContext("2d", { alpha: true, desynchronized: true });
   if (!ctx) return;
 
-  // =========================
-  // CONFIG (limpio / elegante)
-  // =========================
+  // ===== CONFIG (AQUÍ ajusta color/tamaño) =====
   const config = {
-    count: 300,
-    color: "#cd5b0e",
-    particleSize: 5,     // más pequeño
-    magnetRadius: 150,     // px
-    ringRadius: 120,        // px
-    lerpSpeed: 0.16,
-    waveSpeed: 0.9,
-    waveAmplitude: 0,      // lo dejamos en 0 como usted
-    pulseSpeed: 4.2,       // un poco menos agresivo
-    particleVariance: 0.45,
-    fieldStrength: 18
+    color: "#ff8a3c",      // color
+    particleSize: 1.0,     // tamaño base (0.7–1.3 recomendado)
+    opacity: 0.55,         // 0.35–0.75 (más bajo = más elegante)
+    countDesktop: 260,     // 200–350
+    countMobile: 140,      // 100–180
+    magnetRadius: 140,     // px
+    ringRadius: 70,        // px
+    lerpSpeed: 0.14,       // 0.10–0.18
+    pulseSpeed: 2.8,       // menor = menos vibración
+    particleVariance: 0.25,// 0.15–0.35
+    fpsCap: 50             // 0 = sin límite; 45–60 recomendado
   };
 
-  // Reduce carga en móvil
   const isMobile = matchMedia("(max-width: 768px)").matches;
-  if (isMobile) config.count = 250;
+  const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  // Si el usuario prefiere menos animación, reducimos fuerte
+  if (prefersReduced) {
+    config.fpsCap = 30;
+    config.particleSize = 0.9;
+  }
 
-  const resize = () => {
-    // Importante: el canvas debe tener tamaño por CSS (width/height al 100%)
-    w = canvas.clientWidth || canvas.parentElement?.clientWidth || 1;
-    h = canvas.clientHeight || canvas.parentElement?.clientHeight || 1;
+  let w = 0, h = 0;
+  let dpr = Math.min(window.devicePixelRatio || 1, 1.5); // baja dpr para rendimiento
+
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0, movedAt: performance.now() };
+  const particles = [];
+
+  const hexToRgba = (hex, a) => {
+    const h = hex.replace("#", "").trim();
+    const full = h.length === 3 ? h.split("").map(c => c + c).join("") : h;
+    const n = parseInt(full, 16);
+    const r = (n >> 16) & 255;
+    const g = (n >> 8) & 255;
+    const b = n & 255;
+    return `rgba(${r},${g},${b},${a})`;
+  };
+
+  function resize() {
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+
+    // Si el canvas no tiene altura (por CSS), no hay nada que hacer
+    if (!w || !h) return;
 
     canvas.width = Math.floor(w * dpr);
     canvas.height = Math.floor(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
 
-  const rand = (a, b) => a + Math.random() * (b - a);
+    mouse.x = mouse.tx = w * 0.5;
+    mouse.y = mouse.ty = h * 0.5;
 
-  const particles = [];
-  const mouse = { x: w * 0.5, y: h * 0.5, tx: w * 0.5, ty: h * 0.5 };
+    makeParticles();
+  }
 
-  const makeParticles = () => {
+  function makeParticles() {
     particles.length = 0;
-    for (let i = 0; i < config.count; i++) {
+
+    const baseCount = isMobile ? config.countMobile : config.countDesktop;
+    // Ajuste por área (pantallas enormes = un poco más, pequeñas = menos)
+    const areaFactor = Math.min(1.25, Math.max(0.75, (w * h) / (1400 * 700)));
+    const count = Math.floor(baseCount * areaFactor);
+
+    for (let i = 0; i < count; i++) {
       const x = rand(0, w);
       const y = rand(0, h);
       particles.push({
         x, y,
         cx: x, cy: y,
         t: rand(0, 100),
-        speed: rand(0.002, 0.008),
+        speed: rand(0.002, 0.006),
         rOff: rand(-1, 1)
       });
     }
-  };
+  }
 
-  const onMove = (e) => {
+  function onMove(e) {
     const rect = canvas.getBoundingClientRect();
     mouse.tx = e.clientX - rect.left;
     mouse.ty = e.clientY - rect.top;
-  };
+    mouse.movedAt = performance.now();
+  }
 
   window.addEventListener("mousemove", onMove, { passive: true });
-  window.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!e.touches || !e.touches.length) return;
-      onMove(e.touches[0]);
-    },
-    { passive: true }
-  );
+  window.addEventListener("touchmove", (e) => {
+    if (!e.touches || !e.touches.length) return;
+    onMove(e.touches[0]);
+  }, { passive: true });
 
-  const hexToRgb = (hex) => {
-    const h = hex.replace("#", "").trim();
-    const full = h.length === 3 ? h.split("").map(c => c + c).join("") : h;
-    const n = parseInt(full, 16);
-    return {
-      r: (n >> 16) & 255,
-      g: (n >> 8) & 255,
-      b: n & 255
-    };
-  };
-
-  const { r, g, b } = hexToRgb(config.color);
-
-  const drawDot = (x, y, radius) => {
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fill();
-  };
+  // Pausar en pestaña oculta
+  let running = true;
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+  });
 
   let last = performance.now();
+  let lastFrame = 0;
 
-  const tick = (now) => {
+  function tick(now) {
+    requestAnimationFrame(tick);
+    if (!running) return;
+
+    // FPS cap (si está)
+    if (config.fpsCap > 0) {
+      const minDelta = 1000 / config.fpsCap;
+      if (now - lastFrame < minDelta) return;
+      lastFrame = now;
+    }
+
     const dt = Math.min(32, now - last);
     last = now;
 
-    // suavizado mouse
-    const smooth = 0.08;
+    if (!w || !h) return;
+
+    // Suavizado mouse: si no se movió en 2s, animación más suave (menos trabajo percibido)
+    const idle = (now - mouse.movedAt) > 2000;
+    const smooth = idle ? 0.03 : 0.08;
     mouse.x += (mouse.tx - mouse.x) * smooth;
     mouse.y += (mouse.ty - mouse.y) * smooth;
 
     ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = hexToRgba(config.color, config.opacity);
 
-    // Glow suave (nada “caca”)
-    ctx.save();
-    ctx.globalCompositeOperation = "lighter";
-    ctx.shadowColor = `rgba(${r},${g},${b},0.55)`;
-    ctx.shadowBlur = 10;
-    ctx.fillStyle = `rgba(${r},${g},${b},0.55)`;
+    const mr = config.magnetRadius;
+    const rrBase = config.ringRadius;
 
     for (const p of particles) {
       p.t += p.speed * (dt * 0.06);
@@ -123,45 +145,33 @@
       let tx = p.x;
       let ty = p.y;
 
-      // Campo dentro del radio
-      if (dist < config.magnetRadius) {
+      if (!idle && dist < mr) {
         const ang = Math.atan2(dy, dx);
-
-        const wave = Math.sin(p.t * config.waveSpeed + ang) * (0.5 * config.waveAmplitude);
-        const deviation = p.rOff * (6 / (config.fieldStrength + 0.1));
-        const rr = config.ringRadius + wave + deviation;
-
+        const rr = rrBase + p.rOff * 3;
         tx = mouse.x + rr * Math.cos(ang);
         ty = mouse.y + rr * Math.sin(ang);
       }
 
-      // lerp
       p.cx += (tx - p.cx) * config.lerpSpeed;
       p.cy += (ty - p.cy) * config.lerpSpeed;
 
-      // tamaño/pulso
-      const pulse = 0.85 + Math.sin(p.t * config.pulseSpeed) * 0.15 * config.particleVariance;
-      const radius = Math.max(0.6, config.particleSize * pulse);
+      const pulse = (0.9 + Math.sin(p.t * config.pulseSpeed) * 0.1 * config.particleVariance);
+      const r = Math.max(0.6, config.particleSize * pulse);
 
-      drawDot(p.cx, p.cy, radius);
+      // Partícula circular (mucho más rápida que capsule)
+      ctx.beginPath();
+      ctx.arc(p.cx, p.cy, r, 0, Math.PI * 2);
+      ctx.fill();
     }
+  }
 
-    ctx.restore();
-
-    requestAnimationFrame(tick);
-  };
-
-  // init
+  // Init (importante: el canvas necesita altura via CSS)
   resize();
-  makeParticles();
   requestAnimationFrame(tick);
 
-  window.addEventListener(
-    "resize",
-    () => {
-      resize();
-      makeParticles();
-    },
-    { passive: true }
-  );
+  window.addEventListener("resize", () => {
+    // Recalcular dpr por si cambia zoom
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    resize();
+  }, { passive: true });
 })();
