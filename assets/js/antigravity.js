@@ -10,7 +10,7 @@
 
   // ===== CONFIG (AQUÍ ajusta color/tamaño) =====
   const config = {
-    color: "#c28f2c",
+    color: "#ffffff",
     particleSize: 2.4,      // 👈 recomendado 1.2–2.2 (4.5 se ve como “cacas”)
     opacity: 0.8,          // 👈 recomendado 0.18–0.35
     countDesktop: 320,      // 👈 260–380
