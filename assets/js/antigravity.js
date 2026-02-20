@@ -2,35 +2,39 @@
   const canvas = document.getElementById("antigravity-canvas");
   if (!canvas) return;
 
+  const container = canvas.parentElement; // .hero-antigravity
+  if (!container) return;
+
   const ctx = canvas.getContext("2d", { alpha: true, desynchronized: true });
   if (!ctx) return;
 
   // ===== CONFIG (AQUÍ ajusta color/tamaño) =====
   const config = {
-    color: "#b88a3b",      // color
-    particleSize: 4.5,     // tamaño base (0.7–1.3 recomendado)
-    opacity: 0.15,         // 0.35–0.75 (más bajo = más elegante)
-    countDesktop: 400,     // 200–350
-    countMobile: 150,      // 100–180
-    magnetRadius: 150,     // px
-    ringRadius: 60,        // px
-    lerpSpeed: 0.14,       // 0.10–0.18
-    pulseSpeed: 2.8,       // menor = menos vibración
-    particleVariance: 0.25,// 0.15–0.35
-    fpsCap: 50             // 0 = sin límite; 45–60 recomendado
+    color: "#b88a3b",
+    particleSize: 1.6,      // 👈 recomendado 1.2–2.2 (4.5 se ve como “cacas”)
+    opacity: 0.22,          // 👈 recomendado 0.18–0.35
+    countDesktop: 320,      // 👈 260–380
+    countMobile: 140,       // 👈 110–170
+    magnetRadius: 150,
+    ringRadius: 62,
+    lerpSpeed: 0.14,
+    pulseSpeed: 2.6,
+    particleVariance: 0.22,
+    fpsCap: 55,             // 👈 50–60
+    blend: true             // 👈 true = look más “glow” premium
   };
 
   const isMobile = matchMedia("(max-width: 768px)").matches;
   const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Si el usuario prefiere menos animación, reducimos fuerte
   if (prefersReduced) {
     config.fpsCap = 30;
-    config.particleSize = 0.9;
+    config.particleSize = 1.0;
+    config.opacity = 0.18;
   }
 
   let w = 0, h = 0;
-  let dpr = Math.min(window.devicePixelRatio || 1, 1.5); // baja dpr para rendimiento
+  let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
   const rand = (a, b) => a + Math.random() * (b - a);
 
@@ -38,8 +42,8 @@
   const particles = [];
 
   const hexToRgba = (hex, a) => {
-    const h = hex.replace("#", "").trim();
-    const full = h.length === 3 ? h.split("").map(c => c + c).join("") : h;
+    const hh = hex.replace("#", "").trim();
+    const full = hh.length === 3 ? hh.split("").map(c => c + c).join("") : hh;
     const n = parseInt(full, 16);
     const r = (n >> 16) & 255;
     const g = (n >> 8) & 255;
@@ -48,10 +52,10 @@
   };
 
   function resize() {
-    w = canvas.clientWidth;
-    h = canvas.clientHeight;
+    const rect = container.getBoundingClientRect(); // 👈 TAMAÑO REAL del hero
+    w = Math.floor(rect.width);
+    h = Math.floor(rect.height);
 
-    // Si el canvas no tiene altura (por CSS), no hay nada que hacer
     if (!w || !h) return;
 
     canvas.width = Math.floor(w * dpr);
@@ -68,8 +72,7 @@
     particles.length = 0;
 
     const baseCount = isMobile ? config.countMobile : config.countDesktop;
-    // Ajuste por área (pantallas enormes = un poco más, pequeñas = menos)
-    const areaFactor = Math.min(1.25, Math.max(0.75, (w * h) / (1400 * 700)));
+    const areaFactor = Math.min(1.2, Math.max(0.75, (w * h) / (1400 * 720)));
     const count = Math.floor(baseCount * areaFactor);
 
     for (let i = 0; i < count; i++) {
@@ -98,7 +101,6 @@
     onMove(e.touches[0]);
   }, { passive: true });
 
-  // Pausar en pestaña oculta
   let running = true;
   document.addEventListener("visibilitychange", () => {
     running = !document.hidden;
@@ -111,7 +113,6 @@
     requestAnimationFrame(tick);
     if (!running) return;
 
-    // FPS cap (si está)
     if (config.fpsCap > 0) {
       const minDelta = 1000 / config.fpsCap;
       if (now - lastFrame < minDelta) return;
@@ -123,13 +124,15 @@
 
     if (!w || !h) return;
 
-    // Suavizado mouse: si no se movió en 2s, animación más suave (menos trabajo percibido)
     const idle = (now - mouse.movedAt) > 2000;
     const smooth = idle ? 0.03 : 0.08;
     mouse.x += (mouse.tx - mouse.x) * smooth;
     mouse.y += (mouse.ty - mouse.y) * smooth;
 
     ctx.clearRect(0, 0, w, h);
+
+    // look premium (opcional)
+    ctx.globalCompositeOperation = config.blend ? "lighter" : "source-over";
     ctx.fillStyle = hexToRgba(config.color, config.opacity);
 
     const mr = config.magnetRadius;
@@ -155,22 +158,23 @@
       p.cx += (tx - p.cx) * config.lerpSpeed;
       p.cy += (ty - p.cy) * config.lerpSpeed;
 
-      const pulse = (0.9 + Math.sin(p.t * config.pulseSpeed) * 0.1 * config.particleVariance);
-      const r = Math.max(0.6, config.particleSize * pulse);
+      const pulse = (0.92 + Math.sin(p.t * config.pulseSpeed) * 0.08 * config.particleVariance);
+      const r = Math.max(0.5, config.particleSize * pulse);
 
-      // Partícula circular (mucho más rápida que capsule)
       ctx.beginPath();
       ctx.arc(p.cx, p.cy, r, 0, Math.PI * 2);
       ctx.fill();
     }
+
+    // reset (por si después dibuja otra cosa)
+    ctx.globalCompositeOperation = "source-over";
   }
 
-  // Init (importante: el canvas necesita altura via CSS)
+  // Init
   resize();
   requestAnimationFrame(tick);
 
   window.addEventListener("resize", () => {
-    // Recalcular dpr por si cambia zoom
     dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     resize();
   }, { passive: true });
