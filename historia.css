@@ -1,0 +1,250 @@
+/* =========================
+   HISTORIA.CSS (solo historia.html)
+   Diseñado para convivir con style.css
+========================= */
+
+.history-hero {
+  position: relative;
+  padding: clamp(56px, 7vw, 92px) 0;
+  overflow: hidden;
+}
+
+/* Fondo suave (sin imágenes) */
+.history-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 450px at 15% 25%, rgba(205, 91, 14, 0.18), transparent 60%),
+    radial-gradient(700px 380px at 85% 35%, rgba(255, 255, 255, 0.06), transparent 55%),
+    linear-gradient(180deg, rgba(12, 14, 18, 0.85), rgba(12, 14, 18, 0.65));
+  pointer-events: none;
+}
+
+.history-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+}
+
+.history-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.history-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #cd5b0e;
+  box-shadow: 0 0 0 4px rgba(205, 91, 14, 0.20);
+}
+
+.history-hero-title {
+  margin: 16px 0 10px;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.history-hero-desc {
+  margin: 0;
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.65;
+  opacity: 0.92;
+  max-width: 68ch;
+}
+
+.history-hero-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.history-timeline-wrap {
+  padding: clamp(44px, 6vw, 80px) 0;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+/* línea vertical */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 18px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(205, 91, 14, 0.0),
+    rgba(205, 91, 14, 0.65),
+    rgba(205, 91, 14, 0.0)
+  );
+  opacity: 0.9;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.timeline-marker {
+  position: relative;
+  width: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-marker::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #cd5b0e;
+  box-shadow:
+    0 0 0 6px rgba(205, 91, 14, 0.18),
+    0 10px 30px rgba(0, 0, 0, 0.30);
+}
+
+.timeline-step {
+  margin-top: 38px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  opacity: 0.75;
+}
+
+.timeline-card {
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.timeline-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.timeline-tag {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(205, 91, 14, 0.15);
+  border: 1px solid rgba(205, 91, 14, 0.35);
+  color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+}
+
+.timeline-text {
+  margin: 0 0 10px;
+  line-height: 1.7;
+  opacity: 0.92;
+}
+
+.timeline-bullets {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  opacity: 0.9;
+}
+
+.timeline-bullets li {
+  line-height: 1.55;
+}
+
+/* =========================
+   CTA final
+========================= */
+
+.history-cta {
+  margin-top: 26px;
+}
+
+.history-cta-card {
+  border-radius: 20px;
+  padding: 20px;
+  background:
+    radial-gradient(600px 220px at 15% 20%, rgba(205, 91, 14, 0.20), transparent 60%),
+    rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.30);
+}
+
+.history-cta-card h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.history-cta-card p {
+  margin: 0;
+  line-height: 1.65;
+  opacity: 0.92;
+  max-width: 78ch;
+}
+
+.history-cta-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 640px) {
+  .timeline-item {
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .timeline-marker {
+    width: 44px;
+  }
+
+  .timeline-title {
+    font-size: 18px;
+  }
+}
