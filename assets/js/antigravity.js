@@ -5,30 +5,34 @@
   const ctx = canvas.getContext("2d", { alpha: true });
   if (!ctx) return;
 
-  // Parámetros (equivalentes a los props que usted puso)
+  // =========================
+  // CONFIG (limpio / elegante)
+  // =========================
   const config = {
-    count: 900,            // en React puso 1100; aquí recomiendo 700-1100
+    count: 450,
     color: "#cd5b0e",
-    particleSize: 1.5,
-    magnetRadius: 90,      // px (ajustable)
-    ringRadius: 55,        // px (ajustable)
+    particleSize: 1.1,     // más pequeño
+    magnetRadius: 120,     // px
+    ringRadius: 40,        // px
     lerpSpeed: 0.16,
     waveSpeed: 0.9,
-    waveAmplitude: 0,      // usted lo tiene en 0
-    pulseSpeed: 5.2,
-    particleVariance: 0.6,
-    fieldStrength: 12.4
+    waveAmplitude: 0,      // lo dejamos en 0 como usted
+    pulseSpeed: 4.2,       // un poco menos agresivo
+    particleVariance: 0.45,
+    fieldStrength: 18
   };
 
   // Reduce carga en móvil
   const isMobile = matchMedia("(max-width: 768px)").matches;
-  if (isMobile) config.count = Math.min(config.count, 450);
+  if (isMobile) config.count = 250;
 
   let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
 
   const resize = () => {
-    w = canvas.clientWidth;
-    h = canvas.clientHeight;
+    // Importante: el canvas debe tener tamaño por CSS (width/height al 100%)
+    w = canvas.clientWidth || canvas.parentElement?.clientWidth || 1;
+    h = canvas.clientHeight || canvas.parentElement?.clientHeight || 1;
+
     canvas.width = Math.floor(w * dpr);
     canvas.height = Math.floor(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -61,37 +65,32 @@
   };
 
   window.addEventListener("mousemove", onMove, { passive: true });
+  window.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!e.touches || !e.touches.length) return;
+      onMove(e.touches[0]);
+    },
+    { passive: true }
+  );
 
-  // Touch: use first touch
-  window.addEventListener("touchmove", (e) => {
-    if (!e.touches || !e.touches.length) return;
-    onMove(e.touches[0]);
-  }, { passive: true });
-
-  const hexToRgba = (hex, a) => {
+  const hexToRgb = (hex) => {
     const h = hex.replace("#", "").trim();
     const full = h.length === 3 ? h.split("").map(c => c + c).join("") : h;
     const n = parseInt(full, 16);
-    const r = (n >> 16) & 255;
-    const g = (n >> 8) & 255;
-    const b = n & 255;
-    return `rgba(${r},${g},${b},${a})`;
+    return {
+      r: (n >> 16) & 255,
+      g: (n >> 8) & 255,
+      b: n & 255
+    };
   };
 
-  const drawCapsule = (x, y, len, angle, width) => {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(angle);
+  const { r, g, b } = hexToRgb(config.color);
+
+  const drawDot = (x, y, radius) => {
     ctx.beginPath();
-    const r = width / 2;
-    ctx.moveTo(-len / 2 + r, -r);
-    ctx.lineTo(len / 2 - r, -r);
-    ctx.arc(len / 2 - r, 0, r, -Math.PI / 2, Math.PI / 2);
-    ctx.lineTo(-len / 2 + r, r);
-    ctx.arc(-len / 2 + r, 0, r, Math.PI / 2, -Math.PI / 2);
-    ctx.closePath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
-    ctx.restore();
   };
 
   let last = performance.now();
@@ -100,15 +99,19 @@
     const dt = Math.min(32, now - last);
     last = now;
 
-    // suavizado mouse (similar a "virtualMouse")
+    // suavizado mouse
     const smooth = 0.08;
     mouse.x += (mouse.tx - mouse.x) * smooth;
     mouse.y += (mouse.ty - mouse.y) * smooth;
 
     ctx.clearRect(0, 0, w, h);
 
-    // color con alpha
-    ctx.fillStyle = hexToRgba(config.color, 0.85);
+    // Glow suave (nada “caca”)
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
+    ctx.shadowColor = `rgba(${r},${g},${b},0.55)`;
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = `rgba(${r},${g},${b},0.55)`;
 
     for (const p of particles) {
       p.t += p.speed * (dt * 0.06);
@@ -120,35 +123,30 @@
       let tx = p.x;
       let ty = p.y;
 
-      // “campo” dentro del radio
+      // Campo dentro del radio
       if (dist < config.magnetRadius) {
         const ang = Math.atan2(dy, dx);
 
         const wave = Math.sin(p.t * config.waveSpeed + ang) * (0.5 * config.waveAmplitude);
-        const deviation = p.rOff * (5 / (config.fieldStrength + 0.1));
+        const deviation = p.rOff * (6 / (config.fieldStrength + 0.1));
         const rr = config.ringRadius + wave + deviation;
 
-        // posición sobre el anillo
         tx = mouse.x + rr * Math.cos(ang);
         ty = mouse.y + rr * Math.sin(ang);
       }
 
-      // lerp hacia target
+      // lerp
       p.cx += (tx - p.cx) * config.lerpSpeed;
       p.cy += (ty - p.cy) * config.lerpSpeed;
 
       // tamaño/pulso
-      const pulse = (0.8 + Math.sin(p.t * config.pulseSpeed) * 0.2 * config.particleVariance);
-      const size = Math.max(0.6, config.particleSize * pulse);
+      const pulse = 0.85 + Math.sin(p.t * config.pulseSpeed) * 0.15 * config.particleVariance;
+      const radius = Math.max(0.6, config.particleSize * pulse);
 
-      // “capsule” orientada hacia el mouse cuando está en ring
-      let angle = 0;
-      if (dist < config.magnetRadius) {
-        angle = Math.atan2(mouse.y - p.cy, mouse.x - p.cx);
-      }
-
-      drawCapsule(p.cx, p.cy, 6 * size, angle, 2.2 * size);
+      drawDot(p.cx, p.cy, radius);
     }
+
+    ctx.restore();
 
     requestAnimationFrame(tick);
   };
@@ -158,8 +156,12 @@
   makeParticles();
   requestAnimationFrame(tick);
 
-  window.addEventListener("resize", () => {
-    resize();
-    makeParticles();
-  }, { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      resize();
+      makeParticles();
+    },
+    { passive: true }
+  );
 })();
