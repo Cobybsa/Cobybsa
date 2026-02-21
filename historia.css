@@ -1,356 +1,284 @@
 /* ==========================================
-   HISTORIA — Portada estilo periódico (Da Vinci)
-   /assets/css/historia.css
+   HISTORIA — Estilo periódico / Da Vinci
+   Compatible con su HTML actual
+   Archivo: historia.css
    ========================================== */
 
 :root{
-  --paper: #efe2c7;
-  --paper-2: #f6edd8;
+  --paper-1: #f7edd7;
+  --paper-2: #efe1c4;
   --ink: #1b1a17;
-  --ink-2: #3a342b;
-  --muted: rgba(27,26,23,.72);
-  --rule: rgba(27,26,23,.35);
-  --rule-soft: rgba(27,26,23,.18);
-  --box: rgba(255,255,255,.18);
+  --ink-soft: rgba(27,26,23,.78);
+  --rule: rgba(27,26,23,.34);
+  --rule-soft: rgba(27,26,23,.16);
+  --card: rgba(255,255,255,.22);
 }
 
-*{ box-sizing: border-box; }
-
+/* Tipografía editorial SOLO para historia (sin tocar el resto del sitio) */
 body{
-  margin: 0;
   color: var(--ink);
 }
 
-/* Papel pergamino */
-.paper{
-  max-width: 1100px;
-  margin: 18px auto 36px;
-  padding: clamp(18px, 2.3vw, 30px);
+/* Fondo pergamino SOLO en el contenido principal */
+main{
+  max-width: 1120px;
+  margin: 18px auto 40px;
+  padding: clamp(18px, 2.4vw, 30px);
+  border: 1px solid var(--rule-soft);
+  box-shadow: 0 12px 40px rgba(0,0,0,.10);
   background:
     radial-gradient(1200px 600px at 20% 10%, rgba(0,0,0,.06), transparent 50%),
     radial-gradient(900px 500px at 80% 35%, rgba(0,0,0,.05), transparent 55%),
-    linear-gradient(180deg, var(--paper-2), var(--paper));
-  border: 1px solid var(--rule-soft);
-  box-shadow: 0 12px 40px rgba(0,0,0,.10);
+    linear-gradient(180deg, var(--paper-1), var(--paper-2));
 }
 
-/* Tipografía clásica (sin dependencias externas) */
-.paper, .paper *{
+/* Serifs clásicos solo dentro del main para no afectar el header del sitio */
+main, main *{
   font-family: "Georgia", "Garamond", "Times New Roman", serif;
 }
 
-.rule{
-  height: 1px;
-  background: var(--rule);
-  margin: 16px 0;
-}
-.rule.thin{ background: var(--rule-soft); }
-
-/* =========================
-   Masthead (como el ejemplo)
-   ========================= */
-.paper-masthead{
-  margin-bottom: 8px;
+/* -------------------------
+   HERO -> Masthead periódico
+   ------------------------- */
+.history-hero{
+  padding: 14px 0 10px;
 }
 
-.masthead-line{
+.history-hero .container{
+  max-width: 1120px;
+}
+
+/* Línea doble estilo periódico arriba y abajo */
+.history-hero::before,
+.history-hero::after{
+  content:"";
+  display:block;
   height: 2px;
-  background: var(--ink-2);
+  background: var(--ink);
+  opacity: .8;
   position: relative;
 }
-.masthead-line::after{
+.history-hero::before{ margin-bottom: 14px; }
+.history-hero::after{ margin-top: 14px; }
+
+.history-hero::before::after,
+.history-hero::after::after{
   content:"";
   position:absolute;
   left:0; right:0;
-  top:6px;
+  top: 6px;
   height: 1px;
-  background: var(--ink-2);
-  opacity: .55;
-}
-.masthead-line--top{ margin-bottom: 10px; }
-.masthead-line--bottom{ margin-top: 10px; }
-
-.masthead-row{
-  display: grid;
-  grid-template-columns: 1fr 2.2fr 1fr;
-  gap: 14px;
-  align-items: end;
+  background: var(--ink);
+  opacity: .45;
 }
 
-.masthead-side{
-  font-size: .95rem;
-  line-height: 1.25;
-  color: var(--muted);
-}
-.masthead-side strong{ color: var(--ink); font-weight: 700; }
-.masthead-side--right{ text-align: right; }
-
-.masthead-center{
-  text-align: center;
-  padding: 2px 0;
-}
-
-.paper-name{
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: .95rem;
-  color: var(--muted);
-}
-
-.paper-title{
-  font-weight: 800;
-  letter-spacing: .06em;
-  font-size: clamp(2.7rem, 5vw, 4.2rem);
-  line-height: 1;
-  margin-top: 6px;
-}
-
-.meta-row{
-  margin-top: 10px;
+/* Badge estilo “edición” */
+.history-hero-badge{
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
   font-size: .95rem;
-  color: var(--muted);
-}
-.meta-left{ text-transform: uppercase; }
-.meta-center{ text-align: center; letter-spacing: .08em; }
-.meta-right{ text-align: right; }
-
-/* =========================
-   Headline principal
-   ========================= */
-.hero-headline{
-  text-align: center;
-  padding: 8px 0 4px;
-}
-
-.hero-headline h1{
-  margin: 0;
-  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-  letter-spacing: .03em;
-}
-
-.subheading{
-  margin: 10px auto 0;
-  max-width: 70ch;
-  color: var(--muted);
-  font-size: 1.05rem;
-}
-
-/* =========================
-   Layout 2 columnas (como portada)
-   ========================= */
-.layout{
-  display: grid;
-  grid-template-columns: 1.05fr 1.45fr;
-  gap: 22px;
-}
-
-.section-title{
-  margin: 0 0 10px;
-  font-size: 1.15rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  border-top: 1px solid var(--rule);
-  padding-top: 10px;
-}
-
-.text-block{
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: var(--ink);
-}
-
-.columns{
-  column-count: 2;
-  column-gap: 22px;
-  column-rule: 1px solid var(--rule-soft);
-}
-
-.dropcap::first-letter{
-  float: left;
-  font-size: 3.4rem;
-  line-height: .9;
-  padding: 6px 10px 0 0;
-  font-weight: 800;
-  color: var(--ink-2);
-}
-
-.stamp-box{
-  border: 1px solid var(--rule);
-  padding: 12px 12px;
-  background: var(--box);
-  margin: 10px 0 14px;
-}
-.stamp-title{
-  display: inline-block;
-  padding: 8px 10px;
-  background: rgba(27,26,23,.85);
-  color: var(--paper-2);
   letter-spacing: .08em;
-  font-weight: 800;
   text-transform: uppercase;
+  color: var(--ink-soft);
   margin-bottom: 10px;
 }
 
-.small{
+.history-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--ink);
+  opacity: .8;
+}
+
+/* Título estilo portada */
+.history-hero-title{
   margin: 0;
-  color: var(--muted);
-}
-
-/* Imagen con marco y caption como el ejemplo */
-.image-frame{
-  margin: 0 0 10px;
-  border: 1px solid var(--rule);
-  padding: 10px;
-  background: rgba(255,255,255,.12);
-}
-
-.image-frame img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border: 1px solid var(--rule-soft);
-}
-
-.image-frame figcaption{
-  margin-top: 10px;
-  text-align: right;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.big-quote{
-  margin: 10px 0 8px;
-  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
-  letter-spacing: .03em;
   text-align: center;
-}
-
-/* Tarjeta de fecha tipo “Sunday November…” */
-.date-card{
-  margin: 14px auto;
-  width: min(260px, 100%);
-  border: 1px solid var(--rule);
-  background: rgba(27,26,23,.80);
-  color: var(--paper-2);
-  text-align: center;
-  padding: 12px 10px;
-}
-
-.date-top{
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: .85rem;
-}
-
-.date-mid{
-  margin-top: 6px;
-  font-size: 1.05rem;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-}
-
-.date-big{
-  font-size: 1.8rem;
   font-weight: 900;
-  margin: 10px 0;
-  letter-spacing: .08em;
-}
-
-.date-bottom{
-  opacity: .85;
-  font-style: italic;
-}
-
-/* “Más headings” */
-.more-headings{
-  margin: 0 0 10px;
-  font-size: 1.35rem;
   letter-spacing: .06em;
   text-transform: uppercase;
+  font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+  line-height: 1;
 }
 
-/* Timeline simple pero editorial */
-.timeline{
-  margin-top: 6px;
-}
-.timeline-list{
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-  display: grid;
-  gap: 10px;
-}
-.timeline-list li{
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 12px;
-  border: 1px solid var(--rule-soft);
-  padding: 10px 12px;
-  background: rgba(255,255,255,.12);
-}
-.year{
-  font-weight: 900;
-  letter-spacing: .08em;
-}
-.desc{
-  color: var(--muted);
-  line-height: 1.6;
-}
-.fineprint{
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: .92rem;
+/* Subtítulo centrado */
+.history-hero-desc{
+  margin: 14px auto 0;
+  max-width: 78ch;
+  text-align: center;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-size: 1.06rem;
 }
 
-/* CTA */
-.cta{
-  border: 1px solid var(--rule);
-  background: rgba(255,255,255,.12);
-  padding: 14px;
-}
-.cta h2{ margin: 0 0 8px; }
-.cta p{ margin: 0 0 12px; color: var(--muted); }
-.cta-actions{ display:flex; gap:10px; flex-wrap: wrap; }
-
-/* Footer */
-.paper-footer{
+/* Botones: los dejo como están, solo los centro para “portada” */
+.history-hero-actions{
   margin-top: 16px;
-  padding-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* -------------------------
+   TIMELINE -> Editorial
+   ------------------------- */
+.history-timeline-wrap{
+  padding: 18px 0 0;
+}
+
+.history-timeline-wrap .container{
+  max-width: 1120px;
+}
+
+/* Separador sutil antes de la timeline */
+.history-timeline-wrap .timeline{
+  margin-top: 10px;
   border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+
+/* Layout tipo periódico: dos columnas en desktop */
+.timeline{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 18px;
+}
+
+/* Tarjeta editorial */
+.timeline-item{
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 14px;
+  border: 1px solid var(--rule-soft);
+  background: var(--card);
+}
+
+/* Marcador estilo “número” */
+.timeline-marker{
+  border: 1px solid var(--rule);
+  background: rgba(27,26,23,.85);
+  color: var(--paper-1);
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+}
+
+.timeline-step{
+  font-weight: 900;
+  letter-spacing: .14em;
+  font-size: .95rem;
+}
+
+/* Header del card */
+.timeline-card-header{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-soft);
+  margin-bottom: 10px;
+}
+
+.timeline-title{
+  margin: 0;
+  font-size: 1.18rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.timeline-tag{
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ink-soft);
+}
+
+/* Texto: con capitular en el primer párrafo de cada card */
+.timeline-text{
+  margin: 0 0 10px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.timeline-card .timeline-text:first-of-type::first-letter{
+  float: left;
+  font-size: 3.1rem;
+  line-height: .9;
+  padding: 6px 10px 0 0;
+  font-weight: 900;
+  color: rgba(27,26,23,.9);
+}
+
+/* Bullets más “periódico” */
+.timeline-bullets{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+.timeline-bullets li{
+  margin: 6px 0;
+}
+
+/* -------------------------
+   CTA final -> recuadro editorial
+   ------------------------- */
+.history-cta{
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+
+.history-cta-card{
+  border: 1px solid var(--rule);
+  background: rgba(255,255,255,.18);
+  padding: 16px;
+}
+
+.history-cta-card h2{
+  margin: 0 0 8px;
+  font-size: 1.45rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.history-cta-card p{
+  margin: 0 0 12px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.history-cta-actions{
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  justify-content: center;
-  color: var(--muted);
-  font-size: .95rem;
 }
-.footer-dot{ opacity: .6; }
 
-/* =========================
+/* -------------------------
    Responsive
-   ========================= */
+   ------------------------- */
 @media (max-width: 980px){
-  .masthead-row{
-    grid-template-columns: 1fr;
-    text-align: center;
+  main{
+    margin: 12px 12px 30px;
   }
-  .masthead-side--right{ text-align: center; }
-  .meta-row{
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  .meta-right{ text-align: center; }
-  .layout{
+  .timeline{
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 760px){
-  .columns{
-    column-count: 1;
-    column-rule: none;
+@media (max-width: 520px){
+  .timeline-item{
+    grid-template-columns: 1fr;
+  }
+  .timeline-marker{
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
   }
 }
