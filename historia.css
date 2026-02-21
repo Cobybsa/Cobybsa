@@ -1,359 +1,383 @@
-/* =========================
-   historia.css (COMPLETO)
-   Estilo periódico/editorial
-   Adaptado a su HTML actual
-========================= */
+/* ===========================
+   HISTORIA · Estilo periódico
+   Archivo: /assets/css/historia.css
+   =========================== */
 
 :root{
-  --bg: #050b1a;                 /* fondo general */
-  --paper: rgba(255,255,255,.035); /* "papel" (panel) */
-  --paper2: rgba(255,255,255,.02);
-  --ink: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.72);
-  --muted2: rgba(255,255,255,.62);
-  --line: rgba(255,255,255,.10);
-  --line2: rgba(255,255,255,.14);
-  --accent: #b88a3b;             /* bronce/dorado */
-  --shadow: 0 26px 70px rgba(0,0,0,.40);
+  --paper-bg: #fbf7ef;     /* tono papel */
+  --ink: #141414;
+  --muted: #5b5b5b;
+  --rule: rgba(20,20,20,.22);
+  --card: rgba(255,255,255,.6);
   --radius: 18px;
 }
 
-/* ===== Base segura (sin romper su style.css) ===== */
-body{
-  background:
-    radial-gradient(1200px 800px at 20% 10%, rgba(184,138,59,.08), transparent 60%),
-    radial-gradient(900px 650px at 85% 25%, rgba(90,140,255,.07), transparent 60%),
-    var(--bg);
+.news.container{
+  max-width: 1120px;
+}
+
+/* Fondo tipo papel solo para el main editorial */
+.news{
+  background: var(--paper-bg);
   color: var(--ink);
-}
-
-/* Por si su style global pone container distinto, acá no lo toco.
-   Solo aseguro que la página respire bien. */
-main{
-  padding-bottom: 80px;
-}
-
-/* ===== HERO editorial ===== */
-.history-hero{
-  position: relative;
-  padding: 52px 0 36px;
-  border-bottom: 1px solid var(--line2);
-  background:
-    radial-gradient(900px 500px at 30% 20%, rgba(255,255,255,.045), transparent 60%),
-    radial-gradient(900px 500px at 70% 60%, rgba(184,138,59,.05), transparent 62%);
-}
-
-.history-hero-inner{
-  position: relative;
-  display: grid;
-  gap: 14px;
-  max-width: 980px;
-}
-
-/* “Masthead” tipo periódico (líneas arriba/abajo) */
-.history-hero-inner::before,
-.history-hero-inner::after{
-  content:"";
-  display:block;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line2), transparent);
-}
-
-.history-hero-inner::before{ margin-bottom: 10px; }
-.history-hero-inner::after{ margin-top: 16px; }
-
-/* Badge */
-.history-hero-badge{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255,255,255,.02);
-  color: rgba(255,255,255,.80);
-  font-size: 12px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-.history-dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(184,138,59,.16);
-}
-
-/* Titular estilo diario */
-.history-hero-title{
-  margin: 0;
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  font-size: clamp(36px, 4.6vw, 60px);
-}
-
-.history-hero-desc{
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-  font-size: 15.5px;
-  max-width: 78ch;
-}
-
-/* Botones: no toco sus .btn, solo doy un poco de orden */
-.history-hero-actions{
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-/* ===== TIMELINE wrap ===== */
-.history-timeline-wrap{
-  padding: 42px 0 0;
-}
-
-/* Layout “editorial”: línea central y cards */
-.timeline{
-  position: relative;
-  display: grid;
-  gap: 18px;
+  border-radius: 24px;
+  padding: clamp(18px, 2.2vw, 28px);
   margin-top: 18px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
 }
 
-/* Línea vertical (tipo periódico) */
-.timeline::before{
-  content:"";
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, var(--line2) 10%, var(--line2) 90%, transparent);
-  opacity: .9;
+/* Separador estilo periódico */
+.rule{
+  border: none;
+  height: 1px;
+  background: var(--rule);
+  margin: 18px 0;
 }
 
-/* Item */
-.timeline-item{
-  position: relative;
+/* ===========================
+   Masthead
+   =========================== */
+.masthead{
+  padding: 8px 4px 4px;
+}
+
+.masthead-top{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.masthead-title{
+  text-align: center;
+  padding: 14px 0 10px;
+}
+
+.paper-name{
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.headline{
+  margin: 0;
+  line-height: 1;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  letter-spacing: .01em;
+}
+
+.subhead{
+  margin: 10px auto 0;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.masthead-meta{
   display: grid;
-  grid-template-columns: 52px 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.meta-block{
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,.35);
+}
+
+.meta-block .label{
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.meta-block .value{
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   Front grid: lead + sidebar
+   =========================== */
+.front-grid{
+  display: grid;
+  grid-template-columns: 1.55fr 0.75fr;
   gap: 18px;
   align-items: start;
 }
 
-/* Marcador */
-.timeline-marker{
-  position: relative;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid var(--line2);
-  background: rgba(255,255,255,.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,.25);
-  display: grid;
-  place-items: center;
-  margin-left: 0;
-}
-
-/* Punto/brillo */
-.timeline-marker::before{
-  content:"";
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 5px rgba(184,138,59,.14);
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  opacity: .9;
-}
-
-/* Número */
-.timeline-step{
-  font-size: 11px;
-  letter-spacing: .18em;
-  font-weight: 800;
-  color: rgba(255,255,255,.75);
-  position: relative;
-  z-index: 1;
-  transform: translateY(0.5px);
-}
-
-/* Card estilo “papel” */
-.timeline-card{
-  border: 1px solid var(--line);
+/* Lead story */
+.lead{
   border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--paper), var(--paper2));
-  box-shadow: var(--shadow);
-  padding: 18px 18px 16px;
-  overflow: hidden;
+  overflow: clip;
 }
 
-/* Header interno: título + tag */
-.timeline-card-header{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-
-/* Título serif editorial */
-.timeline-title{
+.lead-media{
   margin: 0;
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  font-size: 22px;
-  line-height: 1.2;
-}
-
-/* Tag tipo prensa */
-.timeline-tag{
-  font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.72);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.02);
-  padding: 7px 10px;
-  border-radius: 999px;
-}
-
-/* Texto */
-.timeline-text{
-  margin: 0 0 12px;
-  color: rgba(255,255,255,.86);
-  line-height: 1.75;
-  font-size: 15px;
-}
-
-/* Lista bullets */
-.timeline-bullets{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.82);
-  line-height: 1.7;
-  font-size: 14.5px;
-}
-
-.timeline-bullets li{
-  margin: 6px 0;
-}
-
-/* ===== SOPORTE DE IMÁGENES (para “las imágenes que tenemos”) =====
-   Usted puede pegar dentro de .timeline-card esto:
-
-   <div class="timeline-media">
-     <img src="/img/SU-IMAGEN.jpg" alt="...">
-     <div class="timeline-caption">Pie de foto...</div>
-   </div>
-
-*/
-.timeline-media{
-  margin-top: 14px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: var(--radius);
   overflow: hidden;
-  background: rgba(0,0,0,.16);
+  border: 1px solid var(--rule);
+  background: #fff;
 }
 
-.timeline-media img{
+.lead-media img{
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  filter: contrast(1.02) saturate(1.02);
 }
 
-.timeline-caption{
+.lead-media figcaption{
   padding: 10px 12px;
-  border-top: 1px solid var(--line);
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: rgba(255,255,255,.72);
+  font-size: 0.92rem;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
 }
 
-/* ===== CTA final ===== */
-.history-cta{
-  margin-top: 26px;
+.lead-header{
+  padding: 14px 6px 6px;
 }
 
-.history-cta-card{
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background:
-    radial-gradient(900px 450px at 30% 30%, rgba(184,138,59,.10), transparent 65%),
-    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  box-shadow: var(--shadow);
-  padding: 22px;
+.kicker{
+  margin: 0 0 6px;
+  color: var(--muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
-.history-cta-card h2{
+.lead-header h2{
+  margin: 0;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.15;
+}
+
+.deck{
+  margin: 10px 0 0;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+/* Texto en columnas estilo periódico */
+.story{
+  padding: 10px 6px 6px;
+}
+
+.story-columns{
+  column-count: 2;
+  column-gap: 26px;
+  column-rule: 1px solid rgba(20,20,20,.12);
+}
+
+.story p{
+  margin: 0 0 14px;
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+.dropcap::first-letter{
+  float: left;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  padding: 6px 10px 0 0;
+  font-weight: 800;
+}
+
+.pullquote{
+  margin: 14px 0 14px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--ink);
+  background: rgba(255,255,255,.55);
+  border-radius: 14px;
+  font-size: 1.05rem;
+  break-inside: avoid;
+}
+
+/* Sidebar */
+.sidebar{
+  position: sticky;
+  top: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.factbox,
+.mini-story,
+.mini-gallery{
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 14px 14px;
+  background: rgba(255,255,255,.45);
+}
+
+.sidebar h3{
   margin: 0 0 8px;
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  font-size: 24px;
-  line-height: 1.2;
+  font-size: 1.05rem;
 }
 
-.history-cta-card p{
+.factbox ul{
+  padding-left: 18px;
+  margin: 0;
+  color: var(--ink);
+}
+
+.factbox li{
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.mini-story p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.mini-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.mini-grid figure{
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(20,20,20,.12);
+  background: #fff;
+}
+
+.mini-grid img{
+  display: block;
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+}
+
+.mini-grid figcaption{
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 8px 10px;
+}
+
+/* ===========================
+   Timeline
+   =========================== */
+.section-head{
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.section-head h2{
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.section-head p{
+  margin: 0;
+  color: var(--muted);
+}
+
+.timeline-list{
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.timeline-list li{
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 12px;
+  padding: 12px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  background: rgba(255,255,255,.5);
+}
+
+.timeline-list time{
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+.timeline-list h3{
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.timeline-list p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.note{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* ===========================
+   CTA
+   =========================== */
+.cta-paper{
+  border: 1px solid var(--rule);
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(255,255,255,.55);
+}
+
+.cta-paper h2{
+  margin: 0 0 8px;
+  font-size: 1.55rem;
+}
+
+.cta-paper p{
   margin: 0 0 14px;
   color: var(--muted);
-  line-height: 1.7;
-  font-size: 15px;
-  max-width: 85ch;
+  line-height: 1.6;
 }
 
-.history-cta-actions{
+.cta-actions{
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-/* ===== Responsivo ===== */
-@media (max-width: 900px){
-  .history-hero{
-    padding: 44px 0 28px;
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 980px){
+  .front-grid{
+    grid-template-columns: 1fr;
   }
-
-  .timeline::before{
-    left: 18px;
+  .sidebar{
+    position: static;
   }
-
-  .timeline-item{
-    grid-template-columns: 48px 1fr;
-    gap: 14px;
-  }
-
-  .timeline-card{
-    padding: 16px;
-  }
-
-  .timeline-title{
-    font-size: 20px;
+  .masthead-meta{
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 520px){
-  .history-hero-badge{
-    letter-spacing: .12em;
-    font-size: 11px;
+@media (max-width: 760px){
+  .story-columns{
+    column-count: 1;
+    column-rule: none;
   }
-
-  .timeline-card-header{
-    gap: 8px;
-  }
-
-  .timeline-tag{
-    padding: 6px 9px;
+  .mini-grid img{
+    height: 110px;
   }
 }
