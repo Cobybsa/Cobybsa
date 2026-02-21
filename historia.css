@@ -1,383 +1,356 @@
-/* ===========================
-   HISTORIA · Estilo periódico
-   Archivo: /assets/css/historia.css
-   =========================== */
+/* ==========================================
+   HISTORIA — Portada estilo periódico (Da Vinci)
+   /assets/css/historia.css
+   ========================================== */
 
 :root{
-  --paper-bg: #fbf7ef;     /* tono papel */
-  --ink: #141414;
-  --muted: #5b5b5b;
-  --rule: rgba(20,20,20,.22);
-  --card: rgba(255,255,255,.6);
-  --radius: 18px;
+  --paper: #efe2c7;
+  --paper-2: #f6edd8;
+  --ink: #1b1a17;
+  --ink-2: #3a342b;
+  --muted: rgba(27,26,23,.72);
+  --rule: rgba(27,26,23,.35);
+  --rule-soft: rgba(27,26,23,.18);
+  --box: rgba(255,255,255,.18);
 }
 
-.news.container{
-  max-width: 1120px;
-}
+*{ box-sizing: border-box; }
 
-/* Fondo tipo papel solo para el main editorial */
-.news{
-  background: var(--paper-bg);
+body{
+  margin: 0;
   color: var(--ink);
-  border-radius: 24px;
-  padding: clamp(18px, 2.2vw, 28px);
-  margin-top: 18px;
-  margin-bottom: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
 }
 
-/* Separador estilo periódico */
+/* Papel pergamino */
+.paper{
+  max-width: 1100px;
+  margin: 18px auto 36px;
+  padding: clamp(18px, 2.3vw, 30px);
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(0,0,0,.06), transparent 50%),
+    radial-gradient(900px 500px at 80% 35%, rgba(0,0,0,.05), transparent 55%),
+    linear-gradient(180deg, var(--paper-2), var(--paper));
+  border: 1px solid var(--rule-soft);
+  box-shadow: 0 12px 40px rgba(0,0,0,.10);
+}
+
+/* Tipografía clásica (sin dependencias externas) */
+.paper, .paper *{
+  font-family: "Georgia", "Garamond", "Times New Roman", serif;
+}
+
 .rule{
-  border: none;
   height: 1px;
   background: var(--rule);
-  margin: 18px 0;
+  margin: 16px 0;
+}
+.rule.thin{ background: var(--rule-soft); }
+
+/* =========================
+   Masthead (como el ejemplo)
+   ========================= */
+.paper-masthead{
+  margin-bottom: 8px;
 }
 
-/* ===========================
-   Masthead
-   =========================== */
-.masthead{
-  padding: 8px 4px 4px;
+.masthead-line{
+  height: 2px;
+  background: var(--ink-2);
+  position: relative;
+}
+.masthead-line::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:6px;
+  height: 1px;
+  background: var(--ink-2);
+  opacity: .55;
+}
+.masthead-line--top{ margin-bottom: 10px; }
+.masthead-line--bottom{ margin-top: 10px; }
+
+.masthead-row{
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 14px;
+  align-items: end;
 }
 
-.masthead-top{
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 0.95rem;
+.masthead-side{
+  font-size: .95rem;
+  line-height: 1.25;
   color: var(--muted);
 }
+.masthead-side strong{ color: var(--ink); font-weight: 700; }
+.masthead-side--right{ text-align: right; }
 
-.masthead-title{
+.masthead-center{
   text-align: center;
-  padding: 14px 0 10px;
+  padding: 2px 0;
 }
 
 .paper-name{
-  letter-spacing: .28em;
+  letter-spacing: .22em;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 0.9rem;
-  margin: 0 0 8px;
+  font-size: .95rem;
   color: var(--muted);
 }
 
-.headline{
-  margin: 0;
+.paper-title{
+  font-weight: 800;
+  letter-spacing: .06em;
+  font-size: clamp(2.7rem, 5vw, 4.2rem);
   line-height: 1;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  letter-spacing: .01em;
+  margin-top: 6px;
 }
 
-.subhead{
+.meta-row{
+  margin-top: 10px;
+  align-items: center;
+  font-size: .95rem;
+  color: var(--muted);
+}
+.meta-left{ text-transform: uppercase; }
+.meta-center{ text-align: center; letter-spacing: .08em; }
+.meta-right{ text-align: right; }
+
+/* =========================
+   Headline principal
+   ========================= */
+.hero-headline{
+  text-align: center;
+  padding: 8px 0 4px;
+}
+
+.hero-headline h1{
+  margin: 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  letter-spacing: .03em;
+}
+
+.subheading{
   margin: 10px auto 0;
-  max-width: 58ch;
+  max-width: 70ch;
   color: var(--muted);
   font-size: 1.05rem;
 }
 
-.masthead-meta{
+/* =========================
+   Layout 2 columnas (como portada)
+   ========================= */
+.layout{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: 1.05fr 1.45fr;
+  gap: 22px;
+}
+
+.section-title{
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--rule);
   padding-top: 10px;
 }
 
-.meta-block{
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 10px 12px;
-  background: rgba(255,255,255,.35);
-}
-
-.meta-block .label{
-  display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-
-.meta-block .value{
-  font-weight: 650;
-  font-size: 0.95rem;
-}
-
-/* ===========================
-   Front grid: lead + sidebar
-   =========================== */
-.front-grid{
-  display: grid;
-  grid-template-columns: 1.55fr 0.75fr;
-  gap: 18px;
-  align-items: start;
-}
-
-/* Lead story */
-.lead{
-  border-radius: var(--radius);
-  overflow: clip;
-}
-
-.lead-media{
-  margin: 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--rule);
-  background: #fff;
-}
-
-.lead-media img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.lead-media figcaption{
-  padding: 10px 12px;
-  font-size: 0.92rem;
-  color: var(--muted);
-  border-top: 1px solid var(--rule);
-}
-
-.lead-header{
-  padding: 14px 6px 6px;
-}
-
-.kicker{
-  margin: 0 0 6px;
-  color: var(--muted);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.lead-header h2{
-  margin: 0;
-  font-size: clamp(1.5rem, 2.2vw, 2rem);
-  line-height: 1.15;
-}
-
-.deck{
-  margin: 10px 0 0;
-  color: var(--muted);
-  max-width: 68ch;
-}
-
-/* Texto en columnas estilo periódico */
-.story{
-  padding: 10px 6px 6px;
-}
-
-.story-columns{
-  column-count: 2;
-  column-gap: 26px;
-  column-rule: 1px solid rgba(20,20,20,.12);
-}
-
-.story p{
-  margin: 0 0 14px;
-  line-height: 1.75;
+.text-block{
   font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.columns{
+  column-count: 2;
+  column-gap: 22px;
+  column-rule: 1px solid var(--rule-soft);
 }
 
 .dropcap::first-letter{
   float: left;
-  font-size: 3.2rem;
-  line-height: 0.9;
+  font-size: 3.4rem;
+  line-height: .9;
   padding: 6px 10px 0 0;
   font-weight: 800;
+  color: var(--ink-2);
 }
 
-.pullquote{
-  margin: 14px 0 14px;
-  padding: 12px 14px;
-  border-left: 4px solid var(--ink);
-  background: rgba(255,255,255,.55);
-  border-radius: 14px;
-  font-size: 1.05rem;
-  break-inside: avoid;
-}
-
-/* Sidebar */
-.sidebar{
-  position: sticky;
-  top: 16px;
-  display: grid;
-  gap: 14px;
-}
-
-.factbox,
-.mini-story,
-.mini-gallery{
+.stamp-box{
   border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: 14px 14px;
-  background: rgba(255,255,255,.45);
+  padding: 12px 12px;
+  background: var(--box);
+  margin: 10px 0 14px;
 }
-
-.sidebar h3{
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-}
-
-.factbox ul{
-  padding-left: 18px;
-  margin: 0;
-  color: var(--ink);
-}
-
-.factbox li{
-  margin: 8px 0;
-  line-height: 1.5;
-}
-
-.mini-story p{
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.mini-grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.mini-grid figure{
-  margin: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(20,20,20,.12);
-  background: #fff;
-}
-
-.mini-grid img{
-  display: block;
-  width: 100%;
-  height: 92px;
-  object-fit: cover;
-}
-
-.mini-grid figcaption{
-  font-size: 0.85rem;
-  color: var(--muted);
+.stamp-title{
+  display: inline-block;
   padding: 8px 10px;
-}
-
-/* ===========================
-   Timeline
-   =========================== */
-.section-head{
-  display: grid;
-  gap: 6px;
+  background: rgba(27,26,23,.85);
+  color: var(--paper-2);
+  letter-spacing: .08em;
+  font-weight: 800;
+  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
-.section-head h2{
-  margin: 0;
-  font-size: 1.45rem;
-}
-
-.section-head p{
+.small{
   margin: 0;
   color: var(--muted);
 }
 
+/* Imagen con marco y caption como el ejemplo */
+.image-frame{
+  margin: 0 0 10px;
+  border: 1px solid var(--rule);
+  padding: 10px;
+  background: rgba(255,255,255,.12);
+}
+
+.image-frame img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule-soft);
+}
+
+.image-frame figcaption{
+  margin-top: 10px;
+  text-align: right;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.big-quote{
+  margin: 10px 0 8px;
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  letter-spacing: .03em;
+  text-align: center;
+}
+
+/* Tarjeta de fecha tipo “Sunday November…” */
+.date-card{
+  margin: 14px auto;
+  width: min(260px, 100%);
+  border: 1px solid var(--rule);
+  background: rgba(27,26,23,.80);
+  color: var(--paper-2);
+  text-align: center;
+  padding: 12px 10px;
+}
+
+.date-top{
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+.date-mid{
+  margin-top: 6px;
+  font-size: 1.05rem;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+.date-big{
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 10px 0;
+  letter-spacing: .08em;
+}
+
+.date-bottom{
+  opacity: .85;
+  font-style: italic;
+}
+
+/* “Más headings” */
+.more-headings{
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* Timeline simple pero editorial */
+.timeline{
+  margin-top: 6px;
+}
 .timeline-list{
   list-style: none;
   padding: 0;
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
-
 .timeline-list li{
   display: grid;
-  grid-template-columns: 86px 1fr;
+  grid-template-columns: 90px 1fr;
   gap: 12px;
-  padding: 12px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 16px;
-  background: rgba(255,255,255,.5);
+  border: 1px solid var(--rule-soft);
+  padding: 10px 12px;
+  background: rgba(255,255,255,.12);
 }
-
-.timeline-list time{
-  font-weight: 800;
-  letter-spacing: .06em;
+.year{
+  font-weight: 900;
+  letter-spacing: .08em;
 }
-
-.timeline-list h3{
-  margin: 0 0 6px;
-  font-size: 1.05rem;
-}
-
-.timeline-list p{
-  margin: 0;
+.desc{
   color: var(--muted);
   line-height: 1.6;
 }
-
-.note{
-  margin-top: 10px;
+.fineprint{
+  margin: 10px 0 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: .92rem;
 }
 
-/* ===========================
-   CTA
-   =========================== */
-.cta-paper{
+/* CTA */
+.cta{
   border: 1px solid var(--rule);
-  border-radius: 22px;
-  padding: 18px;
-  background: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.12);
+  padding: 14px;
 }
+.cta h2{ margin: 0 0 8px; }
+.cta p{ margin: 0 0 12px; color: var(--muted); }
+.cta-actions{ display:flex; gap:10px; flex-wrap: wrap; }
 
-.cta-paper h2{
-  margin: 0 0 8px;
-  font-size: 1.55rem;
-}
-
-.cta-paper p{
-  margin: 0 0 14px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.cta-actions{
+/* Footer */
+.paper-footer{
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  color: var(--muted);
+  font-size: .95rem;
 }
+.footer-dot{ opacity: .6; }
 
-/* ===========================
+/* =========================
    Responsive
-   =========================== */
+   ========================= */
 @media (max-width: 980px){
-  .front-grid{
+  .masthead-row{
     grid-template-columns: 1fr;
+    text-align: center;
   }
-  .sidebar{
-    position: static;
+  .masthead-side--right{ text-align: center; }
+  .meta-row{
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
-  .masthead-meta{
+  .meta-right{ text-align: center; }
+  .layout{
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 760px){
-  .story-columns{
+  .columns{
     column-count: 1;
     column-rule: none;
-  }
-  .mini-grid img{
-    height: 110px;
   }
 }
