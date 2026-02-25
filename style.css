@@ -1,9 +1,13 @@
+/* =========================================================
+   style.css — GLOBAL (solo base del sitio)
+   Mantenga aquí: reset, variables, layout, header/nav, hero, botones, utilidades
+   Mueva a CSS por página: historia, capacidades, proyectos, novedades, contacto
+   ========================================================= */
+
 /* ====== RESET SUAVE ====== */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -12,25 +16,26 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
   color: #e5e7eb;
   line-height: 1.6;
+  background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
 }
 
 /* ====== VARIABLES ====== */
 :root {
   --bg: #020617;
   --bg-soft: #030712;
-  --surface: #020617;
-  --surface-elevated: #020617;
-  --accent: #f97316;      /* naranja */
+  --surface: #0b1226;
+  --accent: #f97316;
   --accent-soft: rgba(249, 115, 22, 0.14);
-  --accent-2: #38bdf8;    /* celeste */
+  --accent-2: #38bdf8;
+
   --border-subtle: rgba(148, 163, 184, 0.18);
+
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
+
   --radius-xl: 1.75rem;
   --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.95);
   --shadow-chip: 0 12px 40px rgba(15, 23, 42, 0.7);
@@ -47,34 +52,19 @@ body {
   position: relative;
 }
 
+/* Fondo radial suave por sección (global) */
 .section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 55%);
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.10), transparent 55%);
   opacity: 0.4;
   pointer-events: none;
 }
 
-/* Contenedor principal de cada sección */
-.section .container,
-.hero .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* ===== Tipografía de títulos y párrafos ===== */
-.hero-content h1 {
-  font-size: clamp(2.6rem, 1.4vw + 2rem, 3.6rem);
-}
-
+/* Tipografías globales */
 .section-title {
   font-size: clamp(2rem, 0.8vw + 1.6rem, 2.6rem);
-}
-
-.section p {
-  font-size: 1.05rem;
 }
 
 /* ====== HEADER ====== */
@@ -83,28 +73,26 @@ body {
   top: 0;
   z-index: 40;
   backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.7));
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.70));
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
   height: 85px;
-  overflow: visible;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0;
   height: 100%;
 }
 
-/* Logo: tamaño controlado (antes 225px rompía layout) */
+/* Logo — corregido: 220px rompe header de 85px */
 .logo img {
-  height: 220px;
+  height: 58px;          /* <-- ajuste realista */
   width: auto;
   display: block;
 }
 
-/* Brand meta al lado del logo (40+ años + sectores) */
+/* Meta opcional al lado del logo */
 .header-brand {
   display: flex;
   align-items: center;
@@ -134,6 +122,7 @@ body {
   color: rgba(229, 231, 235, 0.95);
 }
 
+/* Nav */
 .main-nav {
   display: flex;
   gap: 1.75rem;
@@ -162,15 +151,18 @@ body {
   transition: width 0.25s ease-out;
 }
 
-.main-nav a:hover {
+.main-nav a:hover { color: #f9fafb; }
+.main-nav a:hover::after { width: 100%; }
+
+/* Estado activo (cuando usted ponga class="is-active" en el HTML) */
+.main-nav a.is-active {
   color: #f9fafb;
 }
-
-.main-nav a:hover::after {
+.main-nav a.is-active::after {
   width: 100%;
 }
 
-/* NAV: versión móvil con scroll horizontal + ocultar meta para no chocar */
+/* Móvil: nav con scroll horizontal */
 @media (max-width: 768px) {
   .main-nav {
     overflow-x: auto;
@@ -178,22 +170,15 @@ body {
     white-space: nowrap;
     scrollbar-width: none;
   }
+  .main-nav::-webkit-scrollbar { display: none; }
 
-  .main-nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .brand-meta {
-    display: none;
-  }
-
-  .logo img {
-    height: 150px;
-  }
+  .brand-meta { display: none; }
+  .logo img { height: 46px; }
 }
 
-/* ====== HERO ====== */
+/* ====== HERO (global, solo estructura + elementos reutilizables) ====== */
 .hero {
+  position: relative;
   padding: 4.5rem 0 3rem;
   overflow: hidden;
 }
@@ -207,17 +192,23 @@ body {
 }
 
 .hero-content {
-  max-width: 400px;
+  max-width: 520px;
   color: var(--text-main);
   position: relative;
   z-index: 2;
-  margin-top: 0px;
 }
 
-.hero-content h1 {
-  line-height: 1.05;
-  margin-bottom: 1.25rem;
+.hero-title {
+  font-size: clamp(2.2rem, 1.6vw + 2rem, 3.6rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin: 0 0 1rem 0;
   letter-spacing: 0.02em;
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  color: rgba(229, 231, 235, 0.86);
 }
 
 /* Badge */
@@ -244,6 +235,7 @@ body {
   box-shadow: 0 0 14px rgba(249, 115, 22, 0.8);
 }
 
+/* Botones (global) */
 .hero-actions {
   display: flex;
   align-items: center;
@@ -260,6 +252,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
   transition: transform 0.1s ease-out, box-shadow 0.15s ease-out, background 0.15s;
 }
 
@@ -285,25 +278,12 @@ body {
   color: #e5e7eb;
 }
 
-.hero-meta {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 1.75rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.hero-meta span strong {
-  color: #e5e7eb;
-}
-
-/* ===== HERO MEDIA (LIMPIO, SIN DUPLICADOS) ===== */
+/* Hero media (estructura base) */
 .hero-media {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateX(-100px); /* mantiene su estética original */
 }
 
 .hero-card {
@@ -313,7 +293,6 @@ body {
   justify-content: center;
 }
 
-/* Imagen tanque: estable (antes width:160% lo descontrolaba) */
 .hero-card img {
   width: clamp(380px, 42vw, 560px);
   height: auto;
@@ -322,19 +301,7 @@ body {
   display: block;
 }
 
-/* Hero en pantallas anchas */
-@media (min-width: 1440px) {
-  .hero {
-    padding-top: 4.5rem;
-    padding-bottom: 5rem;
-  }
-
-  .hero-inner {
-    gap: 3rem;
-  }
-}
-
-/* AJUSTE HERO EN MÓVIL */
+/* Ajuste en móvil */
 @media (max-width: 768px) {
   .hero-inner {
     display: flex;
@@ -343,12 +310,9 @@ body {
   }
 
   .hero-media {
-    transform: none;
     width: 100%;
     margin-top: 1.5rem;
-    display: flex;
     justify-content: center;
-    align-items: flex-start;
   }
 
   .hero-card img {
@@ -357,575 +321,9 @@ body {
   }
 }
 
-/* ==== IMÁGENES DE HISTORIA (opcional) ==== */
-.historia-img {
-  width: 200px;
-  height: auto;
-  border-radius: 15px;
-  display: block;
-  margin-bottom: 20px;
-}
-
-/* ===== HISTORIA COBYBSA ===== */
-.history-section {
-  position: relative;
-  min-height: 80vh;
-  padding: 100px 8vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: #020819;
-}
-
-/* Imagen de fondo difuminada */
-.history-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("img/historia-cobybsa.jpg");
-  background-size: cover;
-  background-position: center;
-  filter: blur(4px);
-  transform: scale(1.06);
-  opacity: 0.40;
-  z-index: 0;
-}
-
-/* Capa oscura encima de la imagen */
-.history-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 55%),
-    rgba(0,0,0,0.18);
-  z-index: 1;
-}
-
-/* Timeline dentro de la historia */
-.history-timeline {
-  position: relative;
-  z-index: 2;
-  max-width: 960px;
-  width: 100%;
-  margin-top: 32px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-/* Cada columna */
-.history-step {
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  padding: 20px 20px 24px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  min-height: 500px;
-}
-
-/* Fondo con imagen + blur + oscurecido */
-.history-step::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: blur(2px);
-  transform: scale(1.05);
-  opacity: 0.75;
-  z-index: 0;
-}
-
-.history-step::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.85));
-  z-index: 1;
-}
-
-/* Contenido encima de la imagen */
-.history-step-content {
-  position: relative;
-  z-index: 2;
-}
-
-.history-step h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-}
-
-.history-step p {
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Asignar cada imagen a su columna */
-.history-step-1::before {
-  background-image: url("img/Historia-1.jpg");
-}
-
-.history-step-2::before {
-  background-image: url("img/Historia-2.jpg");
-}
-
-.history-step-3::before {
-  background-image: url("img/Historia-3.jpg");
-}
-
-/* Responsivo historia */
-@media (max-width: 900px) {
-  .history-section {
-    padding: 80px 6vw;
-    min-height: 70vh;
-  }
-
-  .history-timeline {
-    grid-template-columns: 1fr;
-  }
-
-  .history-step {
-    min-height: 130px;
-  }
-}
-
-/* ===== CAPACIDADES ===== */
-/* Sección general de capacidades */
-.capabilities-section {
-  background-color: #020819;
-  padding: 80px 7vw;
-}
-
-/* Cada capacidad */
-.capability {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  margin-bottom: 80px;
-}
-
-/* Intercalar: las pares se invierten */
-.capability:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-/* Columna de texto */
-.capability-text {
-  max-width: 540px;
-}
-
-.capability-text h3 {
-  font-size: 2rem;
-  margin-bottom: 16px;
-}
-
-.capability-text p {
-  font-size: 1.15rem;
-  line-height: 1.7;
-}
-
-/* Columna de imagen */
-.capability-image img {
-  width: 100%;
-  max-width: 420px;
-  display: block;
-  border-radius: 16px;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
-}
-
-/* ===== LINK CAPACIDAD (CTA) ===== */
-.capability-link{
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  color: #3a8bff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.2px;
-
-  opacity: 0.95;
-  transition: opacity .25s ease, transform .25s ease, color .25s ease;
-}
-
-.capability-link:hover{
-  opacity: 1;
-  color: #66a6ff;
-}
-
-.capability-link:active{
-  transform: translateY(1px);
-}
-
-.capability-link .arrow-icon{
-  flex: 0 0 auto;
-  transition: transform .25s ease;
-}
-
-.capability-link:hover .arrow-icon{
-  transform: translateX(8px);
-}
-
-/* Subrayado limpio solo en hover */
-.capability-link{
-  position: relative;
-}
-
-.capability-link::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: currentColor;
-  opacity: .35;
-  transition: width .25s ease;
-}
-
-.capability-link:hover::after{
-  width: 100%;
-}
-
-/* Versión móvil capacidades */
-@media (max-width: 900px) {
-  .capability {
-    flex-direction: column;
-    text-align: center;
-    gap: 32px;
-  }
-
-  .capability:nth-child(even) {
-    flex-direction: column;
-  }
-
-  .capability-image img {
-    max-width: 260px;
-  }
-
-  .capability-link{
-    justify-content: center;
-  }
-}
-
-/* =========================
-   PROYECTOS – GRID DE TARJETAS
-   ========================= */
-
-.section-projects,
-#proyectos {
-  padding-block: 4rem 6rem;
-}
-
-.projects-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-inline: 1.5rem;
-}
-
-.projects-header h2 {
-  font-size: clamp(2.2rem, 3vw, 2.8rem);
-  margin-bottom: 0.75rem;
-}
-
-.projects-header p {
-  max-width: 640px;
-  color: var(--color-text-soft, #c7d0e0);
-}
-
-/* Grid responsive */
-.projects-grid {
-  margin-top: 3rem;
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-/* Tarjeta individual */
-.project-card {
-  background: rgba(4, 16, 40, 0.96);
-  border-radius: 1.2rem;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-/* Contenedor de imágenes de proyecto */
-.project-image {
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Carrusel dentro de la tarjeta */
-.project-gallery {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 16px;
-}
-
-.project-gallery-track {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-}
-
-/* Imágenes del carrusel: tamaño uniforme con recorte limpio */
-.project-gallery-track img {
-  width: 260px;
-  aspect-ratio: 4 / 3;   /* proporción estándar */
-  object-fit: cover;      /* recorta suave sin deformar */
-  border-radius: 16px;
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-  scroll-snap-align: center;
-}
-
-/* Flechas del carrusel */
-.proj-arrow {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: #fff;
-  border-radius: 999px;
-  width: 32px;
-  height: 32px;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.proj-arrow:hover {
-  background: rgba(255,255,255,0.16);
-  border-color: rgba(255,255,255,0.35);
-}
-
-/* Scrollbar bonito para carrusel de proyectos */
-/* Firefox */
-.project-gallery-track {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(148, 163, 184, 0.55) transparent;
-}
-
-/* Chrome / Edge / Safari */
-.project-gallery-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.project-gallery-track::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 999px;
-}
-
-.project-gallery-track::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    90deg,
-    rgba(148, 163, 184, 0.3),
-    rgba(248, 250, 252, 0.7)
-  );
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.9);
-}
-
-/* Texto dentro de la tarjeta */
-.project-card h3 {
-  font-size: 1.1rem;
-  margin: 1.1rem 1.25rem 0.25rem;
-}
-
-.project-card p {
-  font-size: 0.95rem;
-  margin: 0 1.25rem 1.3rem;
-  color: var(--color-text-soft, #c7d0e0);
-}
-
-/* ===== NOVEDADES ===== */
-
-.news-section {
-  padding: 80px 8vw;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 60%);
-}
-
-.news-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-}
-
-.news-header h2 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-.news-header p {
-  font-size: 1rem;
-  color: #c5c7d5;
-}
-
-.news-track {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 12px;
-}
-
-.news-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.news-track::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.15);
-  border-radius: 999px;
-}
-
-/* Tarjetas de novedades */
-.news-card {
-  min-width: 300px;
-  max-width: 320px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 55%),
-              rgba(5, 12, 30, 0.96);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 20px;
-  padding: 16px 16px 20px;
-  box-shadow: 0 18px 35px rgba(0,0,0,0.55);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  scroll-snap-align: start;
-  color: #fff;
-  transform: translateY(0);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease;
-}
-
-.news-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 26px 55px rgba(0,0,0,0.75);
-  border-color: rgba(138, 180, 255, 0.75);
-  background: radial-gradient(circle at top, rgba(138,180,255,0.16), transparent 60%),
-              rgba(5, 12, 30, 0.98);
-}
-
-/* Imagen con zoom suave e iluminación */
-.news-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #050816;
-  position: relative;
-}
-
-.news-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1.02);
-  filter: brightness(0.96);
-  transition:
-    transform 0.35s ease,
-    filter 0.35s ease;
-}
-
-/* Brillo lateral sutil */
-.news-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(138,180,255,0.0) 0%,
-    rgba(138,180,255,0.22) 40%,
-    rgba(138,180,255,0.0) 80%
-  );
-  mix-blend-mode: screen;
-  opacity: 0;
-  transform: translateX(-25%);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
-}
-
-.news-card:hover .news-image img {
-  transform: scale(1.06);
-  filter: brightness(1.05);
-}
-
-.news-card:hover .news-image::after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Tipografía interna de novedades */
-.news-tag {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #8ab4ff;
-  margin-top: 4px;
-  transition: color 0.25s ease, opacity 0.25s ease;
-}
-
-.news-card h3 {
-  font-size: 1.05rem;
-  margin: 0;
-  transition: color 0.25s ease;
-}
-
-.news-card p {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  margin: 0;
-  transition: color 0.25s ease;
-}
-
-.news-date {
-  font-size: 0.82rem;
-  color: #a7aac5;
-  margin-top: 6px;
-  transition: color 0.25s ease, opacity 0.25s ease;
-}
-
-/* Hover en tipografía */
-.news-card:hover h3 {
-  color: #dfe7ff;
-}
-
-.news-card:hover .news-tag {
-  color: #c4d7ff;
-  opacity: 0.95;
-}
-
-.news-card:hover .news-date {
-  color: #c0c4dd;
-  opacity: 1;
-}
-/* SEO invisible (Google-safe y accesible) */
+/* ====== SEO invisible (accesible) ====== */
 .seo-h1,
-.seo-h2{
+.seo-h2 {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -937,18 +335,7 @@ body {
   border: 0;
 }
 
-/* Título visual del hero (mantiene el look pro y evita que se vea encogido) */
-.hero-title{
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  line-height: 1.15;
-  margin: 0 0 1rem 0;
-}
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-
+/* ====== Antigravity (solo si usted lo usa en home) ====== */
 .hero-antigravity {
   position: absolute;
   inset: 0;
@@ -971,11 +358,3 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-antigravity { display: none; }
 }
-
-
-
-
-
-
-
-
