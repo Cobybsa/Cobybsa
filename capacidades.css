@@ -1,0 +1,132 @@
+/* ==========================================
+   CAPACIDADES — Estilo Premium Industrial
+   ========================================== */
+
+:root {
+  --cap-border: #e5e5e5;
+  --cap-soft: #666;
+  --cap-ink: #111;
+}
+
+/* HERO de página */
+.capabilities-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+/* Cada bloque */
+.capability {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 70px 0;
+  border-bottom: 1px solid var(--cap-border);
+}
+
+/* Alternar imagen derecha/izquierda automáticamente */
+.capability:nth-child(even) {
+  direction: rtl;
+}
+
+.capability:nth-child(even) .capability-text {
+  direction: ltr;
+}
+
+.capability:nth-child(even) .capability-image {
+  direction: ltr;
+}
+
+/* Texto */
+.capability-text h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cap-ink);
+}
+
+.capability-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--cap-soft);
+  margin-bottom: 25px;
+  max-width: 600px;
+}
+
+/* Link */
+.capability-link {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--cap-ink);
+  padding-bottom: 4px;
+  transition: 0.3s ease;
+  color: var(--cap-ink);
+}
+
+.capability-link:hover {
+  opacity: 0.6;
+}
+
+/* Imagen */
+.capability-image {
+  position: relative;
+}
+
+.capability-image img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  transition: transform 0.5s ease;
+}
+
+.capability-image img:hover {
+  transform: scale(1.03);
+}
+
+/* Separación visual sutil superior */
+.section-title {
+  font-size: 42px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  max-width: 750px;
+  line-height: 1.7;
+  color: var(--cap-soft);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .capability {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .capability:nth-child(even) {
+    direction: ltr;
+  }
+}
+
+@media (max-width: 768px) {
+  .capabilities-section {
+    padding: 60px 0;
+  }
+
+  .capability {
+    padding: 50px 0;
+  }
+
+  .capability-text h3 {
+    font-size: 22px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+}
