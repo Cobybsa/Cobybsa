@@ -7,7 +7,6 @@
 
   <!-- Estilos base del sitio -->
   <link rel="stylesheet" href="style.css" />
-
   <!-- Estilos SOLO de Historia -->
   <link rel="stylesheet" href="historia.css" />
 
@@ -37,7 +36,7 @@
   <meta name="twitter:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
 </head>
 
-<body>
+<body class="historia-page">
 
   <!-- HEADER -->
   <header class="site-header">
@@ -58,7 +57,7 @@
 
   <main>
 
-    <!-- H1 SEO (visible, limpio) -->
+    <!-- HERO (solo historia, sin CTA de cotización) -->
     <section class="history-hero">
       <div class="container history-hero-inner">
         <div class="history-hero-badge">
@@ -69,113 +68,147 @@
         <h1 class="history-hero-title">Historia de COBYBSA</h1>
 
         <p class="history-hero-desc">
-          Un recorrido claro por nuestra evolución: cómo pasamos de trabajos locales a proyectos industriales,
+          Un recorrido por nuestra evolución: cómo pasamos de trabajos locales a proyectos industriales,
           integrando corte láser, CNC y modelado 3D con enfoque absoluto en calidad y cumplimiento.
         </p>
 
+        <!-- Solo “Ver proyectos” -->
         <div class="history-hero-actions">
-          <a class="btn btn-primary" href="/contacto.html">Solicitar evaluación técnica</a>
           <a class="btn btn-ghost" href="/proyectos.html">Ver proyectos</a>
         </div>
       </div>
     </section>
 
-    <!-- TIMELINE -->
-    <section class="history-timeline-wrap" aria-label="Línea de tiempo de COBYBSA">
+    <!-- CARRUSEL (2 páginas) -->
+    <section class="history-carousel-wrap" aria-label="Historia de COBYBSA por páginas">
       <div class="container">
 
-        <div class="timeline">
+        <!-- Controles -->
+        <div class="history-carousel-controls">
+          <button class="hc-btn" type="button" data-hc-prev aria-label="Página anterior">
+            ‹
+          </button>
 
-          <!-- Item 1 -->
-          <article class="timeline-item">
-            <div class="timeline-marker" aria-hidden="true">
-              <span class="timeline-step">01</span>
-            </div>
+          <div class="hc-dots" role="tablist" aria-label="Páginas de la historia">
+            <button class="hc-dot is-active" type="button" data-hc-dot="0" role="tab" aria-selected="true">
+              1990s–2015
+            </button>
+            <button class="hc-dot" type="button" data-hc-dot="1" role="tab" aria-selected="false">
+              2025
+            </button>
+          </div>
 
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <h2 class="timeline-title">Los inicios · 1990s</h2>
-                <span class="timeline-tag">Origen</span>
-              </div>
-
-              <p class="timeline-text">
-                Nacemos como un taller familiar pequeño, enfocado en trabajos locales y soluciones a medida
-                para clientes cercanos. La base fue la disciplina del trabajo bien hecho: orden, precisión y responsabilidad.
-              </p>
-
-              <ul class="timeline-bullets">
-                <li>Enfoque en soluciones personalizadas</li>
-                <li>Cultura de calidad desde el inicio</li>
-                <li>Relación directa con clientes</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Item 2 -->
-          <article class="timeline-item">
-            <div class="timeline-marker" aria-hidden="true">
-              <span class="timeline-step">02</span>
-            </div>
-
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <h2 class="timeline-title">Evolución · 2000–2015</h2>
-                <span class="timeline-tag">Crecimiento</span>
-              </div>
-
-              <p class="timeline-text">
-                Incorporamos corte láser, mecanizado CNC y modelado 3D, pasando de encargos puntuales a proyectos
-                industriales más complejos, con mayor repetibilidad, control dimensional y capacidad de fabricación.
-              </p>
-
-              <ul class="timeline-bullets">
-                <li>Integración de procesos bajo control técnico</li>
-                <li>Mayor capacidad y consistencia en producción</li>
-                <li>Mejoras en tiempos y precisión</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Item 3 -->
-          <article class="timeline-item">
-            <div class="timeline-marker" aria-hidden="true">
-              <span class="timeline-step">03</span>
-            </div>
-
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <h2 class="timeline-title">Industria actual · 2025</h2>
-                <span class="timeline-tag">Consolidación</span>
-              </div>
-
-              <p class="timeline-text">
-                COBYBSA se consolida como aliado técnico para empresas de distintos sectores, manteniendo el origen familiar
-                y un estándar alto de ejecución. Nuestra meta es simple: entregar soluciones confiables, limpias y duraderas.
-              </p>
-
-              <ul class="timeline-bullets">
-                <li>Proyectos industriales de mayor escala</li>
-                <li>Enfoque en cumplimiento, precisión y soporte</li>
-                <li>Calidad constante en cada entrega</li>
-              </ul>
-            </div>
-          </article>
-
+          <button class="hc-btn" type="button" data-hc-next aria-label="Página siguiente">
+            ›
+          </button>
         </div>
 
-        <!-- CTA final -->
-        <div class="history-cta">
-          <div class="history-cta-card">
-            <h2>¿Tiene un proyecto que requiere precisión?</h2>
-            <p>
-              Compártanos su necesidad. Le asesoramos con enfoque técnico para definir la mejor solución,
-              materiales y proceso de fabricación.
-            </p>
-            <div class="history-cta-actions">
-              <a class="btn btn-primary" href="/contacto.html">Contactar</a>
-              <a class="btn btn-ghost" href="/capacidades.html">Ver capacidades</a>
+        <!-- Viewport -->
+        <div class="history-carousel" data-hc>
+          <!-- PAGE 1: 1990s + 2000–2015 -->
+          <article class="hc-page is-active" data-hc-page="0">
+            <div class="paper-page">
+              <header class="paper-head">
+                <h2 class="paper-title">Primera etapa</h2>
+                <p class="paper-sub">Los inicios y la evolución hacia procesos industriales más complejos.</p>
+              </header>
+
+              <div class="paper-grid">
+                <!-- Bloque 1 -->
+                <section class="paper-card">
+                  <div class="paper-kicker">
+                    <span class="paper-num">01</span>
+                    <span class="paper-tag">Origen</span>
+                  </div>
+                  <h3 class="paper-h">Los inicios · 1990s</h3>
+
+                  <p class="paper-text dropcap">
+                    Nacemos como un taller familiar pequeño, enfocado en trabajos locales y soluciones a medida para clientes cercanos.
+                    La base fue la disciplina del trabajo bien hecho: orden, precisión y responsabilidad.
+                  </p>
+
+                  <ul class="paper-bullets">
+                    <li>Enfoque en soluciones personalizadas</li>
+                    <li>Cultura de calidad desde el inicio</li>
+                    <li>Relación directa con clientes</li>
+                  </ul>
+                </section>
+
+                <!-- Bloque 2 -->
+                <section class="paper-card">
+                  <div class="paper-kicker">
+                    <span class="paper-num">02</span>
+                    <span class="paper-tag">Crecimiento</span>
+                  </div>
+                  <h3 class="paper-h">Evolución · 2000–2015</h3>
+
+                  <p class="paper-text dropcap">
+                    Incorporamos corte láser, mecanizado CNC y modelado 3D, pasando de encargos puntuales a proyectos industriales más complejos,
+                    con mayor repetibilidad, control dimensional y capacidad de fabricación.
+                  </p>
+
+                  <ul class="paper-bullets">
+                    <li>Integración de procesos bajo control técnico</li>
+                    <li>Mayor capacidad y consistencia en producción</li>
+                    <li>Mejoras en tiempos y precisión</li>
+                  </ul>
+                </section>
+              </div>
+
+              <footer class="paper-foot">
+                <span class="paper-note">Página 1 / 2</span>
+              </footer>
             </div>
-          </div>
+          </article>
+
+          <!-- PAGE 2: Industria actual -->
+          <article class="hc-page" data-hc-page="1">
+            <div class="paper-page">
+              <header class="paper-head">
+                <h2 class="paper-title">Industria actual</h2>
+                <p class="paper-sub">Consolidación como aliado técnico y estándar alto de ejecución.</p>
+              </header>
+
+              <div class="paper-grid-single">
+                <section class="paper-card big">
+                  <div class="paper-kicker">
+                    <span class="paper-num">03</span>
+                    <span class="paper-tag">Consolidación</span>
+                  </div>
+                  <h3 class="paper-h">Industria actual · 2025</h3>
+
+                  <p class="paper-text dropcap">
+                    COBYBSA se consolida como aliado técnico para empresas de distintos sectores, manteniendo el origen familiar y un estándar alto
+                    de ejecución. Nuestra meta es simple: entregar soluciones confiables, limpias y duraderas.
+                  </p>
+
+                  <div class="paper-cols">
+                    <p class="paper-text">
+                      Hoy integramos ingeniería, fabricación y soporte, cuidando cada detalle que impacta el resultado final: tolerancias,
+                      acabados, seguridad y cumplimiento. El enfoque sigue siendo el mismo: hacer bien el trabajo desde el plano.
+                    </p>
+                    <ul class="paper-bullets">
+                      <li>Proyectos industriales de mayor escala</li>
+                      <li>Enfoque en cumplimiento, precisión y soporte</li>
+                      <li>Calidad constante en cada entrega</li>
+                    </ul>
+                  </div>
+
+                  <!-- Opcional: imagen editorial (si quiere) -->
+                  <!--
+                  <figure class="paper-photo">
+                    <img src="img/historia-1.jpg" alt="Trabajo metalmecánico en taller de COBYBSA" loading="lazy">
+                    <figcaption>Documentación, proceso y control: parte del estándar.</figcaption>
+                  </figure>
+                  -->
+                </section>
+              </div>
+
+              <footer class="paper-foot">
+                <span class="paper-note">Página 2 / 2</span>
+              </footer>
+            </div>
+          </article>
         </div>
 
       </div>
@@ -192,7 +225,75 @@
   </footer>
 
   <script>
+    // Año
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Carrusel Opción A (2 páginas) — flechas + puntos + teclado + swipe
+    (function () {
+      const wrap = document.querySelector("[data-hc]");
+      if (!wrap) return;
+
+      const pages = Array.from(wrap.querySelectorAll("[data-hc-page]"));
+      const dots = Array.from(document.querySelectorAll("[data-hc-dot]"));
+      const btnPrev = document.querySelector("[data-hc-prev]");
+      const btnNext = document.querySelector("[data-hc-next]");
+
+      let index = 0;
+
+      function setActive(i) {
+        index = Math.max(0, Math.min(pages.length - 1, i));
+
+        pages.forEach((p, pi) => {
+          p.classList.toggle("is-active", pi === index);
+        });
+
+        dots.forEach((d, di) => {
+          d.classList.toggle("is-active", di === index);
+          d.setAttribute("aria-selected", di === index ? "true" : "false");
+        });
+
+        btnPrev.disabled = index === 0;
+        btnNext.disabled = index === pages.length - 1;
+
+        // Mueve el track (sin scroll)
+        wrap.style.setProperty("--hc-index", index);
+      }
+
+      // Click dots
+      dots.forEach((d) => {
+        d.addEventListener("click", () => setActive(parseInt(d.dataset.hcDot, 10)));
+      });
+
+      // Flechas
+      btnPrev.addEventListener("click", () => setActive(index - 1));
+      btnNext.addEventListener("click", () => setActive(index + 1));
+
+      // Teclado
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") setActive(index - 1);
+        if (e.key === "ArrowRight") setActive(index + 1);
+      });
+
+      // Swipe en móvil
+      let x0 = null;
+      wrap.addEventListener("touchstart", (e) => {
+        x0 = e.touches[0].clientX;
+      }, { passive: true });
+
+      wrap.addEventListener("touchend", (e) => {
+        if (x0 === null) return;
+        const x1 = e.changedTouches[0].clientX;
+        const dx = x1 - x0;
+        x0 = null;
+
+        if (Math.abs(dx) < 40) return; // umbral
+        if (dx < 0) setActive(index + 1);
+        else setActive(index - 1);
+      }, { passive: true });
+
+      // Init
+      setActive(0);
+    })();
   </script>
 
 </body>
