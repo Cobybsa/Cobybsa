@@ -1,0 +1,110 @@
+/* ==========================================
+   CONTACTO — Diseño limpio y premium
+   Archivo: contacto.css
+   Requiere: style.css (global)
+   ========================================== */
+
+:root{
+  --c-bg: #ffffff;
+  --c-ink: #111;
+  --c-muted: #666;
+  --c-line: #e7e7e7;
+  --c-soft: rgba(0,0,0,.04);
+}
+
+/* Fondo blanco */
+body{
+  background: var(--c-bg);
+}
+
+/* Sección contacto */
+.section-contacto{
+  padding: 70px 0 90px;
+  background: #fff;
+}
+
+/* Header de sección */
+.section-contacto .section-header{
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--c-line);
+  margin-bottom: 34px;
+}
+
+.section-contacto .section-title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  color: var(--c-ink);
+}
+
+.section-contacto .section-subtitle{
+  margin: 14px 0 0;
+  max-width: 85ch;
+  color: var(--c-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Grid */
+.contact-grid{
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 22px;
+  align-items: start;
+}
+
+/* Cards */
+.contact-box{
+  border: 1px solid var(--c-line);
+  border-radius: 16px;
+  padding: 22px 22px;
+  background:
+    radial-gradient(700px 260px at 10% 0%, var(--c-soft), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.00));
+  box-shadow: 0 18px 55px rgba(0,0,0,.08);
+}
+
+.contact-box h3{
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--c-ink);
+}
+
+/* Texto */
+.contact-box p{
+  margin: 10px 0;
+  line-height: 1.75;
+  color: var(--c-muted);
+  font-size: 1.02rem;
+}
+
+.contact-box strong{
+  color: var(--c-ink);
+}
+
+/* Botones dentro de contacto (sin romper los globales) */
+.section-contacto .btn{
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Mini separación visual entre botones */
+.section-contacto .btn + .btn{
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .contact-grid{
+    grid-template-columns: 1fr;
+  }
+  .section-contacto{
+    padding: 56px 0 70px;
+  }
+}
