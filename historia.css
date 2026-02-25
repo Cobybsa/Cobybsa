@@ -1,310 +1,296 @@
 /* ==========================================
-   historia.css — COBYBSA (periódico / Da Vinci)
-   Compatible con su historia.html actual
+   HISTORIA — Carrusel editorial blanco
+   Compatible con historia.html (Opción A)
    ========================================== */
 
 :root{
-  --paper-1: #f8efd9;
-  --paper-2: #efe1c4;
-  --ink: #171614;
-  --ink-soft: rgba(23,22,20,.78);
-  --rule: rgba(23,22,20,.32);
-  --rule-soft: rgba(23,22,20,.14);
-  --card: rgba(255,255,255,.16);
-  --shadow: 0 18px 60px rgba(0,0,0,.18);
+  --ink: #111;
+  --ink-soft: #555;
+  --line: #e6e6e6;
+  --accent: #cfcfcf;
 }
 
-/* Fondo general (afuera del papel) */
-body{
-  margin: 0;
+/* Fondo completamente blanco */
+body.historia-page{
+  background: #ffffff;
+}
+
+/* MAIN limpio */
+.historia-page main{
+  max-width: 1100px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  background: #fff;
+}
+
+/* Tipografía editorial */
+.historia-page main,
+.historia-page main *{
+  font-family: "Georgia", "Times New Roman", serif;
   color: var(--ink);
 }
 
-/* Papel pergamino SOLO para el contenido */
-main{
-  max-width: 1120px;
-  margin: 18px auto 38px;
-  padding: clamp(18px, 2.4vw, 30px);
-  border: 1px solid var(--rule-soft);
-  box-shadow: var(--shadow);
-  background:
-    radial-gradient(1200px 700px at 20% 10%, rgba(0,0,0,.06), transparent 55%),
-    radial-gradient(900px 600px at 80% 30%, rgba(0,0,0,.05), transparent 55%),
-    linear-gradient(180deg, var(--paper-1), var(--paper-2));
-}
+/* ==========================================
+   HERO
+   ========================================== */
 
-/* Serif editorial SOLO dentro de main */
-main, main *{
-  font-family: "Georgia", "Garamond", "Times New Roman", serif;
-}
-
-/* =========================
-   HERO -> Masthead periódico
-   ========================= */
 .history-hero{
-  padding: 10px 0 12px;
-  position: relative;
+  text-align: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
 }
 
-/* doble línea tipo periódico */
-.history-hero::before,
-.history-hero::after{
-  content:"";
-  display:block;
-  height: 2px;
-  background: rgba(23,22,20,.78);
-  position: relative;
-}
-.history-hero::before{ margin-bottom: 14px; }
-.history-hero::after{ margin-top: 14px; }
-
-.history-hero::before::after,
-.history-hero::after::after{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  top: 6px;
-  height: 1px;
-  background: rgba(23,22,20,.55);
-}
-
-/* badge estilo “edición” */
 .history-hero-badge{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: .92rem;
-  letter-spacing: .10em;
+  font-size: 13px;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .history-dot{
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: rgba(23,22,20,.85);
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+  border-radius: 50%;
+  margin-right: 8px;
 }
 
-/* título portada */
 .history-hero-title{
-  margin: 0;
-  text-align: center;
-  font-weight: 900;
-  letter-spacing: .10em;
+  font-size: clamp(34px, 5vw, 52px);
+  letter-spacing: .08em;
   text-transform: uppercase;
-  font-size: clamp(2.2rem, 4.6vw, 3.8rem);
-  line-height: 1;
-  color: var(--ink);
+  margin: 0;
 }
 
-/* subtítulo centrado */
 .history-hero-desc{
-  margin: 14px auto 0;
-  max-width: 80ch;
-  text-align: center;
-  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 20px auto 0;
+  font-size: 17px;
   line-height: 1.7;
-  font-size: 1.02rem;
+  color: var(--ink-soft);
 }
 
-/* botones centrados */
 .history-hero-actions{
-  margin-top: 16px;
+  margin-top: 30px;
+}
+
+/* ==========================================
+   CONTROLES CARRUSEL
+   ========================================== */
+
+.history-carousel-controls{
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0 20px;
 }
 
-/* =========================
-   Separadores editoriales
-   ========================= */
-.history-timeline-wrap{
-  padding: 14px 0 0;
+.hc-btn{
+  background: none;
+  border: 1px solid var(--line);
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.history-timeline-wrap .timeline{
-  margin-top: 6px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
+.hc-btn:hover{
+  background: #f3f3f3;
+}
+
+.hc-btn:disabled{
+  opacity: 0.3;
+  cursor: default;
+}
+
+.hc-dots{
+  display: flex;
+  gap: 14px;
+}
+
+.hc-dot{
+  background: none;
+  border: none;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--ink-soft);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+.hc-dot.is-active{
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+/* ==========================================
+   CARRUSEL
+   ========================================== */
+
+.history-carousel{
   position: relative;
+  overflow: hidden;
 }
 
-/* segunda línea más suave (look imprenta) */
-.history-timeline-wrap .timeline::before{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  top: 6px;
-  height: 1px;
-  background: var(--rule-soft);
+.hc-page{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all .35s ease;
+  pointer-events: none;
 }
 
-/* =========================
-   Grid 2 columnas (portada)
-   ========================= */
-.timeline{
+.hc-page.is-active{
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* ==========================================
+   ESTILO “PÁGINA DE PERIÓDICO”
+   ========================================== */
+
+.paper-page{
+  padding: 30px 10px 40px;
+}
+
+.paper-head{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.paper-title{
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0;
+}
+
+.paper-sub{
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+/* Grid primera página */
+.paper-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 40px;
 }
 
-/* Tarjeta editorial más “periódico” */
-.timeline-item{
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  gap: 12px;
-  align-items: start;
-  padding: 14px 14px;
-  border: 1px solid rgba(23,22,20,.18);
-  background: rgba(255,255,255,.10);
+/* Segunda página layout */
+.paper-grid-single{
+  display: block;
 }
 
-/* marcador 01/02/03 como sello */
-.timeline-marker{
-  width: 46px;
-  height: 46px;
-  border: 1px solid rgba(23,22,20,.35);
-  background: rgba(23,22,20,.88);
-  color: var(--paper-1);
-  display: grid;
-  place-items: center;
+/* Card editorial */
+.paper-card{
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
 }
 
-.timeline-step{
-  font-weight: 900;
-  font-size: .85rem;
-  letter-spacing: .14em;
+.paper-card.big{
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* header del card */
-.timeline-card-header{
+.paper-kicker{
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule-soft);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--ink-soft);
   margin-bottom: 10px;
 }
 
-.timeline-title{
-  margin: 0;
-  font-size: 1.05rem;
+.paper-num{
+  background: var(--ink);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.paper-tag{
+  border-left: 1px solid var(--line);
+  padding-left: 10px;
+}
+
+.paper-h{
+  font-size: 20px;
+  margin: 8px 0 16px;
   text-transform: uppercase;
-  letter-spacing: .06em;
+  letter-spacing: .05em;
 }
 
-.timeline-tag{
-  font-size: .78rem;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  color: var(--ink-soft);
-  white-space: nowrap;
+/* Texto */
+.paper-text{
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
-/* Texto con capitular estilo periódico */
-.timeline-text{
-  margin: 0 0 10px;
-  line-height: 1.75;
-  color: rgba(23,22,20,.92);
-  font-size: 1.0rem;
-}
-
-.timeline-text::first-letter{
+/* Capitular */
+.dropcap::first-letter{
   float: left;
-  font-size: 3.0rem;
+  font-size: 42px;
   line-height: .9;
-  padding: 6px 10px 0 0;
-  font-weight: 900;
-  color: rgba(23,22,20,.9);
+  padding-right: 10px;
+  font-weight: bold;
 }
 
-/* bullets más finos */
-.timeline-bullets{
-  margin: 0;
+/* Columnas en segunda página */
+.paper-cols{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Bullets */
+.paper-bullets{
   padding-left: 18px;
   color: var(--ink-soft);
-  line-height: 1.65;
-  font-size: .98rem;
-}
-.timeline-bullets li{ margin: 6px 0; }
-
-/* El 3er item (Industria actual) que quede como “caja grande”
-   parecido a su screenshot (opcional, pero se ve pro) */
-.timeline-item:nth-child(3){
-  grid-column: 1 / 2; /* queda en columna izquierda */
 }
 
-/* =========================
-   CTA final — recuadro editorial
-   ========================= */
-.history-cta{
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-  position: relative;
+.paper-bullets li{
+  margin-bottom: 8px;
 }
 
-.history-cta::before{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  top: 6px;
-  height: 1px;
-  background: var(--rule-soft);
-}
-
-.history-cta-card{
-  border: 1px solid rgba(23,22,20,.28);
-  background: rgba(255,255,255,.08);
-  padding: 16px 16px;
-}
-
-.history-cta-card h2{
-  margin: 0 0 8px;
-  font-size: 1.15rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.history-cta-card p{
-  margin: 0 0 12px;
+/* Pie de página tipo “Página 1/2” */
+.paper-foot{
+  text-align: right;
+  margin-top: 40px;
+  font-size: 13px;
   color: var(--ink-soft);
-  line-height: 1.7;
-  max-width: 95ch;
 }
 
-.history-cta-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap: wrap;
-}
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
 
-/* =========================
-   Responsive
-   ========================= */
-@media (max-width: 980px){
-  main{
-    margin: 12px 12px 28px;
+@media (max-width: 900px){
+
+  .paper-grid{
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
-  .timeline{
+
+  .paper-cols{
     grid-template-columns: 1fr;
   }
-  .timeline-item:nth-child(3){
-    grid-column: auto;
-  }
-}
 
-@media (max-width: 560px){
-  .timeline-item{
-    grid-template-columns: 1fr;
+  .history-carousel-controls{
+    flex-direction: column;
+    gap: 20px;
   }
-  .timeline-marker{
-    width: 100%;
-    height: auto;
-    padding: 10px 0;
-  }
+
 }
