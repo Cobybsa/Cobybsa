@@ -1,7 +1,6 @@
 /* =========================================================
-   style.css — GLOBAL (solo base del sitio)
-   Mantenga aquí: reset, variables, layout, header/nav, hero, botones, utilidades
-   Mueva a CSS por página: historia, capacidades, proyectos, novedades, contacto
+   style.css — GLOBAL (base del sitio, SIN imponer tema)
+   El tema (dark/light) se define por página en inicio.css / historia.css, etc.
    ========================================================= */
 
 /* ====== RESET SUAVE ====== */
@@ -17,28 +16,32 @@ html {
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-  color: #e5e7eb;
   line-height: 1.6;
-  background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
+
+  /* IMPORTANTE: NO forzar dark aquí */
+  background: var(--page-bg, #ffffff);
+  color: var(--page-text, #111827);
 }
 
-/* ====== VARIABLES ====== */
+/* Evita “franjas” por overflow accidental */
+img, svg, video, canvas { max-width: 100%; height: auto; display: block; }
+body { overflow-x: hidden; }
+
+/* ====== VARIABLES BASE ====== */
 :root {
-  --bg: #020617;
-  --bg-soft: #030712;
-  --surface: #0b1226;
+  /* Colores neutrales base */
+  --page-bg: #ffffff;
+  --page-text: #111827;
+  --text-muted: #6b7280;
+
+  /* Acentos (se pueden mantener globales) */
   --accent: #f97316;
-  --accent-soft: rgba(249, 115, 22, 0.14);
   --accent-2: #38bdf8;
 
-  --border-subtle: rgba(148, 163, 184, 0.18);
-
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
+  /* Bordes/sombras neutrales */
+  --border-subtle: rgba(17, 24, 39, 0.10);
 
   --radius-xl: 1.75rem;
-  --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.95);
-  --shadow-chip: 0 12px 40px rgba(15, 23, 42, 0.7);
 }
 
 /* ====== LAYOUT BÁSICO ====== */
@@ -52,13 +55,13 @@ body {
   position: relative;
 }
 
-/* Fondo radial suave por sección (global) */
+/* Fondo radial suave por sección (neutro) */
 .section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.10), transparent 55%);
-  opacity: 0.4;
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.06), transparent 55%);
+  opacity: 0.7;
   pointer-events: none;
 }
 
@@ -67,14 +70,18 @@ body {
   font-size: clamp(2rem, 0.8vw + 1.6rem, 2.6rem);
 }
 
-/* ====== HEADER ====== */
+/* ====== HEADER (themeable) ====== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
+
   backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.70));
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+
+  /* Themeable */
+  background: var(--header-bg, rgba(255, 255, 255, 0.82));
+  border-bottom: 1px solid var(--header-border, rgba(17, 24, 39, 0.10));
+
   height: 85px;
 }
 
@@ -85,41 +92,10 @@ body {
   height: 100%;
 }
 
-/* Logo — corregido: 220px rompe header de 85px */
+/* Logo: NO rompa el header */
 .logo img {
-  height: 58px;          /* <-- ajuste realista */
+  height: 58px;
   width: auto;
-  display: block;
-}
-
-/* Meta opcional al lado del logo */
-.header-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  min-width: 0;
-}
-
-.brand-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  line-height: 1.15;
-  color: rgba(229, 231, 235, 0.88);
-  white-space: nowrap;
-}
-
-.brand-exp {
-  font-size: 0.78rem;
-  color: rgba(229, 231, 235, 0.78);
-}
-
-.brand-sectors {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(229, 231, 235, 0.95);
 }
 
 /* Nav */
@@ -130,11 +106,11 @@ body {
 
 .main-nav a {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--nav-link, rgba(17, 24, 39, 0.70));
   text-decoration: none;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
   padding-bottom: 0.2rem;
 }
@@ -151,18 +127,15 @@ body {
   transition: width 0.25s ease-out;
 }
 
-.main-nav a:hover { color: #f9fafb; }
+.main-nav a:hover { color: var(--nav-link-hover, #111827); }
 .main-nav a:hover::after { width: 100%; }
 
-/* Estado activo (cuando usted ponga class="is-active" en el HTML) */
 .main-nav a.is-active {
-  color: #f9fafb;
+  color: var(--nav-link-hover, #111827);
 }
-.main-nav a.is-active::after {
-  width: 100%;
-}
+.main-nav a.is-active::after { width: 100%; }
 
-/* Móvil: nav con scroll horizontal */
+/* Móvil */
 @media (max-width: 768px) {
   .main-nav {
     overflow-x: auto;
@@ -171,12 +144,10 @@ body {
     scrollbar-width: none;
   }
   .main-nav::-webkit-scrollbar { display: none; }
-
-  .brand-meta { display: none; }
   .logo img { height: 46px; }
 }
 
-/* ====== HERO (global, solo estructura + elementos reutilizables) ====== */
+/* ====== HERO (estructura global) ====== */
 .hero {
   position: relative;
   padding: 4.5rem 0 3rem;
@@ -193,7 +164,6 @@ body {
 
 .hero-content {
   max-width: 520px;
-  color: var(--text-main);
   position: relative;
   z-index: 2;
 }
@@ -208,7 +178,7 @@ body {
 
 .hero-content p {
   font-size: 1.05rem;
-  color: rgba(229, 231, 235, 0.86);
+  color: var(--hero-text, rgba(17, 24, 39, 0.80));
 }
 
 /* Badge */
@@ -218,8 +188,8 @@ body {
   gap: 0.45rem;
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.55);
-  background: radial-gradient(circle at left, rgba(249, 115, 22, 0.16), transparent 60%);
+  border: 1px solid var(--badge-border, rgba(17, 24, 39, 0.18));
+  background: var(--badge-bg, rgba(249, 115, 22, 0.10));
   margin-bottom: 1.15rem;
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -232,10 +202,10 @@ body {
   height: 7px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.8);
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.35);
 }
 
-/* Botones (global) */
+/* Botones */
 .hero-actions {
   display: flex;
   align-items: center;
@@ -247,38 +217,38 @@ body {
   padding: 0.75rem 1.6rem;
   border: 1px solid transparent;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  transition: transform 0.1s ease-out, box-shadow 0.15s ease-out, background 0.15s;
+  transition: transform 0.1s ease-out, box-shadow 0.15s ease-out, background 0.15s, border-color .15s;
 }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #020617;
-  box-shadow: 0 18px 55px rgba(249, 115, 22, 0.48);
+  color: #0b1220;
+  box-shadow: 0 18px 55px rgba(249, 115, 22, 0.22);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 24px 80px rgba(249, 115, 22, 0.72);
+  box-shadow: 0 24px 80px rgba(249, 115, 22, 0.32);
 }
 
 .btn-ghost {
-  background: rgba(15, 23, 42, 0.7);
-  border-color: rgba(148, 163, 184, 0.4);
-  color: var(--text-muted);
+  background: var(--ghost-bg, rgba(17, 24, 39, 0.04));
+  border-color: var(--ghost-border, rgba(17, 24, 39, 0.12));
+  color: var(--ghost-text, rgba(17, 24, 39, 0.72));
 }
 
 .btn-ghost:hover {
-  background: rgba(15, 23, 42, 0.98);
-  color: #e5e7eb;
+  background: var(--ghost-bg-hover, rgba(17, 24, 39, 0.08));
+  color: var(--ghost-text-hover, #111827);
 }
 
-/* Hero media (estructura base) */
+/* Hero media */
 .hero-media {
   position: relative;
   display: flex;
@@ -295,26 +265,22 @@ body {
 
 .hero-card img {
   width: clamp(380px, 42vw, 560px);
-  height: auto;
   max-height: 650px;
   object-fit: contain;
-  display: block;
 }
 
-/* Ajuste en móvil */
+/* Móvil */
 @media (max-width: 768px) {
   .hero-inner {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-
   .hero-media {
     width: 100%;
     margin-top: 1.5rem;
     justify-content: center;
   }
-
   .hero-card img {
     width: min(420px, 85vw);
     max-height: none;
@@ -335,7 +301,7 @@ body {
   border: 0;
 }
 
-/* ====== Antigravity (solo si usted lo usa en home) ====== */
+/* ====== Antigravity base (solo si existe en la página) ====== */
 .hero-antigravity {
   position: absolute;
   inset: 0;
@@ -344,16 +310,9 @@ body {
   opacity: 0.55;
 }
 
-#antigravity-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+#antigravity-canvas { width: 100%; height: 100%; display: block; }
 
-.hero .container.hero-inner {
-  position: relative;
-  z-index: 1;
-}
+.hero .container.hero-inner { position: relative; z-index: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-antigravity { display: none; }
