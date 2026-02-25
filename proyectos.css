@@ -1,0 +1,285 @@
+/* ==========================================
+   PROYECTOS — Diseño premium (portafolio industrial)
+   Archivo: proyectos.css
+   Requiere: style.css (global)
+   No cambia HTML.
+   ========================================== */
+
+:root{
+  --p-bg: #0b0f14;         /* fondo oscuro elegante */
+  --p-ink: #e9eef5;        /* texto principal */
+  --p-muted: rgba(233,238,245,.72);
+  --p-soft: rgba(233,238,245,.10);
+  --p-line: rgba(233,238,245,.16);
+  --p-glow: rgba(233,238,245,.08);
+}
+
+/* Fondo y base SOLO en proyectos */
+body{
+  background: var(--p-bg);
+}
+
+/* Asegura que el main no deje “franjas raras” */
+main{
+  background: transparent;
+}
+
+/* Container general para proyectos */
+.projects-inner{
+  max-width: 1180px;
+}
+
+/* ==========================================
+   Header de página (H1 + intro) tipo “case studies”
+   ========================================== */
+.projects-header{
+  padding: 70px 0 18px;
+  border-bottom: 1px solid var(--p-line);
+  position: relative;
+}
+
+/* Línea secundaria */
+.projects-header::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  bottom:-8px;
+  height:1px;
+  background: rgba(233,238,245,.08);
+}
+
+/* Título grande con look industrial */
+.projects-header h1,
+.projects-header h2{
+  margin: 0;
+  color: var(--p-ink);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.projects-header p{
+  margin: 14px 0 0;
+  max-width: 85ch;
+  color: var(--p-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* ==========================================
+   Grid: layout “gallery premium”
+   ========================================== */
+.projects-grid{
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+
+/* Cada card ocupa 6 columnas (2 por fila), algunas destacadas */
+.project-card{
+  grid-column: span 6;
+  border: 1px solid var(--p-line);
+  background:
+    radial-gradient(900px 300px at 15% 0%, rgba(233,238,245,.08), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  position: relative;
+  transform: translateZ(0);
+}
+
+/* “Glow” sutil al hover */
+.project-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 20px;
+  background: radial-gradient(600px 260px at 30% 0%, var(--p-glow), transparent 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before{
+  opacity: 1;
+}
+
+.project-card:hover{
+  border-color: rgba(233,238,245,.26);
+}
+
+/* Destacar algunas cards (1, 6, 7) como “hero projects” */
+.project-card:nth-child(1),
+.project-card:nth-child(6),
+.project-card:nth-child(7){
+  grid-column: span 12;
+  padding: 18px;
+}
+
+/* ==========================================
+   Galería / Imagen
+   ========================================== */
+.project-image{
+  margin: 0 0 14px;
+}
+
+.project-gallery{
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(233,238,245,.14);
+  background: rgba(255,255,255,.03);
+}
+
+/* Track scroll horizontal (smooth) */
+.project-gallery-track{
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+/* Ocultar scrollbar (sin romper accesibilidad) */
+.project-gallery-track::-webkit-scrollbar{ height: 8px; }
+.project-gallery-track::-webkit-scrollbar-thumb{
+  background: rgba(233,238,245,.12);
+  border-radius: 10px;
+}
+
+.project-gallery-track img{
+  width: min(520px, 88%);
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  scroll-snap-align: start;
+  border: 1px solid rgba(233,238,245,.10);
+  filter: contrast(1.02) saturate(1.03);
+  transform: translateZ(0);
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.project-card:hover .project-gallery-track img{
+  filter: contrast(1.05) saturate(1.06);
+}
+
+/* ==========================================
+   Flechas del slider (más pro)
+   ========================================== */
+.proj-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(233,238,245,.22);
+  background: rgba(10,12,16,.60);
+  color: var(--p-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+  opacity: .92;
+}
+
+.proj-arrow.left{ left: 10px; }
+.proj-arrow.right{ right: 10px; }
+
+.proj-arrow:hover{
+  background: rgba(10,12,16,.80);
+  border-color: rgba(233,238,245,.38);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.proj-arrow:active{
+  transform: translateY(-50%) scale(.98);
+}
+
+/* ==========================================
+   Título y texto del card (jerarquía premium)
+   ========================================== */
+.project-card h3{
+  margin: 8px 6px 10px;
+  color: var(--p-ink);
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.project-card p{
+  margin: 0 6px 12px;
+  color: var(--p-muted);
+  line-height: 1.75;
+  font-size: 1.0rem;
+}
+
+/* Ajuste para cards grandes (cuando ocupan 12 columnas) */
+.project-card:nth-child(1) h3,
+.project-card:nth-child(6) h3,
+.project-card:nth-child(7) h3{
+  font-size: 1.15rem;
+}
+
+/* Separador sutil abajo del texto (tipo “case study”) */
+.project-card p:last-of-type{
+  margin-bottom: 6px;
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 1100px){
+  .project-gallery-track img{
+    height: 260px;
+  }
+}
+
+@media (max-width: 900px){
+  .projects-header{
+    padding-top: 54px;
+  }
+
+  .project-card{
+    grid-column: span 12;
+  }
+
+  .project-gallery-track img{
+    width: 92%;
+    height: 240px;
+  }
+}
+
+@media (max-width: 560px){
+  .projects-grid{
+    gap: 14px;
+  }
+
+  .project-card{
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .project-gallery-track{
+    padding: 8px;
+  }
+
+  .project-gallery-track img{
+    height: 210px;
+  }
+
+  .proj-arrow{
+    width: 38px;
+    height: 38px;
+  }
+}
