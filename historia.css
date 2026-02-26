@@ -90,7 +90,7 @@ body.historia-page{
 
 .hx-marquee{
   width: 100vw;
-  margin-left: calc(50% - 50vw); /* full-bleed real sin transform */
+  margin-left: calc(50% - 50vw);
   margin-top: 18px;
 
   border-top: 1px solid rgba(17,17,17,.12);
@@ -102,15 +102,15 @@ body.historia-page{
 }
 
 .hx-marquee-track{
-  display: inline-flex;         /* clave para que no "salte" */
+  display: flex;
   align-items: center;
-  gap: 32px;
+  width: max-content;       /* IMPORTANTÍSIMO */
   white-space: nowrap;
+  gap: 32px;
 
   padding: 12px 0;
   will-change: transform;
-  transform: translateX(0);
-  opacity: .9;
+  animation: hx-marquee-move 18s linear infinite; /* velocidad */
 }
 
 .hx-marquee-track span{
@@ -119,6 +119,16 @@ body.historia-page{
   letter-spacing: .22em;
   text-transform: uppercase;
   color: rgba(17,17,17,.70);
+}
+
+@keyframes hx-marquee-move{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* porque hay 2 copias */
+}
+
+/* opcional: si alguien tiene "reducir movimiento" */
+@media (prefers-reduced-motion: reduce){
+  .hx-marquee-track{ animation: none; }
 }
 
 /* Stats */
