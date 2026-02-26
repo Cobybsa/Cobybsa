@@ -8,9 +8,14 @@
   --p-bg: #0b0f14;
   --p-ink: #e9eef5;
   --p-muted: rgba(233,238,245,.72);
-  --p-soft: rgba(233,238,245,.10);
   --p-line: rgba(233,238,245,.16);
+  --p-soft: rgba(233,238,245,.10);
   --p-glow: rgba(233,238,245,.08);
+
+  --p-radius: 18px;
+  --p-radius-sm: 14px;
+  --p-shadow: 0 24px 70px rgba(0,0,0,.42);
+  --p-shadow-soft: 0 18px 50px rgba(0,0,0,.32);
 }
 
 /* ===== Scope SOLO en Proyectos ===== */
@@ -19,6 +24,7 @@ body.proyectos-page{
   color: var(--p-ink);
 }
 
+/* Evita “franjas” si style.css mete backgrounds */
 body.proyectos-page main{
   background: transparent;
 }
@@ -29,10 +35,10 @@ body.proyectos-page .projects-inner{
 }
 
 /* ==========================================
-   Header
+   Header (más “case studies”)
    ========================================== */
 body.proyectos-page .projects-header{
-  padding: 70px 0 18px;
+  padding: 74px 0 22px;
   border-bottom: 1px solid var(--p-line);
   position: relative;
 }
@@ -41,7 +47,7 @@ body.proyectos-page .projects-header::after{
   content:"";
   position:absolute;
   left:0; right:0;
-  bottom:-8px;
+  bottom:-10px;
   height:1px;
   background: rgba(233,238,245,.08);
 }
@@ -50,58 +56,62 @@ body.proyectos-page .projects-header h1,
 body.proyectos-page .projects-header h2{
   margin: 0;
   color: var(--p-ink);
-  letter-spacing: .08em;
+  letter-spacing: .10em;
   text-transform: uppercase;
   font-weight: 900;
-  font-size: clamp(2rem, 4.2vw, 3.1rem);
-  line-height: 1.05;
+  font-size: clamp(2.1rem, 4.8vw, 3.3rem);
+  line-height: 1.03;
 }
 
 body.proyectos-page .projects-header p{
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   max-width: 85ch;
   color: var(--p-muted);
-  line-height: 1.7;
+  line-height: 1.75;
   font-size: 1.05rem;
 }
 
 /* ==========================================
-   Grid
+   Grid (más sólido)
    ========================================== */
 body.proyectos-page .projects-grid{
   margin-top: 34px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 18px;
 }
 
-/* Card base */
+/* ==========================================
+   Cards (premium + overlays)
+   ========================================== */
 body.proyectos-page .project-card{
   grid-column: span 6;
   border: 1px solid var(--p-line);
-  background:
-    radial-gradient(900px 300px at 15% 0%, rgba(233,238,245,.08), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border-radius: 18px;
+  border-radius: var(--p-radius);
   overflow: hidden;
   padding: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.35);
   position: relative;
+  box-shadow: var(--p-shadow-soft);
   transform: translateZ(0);
-
-  /* reveal default */
-  opacity: 0;
-  transform: translateY(18px) scale(.985);
+  background:
+    radial-gradient(900px 340px at 15% 0%, rgba(233,238,245,.09), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.028));
   transition:
-    opacity .65s ease,
-    transform .65s ease,
-    border-color .35s ease;
-  will-change: transform, opacity;
+    transform .32s ease,
+    box-shadow .32s ease,
+    border-color .32s ease;
 }
 
-body.proyectos-page .project-card.is-inview{
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Overlay sutil para profundidad */
+body.proyectos-page .project-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(700px 240px at 70% 0%, rgba(233,238,245,.05), transparent 60%),
+    linear-gradient(180deg, transparent, rgba(0,0,0,.18));
+  opacity: .85;
+  pointer-events: none;
 }
 
 /* Glow hover */
@@ -109,19 +119,21 @@ body.proyectos-page .project-card::before{
   content:"";
   position:absolute;
   inset:-2px;
-  border-radius: 20px;
-  background: radial-gradient(600px 260px at 30% 0%, var(--p-glow), transparent 60%);
+  border-radius: calc(var(--p-radius) + 2px);
+  background: radial-gradient(620px 260px at 25% 0%, var(--p-glow), transparent 60%);
   opacity: 0;
   transition: opacity .35s ease;
   pointer-events: none;
 }
 
-body.proyectos-page .project-card:hover::before{
-  opacity: 1;
+body.proyectos-page .project-card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(233,238,245,.28);
+  box-shadow: var(--p-shadow);
 }
 
-body.proyectos-page .project-card:hover{
-  border-color: rgba(233,238,245,.26);
+body.proyectos-page .project-card:hover::before{
+  opacity: 1;
 }
 
 /* Hero projects */
@@ -132,16 +144,40 @@ body.proyectos-page .project-card:nth-child(7){
   padding: 18px;
 }
 
+/* ===== REVEAL SEGURO (NO se desaparece si JS falla) ===== */
+/* Por defecto SIEMPRE visible */
+body.proyectos-page .project-card{
+  opacity: 1;
+}
+
+/* SOLO si JS está activo, inicia oculto y revela */
+html.js body.proyectos-page .project-card{
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+  transition:
+    opacity .65s ease,
+    transform .65s ease,
+    box-shadow .32s ease,
+    border-color .32s ease;
+}
+
+html.js body.proyectos-page .project-card.is-inview{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* ==========================================
    Galería
    ========================================== */
 body.proyectos-page .project-image{
   margin: 0 0 14px;
+  position: relative;
+  z-index: 1; /* encima del overlay */
 }
 
 body.proyectos-page .project-gallery{
   position: relative;
-  border-radius: 14px;
+  border-radius: var(--p-radius-sm);
   overflow: hidden;
   border: 1px solid rgba(233,238,245,.14);
   background: rgba(255,255,255,.03);
@@ -160,28 +196,28 @@ body.proyectos-page .project-gallery-track{
 
 body.proyectos-page .project-gallery-track::-webkit-scrollbar{ height: 8px; }
 body.proyectos-page .project-gallery-track::-webkit-scrollbar-thumb{
-  background: rgba(233,238,245,.12);
-  border-radius: 10px;
+  background: rgba(233,238,245,.14);
+  border-radius: 999px;
 }
 
 body.proyectos-page .project-gallery-track img{
-  width: min(520px, 88%);
-  height: 280px;
+  width: min(560px, 88%);
+  height: 290px;
   object-fit: cover;
   border-radius: 12px;
   scroll-snap-align: start;
-  border: 1px solid rgba(233,238,245,.10);
+  border: 1px solid rgba(233,238,245,.12);
   filter: contrast(1.02) saturate(1.03);
   transform: translateZ(0);
   transition: transform .45s ease, filter .45s ease;
 }
 
 body.proyectos-page .project-card:hover .project-gallery-track img{
-  filter: contrast(1.05) saturate(1.06);
+  filter: contrast(1.06) saturate(1.06);
 }
 
 /* ==========================================
-   Flechas slider
+   Flechas slider (más pro + accesible)
    ========================================== */
 body.proyectos-page .proj-arrow{
   position: absolute;
@@ -190,14 +226,14 @@ body.proyectos-page .proj-arrow{
   width: 42px;
   height: 42px;
   border-radius: 999px;
-  border: 1px solid rgba(233,238,245,.22);
-  background: rgba(10,12,16,.60);
+  border: 1px solid rgba(233,238,245,.24);
+  background: rgba(10,12,16,.62);
   color: var(--p-ink);
   display: grid;
   place-items: center;
   cursor: pointer;
-  z-index: 2;
-  backdrop-filter: blur(8px);
+  z-index: 3;
+  backdrop-filter: blur(10px);
   transition: transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
   opacity: .92;
   user-select: none;
@@ -207,8 +243,8 @@ body.proyectos-page .proj-arrow.left{ left: 10px; }
 body.proyectos-page .proj-arrow.right{ right: 10px; }
 
 body.proyectos-page .proj-arrow:hover{
-  background: rgba(10,12,16,.80);
-  border-color: rgba(233,238,245,.38);
+  background: rgba(10,12,16,.82);
+  border-color: rgba(233,238,245,.40);
   transform: translateY(-50%) scale(1.06);
 }
 
@@ -216,43 +252,65 @@ body.proyectos-page .proj-arrow:active{
   transform: translateY(-50%) scale(.98);
 }
 
+/* Si el JS detecta que no hay overflow, oculta flechas */
+body.proyectos-page .project-gallery.no-arrows .proj-arrow{
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Focus accesible */
+body.proyectos-page .proj-arrow:focus-visible{
+  outline: 2px solid rgba(233,238,245,.55);
+  outline-offset: 2px;
+}
+
 /* ==========================================
-   Texto del card
+   Texto del card (jerarquía + legibilidad)
    ========================================== */
+body.proyectos-page .project-card h3,
+body.proyectos-page .project-card p{
+  position: relative;
+  z-index: 1; /* encima del overlay */
+}
+
 body.proyectos-page .project-card h3{
-  margin: 8px 6px 10px;
+  margin: 10px 6px 10px;
   color: var(--p-ink);
   font-weight: 900;
-  letter-spacing: .05em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  font-size: 1.02rem;
+  font-size: 1.03rem;
   line-height: 1.25;
 }
 
 body.proyectos-page .project-card p{
   margin: 0 6px 12px;
   color: var(--p-muted);
-  line-height: 1.75;
+  line-height: 1.8;
   font-size: 1.0rem;
 }
 
+/* Ajuste para cards grandes */
 body.proyectos-page .project-card:nth-child(1) h3,
 body.proyectos-page .project-card:nth-child(6) h3,
 body.proyectos-page .project-card:nth-child(7) h3{
-  font-size: 1.15rem;
+  font-size: 1.16rem;
 }
 
 /* ==========================================
    Reduced motion
    ========================================== */
 @media (prefers-reduced-motion: reduce){
-  body.proyectos-page .project-card{
+  html.js body.proyectos-page .project-card{
     opacity: 1;
     transform: none;
     transition: none;
   }
   body.proyectos-page .project-gallery-track{
     scroll-behavior: auto;
+  }
+  body.proyectos-page .project-card:hover{
+    transform: none;
   }
 }
 
@@ -261,13 +319,13 @@ body.proyectos-page .project-card:nth-child(7) h3{
    ========================================== */
 @media (max-width: 1100px){
   body.proyectos-page .project-gallery-track img{
-    height: 260px;
+    height: 265px;
   }
 }
 
 @media (max-width: 900px){
   body.proyectos-page .projects-header{
-    padding-top: 54px;
+    padding-top: 56px;
   }
 
   body.proyectos-page .project-card{
