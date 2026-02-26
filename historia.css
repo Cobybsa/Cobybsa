@@ -260,3 +260,29 @@ body.historia-page{
   text-transform: uppercase;
   color: rgba(17,17,17,.72);
 }
+/* ===== MARQUEE FULL-BLEED (arregla “mal colocada”) ===== */
+.hx-marquee{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);   /* saca la sección del ancho del container */
+  border-top: 1px solid rgba(17,17,17,.12);
+  border-bottom: 1px solid rgba(17,17,17,.12);
+  background: rgba(255,255,255,.55);
+  overflow: hidden;
+}
+
+.hx-marquee-track{
+  display: flex;
+  gap: 2rem;
+  padding: 12px 0;
+  white-space: nowrap;
+  will-change: transform;
+  opacity: .9;
+}
+
+.hx-marquee-track span{
+  font-family: "Georgia","Times New Roman",serif;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(17,17,17,.70);
+}
