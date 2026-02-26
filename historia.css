@@ -228,3 +228,35 @@ body.historia-page{
   .hx-grid3{ grid-template-columns: 1fr; }
   .hx-steps{ grid-template-columns: 1fr; }
 }
+/* ===== Marquee full width (arreglo de alineación) ===== */
+.hx-marquee{
+  /* que se salga del contenedor y ocupe toda la pantalla */
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+
+  /* estética */
+  border-top: 1px solid rgba(17,17,17,.10);
+  border-bottom: 1px solid rgba(17,17,17,.10);
+  background: rgba(255,255,255,.35);
+
+  overflow: hidden;
+  padding: 14px 0;
+}
+
+.hx-marquee-track{
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.hx-marquee-track span{
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(17,17,17,.72);
+}
