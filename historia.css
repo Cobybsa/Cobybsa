@@ -13,7 +13,8 @@
 
 /* Fondo crema SOLO en Historia */
 body.historia-page{
-  background: radial-gradient(circle at top, #ffffff 0, var(--paper) 52%, #efe6d8 100%);
+  background:
+    radial-gradient(circle at top, #ffffff 0, var(--paper) 52%, #efe6d8 100%);
   color: var(--ink);
 }
 
@@ -83,30 +84,41 @@ body.historia-page{
   flex-wrap: wrap;
 }
 
-/* Marquee */
+/* =========================
+   MARQUEE FULL-BLEED (ÚNICO)
+   ========================= */
+
 .hx-marquee{
-  margin: 18px 0 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); /* full-bleed real sin transform */
+  margin-top: 18px;
+
+  border-top: 1px solid rgba(17,17,17,.12);
+  border-bottom: 1px solid rgba(17,17,17,.12);
+
   background: rgba(255,255,255,.45);
   backdrop-filter: blur(6px);
+  overflow: hidden;
 }
 
 .hx-marquee-track{
-  display: flex;
+  display: inline-flex;         /* clave para que no "salte" */
+  align-items: center;
   gap: 32px;
   white-space: nowrap;
-  padding: 14px 0;
+
+  padding: 12px 0;
   will-change: transform;
   transform: translateX(0);
+  opacity: .9;
 }
 
 .hx-marquee-track span{
+  display: inline-block;
   font-size: 12px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(20,20,20,.70);
+  color: rgba(17,17,17,.70);
 }
 
 /* Stats */
@@ -227,62 +239,4 @@ body.historia-page{
 @media (max-width: 980px){
   .hx-grid3{ grid-template-columns: 1fr; }
   .hx-steps{ grid-template-columns: 1fr; }
-}
-/* ===== Marquee full width (arreglo de alineación) ===== */
-.hx-marquee{
-  /* que se salga del contenedor y ocupe toda la pantalla */
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-
-  /* estética */
-  border-top: 1px solid rgba(17,17,17,.10);
-  border-bottom: 1px solid rgba(17,17,17,.10);
-  background: rgba(255,255,255,.35);
-
-  overflow: hidden;
-  padding: 14px 0;
-}
-
-.hx-marquee-track{
-  display: inline-flex;
-  align-items: center;
-  gap: 28px;
-
-  white-space: nowrap;
-  will-change: transform;
-}
-
-.hx-marquee-track span{
-  display: inline-block;
-  font-size: 12px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(17,17,17,.72);
-}
-/* ===== MARQUEE FULL-BLEED (arregla “mal colocada”) ===== */
-.hx-marquee{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);   /* saca la sección del ancho del container */
-  border-top: 1px solid rgba(17,17,17,.12);
-  border-bottom: 1px solid rgba(17,17,17,.12);
-  background: rgba(255,255,255,.55);
-  overflow: hidden;
-}
-
-.hx-marquee-track{
-  display: flex;
-  gap: 2rem;
-  padding: 12px 0;
-  white-space: nowrap;
-  will-change: transform;
-  opacity: .9;
-}
-
-.hx-marquee-track span{
-  font-family: "Georgia","Times New Roman",serif;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  font-size: 12px;
-  color: rgba(17,17,17,.70);
 }
