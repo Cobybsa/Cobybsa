@@ -2,44 +2,42 @@
    PROYECTOS — Diseño premium (portafolio industrial)
    Archivo: proyectos.css
    Requiere: style.css (global)
-   No cambia HTML.
    ========================================== */
 
 :root{
-  --p-bg: #0b0f14;         /* fondo oscuro elegante */
-  --p-ink: #e9eef5;        /* texto principal */
+  --p-bg: #0b0f14;
+  --p-ink: #e9eef5;
   --p-muted: rgba(233,238,245,.72);
   --p-soft: rgba(233,238,245,.10);
   --p-line: rgba(233,238,245,.16);
   --p-glow: rgba(233,238,245,.08);
 }
 
-/* Fondo y base SOLO en proyectos */
-body{
+/* ===== Scope SOLO en Proyectos ===== */
+body.proyectos-page{
   background: var(--p-bg);
+  color: var(--p-ink);
 }
 
-/* Asegura que el main no deje “franjas raras” */
-main{
+body.proyectos-page main{
   background: transparent;
 }
 
-/* Container general para proyectos */
-.projects-inner{
+/* Container general */
+body.proyectos-page .projects-inner{
   max-width: 1180px;
 }
 
 /* ==========================================
-   Header de página (H1 + intro) tipo “case studies”
+   Header
    ========================================== */
-.projects-header{
+body.proyectos-page .projects-header{
   padding: 70px 0 18px;
   border-bottom: 1px solid var(--p-line);
   position: relative;
 }
 
-/* Línea secundaria */
-.projects-header::after{
+body.proyectos-page .projects-header::after{
   content:"";
   position:absolute;
   left:0; right:0;
@@ -48,9 +46,8 @@ main{
   background: rgba(233,238,245,.08);
 }
 
-/* Título grande con look industrial */
-.projects-header h1,
-.projects-header h2{
+body.proyectos-page .projects-header h1,
+body.proyectos-page .projects-header h2{
   margin: 0;
   color: var(--p-ink);
   letter-spacing: .08em;
@@ -60,7 +57,7 @@ main{
   line-height: 1.05;
 }
 
-.projects-header p{
+body.proyectos-page .projects-header p{
   margin: 14px 0 0;
   max-width: 85ch;
   color: var(--p-muted);
@@ -69,17 +66,17 @@ main{
 }
 
 /* ==========================================
-   Grid: layout “gallery premium”
+   Grid
    ========================================== */
-.projects-grid{
+body.proyectos-page .projects-grid{
   margin-top: 34px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 18px;
 }
 
-/* Cada card ocupa 6 columnas (2 por fila), algunas destacadas */
-.project-card{
+/* Card base */
+body.proyectos-page .project-card{
   grid-column: span 6;
   border: 1px solid var(--p-line);
   background:
@@ -91,10 +88,24 @@ main{
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
   position: relative;
   transform: translateZ(0);
+
+  /* reveal default */
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+  transition:
+    opacity .65s ease,
+    transform .65s ease,
+    border-color .35s ease;
+  will-change: transform, opacity;
 }
 
-/* “Glow” sutil al hover */
-.project-card::before{
+body.proyectos-page .project-card.is-inview{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Glow hover */
+body.proyectos-page .project-card::before{
   content:"";
   position:absolute;
   inset:-2px;
@@ -105,30 +116,30 @@ main{
   pointer-events: none;
 }
 
-.project-card:hover::before{
+body.proyectos-page .project-card:hover::before{
   opacity: 1;
 }
 
-.project-card:hover{
+body.proyectos-page .project-card:hover{
   border-color: rgba(233,238,245,.26);
 }
 
-/* Destacar algunas cards (1, 6, 7) como “hero projects” */
-.project-card:nth-child(1),
-.project-card:nth-child(6),
-.project-card:nth-child(7){
+/* Hero projects */
+body.proyectos-page .project-card:nth-child(1),
+body.proyectos-page .project-card:nth-child(6),
+body.proyectos-page .project-card:nth-child(7){
   grid-column: span 12;
   padding: 18px;
 }
 
 /* ==========================================
-   Galería / Imagen
+   Galería
    ========================================== */
-.project-image{
+body.proyectos-page .project-image{
   margin: 0 0 14px;
 }
 
-.project-gallery{
+body.proyectos-page .project-gallery{
   position: relative;
   border-radius: 14px;
   overflow: hidden;
@@ -136,24 +147,24 @@ main{
   background: rgba(255,255,255,.03);
 }
 
-/* Track scroll horizontal (smooth) */
-.project-gallery-track{
+/* Track */
+body.proyectos-page .project-gallery-track{
   display: flex;
   gap: 10px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Ocultar scrollbar (sin romper accesibilidad) */
-.project-gallery-track::-webkit-scrollbar{ height: 8px; }
-.project-gallery-track::-webkit-scrollbar-thumb{
+body.proyectos-page .project-gallery-track::-webkit-scrollbar{ height: 8px; }
+body.proyectos-page .project-gallery-track::-webkit-scrollbar-thumb{
   background: rgba(233,238,245,.12);
   border-radius: 10px;
 }
 
-.project-gallery-track img{
+body.proyectos-page .project-gallery-track img{
   width: min(520px, 88%);
   height: 280px;
   object-fit: cover;
@@ -165,14 +176,14 @@ main{
   transition: transform .45s ease, filter .45s ease;
 }
 
-.project-card:hover .project-gallery-track img{
+body.proyectos-page .project-card:hover .project-gallery-track img{
   filter: contrast(1.05) saturate(1.06);
 }
 
 /* ==========================================
-   Flechas del slider (más pro)
+   Flechas slider
    ========================================== */
-.proj-arrow{
+body.proyectos-page .proj-arrow{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -189,25 +200,26 @@ main{
   backdrop-filter: blur(8px);
   transition: transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
   opacity: .92;
+  user-select: none;
 }
 
-.proj-arrow.left{ left: 10px; }
-.proj-arrow.right{ right: 10px; }
+body.proyectos-page .proj-arrow.left{ left: 10px; }
+body.proyectos-page .proj-arrow.right{ right: 10px; }
 
-.proj-arrow:hover{
+body.proyectos-page .proj-arrow:hover{
   background: rgba(10,12,16,.80);
   border-color: rgba(233,238,245,.38);
   transform: translateY(-50%) scale(1.06);
 }
 
-.proj-arrow:active{
+body.proyectos-page .proj-arrow:active{
   transform: translateY(-50%) scale(.98);
 }
 
 /* ==========================================
-   Título y texto del card (jerarquía premium)
+   Texto del card
    ========================================== */
-.project-card h3{
+body.proyectos-page .project-card h3{
   margin: 8px 6px 10px;
   color: var(--p-ink);
   font-weight: 900;
@@ -217,68 +229,76 @@ main{
   line-height: 1.25;
 }
 
-.project-card p{
+body.proyectos-page .project-card p{
   margin: 0 6px 12px;
   color: var(--p-muted);
   line-height: 1.75;
   font-size: 1.0rem;
 }
 
-/* Ajuste para cards grandes (cuando ocupan 12 columnas) */
-.project-card:nth-child(1) h3,
-.project-card:nth-child(6) h3,
-.project-card:nth-child(7) h3{
+body.proyectos-page .project-card:nth-child(1) h3,
+body.proyectos-page .project-card:nth-child(6) h3,
+body.proyectos-page .project-card:nth-child(7) h3{
   font-size: 1.15rem;
 }
 
-/* Separador sutil abajo del texto (tipo “case study”) */
-.project-card p:last-of-type{
-  margin-bottom: 6px;
+/* ==========================================
+   Reduced motion
+   ========================================== */
+@media (prefers-reduced-motion: reduce){
+  body.proyectos-page .project-card{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  body.proyectos-page .project-gallery-track{
+    scroll-behavior: auto;
+  }
 }
 
 /* ==========================================
    Responsive
    ========================================== */
 @media (max-width: 1100px){
-  .project-gallery-track img{
+  body.proyectos-page .project-gallery-track img{
     height: 260px;
   }
 }
 
 @media (max-width: 900px){
-  .projects-header{
+  body.proyectos-page .projects-header{
     padding-top: 54px;
   }
 
-  .project-card{
+  body.proyectos-page .project-card{
     grid-column: span 12;
   }
 
-  .project-gallery-track img{
+  body.proyectos-page .project-gallery-track img{
     width: 92%;
     height: 240px;
   }
 }
 
 @media (max-width: 560px){
-  .projects-grid{
+  body.proyectos-page .projects-grid{
     gap: 14px;
   }
 
-  .project-card{
+  body.proyectos-page .project-card{
     border-radius: 16px;
     padding: 14px;
   }
 
-  .project-gallery-track{
+  body.proyectos-page .project-gallery-track{
     padding: 8px;
   }
 
-  .project-gallery-track img{
+  body.proyectos-page .project-gallery-track img{
     height: 210px;
   }
 
-  .proj-arrow{
+  body.proyectos-page .proj-arrow{
     width: 38px;
     height: 38px;
   }
