@@ -1,8 +1,8 @@
 (() => {
   const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* =========================
-     1) Scroll-velocity marquee
+   /* =========================
+     1) Scroll-velocity marquee (loop limpio)
      ========================= */
   const track = document.querySelector("[data-scroll-velocity]");
   if (track && !reduceMotion) {
@@ -15,22 +15,32 @@
       const dy = y - lastY;
       lastY = y;
 
-      // velocidad suavizada (más scroll => más velocidad)
+      // velocidad suavizada
       v += (dy * 0.18 - v) * 0.12;
 
+      // dirección según scroll (abajo => izquierda, arriba => derecha)
+      const dir = v >= 0 ? -1 : 1;
+
       // base speed + extra por velocidad
-      x -= (0.6 + Math.min(6, Math.abs(v) * 0.12)) * (v < 0 ? -1 : 1);
+      const speed = 0.6 + Math.min(6, Math.abs(v) * 0.12);
 
-      // loop simple
+      // avance
+      x += speed * dir;
+
+      // ancho de UNA repetición (porque hay 2 spans iguales)
       const w = track.scrollWidth / 2;
-      if (w > 0) x = ((x % w) + w) % w;
 
-      track.style.transform = `translateX(${-x}px)`;
+      // wrap estable en [0, w)
+      if (w > 0) {
+        x = ((x % w) + w) % w;
+        track.style.transform = `translate3d(${-x}px, 0, 0)`;
+      }
+
       requestAnimationFrame(tick);
     }
+
     requestAnimationFrame(tick);
   }
-
   /* =========================
      2) Count-up on view
      ========================= */
