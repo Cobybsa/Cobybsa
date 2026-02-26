@@ -21,7 +21,7 @@
   }
 
   /* =========================
-     2) Gallery arrows scroll
+     2) Gallery arrows scroll + arrow state
      ========================= */
   const galleries = document.querySelectorAll(".project-gallery");
   galleries.forEach((gallery) => {
@@ -30,17 +30,17 @@
     const right = gallery.querySelector(".proj-arrow.right");
     if (!track || !left || !right) return;
 
+    // Evita doble scroll si hay onclick en el HTML
+    left.onclick = null;
+    right.onclick = null;
+
     const step = () => Math.max(280, Math.round(track.clientWidth * 0.85));
 
-    left.addEventListener("click", () => {
-      track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
-    });
-    right.addEventListener("click", () => {
-      track.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" });
-    });
-
-    // Mostrar/ocultar flechas según overflow real
     const updateArrows = () => {
+      // Oculta flechas si no hay overflow real
+      const hasOverflow = track.scrollWidth > track.clientWidth + 4;
+      gallery.classList.toggle("no-arrows", !hasOverflow);
+
       const max = track.scrollWidth - track.clientWidth - 1;
       left.style.opacity = track.scrollLeft <= 2 ? ".35" : ".92";
       right.style.opacity = track.scrollLeft >= max ? ".35" : ".92";
@@ -48,9 +48,27 @@
       right.style.pointerEvents = track.scrollLeft >= max ? "none" : "auto";
     };
 
+    left.addEventListener("click", () => {
+      track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
+      // actualiza luego del scroll
+      requestAnimationFrame(updateArrows);
+      setTimeout(updateArrows, 220);
+    });
+
+    right.addEventListener("click", () => {
+      track.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" });
+      requestAnimationFrame(updateArrows);
+      setTimeout(updateArrows, 220);
+    });
+
     track.addEventListener("scroll", updateArrows, { passive: true });
     window.addEventListener("resize", updateArrows);
-    updateArrows();
-  });
 
+    // Inicialización (espera a que carguen imágenes)
+    if (document.readyState === "complete") {
+      updateArrows();
+    } else {
+      window.addEventListener("load", updateArrows, { once: true });
+    }
+  });
 })();
