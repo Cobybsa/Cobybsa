@@ -1,9 +1,9 @@
 /* ==============================
-   HISTORIA (nuevo diseño crema)
+   HISTORIA (Diseño Editorial Crema)
    ============================== */
 
 :root{
-  --paper: #f7f2e8;   /* crema */
+  --paper: #f7f2e8;
   --ink: #141414;
   --muted: rgba(20,20,20,.68);
   --line: rgba(20,20,20,.14);
@@ -11,24 +11,30 @@
   --shadow: 0 22px 70px rgba(0,0,0,.12);
 }
 
-/* Fondo crema SOLO en Historia */
+/* ==============================
+   Fondo exclusivo Historia
+   ============================== */
+
 body.historia-page{
   background:
     radial-gradient(circle at top, #ffffff 0, var(--paper) 52%, #efe6d8 100%);
   color: var(--ink);
 }
 
-/* Tipografía editorial en Historia */
+/* Tipografía editorial */
 .historia-page main,
 .historia-page main *{
   font-family: ui-serif, Georgia, "Times New Roman", serif;
-  color: var(--ink);
 }
 
-/* Evitar que style.css (oscuro) ensucie textos */
-.historia-page p{ color: var(--muted); }
+.historia-page p{
+  color: var(--muted);
+}
 
-/* Contenedor */
+/* ==============================
+   Layout base
+   ============================== */
+
 .history-new{
   padding: 44px 0 80px;
 }
@@ -38,7 +44,10 @@ body.historia-page{
   margin: 0 auto;
 }
 
-/* HERO */
+/* ==============================
+   HERO
+   ============================== */
+
 .hx-hero{
   padding: 22px 0 34px;
 }
@@ -84,9 +93,9 @@ body.historia-page{
   flex-wrap: wrap;
 }
 
-/* =========================
-   MARQUEE FULL-BLEED (ÚNICO)
-   ========================= */
+/* ==============================
+   MARQUEE FULL BLEED
+   ============================== */
 
 .hx-marquee{
   width: 100vw;
@@ -104,16 +113,17 @@ body.historia-page{
 .hx-marquee-track{
   display: flex;
   align-items: center;
-  width: max-content;       /* IMPORTANTÍSIMO */
+  width: max-content; /* CRÍTICO: evita huecos */
   white-space: nowrap;
   gap: 32px;
 
   padding: 12px 0;
   will-change: transform;
-  animation: hx-marquee-move 18s linear infinite; /* velocidad */
+  transform: translate3d(0,0,0);
 }
 
 .hx-marquee-track span{
+  flex: 0 0 auto;
   display: inline-block;
   font-size: 12px;
   letter-spacing: .22em;
@@ -121,17 +131,10 @@ body.historia-page{
   color: rgba(17,17,17,.70);
 }
 
-@keyframes hx-marquee-move{
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* porque hay 2 copias */
-}
+/* ==============================
+   STATS
+   ============================== */
 
-/* opcional: si alguien tiene "reducir movimiento" */
-@media (prefers-reduced-motion: reduce){
-  .hx-marquee-track{ animation: none; }
-}
-
-/* Stats */
 .hx-stats{
   padding: 28px 0 10px;
 }
@@ -146,7 +149,7 @@ body.historia-page{
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 18px 18px 16px;
+  padding: 20px 20px 18px;
   box-shadow: var(--shadow);
 }
 
@@ -166,7 +169,10 @@ body.historia-page{
   color: rgba(20,20,20,.62);
 }
 
-/* Timeline */
+/* ==============================
+   TIMELINE
+   ============================== */
+
 .hx-timeline{
   padding: 26px 0 0;
 }
@@ -186,7 +192,7 @@ body.historia-page{
 }
 
 .hx-steps{
-  margin-top: 20px;
+  margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
@@ -196,15 +202,22 @@ body.historia-page{
   background: rgba(255,255,255,.62);
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 18px 18px 16px;
+  padding: 20px 20px 18px;
   box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hx-step:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 30px 90px rgba(0,0,0,.18);
 }
 
 .hx-step-head{
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .hx-tag{
@@ -230,7 +243,7 @@ body.historia-page{
 }
 
 .hx-step p{
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   font-size: 16px;
   line-height: 1.75;
 }
@@ -245,8 +258,38 @@ body.historia-page{
   margin-bottom: 8px;
 }
 
-/* Responsive */
+/* ==============================
+   Imagen opcional en cards
+   ============================== */
+
+.hx-step img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+  opacity: .95;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
 @media (max-width: 980px){
-  .hx-grid3{ grid-template-columns: 1fr; }
-  .hx-steps{ grid-template-columns: 1fr; }
+  .hx-grid3{
+    grid-template-columns: 1fr;
+  }
+
+  .hx-steps{
+    grid-template-columns: 1fr;
+  }
+
+  .hx-title{
+    font-size: clamp(34px, 7vw, 48px);
+  }
+
+  .hx-lead{
+    font-size: 16px;
+  }
 }
