@@ -1,3 +1,6 @@
+// Activa “modo JS” para que el CSS solo oculte/animé cuando JS esté corriendo
+document.documentElement.classList.add("js");
+
 (() => {
   const reduceMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -6,22 +9,28 @@
      1) Reveal cards on view
      ========================= */
   const cards = document.querySelectorAll(".project-card");
-  if (cards.length && !reduceMotion) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add("is-inview");
-        io.unobserve(e.target);
-      });
-    }, { threshold: 0.18 });
+  if (!cards.length) return;
+
+  // Si reduce motion, muestre todo sin animación
+  if (reduceMotion) {
+    cards.forEach((c) => c.classList.add("is-inview"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-inview");
+          io.unobserve(e.target);
+        });
+      },
+      { threshold: 0.18 }
+    );
 
     cards.forEach((c) => io.observe(c));
-  } else {
-    cards.forEach((c) => c.classList.add("is-inview"));
   }
 
   /* =========================
-     2) Gallery arrows scroll + arrow state
+     2) Gallery arrows scroll + estado
      ========================= */
   const galleries = document.querySelectorAll(".project-gallery");
   galleries.forEach((gallery) => {
@@ -37,20 +46,22 @@
     const step = () => Math.max(280, Math.round(track.clientWidth * 0.85));
 
     const updateArrows = () => {
-      // Oculta flechas si no hay overflow real
+      // Si no hay overflow real, esconda flechas
       const hasOverflow = track.scrollWidth > track.clientWidth + 4;
       gallery.classList.toggle("no-arrows", !hasOverflow);
 
       const max = track.scrollWidth - track.clientWidth - 1;
-      left.style.opacity = track.scrollLeft <= 2 ? ".35" : ".92";
-      right.style.opacity = track.scrollLeft >= max ? ".35" : ".92";
-      left.style.pointerEvents = track.scrollLeft <= 2 ? "none" : "auto";
-      right.style.pointerEvents = track.scrollLeft >= max ? "none" : "auto";
+      const atStart = track.scrollLeft <= 2;
+      const atEnd = track.scrollLeft >= max;
+
+      left.style.opacity = atStart ? ".35" : ".92";
+      right.style.opacity = atEnd ? ".35" : ".92";
+      left.style.pointerEvents = atStart ? "none" : "auto";
+      right.style.pointerEvents = atEnd ? "none" : "auto";
     };
 
     left.addEventListener("click", () => {
       track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
-      // actualiza luego del scroll
       requestAnimationFrame(updateArrows);
       setTimeout(updateArrows, 220);
     });
@@ -64,7 +75,7 @@
     track.addEventListener("scroll", updateArrows, { passive: true });
     window.addEventListener("resize", updateArrows);
 
-    // Inicialización (espera a que carguen imágenes)
+    // Inicialización (espera carga de imágenes para medir scrollWidth real)
     if (document.readyState === "complete") {
       updateArrows();
     } else {
