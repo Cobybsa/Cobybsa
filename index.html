@@ -72,62 +72,69 @@
     <!-- =========================
          HERO
     ========================= -->
-    <section class="hero" id="hero">
-      <div class="container hero-inner">
+   <section class="hero" id="hero">
 
-        <!-- COLUMNA IZQUIERDA -->
-        <div class="hero-content">
+  <!-- Fondo tipo ReactBits SOLO para el HERO -->
+  <div class="hero-rb hero-rb--grid" aria-hidden="true"></div>
+  <!-- Si quiere Prism: cambie hero-rb--grid por hero-rb--prism -->
 
-          <div class="badge">
-            <span class="badge-dot" aria-hidden="true"></span>
-            <span id="cms-hero-badge">Ingeniería mecánica de alta precisión</span>
-          </div>
+  <div class="container hero-inner">
 
-          <!-- Mantengo su texto, solo dejo estructura limpia -->
-          <div class="hero-title" id="cms-hero-title">
-            Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria
-          </div>
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="hero-content">
 
-          <p id="cms-hero-desc">
-            En COBYBSA diseñamos y fabricamos estructuras, tanques, accesorios y soluciones
-            industriales, con estándares de precisión que garantizan desempeño y confiabilidad
-            en cada operación.
-          </p>
-
-          <p id="cms-hero-extra">
-            El nivel más alto de calidad es <strong>COBYBSA</strong>
-          </p>
-
-          <div class="hero-actions">
-            <!-- Si su archivo real es cotizacion.html y NO quiere redirects, cambie a /cotizacion.html -->
-            <a id="cms-hero-cta1" href="/cotizacion.html" class="btn btn-primary">
-              <span id="cms-hero-cta1-text">Solicitar cotización</span>
-            </a>
-
-            <a id="cms-hero-cta2" href="/proyectos.html" class="btn btn-ghost">
-              <span id="cms-hero-cta2-text">Ver proyectos</span>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- COLUMNA DERECHA -->
-        <div class="hero-media">
-          <div class="hero-card">
-            <img
-              id="cms-hero-image"
-              src="/img/hero-guantes.png"
-              alt="Operario utilizando soluciones metalmecánicas de COBYBSA"
-              loading="eager"
-              decoding="async"
-            />
-            <div class="hero-chip" aria-hidden="true"></div>
-          </div>
-        </div>
-
+      <div class="badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span id="cms-hero-badge">Ingeniería mecánica de alta precisión</span>
       </div>
-    </section>
 
+      <!-- Título animado (sin cambiar el texto) -->
+      <h2 class="hero-title hero-title-anim" id="cms-hero-title" data-hero-headline>
+        Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria
+      </h2>
+
+      <p id="cms-hero-desc">
+        En COBYBSA diseñamos y fabricamos estructuras, tanques, accesorios y soluciones
+        industriales, con estándares de precisión que garantizan desempeño y confiabilidad
+        en cada operación.
+      </p>
+
+      <p id="cms-hero-extra">
+        El nivel más alto de calidad es <strong>COBYBSA</strong>
+      </p>
+
+      <div class="hero-actions">
+        <a id="cms-hero-cta1" href="/cotizacion.html" class="btn btn-primary">
+          <span id="cms-hero-cta1-text">Solicitar cotización</span>
+        </a>
+
+        <a id="cms-hero-cta2" href="/proyectos.html" class="btn btn-ghost">
+          <span id="cms-hero-cta2-text">Ver proyectos</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- COLUMNA DERECHA (visual premium) -->
+    <div class="hero-media">
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual-frame">
+          <img
+            id="cms-hero-image"
+            class="hero-visual-img"
+            src="/img/hero-guantes.png"
+            alt="Operario utilizando soluciones metalmecánicas de COBYBSA"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="hero-visual-glow"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+    
     <!-- =========================
          NOVEDADES (INICIO / INDEX)
     ========================= -->
