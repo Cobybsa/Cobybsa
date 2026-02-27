@@ -43,7 +43,6 @@
       overflow:hidden;
     }
 
-    /* borde sutil tipo “glass” */
     .card:before{
       content:"";
       position:absolute;
@@ -178,79 +177,86 @@
       <div class="divider"></div>
 
       <form action="https://formspree.io/f/mjgreedw" method="POST">
+        <!-- Formspree -->
+        <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA">
+        <input type="hidden" name="_next" value="https://cobybsa.com/gracias.html">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-  <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA">
-  <input type="hidden" name="_next" value="https://cobybsa.com/gracias.html">
-        <!-- campos visibles -->
-  <input type="email" name="email" required>
-</form>
-      
         <div class="grid">
           <div>
-            <label>Nombre completo</label>
-            <input type="text" name="nombre" required />
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" type="text" name="nombre" required autocomplete="name" />
           </div>
           <div>
-            <label>Empresa (opcional)</label>
-            <input type="text" name="empresa" />
+            <label for="empresa">Empresa (opcional)</label>
+            <input id="empresa" type="text" name="empresa" autocomplete="organization" />
           </div>
         </div>
 
         <div class="grid">
           <div>
-            <label>Correo</label>
-            <input type="email" name="email" required />
+            <label for="email">Correo</label>
+            <input id="email" type="email" name="email" required autocomplete="email" inputmode="email" />
           </div>
           <div>
-            <label>WhatsApp</label>
-            <input type="tel" name="whatsapp" placeholder="+506..." required />
+            <label for="whatsapp">WhatsApp</label>
+            <input
+              id="whatsapp"
+              type="tel"
+              name="whatsapp"
+              placeholder="+506 8888 8888"
+              required
+              autocomplete="tel"
+              inputmode="tel"
+              pattern="^\+?[0-9\s\-()]{8,}$"
+              title="Ingrese un número válido (ej: +506 8888 8888)"
+            />
           </div>
         </div>
 
-        <label>Tipo de servicio</label>
-        <select name="servicio" required>
+        <label for="servicio">Tipo de servicio</label>
+        <select id="servicio" name="servicio" required>
           <option value="" disabled selected>Seleccione…</option>
-          <option>Corte láser</option>
-          <option>CNC</option>
-          <option>Hidroforming</option>
-          <option>precisión</option>
-          <option>Fabricación / ensamble</option>
-          <option>Gabinetes / paneles eléctricos</option>
-          <option>Otro</option>
+          <option value="Corte láser">Corte láser</option>
+          <option value="CNC">CNC</option>
+          <option value="Hidroforming">Hidroforming</option>
+          <option value="Ingeniería de precisión">Ingeniería de precisión</option>
+          <option value="Fabricación / ensamble">Fabricación / ensamble</option>
+          <option value="Gabinetes / paneles eléctricos">Gabinetes / paneles eléctricos</option>
+          <option value="Otro">Otro</option>
         </select>
 
-        <label>Detalle de lo que necesita</label>
-        <textarea name="detalle" placeholder="Medidas, material, cantidad, uso, ubicación, referencias, etc." required></textarea>
+        <label for="detalle">Detalle de lo que necesita</label>
+        <textarea
+          id="detalle"
+          name="detalle"
+          placeholder="Medidas, material, cantidad, uso, ubicación, referencias, etc."
+          required
+        ></textarea>
 
         <div class="grid">
           <div>
-            <label>Cantidad aproximada</label>
-            <select name="cantidad" required>
+            <label for="cantidad">Cantidad aproximada</label>
+            <select id="cantidad" name="cantidad" required>
               <option value="" disabled selected>Seleccione…</option>
-              <option>1</option>
-              <option>2–10</option>
-              <option>11–50</option>
-              <option>Más de 50</option>
-              <option>No definido</option>
+              <option value="1">1</option>
+              <option value="2–10">2–10</option>
+              <option value="11–50">11–50</option>
+              <option value="Más de 50">Más de 50</option>
+              <option value="No definido">No definido</option>
             </select>
           </div>
           <div>
-            <label>Fecha objetivo</label>
-            <select name="fecha_objetivo" required>
+            <label for="fecha_objetivo">Fecha objetivo</label>
+            <select id="fecha_objetivo" name="fecha_objetivo" required>
               <option value="" disabled selected>Seleccione…</option>
-              <option>Urgente (menos de 1 mes)</option>
-              <option>1–2 meses</option>
-              <option>3-6 meses</option>
-              <option>Flexible</option>
+              <option value="Urgente (menos de 1 mes)">Urgente (menos de 1 mes)</option>
+              <option value="1–2 meses">1–2 meses</option>
+              <option value="3–6 meses">3–6 meses</option>
+              <option value="Flexible">Flexible</option>
             </select>
           </div>
         </div>
-
-        <!-- anti-spam -->
-        <input type="text" name="_gotcha" style="display:none" />
-
-        <!-- redirección -->
-        <input type="hidden" name="_next" value="gracias.html" />
 
         <button class="btn" type="submit">Enviar solicitud</button>
 
