@@ -1,7 +1,8 @@
 /* ==============================
-   INICIO — Premium Industrial
+   INICIO — Premium Industrial (ReactBits hero + anim)
    Archivo: inicio.css
    Requiere: style.css (global)
+   Nota: sin antigravity. Fondo SOLO dentro del HERO.
    ============================== */
 
 :root{
@@ -12,7 +13,9 @@
   --soft: rgba(233,238,245,.10);
 
   --accent: #e78804;          /* naranja “láser” */
-  --accent2: #32b7ff;         /* azul técnico suave */
+  --accent2: #32b7ff;         /* azul técnico */
+  --accent3: #a59eff;         /* violeta (grid/prism) */
+
   --radius: 18px;
   --radius-sm: 14px;
 
@@ -20,13 +23,12 @@
   --shadow-soft: 0 18px 55px rgba(0,0,0,.35);
 }
 
-/* Página inicio (solo carga este CSS en home, así que podemos ser directos) */
+/* Página inicio */
 body{
   background: var(--bg);
   color: var(--ink);
 }
 
-/* Para que el main no genere franjas raras */
 main#inicio{
   background: transparent;
 }
@@ -44,45 +46,34 @@ main#inicio{
 /* ==============================
    HERO
    ============================== */
-
 .hero{
   position: relative;
   overflow: hidden;
   padding: 84px 0 56px;
   border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 
-/* Fondo “beams/rays” suave por CSS (además del canvas antigravity) */
-.hero::before{
+/* Capa “tinta” para que el fondo no ensucie texto */
+.hero::after{
   content:"";
   position:absolute;
-  inset:-40px;
-  background:
-    radial-gradient(900px 420px at 12% 8%, rgba(231,136,4,.14), transparent 60%),
-    radial-gradient(780px 420px at 82% 12%, rgba(50,183,255,.12), transparent 58%),
-    radial-gradient(900px 560px at 55% 100%, rgba(233,238,245,.07), transparent 62%),
-    linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.00));
-  filter: blur(6px);
-  opacity: .95;
+  inset:0;
+  z-index:1;
   pointer-events:none;
+  background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.56));
 }
 
-/* Capa del canvas antigravity (solo dentro del hero como ya lo tiene) */
-.hero-antigravity{
+/* Fondo tipo ReactBits (SOLO en hero) */
+.hero-rb{
   position:absolute;
   inset:0;
+  z-index:0;
   pointer-events:none;
-  opacity: .55;            /* para que no opaque el contenido */
-  mix-blend-mode: screen;  /* look premium */
+  opacity: .80;
 }
 
-#antigravity-canvas{
-  width: 100%;
-  height: 100%;
-  display:block;
-}
-
-/* Layout hero */
+/* Contenido arriba */
 .hero-inner{
   position: relative;
   z-index: 2;
@@ -115,7 +106,7 @@ main#inicio{
   box-shadow: 0 0 22px rgba(231,136,4,.28);
 }
 
-/* Título principal */
+/* Título */
 .hero-title{
   margin-top: 18px;
   font-weight: 900;
@@ -138,11 +129,9 @@ main#inicio{
 #cms-hero-desc{ margin-top: 14px; }
 #cms-hero-extra{ margin-top: 10px; }
 
-#cms-hero-extra strong{
-  color: var(--ink);
-}
+#cms-hero-extra strong{ color: var(--ink); }
 
-/* Botones */
+/* Botones (sin romper style.css) */
 .hero-actions{
   margin-top: 18px;
   display: flex;
@@ -150,7 +139,6 @@ main#inicio{
   flex-wrap: wrap;
 }
 
-/* Mejora visual para btns globales sin romper style.css */
 .btn{
   border-radius: 999px !important;
   letter-spacing: .02em;
@@ -161,71 +149,190 @@ main#inicio{
   border: 1px solid rgba(233,238,245,.18) !important;
   box-shadow: 0 18px 55px rgba(231,136,4,.22);
 }
-
-.btn.btn-primary:hover{
-  filter: brightness(1.04);
-}
+.btn.btn-primary:hover{ filter: brightness(1.04); }
 
 .btn.btn-ghost{
   border: 1px solid rgba(233,238,245,.18) !important;
   background: rgba(255,255,255,.04) !important;
 }
 
-/* Tarjeta de imagen */
+/* ==============================
+   HERO VISUAL (reemplaza hero-card)
+   ============================== */
 .hero-media{
-  display: flex;
-  justify-content: flex-end;
+  display:flex;
+  justify-content:flex-end;
 }
 
-.hero-card{
-  width: min(420px, 100%);
-  border-radius: var(--radius);
-  border: 1px solid rgba(233,238,245,.16);
-  background: rgba(255,255,255,.03);
-  box-shadow: var(--shadow);
-  overflow: hidden;
+.hero-visual{
   position: relative;
+  width: min(460px, 100%);
+  margin-left: auto;
+}
+
+.hero-visual-glow{
+  position:absolute;
+  inset:-18%;
+  background:
+    radial-gradient(closest-side at 65% 40%, rgba(231,136,4,.24), transparent 60%),
+    radial-gradient(closest-side at 40% 30%, rgba(50,183,255,.18), transparent 60%),
+    radial-gradient(closest-side at 55% 75%, rgba(165,158,255,.14), transparent 60%);
+  filter: blur(22px);
+  opacity: .55;
+  z-index: -1;
+}
+
+.hero-visual-frame{
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(233,238,245,.14);
+  background:
+    radial-gradient(900px 360px at 30% 0%, rgba(255,255,255,.08), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: 0 26px 90px rgba(0,0,0,.55);
   transform: translateZ(0);
 }
 
-/* Brillo metálico sutil */
-.hero-card::before{
+.hero-visual-frame::before{
   content:"";
   position:absolute;
   inset:-2px;
-  background: radial-gradient(700px 320px at 20% 0%, rgba(233,238,245,.08), transparent 55%);
-  opacity: .9;
+  border-radius: 26px;
+  background: linear-gradient(90deg,
+    rgba(231,136,4,.55),
+    rgba(50,183,255,.55),
+    rgba(165,158,255,.55),
+    rgba(231,136,4,.55)
+  );
+  opacity: .18;
+  filter: blur(10px);
   pointer-events:none;
 }
 
-.hero-card img{
-  width: 100%;
-  height: auto;
+.hero-visual-img{
+  width:100%;
+  height:auto;
   display:block;
   transform: scale(1.02);
   filter: contrast(1.03) saturate(1.05);
 }
 
-/* chip decorativo */
-.hero-chip{
+/* ==============================
+   Fondo tipo ReactBits: GRID SCAN
+   (Use <div class="hero-rb hero-rb--grid">)
+   ============================== */
+.hero-rb--grid{
+  background:
+    radial-gradient(900px 520px at 18% 15%, rgba(165,158,255,.18), transparent 62%),
+    radial-gradient(920px 520px at 82% 10%, rgba(231,136,4,.14), transparent 62%),
+    radial-gradient(1000px 600px at 50% 120%, rgba(255,255,255,.06), transparent 70%),
+    var(--bg);
+}
+
+.hero-rb--grid::before{
+  content:"";
   position:absolute;
-  right: 14px;
-  bottom: 14px;
-  width: 110px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1px solid rgba(233,238,245,.18);
-  background: rgba(10,12,16,.55);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 35px rgba(0,0,0,.35);
+  inset:-2px;
+  background:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: .10;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
+}
+
+.hero-rb--grid::after{
+  content:"";
+  position:absolute;
+  inset:-30% -10%;
+  background:
+    radial-gradient(closest-side, rgba(165,158,255,.35), transparent 60%) 0 0/ 420px 420px,
+    radial-gradient(closest-side, rgba(231,136,4,.30), transparent 60%) 180px 120px/ 520px 520px;
+  opacity: .12;
+  filter: blur(10px);
+  animation: heroScan 8.5s linear infinite;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
+}
+
+@keyframes heroScan{
+  0%{ transform: translate3d(-2%, -2%, 0); }
+  50%{ transform: translate3d(3%, 2%, 0); }
+  100%{ transform: translate3d(-2%, -2%, 0); }
+}
+
+/* ==============================
+   Fondo tipo ReactBits: PRISM
+   (Si quiere usarlo, cambie class a hero-rb--prism)
+   ============================== */
+.hero-rb--prism{
+  background:
+    radial-gradient(900px 520px at 18% 15%, rgba(165,158,255,.18), transparent 62%),
+    radial-gradient(920px 520px at 82% 10%, rgba(231,136,4,.14), transparent 62%),
+    var(--bg);
+}
+
+.hero-rb--prism::before{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  background: conic-gradient(
+    from 120deg,
+    rgba(231,136,4,.20),
+    rgba(165,158,255,.18),
+    rgba(50,183,255,.16),
+    rgba(231,136,4,.20)
+  );
+  filter: blur(26px);
+  opacity: .22;
+  animation: prismSpin 16s linear infinite;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
+}
+@keyframes prismSpin{ to{ transform: rotate(360deg); } }
+
+/* ==============================
+   Animación pro del título (chars)
+   Requiere JS que envuelva .ch y añada .is-ready
+   ============================== */
+.hero-title-anim{
+  display:block;
+  line-height: 1.02;
+}
+
+.hero-title-anim .ch{
+  display:inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(10px);
+  transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+  will-change: transform, opacity, filter;
+}
+
+.hero-title-anim.is-ready .ch{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.hero-title-anim .hl{
+  background: linear-gradient(90deg, rgba(231,136,4,.95), rgba(50,183,255,.95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ==============================
    NOVEDADES
    ============================== */
-
 .news-section{
+  position: relative;
+  z-index: 3;              /* corta el fondo del hero aquí */
+  background: var(--bg);
   padding: 44px 0 80px;
+  border-top: 1px solid rgba(233,238,245,.10);
 }
 
 .news-header{
@@ -276,7 +383,6 @@ main#inicio{
 }
 
 .news-carousel{
-  border-top: 1px solid rgba(233,238,245,.10);
   padding-top: 18px;
 }
 
@@ -367,14 +473,11 @@ main#inicio{
 /* ==============================
    REVEAL (seguro)
    ============================== */
-
-/* Por defecto visible */
 .reveal{
   opacity: 1;
   transform: none;
 }
 
-/* Solo si JS está activo: animar */
 html.js .reveal{
   opacity: 0;
   transform: translateY(14px);
@@ -404,200 +507,29 @@ html.js .reveal.is-inview{
     justify-content: flex-start;
   }
 
-  .hero-card{
+  .hero-visual{
     width: min(520px, 100%);
+    margin-left: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce){
+  .hero-rb--grid::after,
+  .hero-rb--prism::before{
+    animation: none !important;
+  }
+
   html.js .reveal{
     opacity: 1;
     transform: none;
     transition: none;
   }
+
   .news-track{
     scroll-behavior: auto;
   }
-}
-/* =========================================
-   HERO: Fondo tipo ReactBits SOLO en hero
-========================================= */
-#inicio .hero{
-  position: relative;
-  overflow: hidden;
-}
 
-/* capa del fondo */
-#inicio .hero-rb{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* contenido arriba */
-#inicio .hero .hero-inner{
-  position: relative;
-  z-index: 2;
-}
-
-/* ------ GRID SCAN (parecido a ReactBits Grid Scan) ------ */
-#inicio .hero-rb--grid{
-  background:
-    radial-gradient(900px 520px at 18% 15%, rgba(165,158,255,.18), transparent 62%),
-    radial-gradient(920px 520px at 82% 10%, rgba(231,136,4,.14), transparent 62%),
-    radial-gradient(1000px 600px at 50% 120%, rgba(255,255,255,.06), transparent 70%);
-}
-
-#inicio .hero-rb--grid::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background:
-    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 44px 44px;
-  opacity: .14;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
-}
-
-#inicio .hero-rb--grid::after{
-  content:"";
-  position:absolute;
-  inset:-30% -10%;
-  background:
-    radial-gradient(closest-side, rgba(165,158,255,.35), transparent 60%) 0 0/ 420px 420px,
-    radial-gradient(closest-side, rgba(231,136,4,.30), transparent 60%) 180px 120px/ 520px 520px;
-  opacity: .18;
-  filter: blur(10px);
-  animation: heroScan 8.5s linear infinite;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
-}
-
-@keyframes heroScan{
-  0%{ transform: translate3d(-2%, -2%, 0); }
-  50%{ transform: translate3d(3%, 2%, 0); }
-  100%{ transform: translate3d(-2%, -2%, 0); }
-}
-
-/* ------ PRISM (opcional) ------ */
-#inicio .hero-rb--prism{
-  background:
-    radial-gradient(900px 520px at 18% 15%, rgba(165,158,255,.18), transparent 62%),
-    radial-gradient(920px 520px at 82% 10%, rgba(231,136,4,.14), transparent 62%),
-    #0b0f14;
-}
-#inicio .hero-rb--prism::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  background: conic-gradient(
-    from 120deg,
-    rgba(231,136,4,.20),
-    rgba(165,158,255,.18),
-    rgba(50,183,255,.16),
-    rgba(231,136,4,.20)
-  );
-  filter: blur(26px);
-  opacity: .26;
-  animation: prismSpin 16s linear infinite;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(70% 60% at 50% 35%, #000 55%, transparent 100%);
-}
-@keyframes prismSpin{ to{ transform: rotate(360deg); } }
-
-/* =========================================
-   HERO: Visual premium (reemplaza hero-card)
-========================================= */
-#inicio .hero-visual{
-  position: relative;
-  width: min(460px, 100%);
-  margin-left: auto;
-}
-
-#inicio .hero-visual-frame{
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(233,238,245,.14);
-  background:
-    radial-gradient(900px 360px at 30% 0%, rgba(255,255,255,.08), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  box-shadow: 0 26px 90px rgba(0,0,0,.55);
-}
-
-#inicio .hero-visual-frame::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: 26px;
-  background: linear-gradient(90deg,
-    rgba(231,136,4,.55),
-    rgba(50,183,255,.55),
-    rgba(165,158,255,.55),
-    rgba(231,136,4,.55)
-  );
-  opacity: .22;
-  filter: blur(10px);
-  pointer-events:none;
-}
-
-#inicio .hero-visual-img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-#inicio .hero-visual-glow{
-  position:absolute;
-  inset:-18%;
-  background:
-    radial-gradient(closest-side at 65% 40%, rgba(231,136,4,.24), transparent 60%),
-    radial-gradient(closest-side at 40% 30%, rgba(50,183,255,.18), transparent 60%);
-  filter: blur(22px);
-  opacity: .55;
-  z-index: -1;
-}
-
-/* =========================================
-   HERO: Animación pro del título
-========================================= */
-#inicio .hero-title-anim{
-  display:block;
-  line-height: 1.02;
-}
-
-#inicio .hero-title-anim .ch{
-  display:inline-block;
-  opacity: 0;
-  transform: translateY(10px);
-  filter: blur(10px);
-  transition: opacity .6s ease, transform .6s ease, filter .6s ease;
-  will-change: transform, opacity, filter;
-}
-
-#inicio .hero-title-anim.is-ready .ch{
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-#inicio .hero-title-anim .hl{
-  background: linear-gradient(90deg, rgba(231,136,4,.95), rgba(50,183,255,.95));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  #inicio .hero-rb--grid::after,
-  #inicio .hero-rb--prism::before{
-    animation: none !important;
-  }
-  #inicio .hero-title-anim .ch{
+  .hero-title-anim .ch{
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
