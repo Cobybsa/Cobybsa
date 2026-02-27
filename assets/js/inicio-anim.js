@@ -1,4 +1,3 @@
-// assets/js/inicio-anim.js
 document.documentElement.classList.add("js");
 
 (() => {
