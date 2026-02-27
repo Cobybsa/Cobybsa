@@ -1,45 +1,94 @@
 /* ==========================================
-   CONTACTO — Diseño limpio y premium
+   CONTACTO — Premium + Animaciones
    Archivo: contacto.css
    Requiere: style.css (global)
    ========================================== */
 
 :root{
-  --c-bg: #ffffff;
-  --c-ink: #111;
-  --c-muted: #666;
-  --c-line: #e7e7e7;
-  --c-soft: rgba(0,0,0,.04);
+  --c-bg: #0b0f14;
+  --c-ink: #e9eef5;
+  --c-muted: rgba(233,238,245,.72);
+  --c-line: rgba(233,238,245,.14);
+  --c-soft: rgba(233,238,245,.08);
+
+  --c-accent: #e78804;  /* láser */
+  --c-accent2:#32b7ff;  /* tech */
+  --c-card: rgba(255,255,255,.03);
+
+  --c-radius: 20px;
+  --c-shadow: 0 22px 70px rgba(0,0,0,.45);
+  --c-shadow-soft: 0 16px 55px rgba(0,0,0,.32);
 }
 
-/* Fondo blanco */
-body{
+/* ===== Scope SOLO contacto ===== */
+body.contacto-page{
   background: var(--c-bg);
+  color: var(--c-ink);
 }
 
-/* Sección contacto */
+body.contacto-page main{
+  background: transparent;
+}
+
 .section-contacto{
+  position: relative;
   padding: 70px 0 90px;
-  background: #fff;
+  overflow: hidden;
 }
 
-/* Header de sección */
+/* beams */
+.section-contacto::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background:
+    radial-gradient(900px 560px at 12% 6%, rgba(231,136,4,.15), transparent 62%),
+    radial-gradient(820px 520px at 86% 0%, rgba(50,183,255,.12), transparent 62%),
+    radial-gradient(980px 620px at 50% 120%, rgba(233,238,245,.06), transparent 65%);
+  filter: blur(6px);
+  opacity: .95;
+  pointer-events:none;
+}
+
+.section-contacto::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      110deg,
+      rgba(255,255,255,.015) 0px,
+      rgba(255,255,255,.015) 2px,
+      transparent 2px,
+      transparent 150px
+    );
+  opacity:.45;
+  pointer-events:none;
+}
+
+.section-contacto .container{
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
 .section-contacto .section-header{
   padding-bottom: 22px;
   border-bottom: 1px solid var(--c-line);
   margin-bottom: 34px;
 }
 
-.section-contacto .section-title{
+body.contacto-page .section-title{
   margin: 0;
   font-weight: 900;
-  letter-spacing: .08em;
+  letter-spacing: .10em;
   text-transform: uppercase;
   font-size: clamp(2rem, 4.2vw, 3rem);
   color: var(--c-ink);
+  line-height: 1.05;
 }
 
-.section-contacto .section-subtitle{
+body.contacto-page .section-subtitle{
   margin: 14px 0 0;
   max-width: 85ch;
   color: var(--c-muted);
@@ -51,52 +100,147 @@ body{
 .contact-grid{
   display: grid;
   grid-template-columns: 1.15fr .85fr;
-  gap: 22px;
+  gap: 18px;
   align-items: start;
 }
 
 /* Cards */
 .contact-box{
+  position: relative;
   border: 1px solid var(--c-line);
-  border-radius: 16px;
+  border-radius: var(--c-radius);
   padding: 22px 22px;
   background:
-    radial-gradient(700px 260px at 10% 0%, var(--c-soft), transparent 55%),
-    linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.00));
-  box-shadow: 0 18px 55px rgba(0,0,0,.08);
+    radial-gradient(760px 260px at 12% 0%, var(--c-soft), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  box-shadow: var(--c-shadow-soft);
+  overflow: hidden;
+
+  /* reveal default */
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease, border-color .35s ease;
+  will-change: opacity, transform;
+}
+
+.contact-box.is-inview{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* glow hover */
+.contact-box::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: calc(var(--c-radius) + 2px);
+  background:
+    radial-gradient(650px 240px at 16% 0%, rgba(231,136,4,.10), transparent 60%),
+    radial-gradient(650px 240px at 88% 0%, rgba(50,183,255,.08), transparent 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+.contact-box:hover{
+  border-color: rgba(233,238,245,.26);
+}
+.contact-box:hover::before{
+  opacity: 1;
 }
 
 .contact-box h3{
   margin: 0 0 14px;
   font-size: 1.02rem;
-  letter-spacing: .10em;
+  letter-spacing: .12em;
   text-transform: uppercase;
   font-weight: 900;
   color: var(--c-ink);
 }
 
-/* Texto */
-.contact-box p{
+.contact-rows p{
   margin: 10px 0;
   line-height: 1.75;
   color: var(--c-muted);
   font-size: 1.02rem;
 }
 
-.contact-box strong{
-  color: var(--c-ink);
+.contact-rows strong{
+  color: rgba(233,238,245,.88);
 }
 
-/* Botones dentro de contacto (sin romper los globales) */
-.section-contacto .btn{
+.contact-link{
+  color: rgba(233,238,245,.92);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(233,238,245,.18);
+  padding-bottom: 2px;
+  transition: border-color .25s ease, opacity .25s ease;
+}
+.contact-link:hover{
+  border-color: rgba(231,136,4,.55);
+  opacity: .9;
+}
+
+.contact-note{
+  margin-top: 14px;
+  color: var(--c-muted);
+  line-height: 1.75;
+}
+
+/* Acciones */
+.contact-actions{
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contact-box--cta .contact-mini{
+  margin: 0 0 16px;
+  color: var(--c-muted);
+  line-height: 1.75;
+}
+
+.contact-cta{
+  display: grid;
+  gap: 10px;
+}
+
+/* Botones full width en CTA */
+.contact-box--cta .btn{
   width: 100%;
   justify-content: center;
-  text-align: center;
 }
 
-/* Mini separación visual entre botones */
-.section-contacto .btn + .btn{
-  margin-top: 10px;
+/* tip */
+.contact-tip{
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(233,238,245,.14);
+  background: rgba(255,255,255,.03);
+  color: rgba(233,238,245,.74);
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+
+.contact-tip-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .contact-box{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Responsive */
