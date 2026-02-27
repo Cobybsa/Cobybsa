@@ -1,132 +1,340 @@
 /* ==========================================
-   CAPACIDADES — Estilo Premium Industrial
+   CAPACIDADES — Diseño Premium + Animaciones
+   Archivo: capacidades.css
+   Requiere: style.css (global)
    ========================================== */
 
-:root {
-  --cap-border: #e5e5e5;
-  --cap-soft: #666;
-  --cap-ink: #111;
+:root{
+  --cap-bg: #0b0f14;
+  --cap-ink: #e9eef5;
+  --cap-muted: rgba(233,238,245,.72);
+  --cap-line: rgba(233,238,245,.14);
+  --cap-soft: rgba(233,238,245,.08);
+
+  --cap-accent: #e78804;   /* láser */
+  --cap-accent2: #32b7ff;  /* tech */
+  --cap-paper: rgba(255,255,255,.03);
+
+  --cap-radius: 22px;
+  --cap-radius-sm: 16px;
+
+  --cap-shadow: 0 26px 80px rgba(0,0,0,.48);
+  --cap-shadow-soft: 0 18px 55px rgba(0,0,0,.35);
 }
 
-/* HERO de página */
-.capabilities-section {
-  padding: 80px 0;
-  background: #ffffff;
+/* ===== Scope SOLO capacidades ===== */
+body.capacidades-page{
+  background: var(--cap-bg);
+  color: var(--cap-ink);
 }
 
-/* Cada bloque */
-.capability {
+/* Evitar “franjas” */
+body.capacidades-page main{
+  background: transparent;
+}
+
+/* ==============================
+   HERO
+   ============================== */
+
+.cap-hero{
+  position: relative;
+  padding: 76px 0 32px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--cap-line);
+}
+
+/* fondo beams/rays */
+.cap-hero::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:
+    radial-gradient(1100px 600px at 12% 8%, rgba(231,136,4,.14), transparent 62%),
+    radial-gradient(980px 580px at 85% 0%, rgba(50,183,255,.12), transparent 62%),
+    radial-gradient(980px 620px at 55% 110%, rgba(233,238,245,.06), transparent 65%),
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.00));
+  filter: blur(6px);
+  opacity: .95;
+  pointer-events:none;
+}
+
+.cap-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      110deg,
+      rgba(255,255,255,.015) 0px,
+      rgba(255,255,255,.015) 2px,
+      transparent 2px,
+      transparent 140px
+    );
+  opacity:.5;
+  pointer-events:none;
+}
+
+.cap-hero-inner{
+  position: relative;
+  z-index: 2;
+}
+
+body.capacidades-page .section-title{
+  color: var(--cap-ink);
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.05;
+  margin: 0;
+}
+
+body.capacidades-page .section-subtitle{
+  color: var(--cap-muted);
+  line-height: 1.75;
+  font-size: 16.5px;
+  max-width: 86ch;
+  margin-top: 14px;
+}
+
+.cap-hero-badges{
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cap-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--cap-line);
+  background: rgba(255,255,255,.04);
+  color: rgba(233,238,245,.78);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+/* ==============================
+   LISTA DE CAPACIDADES
+   ============================== */
+
+.capabilities-section{
+  padding: 40px 0 90px;
+}
+
+.cap-wrap{
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 60px;
+  gap: 18px;
+}
+
+/* Card estilo bento (sin cambiar HTML: convertimos cada .capability en card grande) */
+.capability{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.06fr .94fr;
+  gap: 26px;
   align-items: center;
-  padding: 70px 0;
-  border-bottom: 1px solid var(--cap-border);
+
+  padding: 18px;
+  border-radius: var(--cap-radius);
+  border: 1px solid var(--cap-line);
+  background:
+    radial-gradient(900px 320px at 14% 0%, rgba(233,238,245,.06), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  box-shadow: var(--cap-shadow-soft);
+  overflow: hidden;
+  transform: translateZ(0);
+
+  /* reveal default (JS) */
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s ease, transform .7s ease, border-color .35s ease;
+  will-change: opacity, transform;
 }
 
-/* Alternar imagen derecha/izquierda automáticamente */
-.capability:nth-child(even) {
-  direction: rtl;
+.capability.is-inview{
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.capability:nth-child(even) .capability-text {
-  direction: ltr;
+/* Glow hover */
+.capability::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: calc(var(--cap-radius) + 2px);
+  background:
+    radial-gradient(700px 260px at 18% 0%, rgba(231,136,4,.10), transparent 60%),
+    radial-gradient(700px 260px at 85% 0%, rgba(50,183,255,.08), transparent 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events:none;
 }
 
-.capability:nth-child(even) .capability-image {
-  direction: ltr;
+.capability:hover{
+  border-color: rgba(233,238,245,.26);
+}
+
+.capability:hover::before{
+  opacity: 1;
+}
+
+/* Alternancia sutil sin usar direction RTL (más estable) */
+.capability:nth-child(even){
+  grid-template-columns: .94fr 1.06fr;
+}
+
+.capability:nth-child(even) .capability-text{
+  order: 2;
+}
+.capability:nth-child(even) .capability-image{
+  order: 1;
 }
 
 /* Texto */
-.capability-text h3 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.capability-text h3{
+  margin: 0 0 10px 0;
   color: var(--cap-ink);
-}
-
-.capability-text p {
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--cap-soft);
-  margin-bottom: 25px;
-  max-width: 600px;
-}
-
-/* Link */
-.capability-link {
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  font-weight: 900;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  text-decoration: none;
-  border-bottom: 1px solid var(--cap-ink);
-  padding-bottom: 4px;
-  transition: 0.3s ease;
-  color: var(--cap-ink);
-}
-
-.capability-link:hover {
-  opacity: 0.6;
-}
-
-/* Imagen */
-.capability-image {
-  position: relative;
-}
-
-.capability-image img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  transition: transform 0.5s ease;
-}
-
-.capability-image img:hover {
-  transform: scale(1.03);
-}
-
-/* Separación visual sutil superior */
-.section-title {
-  font-size: 42px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.section-subtitle {
   font-size: 18px;
-  max-width: 750px;
-  line-height: 1.7;
-  color: var(--cap-soft);
+  line-height: 1.2;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .capability {
+.capability-text p{
+  margin: 0 0 14px 0;
+  color: var(--cap-muted);
+  line-height: 1.75;
+  font-size: 16px;
+  max-width: 70ch;
+}
+
+/* Link con “laser underline” */
+.capability-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: rgba(233,238,245,.90);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+
+  position: relative;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(233,238,245,.22);
+}
+
+.capability-link::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-1px;
+  height:2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--cap-accent), var(--cap-accent2));
+  transition: width .35s ease;
+}
+
+.capability:hover .capability-link::after{
+  width: 100%;
+}
+
+/* Imagen + “laser sweep” */
+.capability-image{
+  position: relative;
+  border-radius: var(--cap-radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(233,238,245,.14);
+  background: rgba(255,255,255,.03);
+  box-shadow: var(--cap-shadow);
+}
+
+.capability-image img{
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.03) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform .55s ease, filter .55s ease;
+}
+
+/* sweep */
+.capability-image::before{
+  content:"";
+  position:absolute;
+  inset:-40% -60%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(231,136,4,.18) 35%,
+    rgba(50,183,255,.12) 55%,
+    transparent 80%
+  );
+  transform: rotate(14deg) translateX(-25%);
+  opacity: 0;
+  transition: opacity .25s ease, transform .75s ease;
+  pointer-events:none;
+}
+
+.capability:hover .capability-image::before{
+  opacity: 1;
+  transform: rotate(14deg) translateX(25%);
+}
+
+.capability:hover .capability-image img{
+  transform: scale(1.05);
+  filter: contrast(1.06) saturate(1.10);
+}
+
+/* ==============================
+   Reduced motion
+   ============================== */
+@media (prefers-reduced-motion: reduce){
+  .capability{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .capability-image::before{
+    display:none;
+  }
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+@media (max-width: 980px){
+  .capability{
     grid-template-columns: 1fr;
-    gap: 40px;
   }
+  .capability:nth-child(even){
+    grid-template-columns: 1fr;
+  }
+  .capability:nth-child(even) .capability-text{ order: 1; }
+  .capability:nth-child(even) .capability-image{ order: 2; }
 
-  .capability:nth-child(even) {
-    direction: ltr;
+  .capability-image img{
+    height: 260px;
   }
 }
 
-@media (max-width: 768px) {
-  .capabilities-section {
-    padding: 60px 0;
+@media (max-width: 560px){
+  .capabilities-section{
+    padding: 30px 0 70px;
   }
-
-  .capability {
-    padding: 50px 0;
+  .capability{
+    padding: 14px;
+    border-radius: 18px;
   }
-
-  .capability-text h3 {
-    font-size: 22px;
-  }
-
-  .section-title {
-    font-size: 32px;
+  .capability-image img{
+    height: 220px;
   }
 }
