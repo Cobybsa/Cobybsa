@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/capacidades.css" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://cobybsa.com/capacidades.html" />
@@ -32,19 +33,22 @@
   <meta name="twitter:title" content="Capacidades | COBYBSA Construcción Industrial" />
   <meta name="twitter:description" content="Manufactura industrial, ingeniería de precisión, corte láser, CNC y diseño/modelado 3D. Soluciones metalmecánicas en Costa Rica." />
   <meta name="twitter:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
+
+  <!-- Animaciones -->
+  <script defer src="/assets/js/capacidades-anim.js"></script>
 </head>
 
-<body>
+<body class="capacidades-page">
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="/index.html" class="logo">
-        <img src="img/logo-cobybsa.png" alt="COBYBSA Construcción Industrial" />
+      <a href="/" class="logo" aria-label="Ir al inicio">
+        <img src="/img/logo-cobybsa.png" alt="COBYBSA Construcción Industrial" />
       </a>
 
-      <nav class="main-nav">
-        <a href="/index.html">Inicio</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/">Inicio</a>
         <a href="/historia.html">Historia</a>
         <a class="is-active" href="/capacidades.html">Capacidades</a>
         <a href="/proyectos.html">Proyectos</a>
@@ -55,135 +59,151 @@
 
   <main>
 
-    <!-- HERO simple de página (sin inventar clases nuevas raras) -->
-    <section class="section">
+    <!-- HERO -->
+    <section class="cap-hero section">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h1 class="section-title">Capacidades</h1>
+        <div class="cap-hero-inner">
+          <div class="section-header">
+            <div>
+              <h1 class="section-title" data-cap-title>Capacidades</h1>
+            </div>
+
+            <p class="section-subtitle" data-cap-sub>
+              Procesos integrados para resolver proyectos metalmecánicos con precisión, calidad y cumplimiento:
+              desde el diseño y modelado 3D hasta fabricación, corte y mecanizado.
+            </p>
           </div>
 
-          <p class="section-subtitle">
-            Procesos integrados para resolver proyectos metalmecánicos con precisión, calidad y cumplimiento:
-            desde el diseño y modelado 3D hasta fabricación, corte y mecanizado.
-          </p>
+          <div class="cap-hero-badges" aria-label="Procesos clave">
+            <span class="cap-pill">Corte láser</span>
+            <span class="cap-pill">CNC</span>
+            <span class="cap-pill">Modelado 3D</span>
+            <span class="cap-pill">Fabricación</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== CAPACIDADES | COBYBSA ===== -->
+    <!-- CAPACIDADES -->
     <section id="capacidades" class="capabilities-section">
+      <div class="container cap-wrap">
 
-      <!-- Capacidad 1 -->
-      <div class="capability">
-        <div class="capability-text">
-          <h3>Manufactura Industrial</h3>
-          <p>
-            Fabricación metalmecánica a medida orientada a aplicaciones industriales. En COBYBSA desarrollamos
-            componentes, ensambles y soluciones completas integrando distintos procesos bajo un mismo control
-            técnico, garantizando funcionalidad, durabilidad y cumplimiento en proyectos industriales.
-          </p>
-          <a href="/manufactura-industrial.html" class="capability-link">
-            Ver capacidad de Manufactura Industrial →
-          </a>
+        <!-- Capacidad 1 -->
+        <div class="capability" data-cap-card>
+          <div class="capability-text">
+            <h3>Manufactura Industrial</h3>
+            <p>
+              Fabricación metalmecánica a medida orientada a aplicaciones industriales. En COBYBSA desarrollamos
+              componentes, ensambles y soluciones completas integrando distintos procesos bajo un mismo control
+              técnico, garantizando funcionalidad, durabilidad y cumplimiento en proyectos industriales.
+            </p>
+            <a href="/manufactura-industrial.html" class="capability-link">
+              Ver capacidad de Manufactura Industrial →
+            </a>
+          </div>
+          <div class="capability-image">
+            <img
+              src="/img/capacidades-manufactura.png"
+              alt="Manufactura industrial metalmecánica en Costa Rica COBYBSA"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
-        <div class="capability-image">
-          <img
-            src="img/capacidades-manufactura.png"
-            alt="Manufactura industrial metalmecánica en Costa Rica COBYBSA"
-            loading="lazy"
-          />
+
+        <!-- Capacidad 2 -->
+        <div class="capability" data-cap-card>
+          <div class="capability-text">
+            <h3>Ingeniería de Precisión</h3>
+            <p>
+              Ingeniería de precisión industrial enfocada en control dimensional, tolerancias estrictas y
+              repetibilidad. Fabricamos piezas donde la exactitud es crítica, reduciendo fallos, reprocesos
+              y problemas de ensamblaje en aplicaciones industriales exigentes.
+            </p>
+            <a href="/ingenieria-de-precision.html" class="capability-link">
+              Ver Ingeniería de Precisión →
+            </a>
+          </div>
+          <div class="capability-image">
+            <img
+              src="/img/capacidades-precision.png"
+              alt="Ingeniería de precisión y control dimensional industrial COBYBSA"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
+
+        <!-- Capacidad 3 -->
+        <div class="capability" data-cap-card>
+          <div class="capability-text">
+            <h3>Corte Láser Industrial</h3>
+            <p>
+              Servicio de corte láser industrial en Costa Rica para acero al carbono, acero inoxidable y aluminio.
+              Realizamos cortes limpios, precisos y repetibles, ideales para geometrías complejas y piezas listas
+              para procesos posteriores o ensamblaje.
+            </p>
+            <a href="/corte-laser-industrial.html" class="capability-link">
+              Ver Corte Láser Industrial →
+            </a>
+          </div>
+          <div class="capability-image">
+            <img
+              src="/img/capacidades-laser.png"
+              alt="Corte láser industrial en Costa Rica COBYBSA"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <!-- Capacidad 4 -->
+        <div class="capability" data-cap-card>
+          <div class="capability-text">
+            <h3>Corte CNC Industrial</h3>
+            <p>
+              Corte y mecanizado CNC industrial para piezas técnicas, cavidades, perforaciones y geometrías
+              complejas. Esta capacidad permite alcanzar niveles de precisión y acabado requeridos en componentes
+              industriales funcionales.
+            </p>
+            <a href="/corte-cnc-industrial.html" class="capability-link">
+              Ver Corte CNC Industrial →
+            </a>
+          </div>
+          <div class="capability-image">
+            <img
+              src="/img/capacidades-cnc.png"
+              alt="Corte CNC industrial y mecanizado de precisión COBYBSA"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <!-- Capacidad 5 -->
+        <div class="capability" data-cap-card>
+          <div class="capability-text">
+            <h3>Diseño y Modelado 3D Industrial</h3>
+            <p>
+              Diseño técnico y modelado 3D industrial para el desarrollo de piezas, estructuras y equipos a medida.
+              Acompañamos al cliente desde la idea inicial hasta la fabricación, optimizando geometrías y reduciendo
+              errores antes de producción.
+            </p>
+            <a href="/diseno-modelado-3d-industrial.html" class="capability-link">
+              Ver Diseño y Modelado 3D →
+            </a>
+          </div>
+          <div class="capability-image">
+            <img
+              src="/img/capacidades-3d.png"
+              alt="Diseño y modelado 3D industrial para fabricación COBYBSA"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
       </div>
-
-      <!-- Capacidad 2 -->
-      <div class="capability">
-        <div class="capability-text">
-          <h3>Ingeniería de Precisión</h3>
-          <p>
-            Ingeniería de precisión industrial enfocada en control dimensional, tolerancias estrictas y
-            repetibilidad. Fabricamos piezas donde la exactitud es crítica, reduciendo fallos, reprocesos
-            y problemas de ensamblaje en aplicaciones industriales exigentes.
-          </p>
-          <a href="/ingenieria-de-precision.html" class="capability-link">
-            Ver Ingeniería de Precisión →
-          </a>
-        </div>
-        <div class="capability-image">
-          <img
-            src="img/capacidades-precision.png"
-            alt="Ingeniería de precisión y control dimensional industrial COBYBSA"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <!-- Capacidad 3 -->
-      <div class="capability">
-        <div class="capability-text">
-          <h3>Corte Láser Industrial</h3>
-          <p>
-            Servicio de corte láser industrial en Costa Rica para acero al carbono, acero inoxidable y aluminio.
-            Realizamos cortes limpios, precisos y repetibles, ideales para geometrías complejas y piezas listas
-            para procesos posteriores o ensamblaje.
-          </p>
-          <a href="/corte-laser-industrial.html" class="capability-link">
-            Ver Corte Láser Industrial →
-          </a>
-        </div>
-        <div class="capability-image">
-          <img
-            src="img/capacidades-laser.png"
-            alt="Corte láser industrial en Costa Rica COBYBSA"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <!-- Capacidad 4 -->
-      <div class="capability">
-        <div class="capability-text">
-          <h3>Corte CNC Industrial</h3>
-          <p>
-            Corte y mecanizado CNC industrial para piezas técnicas, cavidades, perforaciones y geometrías
-            complejas. Esta capacidad permite alcanzar niveles de precisión y acabado requeridos en componentes
-            industriales funcionales.
-          </p>
-          <a href="/corte-cnc-industrial.html" class="capability-link">
-            Ver Corte CNC Industrial →
-          </a>
-        </div>
-        <div class="capability-image">
-          <img
-            src="img/capacidades-cnc.png"
-            alt="Corte CNC industrial y mecanizado de precisión COBYBSA"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <!-- Capacidad 5 -->
-      <div class="capability">
-        <div class="capability-text">
-          <h3>Diseño y Modelado 3D Industrial</h3>
-          <p>
-            Diseño técnico y modelado 3D industrial para el desarrollo de piezas, estructuras y equipos a medida.
-            Acompañamos al cliente desde la idea inicial hasta la fabricación, optimizando geometrías y reduciendo
-            errores antes de producción.
-          </p>
-          <a href="/diseno-modelado-3d-industrial.html" class="capability-link">
-            Ver Diseño y Modelado 3D →
-          </a>
-        </div>
-        <div class="capability-image">
-          <img
-            src="img/capacidades-3d.png"
-            alt="Diseño y modelado 3D industrial para fabricación COBYBSA"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
     </section>
 
   </main>
@@ -202,6 +222,5 @@
 
   <!-- CMS dinámico (si ya lo está usando) -->
   <script src="/assets/js/cms-content.js"></script>
-
 </body>
 </html>
