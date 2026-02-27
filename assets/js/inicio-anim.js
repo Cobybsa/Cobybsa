@@ -143,3 +143,52 @@ document.documentElement.classList.add("js");
     }
   }
 })();
+/* =========================
+   4) Hero title: animación por caracteres
+   ========================= */
+(() => {
+  const reduceMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const el = document.getElementById("cms-hero-title");
+  if (!el) return;
+
+  // No animar si reduce motion
+  if (reduceMotion) {
+    el.classList.add("is-ready");
+    return;
+  }
+
+  const text = el.textContent.trim();
+
+  // resaltar palabra clave (opcional)
+  const highlightWord = "metalmecánicas";
+
+  el.textContent = "";
+  const frag = document.createDocumentFragment();
+
+  // reconstruir con spans por carácter
+  let i = 0;
+  for (const ch of text) {
+    const span = document.createElement("span");
+    span.className = "ch";
+    span.style.transitionDelay = `${Math.min(i * 18, 420)}ms`;
+    span.textContent = ch === " " ? "\u00A0" : ch;
+    frag.appendChild(span);
+    i++;
+  }
+
+  el.appendChild(frag);
+
+  // aplicar highlight por palabra (busca y pinta los chars dentro)
+  const plain = text.toLowerCase();
+  const idx = plain.indexOf(highlightWord.toLowerCase());
+  if (idx >= 0) {
+    const nodes = el.querySelectorAll(".ch");
+    for (let k = idx; k < idx + highlightWord.length; k++) {
+      if (nodes[k]) nodes[k].classList.add("hl");
+    }
+  }
+
+  requestAnimationFrame(() => el.classList.add("is-ready"));
+})();
