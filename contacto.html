@@ -5,42 +5,33 @@
   <title>Contacto | COBYBSA Construcción Industrial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://cobybsa.com/contacto.html" />
-
-  <!-- Favicon -->
   <link rel="icon" href="/img/favicon.png" type="image/png" />
 
-  <!-- SEO -->
   <meta
     name="description"
     content="Contacto de COBYBSA en Costa Rica. Cotizaciones y asesoría técnica para proyectos metalmecánicos, fabricación a medida, corte láser, CNC, estructuras y soluciones industriales."
   />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Contacto | COBYBSA Construcción Industrial" />
   <meta property="og:description" content="Contacto técnico y cotizaciones para proyectos metalmecánicos en Costa Rica. COBYBSA: precisión, fabricación y soluciones industriales." />
   <meta property="og:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
   <meta property="og:url" content="https://cobybsa.com/contacto.html" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Contacto | COBYBSA Construcción Industrial" />
   <meta name="twitter:description" content="Contacto técnico y cotizaciones para proyectos metalmecánicos en Costa Rica. COBYBSA: precisión, fabricación y soluciones industriales." />
   <meta name="twitter:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/contacto.css" />
 
-  <!-- Animaciones -->
   <script defer src="/assets/js/contacto-anim.js"></script>
 </head>
 
 <body class="contacto-page">
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="Ir al inicio">
@@ -61,7 +52,7 @@
 
     <!-- HERO -->
     <section class="contact-hero">
-      <div class="container contact-hero-inner">
+      <div class="container contact-hero-inner contact-hero-inner--single">
 
         <div class="contact-hero-text">
           <p class="contact-kicker">
@@ -69,10 +60,10 @@
             Contacto técnico y cotizaciones
           </p>
 
-          <h1 class="contact-title" id="cms-contact-title">Contacto para proyectos metalmecánicos</h1>
+          <h1 class="contact-title" id="cms-contact-title">Contacto</h1>
 
           <p class="contact-lead" id="cms-contact-desc">
-            Cuéntenos los requerimientos de su proyecto y le orientamos en material, proceso de fabricación y viabilidad técnica.
+            Solicite una evaluación técnica o cotización.
           </p>
 
           <div class="contact-hero-actions">
@@ -81,27 +72,10 @@
           </div>
         </div>
 
-        <div class="contact-hero-card" aria-hidden="true">
-          <div class="contact-hero-card-inner">
-            <div class="contact-hero-metric">
-              <div class="metric-big">Corte láser</div>
-              <div class="metric-sub">Precisión y repetibilidad</div>
-            </div>
-            <div class="contact-hero-metric">
-              <div class="metric-big">CNC</div>
-              <div class="metric-sub">Procesos técnicos y acabados</div>
-            </div>
-            <div class="contact-hero-metric">
-              <div class="metric-big">Fabricación</div>
-              <div class="metric-sub">Soluciones industriales a medida</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- RESPALDO / SECTORES -->
+    <!-- SECTORES -->
     <section class="contact-proof">
       <div class="container">
         <div class="proof-head">
@@ -139,10 +113,6 @@
               <li><strong>Acabado</strong>, tolerancias o condiciones especiales si aplican</li>
               <li><strong>Plazo esperado</strong> y lugar de entrega</li>
             </ul>
-
-            <div class="how-actions">
-              <a class="btn btn-primary" href="/cotizacion.html">Solicitar cotización</a>
-            </div>
           </article>
 
           <article class="trust-card" data-contact-card>
@@ -180,7 +150,6 @@
       <div class="container">
 
         <div class="contact-grid contact-grid--single">
-
           <article class="contact-box" data-contact-card>
             <h3>Información de contacto</h3>
 
@@ -202,7 +171,7 @@
             </div>
 
             <p id="cms-contact-extra" class="contact-note">
-              Atendemos consultas técnicas, solicitudes de cotización y proyectos que requieran fabricación a medida.
+              También podemos coordinar una visita a planta o reunión presencial para revisar detalles técnicos de su proyecto.
             </p>
 
             <div class="contact-actions">
@@ -210,14 +179,13 @@
               <a class="btn btn-ghost" href="/capacidades.html">Ver capacidades</a>
             </div>
           </article>
-
         </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> COBYBSA. Todos los derechos reservados.</p>
@@ -229,7 +197,6 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- CMS dinámico -->
   <script src="/assets/js/cms-content.js"></script>
 </body>
 </html>
