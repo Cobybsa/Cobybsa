@@ -358,8 +358,8 @@ body.contacto-page .trust-v{
    ========================================== */
 body.contacto-page .section-contacto{
   position: relative;
-  padding: 54px 0 90px;
-  overflow: hidden;
+  padding: 8px 0 60px;
+  overflow: visible;
 }
 
 body.contacto-page .section-contacto .container{
@@ -367,33 +367,9 @@ body.contacto-page .section-contacto .container{
   z-index: 2;
 }
 
-body.contacto-page .section-contacto::before{
-  content:"";
-  position:absolute;
-  inset:-60px;
-  background:
-    radial-gradient(900px 560px at 12% 6%, rgba(231,136,4,.14), transparent 62%),
-    radial-gradient(820px 520px at 86% 0%, rgba(50,183,255,.12), transparent 62%),
-    radial-gradient(980px 620px at 50% 120%, rgba(233,238,245,.06), transparent 65%);
-  filter: blur(6px);
-  opacity: .90;
-  pointer-events:none;
-}
-
+body.contacto-page .section-contacto::before,
 body.contacto-page .section-contacto::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    repeating-linear-gradient(
-      110deg,
-      rgba(255,255,255,.012) 0px,
-      rgba(255,255,255,.012) 2px,
-      transparent 2px,
-      transparent 150px
-    );
-  opacity:.40;
-  pointer-events:none;
+  content: none;
 }
 
 body.contacto-page .contact-grid{
@@ -534,7 +510,7 @@ body.contacto-page .contact-actions{
   }
 
   body.contacto-page .section-contacto{
-    padding: 52px 0 70px;
+    padding: 8px 0 70px;
   }
 }
 
