@@ -1,5 +1,5 @@
 /* ==========================================
-   CONTACTO — Premium + Prueba social + Animaciones
+   CONTACTO — Premium limpio y profesional
    Archivo: contacto.css
    Requiere: style.css (global)
    Scope: body.contacto-page
@@ -12,8 +12,8 @@
   --c-line: rgba(233,238,245,.14);
   --c-soft: rgba(233,238,245,.08);
 
-  --c-accent: #e78804;  /* láser */
-  --c-accent2:#32b7ff;  /* tech */
+  --c-accent: #e78804;
+  --c-accent2: #32b7ff;
 
   --c-radius: 20px;
   --c-shadow: 0 22px 70px rgba(0,0,0,.45);
@@ -25,7 +25,10 @@ body.contacto-page{
   background: var(--c-bg);
   color: var(--c-ink);
 }
-body.contacto-page main{ background: transparent; }
+
+body.contacto-page main{
+  background: transparent;
+}
 
 /* ==========================================
    HERO CONTACTO
@@ -36,7 +39,6 @@ body.contacto-page .contact-hero{
   overflow: hidden;
 }
 
-/* fondo “beams” */
 body.contacto-page .contact-hero::before{
   content:"";
   position:absolute;
@@ -49,6 +51,7 @@ body.contacto-page .contact-hero::before{
   opacity: .95;
   pointer-events:none;
 }
+
 body.contacto-page .contact-hero::after{
   content:"";
   position:absolute;
@@ -100,9 +103,9 @@ body.contacto-page .contact-dot{
 body.contacto-page .contact-title{
   margin: 0;
   font-weight: 950;
-  letter-spacing: .10em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  font-size: clamp(2.15rem, 4.6vw, 3.3rem);
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
   color: var(--c-ink);
   line-height: 1.05;
 }
@@ -112,7 +115,7 @@ body.contacto-page .contact-lead{
   max-width: 70ch;
   color: var(--c-muted);
   line-height: 1.75;
-  font-size: 1.05rem;
+  font-size: 1.03rem;
 }
 
 body.contacto-page .contact-hero-actions{
@@ -176,10 +179,10 @@ body.contacto-page .metric-sub{
 }
 
 /* ==========================================
-   PRUEBA SOCIAL (logos loop)
+   RESPALDO / SECTORES
    ========================================== */
 body.contacto-page .contact-proof{
-  padding: 22px 0 38px;
+  padding: 22px 0 34px;
 }
 
 body.contacto-page .proof-head{
@@ -200,97 +203,16 @@ body.contacto-page .proof-sub{
   margin: 0;
   color: var(--c-muted);
   line-height: 1.7;
-  max-width: 95ch;
+  max-width: 90ch;
 }
 
-/* contenedor loop */
-body.contacto-page .logo-loop{
-  position: relative;
-  border: 1px solid var(--c-line);
-  border-radius: 18px;
-  background: rgba(255,255,255,.02);
-  overflow: hidden;
-  box-shadow: var(--c-shadow-soft);
-}
-
-/* máscaras laterales (fade) */
-body.contacto-page .logo-loop::before,
-body.contacto-page .logo-loop::after{
-  content:"";
-  position:absolute;
-  top:0; bottom:0;
-  width: 80px;
-  z-index: 2;
-  pointer-events: none;
-}
-body.contacto-page .logo-loop::before{
-  left:0;
-  background: linear-gradient(90deg, rgba(11,15,20,1), rgba(11,15,20,0));
-}
-body.contacto-page .logo-loop::after{
-  right:0;
-  background: linear-gradient(270deg, rgba(11,15,20,1), rgba(11,15,20,0));
-}
-
-/* track */
-body.contacto-page .logo-track{
-  display: flex;
-  gap: 34px;
-  align-items: center;
-  padding: 18px 18px;
-  will-change: transform;
-  animation: logo-marquee 22s linear infinite;
-}
-
-body.contacto-page .logo-set{
-  display: inline-flex;
-  align-items: center;
-  gap: 34px;
-  flex: 0 0 auto;
-}
-
-/* imágenes de logo */
-body.contacto-page .logo-set img{
-  height: 28px;
-  width: auto;
-  max-width: 160px;
-  object-fit: contain;
-
-  /* look “monocromo premium” */
-  filter: grayscale(1) brightness(1.15) contrast(1.05);
-  opacity: .72;
-  transition: opacity .25s ease, transform .25s ease;
-  transform: translateZ(0);
-}
-
-body.contacto-page .logo-loop:hover .logo-set img{
-  opacity: .88;
-}
-
-body.contacto-page .logo-set img:hover{
-  opacity: 1;
-  transform: translateY(-1px);
-}
-
-/* pausa en hover */
-@media (hover:hover){
-  body.contacto-page .logo-loop:hover .logo-track{
-    animation-play-state: paused;
-  }
-}
-
-@keyframes logo-marquee{
-  from{ transform: translateX(0); }
-  to  { transform: translateX(-50%); }
-}
-
-/* pills de sectores */
 body.contacto-page .sector-pills{
   margin-top: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
+
 body.contacto-page .pill{
   border: 1px solid rgba(233,238,245,.14);
   background: rgba(255,255,255,.02);
@@ -303,7 +225,7 @@ body.contacto-page .pill{
 }
 
 /* ==========================================
-   “QUÉ ENVIAR” + Trust
+   QUÉ ENVIAR + ENFOQUE DE TRABAJO
    ========================================== */
 body.contacto-page .contact-how{
   padding: 10px 0 30px;
@@ -321,14 +243,13 @@ body.contacto-page .trust-card{
   position: relative;
   border: 1px solid var(--c-line);
   border-radius: var(--c-radius);
-  padding: 22px 22px;
+  padding: 22px;
   background:
     radial-gradient(760px 260px at 12% 0%, var(--c-soft), transparent 60%),
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   box-shadow: var(--c-shadow-soft);
   overflow: hidden;
 
-  /* reveal default */
   opacity: 0;
   transform: translateY(14px);
   transition: opacity .7s ease, transform .7s ease, border-color .35s ease;
@@ -354,10 +275,12 @@ body.contacto-page .trust-card::before{
   transition: opacity .35s ease;
   pointer-events: none;
 }
+
 body.contacto-page .how-card:hover,
 body.contacto-page .trust-card:hover{
   border-color: rgba(233,238,245,.26);
 }
+
 body.contacto-page .how-card:hover::before,
 body.contacto-page .trust-card:hover::before{
   opacity: 1;
@@ -384,9 +307,11 @@ body.contacto-page .how-list{
   color: rgba(233,238,245,.70);
   line-height: 1.8;
 }
+
 body.contacto-page .how-list li{
   margin-bottom: 8px;
 }
+
 body.contacto-page .how-list strong{
   color: rgba(233,238,245,.92);
 }
@@ -405,12 +330,14 @@ body.contacto-page .trust-grid{
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
+
 body.contacto-page .trust-item{
   border: 1px solid rgba(233,238,245,.12);
   background: rgba(255,255,255,.03);
   border-radius: 16px;
-  padding: 12px 12px;
+  padding: 12px;
 }
+
 body.contacto-page .trust-k{
   font-weight: 900;
   letter-spacing: .10em;
@@ -418,6 +345,7 @@ body.contacto-page .trust-k{
   font-size: 12px;
   color: rgba(233,238,245,.92);
 }
+
 body.contacto-page .trust-v{
   margin-top: 6px;
   color: rgba(233,238,245,.70);
@@ -426,20 +354,19 @@ body.contacto-page .trust-v{
 }
 
 /* ==========================================
-   SECCIÓN FINAL (datos + CTA)
-   Reusa su clase .section-contacto + .contact-grid + .contact-box...
+   SECCIÓN CONTACTO FINAL
    ========================================== */
 body.contacto-page .section-contacto{
   position: relative;
-  padding: 56px 0 90px;
+  padding: 54px 0 90px;
   overflow: hidden;
 }
+
 body.contacto-page .section-contacto .container{
   position: relative;
   z-index: 2;
 }
 
-/* fondo beams también aquí */
 body.contacto-page .section-contacto::before{
   content:"";
   position:absolute;
@@ -452,6 +379,7 @@ body.contacto-page .section-contacto::before{
   opacity: .90;
   pointer-events:none;
 }
+
 body.contacto-page .section-contacto::after{
   content:"";
   position:absolute;
@@ -468,7 +396,6 @@ body.contacto-page .section-contacto::after{
   pointer-events:none;
 }
 
-/* Grid contacto final */
 body.contacto-page .contact-grid{
   display: grid;
   grid-template-columns: 1.15fr .85fr;
@@ -476,19 +403,23 @@ body.contacto-page .contact-grid{
   align-items: start;
 }
 
-/* Cards contacto final */
+body.contacto-page .contact-grid--single{
+  grid-template-columns: minmax(0, 820px);
+  justify-content: start;
+}
+
+/* card final */
 body.contacto-page .contact-box{
   position: relative;
   border: 1px solid var(--c-line);
   border-radius: var(--c-radius);
-  padding: 22px 22px;
+  padding: 22px;
   background:
     radial-gradient(760px 260px at 12% 0%, var(--c-soft), transparent 60%),
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   box-shadow: var(--c-shadow-soft);
   overflow: hidden;
 
-  /* reveal default */
   opacity: 0;
   transform: translateY(14px);
   transition: opacity .7s ease, transform .7s ease, border-color .35s ease;
@@ -516,6 +447,7 @@ body.contacto-page .contact-box::before{
 body.contacto-page .contact-box:hover{
   border-color: rgba(233,238,245,.26);
 }
+
 body.contacto-page .contact-box:hover::before{
   opacity: 1;
 }
@@ -535,6 +467,7 @@ body.contacto-page .contact-rows p{
   color: var(--c-muted);
   font-size: 1.02rem;
 }
+
 body.contacto-page .contact-rows strong{
   color: rgba(233,238,245,.88);
 }
@@ -546,6 +479,7 @@ body.contacto-page .contact-link{
   padding-bottom: 2px;
   transition: border-color .25s ease, opacity .25s ease;
 }
+
 body.contacto-page .contact-link:hover{
   border-color: rgba(231,136,4,.55);
   opacity: .9;
@@ -555,6 +489,7 @@ body.contacto-page .contact-note{
   margin-top: 14px;
   color: var(--c-muted);
   line-height: 1.75;
+  max-width: 60ch;
 }
 
 body.contacto-page .contact-actions{
@@ -564,46 +499,10 @@ body.contacto-page .contact-actions{
   flex-wrap: wrap;
 }
 
-/* CTA box */
-body.contacto-page .contact-box--cta .contact-mini{
-  margin: 0 0 16px;
-  color: var(--c-muted);
-  line-height: 1.75;
-}
-body.contacto-page .contact-cta{
-  display: grid;
-  gap: 10px;
-}
-body.contacto-page .contact-box--cta .btn{
-  width: 100%;
-  justify-content: center;
-}
-
-body.contacto-page .contact-tip{
-  margin-top: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(233,238,245,.14);
-  background: rgba(255,255,255,.03);
-  color: rgba(233,238,245,.74);
-  font-size: 13px;
-  letter-spacing: .02em;
-}
-body.contacto-page .contact-tip-dot{
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
-}
-
 /* ==========================================
    Reduced motion
    ========================================== */
 @media (prefers-reduced-motion: reduce){
-  body.contacto-page .logo-track{ animation: none; }
   body.contacto-page .contact-box,
   body.contacto-page .how-card,
   body.contacto-page .trust-card{
@@ -620,29 +519,45 @@ body.contacto-page .contact-tip-dot{
   body.contacto-page .contact-hero-inner{
     grid-template-columns: 1fr;
   }
+
   body.contacto-page .how-grid{
     grid-template-columns: 1fr;
   }
-  body.contacto-page .contact-grid{
+
+  body.contacto-page .contact-grid,
+  body.contacto-page .contact-grid--single{
     grid-template-columns: 1fr;
   }
+
   body.contacto-page .contact-hero{
     padding: 58px 0 40px;
   }
+
   body.contacto-page .section-contacto{
     padding: 52px 0 70px;
-  }
-  body.contacto-page .logo-track{
-    animation-duration: 26s;
   }
 }
 
 @media (max-width: 560px){
-  body.contacto-page .logo-set img{
-    height: 24px;
-    max-width: 130px;
-  }
   body.contacto-page .trust-grid{
     grid-template-columns: 1fr;
+  }
+
+  body.contacto-page .contact-title{
+    letter-spacing: .05em;
+  }
+
+  body.contacto-page .contact-hero-actions,
+  body.contacto-page .contact-actions,
+  body.contacto-page .how-actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.contacto-page .contact-hero-actions .btn,
+  body.contacto-page .contact-actions .btn,
+  body.contacto-page .how-actions .btn{
+    width: 100%;
+    justify-content: center;
   }
 }
