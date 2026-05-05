@@ -14,6 +14,8 @@ collections:
     fields:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Etiqueta", name: "tag", widget: "string", required: false }
+      - { label: "Imagen", name: "image", widget: "image", required: false }
       - { label: "Contenido", name: "body", widget: "markdown" }
 
   - name: "proyectos"
@@ -23,11 +25,11 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Cliente (opcional)", name: "cliente", widget: "string", required: false }
-      - { label: "Ubicación (opcional)", name: "ubicacion", widget: "string", required: false }
+      - { label: "Cliente", name: "cliente", widget: "string", required: false }
+      - { label: "Ubicación", name: "ubicacion", widget: "string", required: false }
       - { label: "Fecha", name: "date", widget: "datetime" }
-      - { label: "Imagen principal", name: "image", widget: "image" }
-      - label: "Galería (opcional)"
+      - { label: "Imagen principal", name: "image", widget: "image", required: false }
+      - label: "Galería"
         name: "gallery"
         widget: "list"
         required: false
@@ -38,14 +40,132 @@ collections:
   - name: "paginas"
     label: "Páginas"
     files:
+
       - label: "Inicio"
         name: "inicio"
         file: "content/paginas/inicio.json"
         fields:
+          - { label: "Badge del hero", name: "badge", widget: "string" }
+          - { label: "Título del hero", name: "titulo", widget: "string" }
+          - { label: "Descripción del hero", name: "descripcion", widget: "text" }
+          - { label: "Texto extra del hero", name: "extra", widget: "text", required: false }
+
+          - { label: "CTA principal - texto", name: "cta_principal_texto", widget: "string" }
+          - { label: "CTA principal - link", name: "cta_principal_link", widget: "string" }
+          - { label: "CTA secundario - texto", name: "cta_secundario_texto", widget: "string" }
+          - { label: "CTA secundario - link", name: "cta_secundario_link", widget: "string" }
+
+          - label: "Estadísticas"
+            name: "estadisticas"
+            widget: "list"
+            fields:
+              - { label: "Número", name: "numero", widget: "string" }
+              - { label: "Texto", name: "texto", widget: "string" }
+
+          - label: "Capacidades destacadas"
+            name: "capacidades_destacadas"
+            widget: "list"
+            fields:
+              - { label: "Número", name: "numero", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+              - { label: "Link", name: "link", widget: "string", required: false }
+
+          - { label: "Título del equipo", name: "equipo_titulo", widget: "string" }
+          - { label: "Descripción del equipo", name: "equipo_descripcion", widget: "text" }
+
+          - label: "Equipo destacado"
+            name: "equipo"
+            widget: "list"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Cargo", name: "cargo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+
+          - { label: "Título sectores", name: "sectores_titulo", widget: "string" }
+          - label: "Sectores"
+            name: "sectores"
+            widget: "list"
+            field: { label: "Sector", name: "sector", widget: "string" }
+
+          - { label: "CTA final - título", name: "cta_final_titulo", widget: "string" }
+          - { label: "CTA final - descripción", name: "cta_final_descripcion", widget: "text" }
+          - { label: "CTA final - texto botón", name: "cta_final_boton_texto", widget: "string" }
+          - { label: "CTA final - link botón", name: "cta_final_boton_link", widget: "string" }
+
+      - label: "Historia"
+        name: "historia"
+        file: "content/paginas/historia.json"
+        fields:
           - { label: "Badge", name: "badge", widget: "string" }
           - { label: "Título", name: "titulo", widget: "string" }
           - { label: "Descripción", name: "descripcion", widget: "text" }
-          - { label: "CTA principal (texto)", name: "cta_principal_texto", widget: "string" }
-          - { label: "CTA principal (link)", name: "cta_principal_link", widget: "string" }
-          - { label: "CTA secundario (texto)", name: "cta_secundario_texto", widget: "string" }
-          - { label: "CTA secundario (link)", name: "cta_secundario_link", widget: "string" }
+
+          - { label: "Título historia principal", name: "historia_titulo", widget: "string" }
+          - { label: "Texto historia principal", name: "historia_texto", widget: "markdown" }
+
+          - label: "Bloques de trayectoria"
+            name: "bloques"
+            widget: "list"
+            fields:
+              - { label: "Año o etapa", name: "etapa", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Texto", name: "texto", widget: "text" }
+
+          - label: "Valores"
+            name: "valores"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+
+      - label: "Capacidades"
+        name: "capacidades"
+        file: "content/paginas/capacidades.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "text" }
+
+          - label: "Lista de capacidades"
+            name: "capacidades"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción corta", name: "descripcion", widget: "text" }
+              - label: "Puntos clave"
+                name: "puntos"
+                widget: "list"
+                required: false
+                field: { label: "Punto", name: "punto", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", required: false }
+
+          - { label: "CTA título", name: "cta_titulo", widget: "string" }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text" }
+
+      - label: "Contacto"
+        name: "contacto"
+        file: "content/paginas/contacto.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "text" }
+
+          - { label: "Teléfono", name: "telefono", widget: "string" }
+          - { label: "Correo", name: "correo", widget: "string" }
+          - { label: "Ubicación", name: "ubicacion", widget: "string" }
+          - { label: "Texto adicional", name: "extra", widget: "text", required: false }
+
+          - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string" }
+          - { label: "Descripción información para cotizar", name: "cotizar_descripcion", widget: "text" }
+
+          - label: "Lista de información útil"
+            name: "cotizar_lista"
+            widget: "list"
+            field: { label: "Elemento", name: "elemento", widget: "string" }
+
+          - label: "Sectores"
+            name: "sectores"
+            widget: "list"
+            required: false
+            field: { label: "Sector", name: "sector", widget: "string" }
