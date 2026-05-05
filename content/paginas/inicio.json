@@ -1,24 +1,45 @@
 {
-  "badge": "INGENIERÍA MECÁNICA DE ALTA PRECISIÓN",
-  "titulo": "Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria",
-  "descripcion": "En COBYBSA diseñamos y fabricamos estructuras, tanques, accesorios y soluciones industriales, con estándares de precisión que garantizan desempeño y confiabilidad.",
-  "extra": "Más de 40 años desarrollando soluciones industriales confiables en Costa Rica.",
-
   "cta_principal_texto": "Solicitar cotización",
-  "cta_principal_link": "/contacto.html",
   "cta_secundario_texto": "Ver proyectos",
-  "cta_secundario_link": "/proyectos.html",
-
+  "badge": "INGENIERÍA MECÁNICA DE ALTA PRECISIÓN",
+  "sectores_titulo": "Soluciones para industrias que exigen confiabilidad",
+  "cta_final_boton_link": "/contacto.html",
+  "descripcion": "En COBYBSA diseñamos y fabricamos estructuras, tanques, accesorios y soluciones industriales, con estándares de precisión que garantizan desempeño y confiabilidad.",
   "estadisticas": [
-    { "numero": "+40", "texto": "Años de experiencia" },
-    { "numero": "+800", "texto": "Proyectos realizados" },
-    { "numero": "+20", "texto": "Clientes recurrentes" },
-    { "numero": "100%", "texto": "Enfoque en calidad" }
+    {
+      "numero": "+30",
+      "texto": "Años de experiencia"
+    },
+    {
+      "numero": "+100",
+      "texto": "Proyectos realizados"
+    },
+    {
+      "numero": "+100",
+      "texto": "Clientes satisfechos"
+    },
+    {
+      "numero": "100%",
+      "texto": "Enfoque en calidad"
+    }
   ],
-
-  "equipo_titulo": "La precisión empieza con las personas",
   "equipo_descripcion": "Detrás de cada proyecto hay un equipo técnico con experiencia en taller, criterio de fabricación y compromiso con el resultado final.",
-
+  "extra": "Más de 30 años desarrollando soluciones industriales confiables en Costa Rica.",
+  "cta_final_titulo": "¿Tiene planos, medidas o una idea por fabricar?",
+  "cta_final_boton_texto": "Solicitar cotización",
+  "sectores": [
+    "Industria alimentaria",
+    "Industria médica",
+    "Equipo industrial",
+    "Manufactura",
+    "Proyectos a medida",
+    "Acero inoxidable"
+  ],
+  "cta_final_descripcion": "Envíenos la información del proyecto y le ayudamos a definir material, proceso y viabilidad técnica.",
+  "cta_secundario_link": "/proyectos.html",
+  "equipo_titulo": "La precisión empieza con las personas",
+  "titulo": "Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria",
+  "cta_principal_link": "/contacto.html",
   "equipo": [
     {
       "nombre": "Nombre A",
@@ -50,21 +71,5 @@
       "cargo": "Taller",
       "descripcion": "Apoyo en fabricación y preparación de materiales."
     }
-  ],
-
-  "sectores_titulo": "Soluciones para industrias que exigen confiabilidad",
-
-  "sectores": [
-    "Industria alimentaria",
-    "Industria médica",
-    "Equipo industrial",
-    "Manufactura",
-    "Proyectos a medida",
-    "Acero inoxidable"
-  ],
-
-  "cta_final_titulo": "¿Tiene planos, medidas o una idea por fabricar?",
-  "cta_final_descripcion": "Envíenos la información del proyecto y le ayudamos a definir material, proceso y viabilidad técnica.",
-  "cta_final_boton_texto": "Solicitar cotización",
-  "cta_final_boton_link": "/contacto.html"
+  ]
 }
