@@ -2,13 +2,25 @@ document.documentElement.classList.add("js");
 
 (() => {
   const reduceMotion =
-    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* =========================
-     1) Reveal en scroll
+     1) Corregir rutas críticas
+     ========================= */
+  const cta1 = document.getElementById("cms-hero-cta1");
+  const cta2 = document.getElementById("cms-hero-cta2");
+
+  if (cta1) cta1.setAttribute("href", "/contacto.html");
+  if (cta2) cta2.setAttribute("href", "/proyectos.html");
+
+  /* =========================
+     2) Reveal en scroll
      ========================= */
   const revealEls = [
-    ...document.querySelectorAll(".hero-content, .hero-media, .news-header, .news-card"),
+    ...document.querySelectorAll(
+      ".hero-content, .hero-media, .home-stats, .capability-card, .team-head, .team-card, .home-industries, .home-cta, .news-header, .news-card"
+    ),
   ];
 
   revealEls.forEach((el) => el.classList.add("reveal"));
@@ -16,13 +28,13 @@ document.documentElement.classList.add("js");
   if (!reduceMotion && revealEls.length) {
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          e.target.classList.add("is-inview");
-          io.unobserve(e.target);
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-inview");
+          io.unobserve(entry.target);
         });
       },
-      { threshold: 0.18 }
+      { threshold: 0.16 }
     );
 
     revealEls.forEach((el) => io.observe(el));
@@ -31,164 +43,130 @@ document.documentElement.classList.add("js");
   }
 
   /* =========================
-     2) Micro-parallax hero image (suave)
+     3) Hero title animación limpia
+     ========================= */
+  const headline = document.querySelector("[data-hero-headline]");
+
+  if (headline && headline.dataset.split !== "1") {
+    headline.dataset.split = "1";
+
+    const text = headline.textContent.trim();
+
+    if (text) {
+      headline.textContent = "";
+
+      [...text].forEach((char, index) => {
+        const span = document.createElement("span");
+        span.className = "ch";
+        span.textContent = char === " " ? "\u00A0" : char;
+
+        if (!reduceMotion) {
+          span.style.transitionDelay = `${Math.min(index * 14, 520)}ms`;
+        }
+
+        headline.appendChild(span);
+      });
+
+      requestAnimationFrame(() => {
+        headline.classList.add("is-ready");
+      });
+    }
+  }
+
+  /* =========================
+     4) Micro-parallax hero image
      ========================= */
   if (!reduceMotion) {
-    const img = document.getElementById("cms-hero-image");
     const hero = document.getElementById("hero");
+    const img = document.getElementById("cms-hero-image");
 
-    if (img && hero) {
+    if (hero && img) {
       let raf = null;
 
-      const onMove = (ev) => {
-        const r = hero.getBoundingClientRect();
-        const x = (ev.clientX - r.left) / r.width - 0.5;
-        const y = (ev.clientY - r.top) / r.height - 0.5;
+      const moveImage = (event) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
 
         if (raf) cancelAnimationFrame(raf);
+
         raf = requestAnimationFrame(() => {
-          img.style.transform = `scale(1.03) translate(${x * 8}px, ${y * 8}px)`;
+          img.style.transform = `scale(1.035) translate(${x * 8}px, ${y * 8}px)`;
         });
       };
 
-      hero.addEventListener("mousemove", onMove);
-      hero.addEventListener("mouseleave", () => {
-        img.style.transform = "scale(1.02)";
-      });
+      const resetImage = () => {
+        img.style.transform = "scale(1.03)";
+      };
+
+      hero.addEventListener("mousemove", moveImage);
+      hero.addEventListener("mouseleave", resetImage);
     }
   }
 
   /* =========================
-     3) Carrusel de novedades (botones)
-     Nota: si js-novedades.js ya lo maneja, evitamos duplicar listeners
+     5) Carrusel novedades
      ========================= */
-  const track = document.querySelector(".news-track");
-  const prev = document.querySelector(".news-prev");
-  const next = document.querySelector(".news-next");
+  const newsTrack = document.querySelector(".news-track");
+  const newsPrev = document.querySelector(".news-prev");
+  const newsNext = document.querySelector(".news-next");
 
-  if (track && prev && next) {
-    // Guard para no registrar 2 veces (por si js-novedades.js también lo hace)
-    if (!track.dataset.navBound) {
-      track.dataset.navBound = "1";
+  if (newsTrack && newsPrev && newsNext && !newsTrack.dataset.navBound) {
+    newsTrack.dataset.navBound = "1";
 
-      const step = () => Math.max(280, Math.round(track.clientWidth * 0.85));
+    const step = () => Math.max(300, Math.round(newsTrack.clientWidth * 0.85));
 
-      prev.addEventListener("click", () => {
-        track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
+    newsPrev.addEventListener("click", () => {
+      newsTrack.scrollBy({
+        left: -step(),
+        behavior: reduceMotion ? "auto" : "smooth",
       });
+    });
 
-      next.addEventListener("click", () => {
-        track.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" });
+    newsNext.addEventListener("click", () => {
+      newsTrack.scrollBy({
+        left: step(),
+        behavior: reduceMotion ? "auto" : "smooth",
       });
-    }
+    });
   }
 
   /* =========================
-     4) Animación del titular (letras) + highlight “metalmecánicas”
-     Requiere en HTML: data-hero-headline en el título
-     y en CSS: .hero-title-anim .ch + .is-ready + .hl
+     6) Carrusel equipo
      ========================= */
-  const headline = document.querySelector("[data-hero-headline]");
-  if (headline) {
-    if (headline.dataset.split !== "1") {
-      headline.dataset.split = "1";
+  const teamTrack = document.querySelector(".team-track");
 
-      const original = (headline.textContent || "").trim();
-      const highlightWord = "metalmecánicas";
+  if (teamTrack && !teamTrack.dataset.dragBound) {
+    teamTrack.dataset.dragBound = "1";
 
-      if (original) {
-        headline.textContent = "";
-        const frag = document.createDocumentFragment();
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
 
-        const words = original.split(" ");
-        words.forEach((w, wi) => {
-          const clean = w.replace(/[.,;:!?]/g, "");
-          const isHL = clean.toLowerCase() === highlightWord;
+    teamTrack.addEventListener("mousedown", (event) => {
+      isDown = true;
+      teamTrack.classList.add("is-dragging");
+      startX = event.pageX - teamTrack.offsetLeft;
+      scrollLeft = teamTrack.scrollLeft;
+    });
 
-          const wordSpan = document.createElement("span");
-          if (isHL) wordSpan.className = "hl";
+    teamTrack.addEventListener("mouseleave", () => {
+      isDown = false;
+      teamTrack.classList.remove("is-dragging");
+    });
 
-          for (let i = 0; i < w.length; i++) {
-            const s = document.createElement("span");
-            s.className = "ch";
-            s.textContent = w[i];
-            wordSpan.appendChild(s);
-          }
+    teamTrack.addEventListener("mouseup", () => {
+      isDown = false;
+      teamTrack.classList.remove("is-dragging");
+    });
 
-          frag.appendChild(wordSpan);
-          if (wi < words.length - 1) frag.appendChild(document.createTextNode(" "));
-        });
+    teamTrack.addEventListener("mousemove", (event) => {
+      if (!isDown) return;
+      event.preventDefault();
 
-        headline.appendChild(frag);
-
-        const letters = headline.querySelectorAll(".ch");
-
-        if (reduceMotion) {
-          headline.classList.add("is-ready");
-          letters.forEach((l) => {
-            l.style.opacity = "1";
-            l.style.transform = "none";
-            l.style.filter = "none";
-            l.style.transition = "none";
-          });
-        } else {
-          requestAnimationFrame(() => {
-            headline.classList.add("is-ready");
-            letters.forEach((l, idx) => {
-              l.style.transitionDelay = `${Math.min(0.9, idx * 0.012)}s`;
-            });
-          });
-        }
-      }
-    }
+      const x = event.pageX - teamTrack.offsetLeft;
+      const walk = (x - startX) * 1.2;
+      teamTrack.scrollLeft = scrollLeft - walk;
+    });
   }
-})();
-/* =========================
-   4) Hero title: animación por caracteres
-   ========================= */
-(() => {
-  const reduceMotion =
-    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const el = document.getElementById("cms-hero-title");
-  if (!el) return;
-
-  // No animar si reduce motion
-  if (reduceMotion) {
-    el.classList.add("is-ready");
-    return;
-  }
-
-  const text = el.textContent.trim();
-
-  // resaltar palabra clave (opcional)
-  const highlightWord = "metalmecánicas";
-
-  el.textContent = "";
-  const frag = document.createDocumentFragment();
-
-  // reconstruir con spans por carácter
-  let i = 0;
-  for (const ch of text) {
-    const span = document.createElement("span");
-    span.className = "ch";
-    span.style.transitionDelay = `${Math.min(i * 18, 420)}ms`;
-    span.textContent = ch === " " ? "\u00A0" : ch;
-    frag.appendChild(span);
-    i++;
-  }
-
-  el.appendChild(frag);
-
-  // aplicar highlight por palabra (busca y pinta los chars dentro)
-  const plain = text.toLowerCase();
-  const idx = plain.indexOf(highlightWord.toLowerCase());
-  if (idx >= 0) {
-    const nodes = el.querySelectorAll(".ch");
-    for (let k = idx; k < idx + highlightWord.length; k++) {
-      if (nodes[k]) nodes[k].classList.add("hl");
-    }
-  }
-
-  requestAnimationFrame(() => el.classList.add("is-ready"));
 })();
