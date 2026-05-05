@@ -23,6 +23,19 @@
       "texto": "Enfoque en calidad"
     }
   ],
+  "equipo_descripcion": "Detrás de cada proyecto hay un equipo técnico con experiencia en taller, criterio de fabricación y compromiso con el resultado final.",
+  "extra": "Más de 30 años desarrollando soluciones industriales confiables en Costa Rica.",
+  "cta_final_titulo": "¿Tiene planos, medidas o una idea por fabricar?",
+  "cta_final_boton_texto": "Solicitar cotización",
+  "sectores": [
+    "Industria alimentaria",
+    "Industria médica",
+    "Equipo industrial",
+    "Manufactura",
+    "Proyectos a medida",
+    "Acero inoxidable"
+  ],
+  "cta_final_descripcion": "Envíenos la información del proyecto y le ayudamos a definir material, proceso y viabilidad técnica.",
   "capacidades_destacadas": [
     {
       "numero": "01",
@@ -43,22 +56,9 @@
       "link": "/manufactura-industrial.html"
     }
   ],
-  "equipo_descripcion": "Detrás de cada proyecto hay un equipo técnico con experiencia en taller, criterio de fabricación y compromiso con el resultado final.",
-  "extra": "Más de 30 años desarrollando soluciones industriales confiables en Costa Rica.",
-  "cta_final_titulo": "¿Tiene planos, medidas o una idea por fabricar?",
-  "cta_final_boton_texto": "Solicitar cotización",
-  "sectores": [
-    "Industria alimentaria",
-    "Industria médica",
-    "Equipo industrial",
-    "Manufactura",
-    "Proyectos a medida",
-    "Acero inoxidable"
-  ],
-  "cta_final_descripcion": "Envíenos la información del proyecto y le ayudamos a definir material, proceso y viabilidad técnica.",
   "cta_secundario_link": "/proyectos.html",
   "equipo_titulo": "La precisión empieza con las personas",
-  "titulo": "Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria",
+  "titulo": "Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria.",
   "cta_principal_link": "/contacto.html",
   "equipo": [
     {
