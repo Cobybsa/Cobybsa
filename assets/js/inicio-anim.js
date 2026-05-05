@@ -5,21 +5,24 @@ document.documentElement.classList.add("js");
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* =========================
-     1) Corregir rutas críticas
-     ========================= */
-  const cta1 = document.getElementById("cms-hero-cta1");
-  const cta2 = document.getElementById("cms-hero-cta2");
+  const safeSetHref = (id, fallback) => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
-  if (cta1) cta1.setAttribute("href", "/contacto.html");
-  if (cta2) cta2.setAttribute("href", "/proyectos.html");
+    const current = el.getAttribute("href");
 
-  /* =========================
-     2) Reveal en scroll
-     ========================= */
+    if (!current || current.startsWith("#")) {
+      el.setAttribute("href", fallback);
+    }
+  };
+
+  safeSetHref("cms-hero-cta1", "/contacto.html");
+  safeSetHref("cms-hero-cta2", "/proyectos.html");
+
+  /* Reveal */
   const revealEls = [
     ...document.querySelectorAll(
-      ".hero-content, .hero-media, .home-stats, .capability-card, .team-head, .team-card, .home-industries, .home-cta, .news-header, .news-card"
+      ".hero-content, .hero-media, .home-stats, .stat-item, .section-head, .capability-card, .team-head, .team-card, .home-industries, .home-cta, .news-header, .news-card"
     ),
   ];
 
@@ -34,7 +37,7 @@ document.documentElement.classList.add("js");
           io.unobserve(entry.target);
         });
       },
-      { threshold: 0.16 }
+      { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
     );
 
     revealEls.forEach((el) => io.observe(el));
@@ -42,43 +45,22 @@ document.documentElement.classList.add("js");
     revealEls.forEach((el) => el.classList.add("is-inview"));
   }
 
-  /* =========================
-     3) Hero title animación limpia
-     ========================= */
-  const headline = document.querySelector("[data-hero-headline]");
+  /* Hero title: sin split por letras para evitar overflow */
+  const headline =
+    document.getElementById("cms-hero-title") ||
+    document.querySelector("[data-hero-headline]");
 
-  if (headline && headline.dataset.split !== "1") {
-    headline.dataset.split = "1";
-
-    const text = headline.textContent.trim();
-
-    if (text) {
-      headline.textContent = "";
-
-      [...text].forEach((char, index) => {
-        const span = document.createElement("span");
-        span.className = "ch";
-        span.textContent = char === " " ? "\u00A0" : char;
-
-        if (!reduceMotion) {
-          span.style.transitionDelay = `${Math.min(index * 14, 520)}ms`;
-        }
-
-        headline.appendChild(span);
-      });
-
-      requestAnimationFrame(() => {
-        headline.classList.add("is-ready");
-      });
-    }
+  if (headline) {
+    headline.classList.add("is-ready");
+    headline.style.whiteSpace = "normal";
   }
 
-  /* =========================
-     4) Micro-parallax hero image
-     ========================= */
+  /* Micro-parallax hero image */
   if (!reduceMotion) {
     const hero = document.getElementById("hero");
-    const img = document.getElementById("cms-hero-image");
+    const img =
+      document.getElementById("cms-hero-image") ||
+      document.querySelector(".hero-image");
 
     if (hero && img) {
       let raf = null;
@@ -91,7 +73,7 @@ document.documentElement.classList.add("js");
         if (raf) cancelAnimationFrame(raf);
 
         raf = requestAnimationFrame(() => {
-          img.style.transform = `scale(1.035) translate(${x * 8}px, ${y * 8}px)`;
+          img.style.transform = `scale(1.03) translate(${x * 5}px, ${y * 5}px)`;
         });
       };
 
@@ -104,36 +86,36 @@ document.documentElement.classList.add("js");
     }
   }
 
-  /* =========================
-     5) Carrusel novedades
-     ========================= */
-  const newsTrack = document.querySelector(".news-track");
-  const newsPrev = document.querySelector(".news-prev");
-  const newsNext = document.querySelector(".news-next");
+  /* Carrusel novedades */
+  const bindCarouselButtons = (trackSelector, prevSelector, nextSelector) => {
+    const track = document.querySelector(trackSelector);
+    const prev = document.querySelector(prevSelector);
+    const next = document.querySelector(nextSelector);
 
-  if (newsTrack && newsPrev && newsNext && !newsTrack.dataset.navBound) {
-    newsTrack.dataset.navBound = "1";
+    if (!track || !prev || !next || track.dataset.navBound) return;
 
-    const step = () => Math.max(300, Math.round(newsTrack.clientWidth * 0.85));
+    track.dataset.navBound = "1";
 
-    newsPrev.addEventListener("click", () => {
-      newsTrack.scrollBy({
+    const step = () => Math.max(300, Math.round(track.clientWidth * 0.85));
+
+    prev.addEventListener("click", () => {
+      track.scrollBy({
         left: -step(),
         behavior: reduceMotion ? "auto" : "smooth",
       });
     });
 
-    newsNext.addEventListener("click", () => {
-      newsTrack.scrollBy({
+    next.addEventListener("click", () => {
+      track.scrollBy({
         left: step(),
         behavior: reduceMotion ? "auto" : "smooth",
       });
     });
-  }
+  };
 
-  /* =========================
-     6) Carrusel equipo
-     ========================= */
+  bindCarouselButtons(".news-track", ".news-prev", ".news-next");
+
+  /* Drag carrusel equipo */
   const teamTrack = document.querySelector(".team-track");
 
   if (teamTrack && !teamTrack.dataset.dragBound) {
@@ -143,30 +125,30 @@ document.documentElement.classList.add("js");
     let startX = 0;
     let scrollLeft = 0;
 
-    teamTrack.addEventListener("mousedown", (event) => {
+    teamTrack.addEventListener("pointerdown", (event) => {
       isDown = true;
       teamTrack.classList.add("is-dragging");
       startX = event.pageX - teamTrack.offsetLeft;
       scrollLeft = teamTrack.scrollLeft;
+      teamTrack.setPointerCapture(event.pointerId);
     });
 
-    teamTrack.addEventListener("mouseleave", () => {
-      isDown = false;
-      teamTrack.classList.remove("is-dragging");
-    });
-
-    teamTrack.addEventListener("mouseup", () => {
-      isDown = false;
-      teamTrack.classList.remove("is-dragging");
-    });
-
-    teamTrack.addEventListener("mousemove", (event) => {
+    teamTrack.addEventListener("pointermove", (event) => {
       if (!isDown) return;
       event.preventDefault();
 
       const x = event.pageX - teamTrack.offsetLeft;
-      const walk = (x - startX) * 1.2;
+      const walk = (x - startX) * 1.15;
       teamTrack.scrollLeft = scrollLeft - walk;
     });
+
+    const stopDragging = () => {
+      isDown = false;
+      teamTrack.classList.remove("is-dragging");
+    };
+
+    teamTrack.addEventListener("pointerup", stopDragging);
+    teamTrack.addEventListener("pointercancel", stopDragging);
+    teamTrack.addEventListener("pointerleave", stopDragging);
   }
 })();
