@@ -1,1 +1,41 @@
+{
+  "badge": "Desde taller familiar hasta industria de precisión",
+  "titulo": "Historia de COBYBSA",
+  "descripcion": "Un recorrido por nuestra evolución: cómo pasamos de trabajos locales a proyectos industriales, integrando corte láser, CNC y modelado 3D con enfoque absoluto en calidad, cumplimiento y detalle.",
 
+  "historia_titulo": "Etapas",
+  "historia_texto": "Tres momentos que explican el salto: orden en el taller, control técnico y ejecución industrial consistente.",
+
+  "bloques": [
+    {
+      "etapa": "Origen",
+      "titulo": "Los inicios · 1990s",
+      "texto": "Nacemos como un taller familiar pequeño, enfocado en trabajos locales y soluciones a medida. La base fue la disciplina del trabajo bien hecho: orden, precisión y responsabilidad."
+    },
+    {
+      "etapa": "Crecimiento",
+      "titulo": "Evolución · 2000–2015",
+      "texto": "Incorporamos procesos y control dimensional: corte láser, mecanizado CNC y modelado 3D, avanzando hacia proyectos industriales más complejos con mayor repetibilidad."
+    },
+    {
+      "etapa": "Consolidación",
+      "titulo": "Industria actual · 2025",
+      "texto": "Hoy operamos como aliado técnico: ingeniería, fabricación y soporte. Cuidamos tolerancias, acabados, seguridad y cumplimiento como estándar."
+    }
+  ],
+
+  "valores": [
+    {
+      "titulo": "Precisión",
+      "descripcion": "Cuidamos medidas, tolerancias y acabados en cada etapa del proceso."
+    },
+    {
+      "titulo": "Cumplimiento",
+      "descripcion": "Trabajamos con orden para entregar soluciones confiables y consistentes."
+    },
+    {
+      "titulo": "Calidad",
+      "descripcion": "Buscamos que cada proyecto refleje responsabilidad técnica y atención al detalle."
+    }
+  ]
+}
