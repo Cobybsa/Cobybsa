@@ -919,28 +919,9 @@ html.js .reveal.is-inview{
 }
 
 /* ==============================
-   REDUCED MOTION
+   FIX HERO TITLE OVERFLOW
    ============================== */
 
-@media (prefers-reduced-motion: reduce){
-  html.js .reveal{
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .news-track,
-  .team-track{
-    scroll-behavior: auto;
-  }
-
-  .btn,
-  .news-card,
-  .team-card,
-  .capability-card,
-  .news-image img{
-    transition: none !important;
-     /* FIX HERO TITLE OVERFLOW */
 .hero-title{
   max-width: 760px;
   width: 100%;
@@ -973,5 +954,28 @@ html.js .reveal.is-inview{
   position: relative;
   z-index: 2;
 }
+
+/* ==============================
+   REDUCED MOTION
+   ============================== */
+
+@media (prefers-reduced-motion: reduce){
+  html.js .reveal{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .news-track,
+  .team-track{
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .news-card,
+  .team-card,
+  .capability-card,
+  .news-image img{
+    transition: none !important;
   }
 }
