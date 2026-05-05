@@ -5,42 +5,33 @@
   <title>Capacidades | COBYBSA Construcción Industrial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/capacidades.css" />
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://cobybsa.com/capacidades.html" />
-
-  <!-- Favicon -->
   <link rel="icon" href="/img/favicon.png" type="image/png" />
 
-  <!-- SEO básico -->
   <meta
     name="description"
     content="Capacidades de COBYBSA en Costa Rica: manufactura industrial, ingeniería de precisión, corte láser, CNC y diseño/modelado 3D. Soluciones metalmecánicas con calidad y cumplimiento."
   />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Capacidades | COBYBSA Construcción Industrial" />
   <meta property="og:description" content="Manufactura industrial, ingeniería de precisión, corte láser, CNC y diseño/modelado 3D. Soluciones metalmecánicas en Costa Rica." />
   <meta property="og:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
   <meta property="og:url" content="https://cobybsa.com/capacidades.html" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Capacidades | COBYBSA Construcción Industrial" />
   <meta name="twitter:description" content="Manufactura industrial, ingeniería de precisión, corte láser, CNC y diseño/modelado 3D. Soluciones metalmecánicas en Costa Rica." />
   <meta name="twitter:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
 
-  <!-- Animaciones -->
   <script defer src="/assets/js/capacidades-anim.js"></script>
 </head>
 
 <body class="capacidades-page">
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="Ir al inicio">
@@ -65,16 +56,16 @@
         <div class="cap-hero-inner">
           <div class="section-header">
             <div>
-              <h1 class="section-title" data-cap-title>Capacidades</h1>
+              <h1 class="section-title" id="cms-cap-title" data-cap-title>Capacidades</h1>
             </div>
 
-            <p class="section-subtitle" data-cap-sub>
+            <p class="section-subtitle" id="cms-cap-desc" data-cap-sub>
               Procesos integrados para resolver proyectos metalmecánicos con precisión, calidad y cumplimiento:
               desde el diseño y modelado 3D hasta fabricación, corte y mecanizado.
             </p>
           </div>
 
-          <div class="cap-hero-badges" aria-label="Procesos clave">
+          <div class="cap-hero-badges" id="cms-cap-badges" aria-label="Procesos clave">
             <span class="cap-pill">Corte láser</span>
             <span class="cap-pill">CNC</span>
             <span class="cap-pill">Modelado 3D</span>
@@ -86,9 +77,8 @@
 
     <!-- CAPACIDADES -->
     <section id="capacidades" class="capabilities-section">
-      <div class="container cap-wrap">
+      <div class="container cap-wrap" id="cms-cap-list">
 
-        <!-- Capacidad 1 -->
         <div class="capability" data-cap-card>
           <div class="capability-text">
             <h3>Manufactura Industrial</h3>
@@ -111,7 +101,6 @@
           </div>
         </div>
 
-        <!-- Capacidad 2 -->
         <div class="capability" data-cap-card>
           <div class="capability-text">
             <h3>Ingeniería de Precisión</h3>
@@ -134,7 +123,6 @@
           </div>
         </div>
 
-        <!-- Capacidad 3 -->
         <div class="capability" data-cap-card>
           <div class="capability-text">
             <h3>Corte Láser Industrial</h3>
@@ -157,7 +145,6 @@
           </div>
         </div>
 
-        <!-- Capacidad 4 -->
         <div class="capability" data-cap-card>
           <div class="capability-text">
             <h3>Corte CNC Industrial</h3>
@@ -180,7 +167,6 @@
           </div>
         </div>
 
-        <!-- Capacidad 5 -->
         <div class="capability" data-cap-card>
           <div class="capability-text">
             <h3>Diseño y Modelado 3D Industrial</h3>
@@ -208,7 +194,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> COBYBSA. Todos los derechos reservados.</p>
@@ -220,7 +205,6 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- CMS dinámico (si ya lo está usando) -->
   <script src="/assets/js/cms-content.js"></script>
 </body>
 </html>
