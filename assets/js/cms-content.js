@@ -9,17 +9,13 @@
     const setText = (id, value) => {
       const el = document.getElementById(id);
       if (!el) return;
-      if (typeof value === "string" && value.trim()) {
-        el.textContent = value;
-      }
+      if (typeof value === "string" && value.trim()) el.textContent = value;
     };
 
     const setHref = (id, value) => {
       const el = document.getElementById(id);
       if (!el) return;
-      if (typeof value === "string" && value.trim()) {
-        el.setAttribute("href", value);
-      }
+      if (typeof value === "string" && value.trim()) el.setAttribute("href", value);
     };
 
     const createEl = (tag, className, text) => {
@@ -29,9 +25,7 @@
       return el;
     };
 
-    // ======================
-    // INICIO
-    // ======================
+    /* INICIO */
     const inicio = await fetchJson("/content/paginas/inicio.json");
 
     if (inicio) {
@@ -46,38 +40,25 @@
       setText("cms-hero-cta2-text", inicio.cta_secundario_texto);
       setHref("cms-hero-cta2", inicio.cta_secundario_link || "/proyectos.html");
 
-      // Estadísticas
       const statsContainer = document.querySelector(".stats-inner");
       if (statsContainer && Array.isArray(inicio.estadisticas)) {
         statsContainer.innerHTML = "";
-
         inicio.estadisticas.forEach((item) => {
           const stat = createEl("div", "stat-item");
-
-          const number = createEl("span", "stat-number", item.numero);
-          const label = createEl("span", "stat-label", item.texto);
-
-          stat.appendChild(number);
-          stat.appendChild(label);
+          stat.appendChild(createEl("span", "stat-number", item.numero));
+          stat.appendChild(createEl("span", "stat-label", item.texto));
           statsContainer.appendChild(stat);
         });
       }
 
-      // Capacidades destacadas
       const capabilitiesContainer = document.querySelector(".capability-grid");
       if (capabilitiesContainer && Array.isArray(inicio.capacidades_destacadas)) {
         capabilitiesContainer.innerHTML = "";
-
         inicio.capacidades_destacadas.forEach((item) => {
           const card = createEl("article", "capability-card");
-
-          const number = createEl("span", "", item.numero);
-          const title = createEl("h3", "", item.titulo);
-          const desc = createEl("p", "", item.descripcion);
-
-          card.appendChild(number);
-          card.appendChild(title);
-          card.appendChild(desc);
+          card.appendChild(createEl("span", "", item.numero));
+          card.appendChild(createEl("h3", "", item.titulo));
+          card.appendChild(createEl("p", "", item.descripcion));
 
           if (item.link) {
             const link = createEl("a", "", "Ver capacidad");
@@ -89,84 +70,109 @@
         });
       }
 
-      // Equipo
       const teamTitle = document.querySelector(".team-head h2");
       const teamDesc = document.querySelector(".team-head p:not(.section-kicker)");
 
-      if (teamTitle && inicio.equipo_titulo) {
-        teamTitle.textContent = inicio.equipo_titulo;
-      }
-
-      if (teamDesc && inicio.equipo_descripcion) {
-        teamDesc.textContent = inicio.equipo_descripcion;
-      }
+      if (teamTitle && inicio.equipo_titulo) teamTitle.textContent = inicio.equipo_titulo;
+      if (teamDesc && inicio.equipo_descripcion) teamDesc.textContent = inicio.equipo_descripcion;
 
       const teamTrack = document.querySelector(".team-track");
       if (teamTrack && Array.isArray(inicio.equipo)) {
         teamTrack.innerHTML = "";
-
         inicio.equipo.forEach((persona) => {
           const card = createEl("article", "team-card");
 
           const avatar = createEl("div", "team-avatar");
           avatar.setAttribute("aria-hidden", "true");
 
-          const name = createEl("h3", "", persona.nombre);
-          const role = createEl("span", "team-role", persona.cargo);
-          const desc = createEl("p", "", persona.descripcion);
-
           card.appendChild(avatar);
-          card.appendChild(name);
-          card.appendChild(role);
-          card.appendChild(desc);
+          card.appendChild(createEl("h3", "", persona.nombre));
+          card.appendChild(createEl("span", "team-role", persona.cargo));
+          card.appendChild(createEl("p", "", persona.descripcion));
 
           teamTrack.appendChild(card);
         });
       }
 
-      // Sectores
       const sectorTitle = document.querySelector(".home-industries .section-head h2");
-      if (sectorTitle && inicio.sectores_titulo) {
-        sectorTitle.textContent = inicio.sectores_titulo;
-      }
+      if (sectorTitle && inicio.sectores_titulo) sectorTitle.textContent = inicio.sectores_titulo;
 
       const industryList = document.querySelector(".industry-list");
       if (industryList && Array.isArray(inicio.sectores)) {
         industryList.innerHTML = "";
-
         inicio.sectores.forEach((sector) => {
-          const span = createEl("span", "", sector);
-          industryList.appendChild(span);
+          industryList.appendChild(createEl("span", "", sector));
         });
       }
 
-      // CTA final
       const ctaTitle = document.querySelector(".home-cta h2");
       const ctaDesc = document.querySelector(".home-cta p:not(.section-kicker)");
       const ctaButton = document.querySelector(".home-cta .btn");
 
-      if (ctaTitle && inicio.cta_final_titulo) {
-        ctaTitle.textContent = inicio.cta_final_titulo;
-      }
-
-      if (ctaDesc && inicio.cta_final_descripcion) {
-        ctaDesc.textContent = inicio.cta_final_descripcion;
-      }
+      if (ctaTitle && inicio.cta_final_titulo) ctaTitle.textContent = inicio.cta_final_titulo;
+      if (ctaDesc && inicio.cta_final_descripcion) ctaDesc.textContent = inicio.cta_final_descripcion;
 
       if (ctaButton) {
-        if (inicio.cta_final_boton_texto) {
-          ctaButton.textContent = inicio.cta_final_boton_texto;
-        }
-
-        if (inicio.cta_final_boton_link) {
-          ctaButton.setAttribute("href", inicio.cta_final_boton_link);
-        }
+        if (inicio.cta_final_boton_texto) ctaButton.textContent = inicio.cta_final_boton_texto;
+        if (inicio.cta_final_boton_link) ctaButton.setAttribute("href", inicio.cta_final_boton_link);
       }
     }
 
-    // ======================
-    // CONTACTO
-    // ======================
+    /* HISTORIA */
+    const historia = await fetchJson("/content/paginas/historia.json");
+
+    if (historia) {
+      setText("cms-historia-badge", historia.badge);
+      setText("cms-historia-title", historia.titulo);
+      setText("cms-historia-desc", historia.descripcion);
+      setText("cms-historia-main-title", historia.historia_titulo);
+      setText("cms-historia-main-text", historia.historia_texto);
+
+      const bloquesContainer = document.getElementById("cms-historia-bloques");
+
+      if (bloquesContainer && Array.isArray(historia.bloques)) {
+        bloquesContainer.innerHTML = "";
+
+        historia.bloques.forEach((bloque) => {
+          const article = createEl("article", "hx-step");
+
+          const head = createEl("div", "hx-step-head");
+          head.appendChild(createEl("span", "hx-tag", bloque.etapa));
+
+          const title = createEl("h3", "", bloque.titulo);
+          title.setAttribute("data-decrypt", "");
+          head.appendChild(title);
+
+          article.appendChild(head);
+          article.appendChild(createEl("p", "", bloque.texto));
+
+          if (Array.isArray(bloque.puntos) && bloque.puntos.length) {
+            const ul = createEl("ul");
+            bloque.puntos.forEach((punto) => {
+              ul.appendChild(createEl("li", "", punto));
+            });
+            article.appendChild(ul);
+          }
+
+          bloquesContainer.appendChild(article);
+        });
+      }
+
+      const valoresContainer = document.getElementById("cms-historia-valores");
+
+      if (valoresContainer && Array.isArray(historia.valores)) {
+        valoresContainer.innerHTML = "";
+
+        historia.valores.forEach((valor) => {
+          const article = createEl("article", "hx-value");
+          article.appendChild(createEl("h3", "", valor.titulo));
+          article.appendChild(createEl("p", "", valor.descripcion));
+          valoresContainer.appendChild(article);
+        });
+      }
+    }
+
+    /* CONTACTO */
     const contacto = await fetchJson("/content/paginas/contacto.json");
 
     if (contacto) {
@@ -190,9 +196,7 @@
       }
     }
 
-    // ======================
-    // CAPACIDADES
-    // ======================
+    /* CAPACIDADES */
     const capacidades = await fetchJson("/content/paginas/capacidades.json");
 
     if (capacidades) {
