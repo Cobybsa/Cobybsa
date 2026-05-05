@@ -197,13 +197,55 @@
     }
 
     /* CAPACIDADES */
-    const capacidades = await fetchJson("/content/paginas/capacidades.json");
+const capacidades = await fetchJson("/content/paginas/capacidades.json");
 
-    if (capacidades) {
-      setText("cms-cap-title", capacidades.titulo);
-      setText("cms-cap-desc", capacidades.descripcion);
-    }
-  } catch (error) {
-    console.warn("CMS content could not be loaded:", error);
+if (capacidades) {
+  setText("cms-cap-title", capacidades.titulo);
+  setText("cms-cap-desc", capacidades.descripcion);
+
+  const badgesContainer = document.getElementById("cms-cap-badges");
+
+  if (badgesContainer && Array.isArray(capacidades.badges)) {
+    badgesContainer.innerHTML = "";
+
+    capacidades.badges.forEach((badge) => {
+      badgesContainer.appendChild(createEl("span", "cap-pill", badge));
+    });
   }
-})();
+
+  const capList = document.getElementById("cms-cap-list");
+
+  if (capList && Array.isArray(capacidades.capacidades)) {
+    capList.innerHTML = "";
+
+    capacidades.capacidades.forEach((item) => {
+      const capability = createEl("div", "capability");
+      capability.setAttribute("data-cap-card", "");
+
+      const text = createEl("div", "capability-text");
+      text.appendChild(createEl("h3", "", item.titulo));
+      text.appendChild(createEl("p", "", item.descripcion));
+
+      if (item.link) {
+        const link = createEl("a", "capability-link", `${item.link_texto || "Ver capacidad"} →`);
+        link.setAttribute("href", item.link);
+        text.appendChild(link);
+      }
+
+      const imageWrap = createEl("div", "capability-image");
+
+      if (item.imagen) {
+        const img = createEl("img");
+        img.setAttribute("src", item.imagen);
+        img.setAttribute("alt", item.alt || item.titulo || "Capacidad COBYBSA");
+        img.setAttribute("loading", "lazy");
+        img.setAttribute("decoding", "async");
+        imageWrap.appendChild(img);
+      }
+
+      capability.appendChild(text);
+      capability.appendChild(imageWrap);
+      capList.appendChild(capability);
+    });
+  }
+}
