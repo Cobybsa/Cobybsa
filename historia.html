@@ -22,7 +22,7 @@
 
 <body class="historia-page">
 
-  <!-- HEADER (global) -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="Ir al inicio">
@@ -41,17 +41,19 @@
 
   <main class="history-new">
 
-    <!-- HERO editorial -->
+    <!-- HERO -->
     <section class="hx-hero">
       <div class="hx-wrap">
         <p class="hx-kicker">
           <span class="hx-dot" aria-hidden="true"></span>
-          Desde taller familiar hasta industria de precisión
+          <span id="cms-historia-badge">Desde taller familiar hasta industria de precisión</span>
         </p>
 
-        <h1 class="hx-title" data-decrypt>Historia de COBYBSA</h1>
+        <h1 class="hx-title" id="cms-historia-title" data-decrypt>
+          Historia de COBYBSA
+        </h1>
 
-        <p class="hx-lead">
+        <p class="hx-lead" id="cms-historia-desc">
           Un recorrido por nuestra evolución: cómo pasamos de trabajos locales a proyectos industriales,
           integrando corte láser, CNC y modelado 3D con enfoque absoluto en calidad, cumplimiento y detalle.
         </p>
@@ -63,31 +65,31 @@
       </div>
     </section>
 
-    <!-- Scroll velocity marquee -->
+    <!-- MARQUEE -->
     <section class="hx-marquee" aria-hidden="true">
       <div class="hx-marquee-track" data-scroll-velocity>
-    <span>
-      ACERO INOXIDABLE • INGENIERÍA • MODELADO 3D •
-      CORTE LÁSER • CNC • FABRICACIÓN INDUSTRIAL •
-      TANQUES SANITARIOS • EQUIPOS DE PROCESO •
-      GABINETES INDUSTRIALES • ESTRUCTURAS METÁLICAS •
-    </span>
-    <span>
-      ACERO INOXIDABLE • INGENIERÍA • MODELADO 3D •
-      CORTE LÁSER • CNC • FABRICACIÓN INDUSTRIAL •
-      TANQUES SANITARIOS • EQUIPOS DE PROCESO •
-      GABINETES INDUSTRIALES • ESTRUCTURAS METÁLICAS •
-    </span>
-    <span>
-      ACERO INOXIDABLE • INGENIERÍA • MODELADO 3D •
-      CORTE LÁSER • CNC • FABRICACIÓN INDUSTRIAL •
-      TANQUES SANITARIOS • EQUIPOS DE PROCESO •
-      GABINETES INDUSTRIALES • ESTRUCTURAS METÁLICAS •
-    </span>
-  </div>
-</section>
+        <span>
+          ACERO INOXIDABLE • INGENIERÍA • MODELADO 3D •
+          CORTE LÁSER • CNC • FABRICACIÓN INDUSTRIAL •
+          TANQUES SANITARIOS • EQUIPOS DE PROCESO •
+          GABINETES INDUSTRIALES • ESTRUCTURAS METÁLICAS •
+        </span>
+        <span>
+          ACERO INOXIDABLE • INGENIERÍA • MODELADO 3D •
+          CORTE LÁSER • CNC • FABRICACIÓN INDUSTRIAL •
+          TANQUES SANITARIOS • EQUIPOS DE PROCESO •
+          GABINETES INDUSTRIALES • ESTRUCTURAS METÁLICAS •
+        </span>
+        <span>
+          ACERO INOXIDABLE • INGENIERÍA • MODELADO 3D •
+          CORTE LÁSER • CNC • FABRICACIÓN INDUSTRIAL •
+          TANQUES SANITARIOS • EQUIPOS DE PROCESO •
+          GABINETES INDUSTRIALES • ESTRUCTURAS METÁLICAS •
+        </span>
+      </div>
+    </section>
 
-    <!-- Stats (count up) -->
+    <!-- STATS -->
     <section class="hx-stats">
       <div class="hx-wrap hx-grid3">
         <div class="hx-stat">
@@ -107,15 +109,16 @@
       </div>
     </section>
 
-    <!-- Timeline -->
+    <!-- TIMELINE -->
     <section class="hx-timeline">
       <div class="hx-wrap">
-        <h2 class="hx-h2">Etapas</h2>
-        <p class="hx-sub">
+        <h2 class="hx-h2" id="cms-historia-main-title">Etapas</h2>
+
+        <p class="hx-sub" id="cms-historia-main-text">
           Tres momentos que explican el salto: orden en el taller, control técnico y ejecución industrial consistente.
         </p>
 
-        <div class="hx-steps">
+        <div class="hx-steps" id="cms-historia-bloques">
           <article class="hx-step">
             <div class="hx-step-head">
               <span class="hx-tag">Origen</span>
@@ -154,7 +157,7 @@
               <h3 data-decrypt>Industria actual · 2025</h3>
             </div>
             <p>
-              Hoy operamos como aliado técnico: ingeniería + fabricación + soporte.
+              Hoy operamos como aliado técnico: ingeniería, fabricación y soporte.
               Cuidamos tolerancias, acabados, seguridad y cumplimiento como estándar.
             </p>
             <ul>
@@ -167,9 +170,33 @@
       </div>
     </section>
 
+    <!-- VALORES -->
+    <section class="hx-values">
+      <div class="hx-wrap">
+        <h2 class="hx-h2">Principios que nos guían</h2>
+
+        <div class="hx-values-grid" id="cms-historia-valores">
+          <article class="hx-value">
+            <h3>Precisión</h3>
+            <p>Cuidamos medidas, tolerancias y acabados en cada etapa del proceso.</p>
+          </article>
+
+          <article class="hx-value">
+            <h3>Cumplimiento</h3>
+            <p>Trabajamos con orden para entregar soluciones confiables y consistentes.</p>
+          </article>
+
+          <article class="hx-value">
+            <h3>Calidad</h3>
+            <p>Cada proyecto refleja responsabilidad técnica y atención al detalle.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- FOOTER (global) -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> COBYBSA. Todos los derechos reservados.</p>
@@ -180,6 +207,9 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <!-- CMS dinámico -->
+  <script src="/assets/js/cms-content.js"></script>
 
   <!-- JS solo para historia -->
   <script defer src="/assets/js/historia-anim.js"></script>
