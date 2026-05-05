@@ -23,6 +23,26 @@
       "texto": "Enfoque en calidad"
     }
   ],
+  "capacidades_destacadas": [
+    {
+      "numero": "01",
+      "titulo": "Corte láser industrial",
+      "descripcion": "Corte preciso en acero inoxidable, acero al carbono y aluminio para piezas técnicas, prototipos y producción.",
+      "link": "/corte-laser-industrial.html"
+    },
+    {
+      "numero": "02",
+      "titulo": "Mecanizado CNC",
+      "descripcion": "Fabricación de componentes con tolerancias controladas, repetibilidad y acabados técnicos.",
+      "link": "/corte-cnc-industrial.html"
+    },
+    {
+      "numero": "03",
+      "titulo": "Manufactura industrial",
+      "descripcion": "Estructuras, tanques, accesorios industriales y soluciones personalizadas para distintos sectores.",
+      "link": "/manufactura-industrial.html"
+    }
+  ],
   "equipo_descripcion": "Detrás de cada proyecto hay un equipo técnico con experiencia en taller, criterio de fabricación y compromiso con el resultado final.",
   "extra": "Más de 30 años desarrollando soluciones industriales confiables en Costa Rica.",
   "cta_final_titulo": "¿Tiene planos, medidas o una idea por fabricar?",
