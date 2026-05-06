@@ -41,7 +41,7 @@ collections:
     label: "Páginas"
     files:
 
-      - label: "Inicio"
+            - label: "Inicio"
         name: "inicio"
         file: "content/paginas/inicio.json"
         fields:
@@ -74,6 +74,40 @@ collections:
           - { label: "Título del equipo", name: "equipo_titulo", widget: "string" }
           - { label: "Descripción del equipo", name: "equipo_descripcion", widget: "text" }
 
+          - label: "Equipo destacado"
+            name: "equipo"
+            widget: "list"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Cargo", name: "cargo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+
+          - { label: "Título sectores", name: "sectores_titulo", widget: "string" }
+          - label: "Sectores"
+            name: "sectores"
+            widget: "list"
+            field: { label: "Sector", name: "sector", widget: "string" }
+
+          - { label: "CTA final - título", name: "cta_final_titulo", widget: "string" }
+          - { label: "CTA final - descripción", name: "cta_final_descripcion", widget: "text" }
+          - { label: "CTA final - texto botón", name: "cta_final_boton_texto", widget: "string" }
+          - { label: "CTA final - link botón", name: "cta_final_boton_link", widget: "string" }
+
+          - { label: "Título novedades", name: "novedades_titulo", widget: "string", required: false }
+          - { label: "Descripción novedades", name: "novedades_descripcion", widget: "text", required: false }
+
+          - label: "Novedades destacadas"
+            name: "novedades_destacadas"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Etiqueta", name: "tag", widget: "string", required: false }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+              - { label: "Imagen", name: "imagen", widget: "image", required: false }
+              - { label: "Fecha", name: "fecha", widget: "string", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
+              
           - label: "Equipo destacado"
             name: "equipo"
             widget: "list"
