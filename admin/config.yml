@@ -92,6 +92,19 @@ collections:
           - { label: "CTA final - descripción", name: "cta_final_descripcion", widget: "text" }
           - { label: "CTA final - texto botón", name: "cta_final_boton_texto", widget: "string" }
           - { label: "CTA final - link botón", name: "cta_final_boton_link", widget: "string" }
+                    - { label: "Título novedades", name: "novedades_titulo", widget: "string", required: false }
+          - { label: "Descripción novedades", name: "novedades_descripcion", widget: "text", required: false }
+
+          - label: "Novedades destacadas"
+            name: "novedades_destacadas"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Etiqueta", name: "tag", widget: "string", required: false }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+              - { label: "Imagen", name: "imagen", widget: "image", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
 
       - label: "Historia"
         name: "historia"
