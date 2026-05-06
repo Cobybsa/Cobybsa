@@ -6,6 +6,7 @@ media_folder: "assets/img"
 public_folder: "/assets/img"
 
 collections:
+
   - name: "novedades"
     label: "Novedades"
     folder: "content/novedades"
@@ -41,7 +42,7 @@ collections:
     label: "Páginas"
     files:
 
-            - label: "Inicio"
+      - label: "Inicio"
         name: "inicio"
         file: "content/paginas/inicio.json"
         fields:
@@ -107,38 +108,6 @@ collections:
               - { label: "Imagen", name: "imagen", widget: "image", required: false }
               - { label: "Fecha", name: "fecha", widget: "string", required: false }
               - { label: "Link", name: "link", widget: "string", required: false }
-              
-          - label: "Equipo destacado"
-            name: "equipo"
-            widget: "list"
-            fields:
-              - { label: "Nombre", name: "nombre", widget: "string" }
-              - { label: "Cargo", name: "cargo", widget: "string" }
-              - { label: "Descripción", name: "descripcion", widget: "text" }
-
-          - { label: "Título sectores", name: "sectores_titulo", widget: "string" }
-          - label: "Sectores"
-            name: "sectores"
-            widget: "list"
-            field: { label: "Sector", name: "sector", widget: "string" }
-
-          - { label: "CTA final - título", name: "cta_final_titulo", widget: "string" }
-          - { label: "CTA final - descripción", name: "cta_final_descripcion", widget: "text" }
-          - { label: "CTA final - texto botón", name: "cta_final_boton_texto", widget: "string" }
-          - { label: "CTA final - link botón", name: "cta_final_boton_link", widget: "string" }
-                    - { label: "Título novedades", name: "novedades_titulo", widget: "string", required: false }
-          - { label: "Descripción novedades", name: "novedades_descripcion", widget: "text", required: false }
-
-          - label: "Novedades destacadas"
-            name: "novedades_destacadas"
-            widget: "list"
-            required: false
-            fields:
-              - { label: "Etiqueta", name: "tag", widget: "string", required: false }
-              - { label: "Título", name: "titulo", widget: "string" }
-              - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-              - { label: "Imagen", name: "imagen", widget: "image", required: false }
-              - { label: "Link", name: "link", widget: "string", required: false }
 
       - label: "Historia"
         name: "historia"
@@ -147,7 +116,6 @@ collections:
           - { label: "Badge", name: "badge", widget: "string" }
           - { label: "Título", name: "titulo", widget: "string" }
           - { label: "Descripción", name: "descripcion", widget: "text" }
-
           - { label: "Título historia principal", name: "historia_titulo", widget: "string" }
           - { label: "Texto historia principal", name: "historia_texto", widget: "markdown" }
 
@@ -179,8 +147,8 @@ collections:
             widget: "list"
             fields:
               - { label: "Título", name: "titulo", widget: "string" }
-              - { label: "Descripción corta", name: "descripcion", widget: "text" }
-              - label: "Puntos clave"
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+              - label: "Puntos"
                 name: "puntos"
                 widget: "list"
                 required: false
@@ -206,13 +174,7 @@ collections:
           - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string" }
           - { label: "Descripción información para cotizar", name: "cotizar_descripcion", widget: "text" }
 
-          - label: "Lista de información útil"
+          - label: "Lista"
             name: "cotizar_lista"
             widget: "list"
             field: { label: "Elemento", name: "elemento", widget: "string" }
-
-          - label: "Sectores"
-            name: "sectores"
-            widget: "list"
-            required: false
-            field: { label: "Sector", name: "sector", widget: "string" }
