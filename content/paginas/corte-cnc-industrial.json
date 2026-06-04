@@ -1,1 +1,80 @@
+{
+  "badge": "COBYBSA | Capacidades",
+  "titulo": "Corte CNC Industrial",
+  "descripcion": "Mecanizado y geometrías complejas con precisión, repetibilidad y acabados técnicos para industria.",
 
+  "texto_principal": "En COBYBSA ofrecemos corte CNC industrial en Costa Rica para piezas técnicas que requieren cavidades, perforaciones, ranuras, superficies funcionales y geometrías complejas. Entregamos componentes con control dimensional y acabados adecuados para integración y ensamblaje industrial.",
+
+  "cta_principal_texto": "Solicitar evaluación técnica",
+  "cta_principal_link": "/contacto.html",
+
+  "cta_secundario_texto": "Ver todas las capacidades",
+  "cta_secundario_link": "/capacidades.html",
+
+  "que_es_titulo": "¿Qué es el corte CNC industrial?",
+
+  "que_es_descripcion": "El CNC (Control Numérico Computarizado) es un proceso de mecanizado donde una herramienta controlada por programa realiza cortes precisos sobre el material para lograr geometrías, ajustes y superficies funcionales. Es ideal cuando se requieren detalles técnicos que van más allá de un corte plano.",
+
+  "que_es_texto": "En COBYBSA utilizamos el CNC para perfeccionar piezas, mejorar ajustes y alcanzar requerimientos dimensionales.",
+
+  "ventajas": [
+    "Geometrías complejas",
+    "Superficies funcionales",
+    "Control dimensional",
+    "Repetibilidad"
+  ],
+
+  "problemas_titulo": "Problemas que resolvemos",
+
+  "problemas": [
+    "Necesidad de cavidades, ranuras y detalles técnicos",
+    "Ajustes que no encajan o superficies no funcionales",
+    "Variación dimensional en producción",
+    "Retrabajos por falta de precisión",
+    "Piezas que requieren acabado antes de ensamblaje"
+  ],
+
+  "materiales_titulo": "Qué logramos con CNC",
+
+  "materiales": [
+    "Perforaciones y patrones precisos",
+    "Ranuras, cavidades y alojamientos",
+    "Superficies técnicas y planitud",
+    "Ajustes para ensamble",
+    "Geometrías complejas repetibles",
+    "Detalles listos para integración"
+  ],
+
+  "materiales_nota": "Cada proyecto se desarrolla considerando funcionalidad, precisión y facilidad de integración con otros procesos industriales.",
+
+  "resultados_titulo": "Integración con otros procesos",
+
+  "resultados": [
+    "CNC + corte láser (piezas completas)",
+    "CNC + manufactura (ensambles)",
+    "CNC + precisión (tolerancias críticas)",
+    "CNC + diseño 3D (desarrollo)"
+  ],
+
+  "proceso_titulo": "Proceso de trabajo",
+
+  "proceso": [
+    "Revisión de requerimiento, función y tolerancias",
+    "Validación de archivo o diseño para mecanizado CNC",
+    "Planificación del proceso y estrategia de mecanizado",
+    "Ejecución CNC con control dimensional",
+    "Verificación y entrega lista para integración"
+  ],
+
+  "cta_final_titulo": "¿Requiere piezas técnicas con mecanizado CNC?",
+
+  "cta_final_descripcion": "Envíenos su requerimiento y le respondemos con una evaluación técnica clara.",
+
+  "cta_final_boton_texto": "Solicitar evaluación técnica",
+
+  "cta_final_boton_link": "/contacto.html",
+
+  "cta_final_secundario_texto": "Ver Diseño y Modelado 3D Industrial",
+
+  "cta_final_secundario_link": "/diseno-y-modelado-3d.html"
+}
