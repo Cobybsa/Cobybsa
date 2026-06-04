@@ -293,3 +293,126 @@ body.historia-page{
     font-size: 16px;
   }
 }
+/* MISIÓN */
+.hx-mission {
+  padding: 90px 0 110px;
+  background:
+    radial-gradient(circle at top left, rgba(180, 140, 80, 0.16), transparent 34%),
+    linear-gradient(135deg, #f8f2e7 0%, #efe5d5 100%);
+}
+
+.hx-mission-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.35fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.hx-mission-label {
+  position: sticky;
+  top: 110px;
+}
+
+.hx-mission-label span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  padding: 28px 22px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  border: 1px solid rgba(25, 25, 25, 0.16);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.hx-mission-content {
+  max-width: 920px;
+}
+
+.hx-mission-content h2 {
+  margin: 0;
+  max-width: 850px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 4.3rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  color: #111;
+}
+
+.hx-mission-content > p:not(.section-kicker) {
+  margin: 28px 0 0;
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(20, 20, 20, 0.72);
+}
+
+.hx-mission-grid {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.hx-mission-grid article {
+  min-height: 220px;
+  padding: 26px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(25, 25, 25, 0.12);
+  box-shadow: 0 24px 70px rgba(30, 25, 15, 0.08);
+}
+
+.hx-mission-grid span {
+  display: inline-block;
+  margin-bottom: 36px;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(20, 20, 20, 0.45);
+}
+
+.hx-mission-grid h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+.hx-mission-grid p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: rgba(20, 20, 20, 0.68);
+}
+
+@media (max-width: 900px) {
+  .hx-mission-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hx-mission-label {
+    position: static;
+  }
+
+  .hx-mission-label span {
+    min-height: unset;
+    writing-mode: initial;
+    transform: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+  }
+
+  .hx-mission-grid {
+    grid-template-columns: 1fr;
+  }
+}
