@@ -1,1 +1,82 @@
+{
+  "badge": "COBYBSA | Capacidades",
+  "titulo": "Ingeniería de Precisión Industrial",
+  "descripcion": "Control dimensional, tolerancias y calidad para aplicaciones industriales exigentes.",
 
+  "texto_principal": "En COBYBSA ofrecemos ingeniería de precisión industrial en Costa Rica, orientada a proyectos donde el control dimensional, la repetibilidad y la confiabilidad no son negociables. Nuestra capacidad está diseñada para cumplir tolerancias estrictas y asegurar el correcto funcionamiento de componentes industriales.",
+
+  "cta_principal_texto": "Solicitar evaluación técnica",
+  "cta_principal_link": "/contacto.html",
+
+  "cta_secundario_texto": "Ver todas las capacidades",
+  "cta_secundario_link": "/capacidades.html",
+
+  "que_es_titulo": "¿Qué es la ingeniería de precisión?",
+
+  "que_es_descripcion": "La ingeniería de precisión se enfoca en el control exacto de dimensiones, geometrías y ajustes durante los procesos de fabricación. En aplicaciones industriales, una mínima desviación puede generar fallos funcionales, desgaste prematuro o problemas de ensamblaje.",
+
+  "que_es_texto": "En COBYBSA abordamos la precisión como un proceso integral, no como una etapa aislada.",
+
+  "ventajas": [
+    "Control dimensional continuo",
+    "Tolerancias industriales estrictas",
+    "Repetibilidad en producción",
+    "Precisión funcional real"
+  ],
+
+  "problemas_titulo": "Problemas que resolvemos",
+
+  "problemas": [
+    "Desviaciones dimensionales en piezas críticas",
+    "Falta de repetibilidad en producción",
+    "Problemas de ajuste y ensamblaje",
+    "Retrabajos por tolerancias mal definidas",
+    "Componentes que no cumplen su función operativa"
+  ],
+
+  "materiales_titulo": "Capacidades de ingeniería de precisión en COBYBSA",
+
+  "materiales": [
+    "Control dimensional durante el proceso de fabricación",
+    "Manejo de tolerancias industriales estrictas",
+    "Repetibilidad en series cortas y medianas",
+    "Precisión en piezas funcionales y estructurales",
+    "Integración con corte láser y corte CNC",
+    "Enfoque en funcionalidad mecánica real"
+  ],
+
+  "materiales_nota": "Cada proyecto se desarrolla bajo criterios técnicos orientados a garantizar funcionalidad, repetibilidad y confiabilidad.",
+
+  "resultados_titulo": "Aplicaciones industriales",
+
+  "resultados": [
+    "Componentes industriales críticos",
+    "Piezas para ensamblajes técnicos",
+    "Equipos industriales personalizados",
+    "Estructuras con requerimientos dimensionales específicos",
+    "Proyectos donde la precisión define el desempeño",
+    "Integración con sistemas industriales"
+  ],
+
+  "proceso_titulo": "Proceso de trabajo",
+
+  "proceso": [
+    "Análisis técnico del requerimiento",
+    "Definición de tolerancias y criterios dimensionales",
+    "Planificación del proceso de manufactura",
+    "Fabricación con control de precisión",
+    "Verificación dimensional y entrega"
+  ],
+
+  "cta_final_titulo": "¿Requiere control dimensional y tolerancias estrictas?",
+
+  "cta_final_descripcion": "Envíenos su requerimiento y le respondemos con una evaluación técnica clara.",
+
+  "cta_final_boton_texto": "Solicitar evaluación técnica",
+
+  "cta_final_boton_link": "/contacto.html",
+
+  "cta_final_secundario_texto": "Ver Corte Láser Industrial",
+
+  "cta_final_secundario_link": "/corte-laser-industrial.html"
+}
