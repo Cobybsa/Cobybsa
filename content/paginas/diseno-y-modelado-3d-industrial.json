@@ -1,1 +1,82 @@
+{
+  "badge": "COBYBSA | Capacidades",
+  "titulo": "Diseño y Modelado 3D Industrial",
+  "descripcion": "Del concepto a la fabricación: diseño técnico, visualización y validación antes de producir.",
 
+  "texto_principal": "En COBYBSA ofrecemos diseño y modelado 3D industrial en Costa Rica para desarrollar piezas, estructuras y equipos a medida. Validamos geometrías, ensamblajes y funcionamiento antes de fabricar, reduciendo errores, retrabajos y tiempos de desarrollo.",
+
+  "cta_principal_texto": "Solicitar evaluación técnica",
+  "cta_principal_link": "/contacto.html",
+
+  "cta_secundario_texto": "Ver todas las capacidades",
+  "cta_secundario_link": "/capacidades.html",
+
+  "que_es_titulo": "¿Qué incluye el diseño y modelado 3D?",
+
+  "que_es_descripcion": "El diseño y modelado 3D industrial permite definir y visualizar una solución antes de producirla. Se utiliza para validar dimensiones, interferencias, ensamblajes, accesos, componentes y viabilidad de fabricación.",
+
+  "que_es_texto": "El objetivo es claro: que el proyecto llegue a producción con decisiones técnicas tomadas y menos margen de error.",
+
+  "ventajas": [
+    "Validación antes de fabricar",
+    "Reducción de errores",
+    "Diseño listo para producción",
+    "Iteración rápida"
+  ],
+
+  "problemas_titulo": "Problemas que resolvemos",
+
+  "problemas": [
+    "Fabricación con medidas incompletas o ambiguas",
+    "Interferencias y errores de ensamblaje",
+    "Retrabajos por falta de validación previa",
+    "Proyectos sin documentación técnica clara",
+    "Tiempo perdido en cambios tardíos"
+  ],
+
+  "materiales_titulo": "Entregables típicos",
+
+  "materiales": [
+    "Modelos 3D de piezas y conjuntos",
+    "Documentación técnica para fabricación",
+    "Vistas y despieces para ensamblaje",
+    "Ajustes y validación de geometrías",
+    "Preparación para CNC o corte láser",
+    "Revisión técnica con el cliente"
+  ],
+
+  "materiales_nota": "Cada proyecto se desarrolla considerando funcionalidad, fabricación y facilidad de integración con los procesos productivos.",
+
+  "resultados_titulo": "Aplicaciones industriales",
+
+  "resultados": [
+    "Estructuras y soluciones a medida",
+    "Componentes industriales funcionales",
+    "Equipos y soportes técnicos",
+    "Desarrollo de piezas personalizadas",
+    "Proyectos de integración industrial",
+    "Optimización para manufactura"
+  ],
+
+  "proceso_titulo": "Proceso de trabajo",
+
+  "proceso": [
+    "Levantamiento de requerimientos y función del proyecto",
+    "Modelado 3D inicial y definición de geometrías",
+    "Revisión técnica y ajustes con el cliente",
+    "Validación de ensamblaje, interferencias y viabilidad",
+    "Entrega de documentación lista para fabricación"
+  ],
+
+  "cta_final_titulo": "¿Tiene una idea y necesita llevarla a fabricación?",
+
+  "cta_final_descripcion": "Envíenos su requerimiento y le respondemos con una evaluación técnica clara.",
+
+  "cta_final_boton_texto": "Solicitar evaluación técnica",
+
+  "cta_final_boton_link": "/contacto.html",
+
+  "cta_final_secundario_texto": "Ver Manufactura Industrial",
+
+  "cta_final_secundario_link": "/manufactura-industrial.html"
+}
