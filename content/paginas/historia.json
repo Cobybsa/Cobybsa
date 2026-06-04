@@ -10,32 +10,54 @@
     {
       "etapa": "Origen",
       "titulo": "Los inicios · 1990s",
-      "texto": "Nacemos como un taller familiar pequeño, enfocado en trabajos locales y soluciones a medida. La base fue la disciplina del trabajo bien hecho: orden, precisión y responsabilidad."
+      "texto": "Nacemos como un taller familiar pequeño, enfocado en trabajos locales y soluciones a medida. La base fue la disciplina del trabajo bien hecho: orden, precisión y responsabilidad.",
+      "puntos": [
+        "Soluciones personalizadas",
+        "Cultura de calidad desde el inicio",
+        "Relación directa con clientes"
+      ]
     },
     {
       "etapa": "Crecimiento",
       "titulo": "Evolución · 2000–2015",
-      "texto": "Incorporamos procesos y control dimensional: corte láser, mecanizado CNC y modelado 3D, avanzando hacia proyectos industriales más complejos con mayor repetibilidad."
+      "texto": "Incorporamos procesos y control dimensional: corte láser, mecanizado CNC y modelado 3D, avanzando hacia proyectos industriales más complejos con mayor repetibilidad.",
+      "puntos": [
+        "Integración de procesos bajo control técnico",
+        "Mayor capacidad y consistencia",
+        "Mejoras en tiempos y precisión"
+      ]
     },
     {
       "etapa": "Consolidación",
       "titulo": "Industria actual · 2025",
-      "texto": "Hoy operamos como aliado técnico: ingeniería, fabricación y soporte. Cuidamos tolerancias, acabados, seguridad y cumplimiento como estándar."
+      "texto": "Hoy operamos como aliado técnico: ingeniería, fabricación y soporte. Cuidamos tolerancias, acabados, seguridad y cumplimiento como estándar.",
+      "puntos": [
+        "Proyectos de mayor escala",
+        "Enfoque en cumplimiento y soporte",
+        "Calidad constante en cada entrega"
+      ]
     }
   ],
 
-  "valores": [
+  "mision_kicker": "Lo que nos guía",
+  "mision_titulo": "Fabricar soluciones metalmecánicas confiables para industrias que no pueden detenerse.",
+  "mision_descripcion": "Nuestra misión es convertir planos, necesidades técnicas e ideas industriales en piezas, estructuras y soluciones funcionales, fabricadas con precisión, criterio técnico y compromiso con el resultado final.",
+
+  "mision_principios": [
     {
-      "titulo": "Precisión",
-      "descripcion": "Cuidamos medidas, tolerancias y acabados en cada etapa del proceso."
+      "numero": "01",
+      "titulo": "Precisión técnica",
+      "descripcion": "Controlamos medidas, tolerancias y acabados para que cada pieza cumpla su función."
     },
     {
-      "titulo": "Cumplimiento",
-      "descripcion": "Trabajamos con orden para entregar soluciones confiables y consistentes."
+      "numero": "02",
+      "titulo": "Fabricación responsable",
+      "descripcion": "Trabajamos con orden, comunicación y seguimiento para reducir errores y atrasos."
     },
     {
-      "titulo": "Calidad",
-      "descripcion": "Buscamos que cada proyecto refleje responsabilidad técnica y atención al detalle."
+      "numero": "03",
+      "titulo": "Soluciones duraderas",
+      "descripcion": "Fabricamos pensando en resistencia, uso real y confiabilidad a largo plazo."
     }
   ]
 }
