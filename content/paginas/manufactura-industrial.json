@@ -1,1 +1,80 @@
+{
+  "badge": "COBYBSA | Capacidades",
+  "titulo": "Manufactura Industrial",
+  "descripcion": "Fabricación metalmecánica a medida para soluciones industriales confiables, funcionales y duraderas.",
 
+  "texto_principal": "En COBYBSA ofrecemos manufactura industrial en Costa Rica, orientada a la fabricación de componentes, ensambles y soluciones metalmecánicas bajo control técnico y estándares industriales. Integramos procesos para reducir retrabajos, mejorar tiempos de entrega y asegurar resultados consistentes.",
+
+  "cta_principal_texto": "Solicitar evaluación técnica",
+  "cta_principal_link": "/contacto.html",
+
+  "cta_secundario_texto": "Ver todas las capacidades",
+  "cta_secundario_link": "/capacidades.html",
+
+  "que_es_titulo": "¿Qué es la manufactura industrial?",
+  "que_es_descripcion": "La manufactura industrial se enfoca en la fabricación de piezas, conjuntos y soluciones metálicas diseñadas para operar de forma segura y confiable en entornos industriales exigentes.",
+  "que_es_texto": "En COBYBSA abordamos la manufactura como un proceso integral: análisis técnico, planificación, fabricación y control.",
+
+  "ventajas": [
+    "Soluciones a medida",
+    "Integración de procesos",
+    "Control técnico y calidad",
+    "Resultados consistentes"
+  ],
+
+  "problemas_titulo": "Problemas que resolvemos",
+
+  "problemas": [
+    "Retrabajos por falta de control en fabricación",
+    "Proyectos retrasados por múltiples proveedores",
+    "Ensambles que no encajan o no cumplen función",
+    "Componentes con baja durabilidad en operación",
+    "Falta de trazabilidad y claridad técnica"
+  ],
+
+  "materiales_titulo": "Capacidades de manufactura industrial en COBYBSA",
+
+  "materiales": [
+    "Fabricación metalmecánica a medida",
+    "Producción de piezas y conjuntos industriales",
+    "Integración con corte láser y corte CNC",
+    "Preparación de piezas para procesos posteriores",
+    "Ensambles industriales funcionales",
+    "Enfoque en durabilidad y uso industrial real"
+  ],
+
+  "materiales_nota": "Cada proyecto se adapta a los requerimientos específicos del cliente y de la aplicación industrial.",
+
+  "resultados_titulo": "Aplicaciones industriales",
+
+  "resultados": [
+    "Estructuras y soportes industriales",
+    "Gabinetes, bases y componentes técnicos",
+    "Equipos industriales personalizados",
+    "Industria alimentaria y manufacturera",
+    "Proyectos industriales a medida",
+    "Integración de piezas para ensamblaje"
+  ],
+
+  "proceso_titulo": "Proceso de trabajo",
+
+  "proceso": [
+    "Análisis técnico del requerimiento",
+    "Definición del alcance de manufactura y materiales",
+    "Planificación del proceso productivo",
+    "Fabricación e integración de procesos",
+    "Control de calidad y entrega"
+  ],
+
+  "cta_final_titulo": "¿Necesita fabricar una solución industrial a medida?",
+
+  "cta_final_descripcion": "Envíenos su requerimiento y le respondemos con una evaluación técnica clara.",
+
+  "cta_final_boton_texto": "Solicitar evaluación técnica",
+
+  "cta_final_boton_link": "/contacto.html",
+
+  "cta_final_secundario_texto": "Ver Ingeniería de Precisión",
+
+  "cta_final_secundario_link": "/ingenieria-de-precision.html"
+}
