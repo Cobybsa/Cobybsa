@@ -1,11 +1,9 @@
 {
-  "badge": "Desde taller familiar hasta industria de precisión",
-  "titulo": "Historia de COBYBSA",
-  "descripcion": "Un recorrido por nuestra evolución: cómo pasamos de trabajos locales a proyectos industriales, integrando corte láser, CNC y modelado 3D con enfoque absoluto en calidad, cumplimiento y detalle.",
-
-  "historia_titulo": "Etapas",
   "historia_texto": "Tres momentos que explican el salto: orden en el taller, control técnico y ejecución industrial consistente.",
-
+  "mision_kicker": "Lo que nos guía",
+  "badge": "Desde taller familiar hasta industria de precisión",
+  "mision_titulo": "Fabricar soluciones metalmecánicas confiables para industrias que no pueden detenerse.",
+  "descripcion": "Un recorrido por nuestra evolución: cómo pasamos de trabajos locales a proyectos industriales, integrando corte láser, CNC y modelado 3D con enfoque absoluto en calidad, cumplimiento y detalle.",
   "bloques": [
     {
       "etapa": "Origen",
@@ -38,11 +36,6 @@
       ]
     }
   ],
-
-  "mision_kicker": "Lo que nos guía",
-  "mision_titulo": "Fabricar soluciones metalmecánicas confiables para industrias que no pueden detenerse.",
-  "mision_descripcion": "Nuestra misión es convertir planos, necesidades técnicas e ideas industriales en piezas, estructuras y soluciones funcionales, fabricadas con precisión, criterio técnico y compromiso con el resultado final.",
-
   "mision_principios": [
     {
       "numero": "01",
@@ -59,5 +52,8 @@
       "titulo": "Soluciones duraderas",
       "descripcion": "Fabricamos pensando en resistencia, uso real y confiabilidad a largo plazo."
     }
-  ]
+  ],
+  "titulo": "Historia de COBYBSA",
+  "historia_titulo": "Etapas",
+  "mision_descripcion": "Nuestra misión es convertir planos, necesidades técnicas e ideas industriales en piezas, estructuras y soluciones funcionales, fabricadas con precisión, criterio técnico y compromiso con el resultado final cms."
 }
