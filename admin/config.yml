@@ -6,7 +6,6 @@ media_folder: "assets/img"
 public_folder: "/assets/img"
 
 collections:
-
   - name: "novedades"
     label: "Novedades"
     folder: "content/novedades"
@@ -42,7 +41,6 @@ collections:
   - name: "paginas"
     label: "Páginas"
     files:
-
       - label: "Inicio"
         name: "inicio"
         file: "content/paginas/inicio.json"
@@ -59,6 +57,7 @@ collections:
           - label: "Estadísticas"
             name: "estadisticas"
             widget: "list"
+            required: false
             fields:
               - { label: "Número", name: "numero", widget: "string" }
               - { label: "Texto", name: "texto", widget: "string" }
@@ -66,14 +65,16 @@ collections:
           - label: "Capacidades destacadas"
             name: "capacidades_destacadas"
             widget: "list"
+            required: false
             fields:
-              - { label: "Número", name: "numero", widget: "string" }
+              - { label: "Número", name: "numero", widget: "string", required: false }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
               - { label: "Link", name: "link", widget: "string", required: false }
+              - { label: "Texto del link", name: "link_texto", widget: "string", required: false }
 
-          - { label: "Título del equipo", name: "equipo_titulo", widget: "string" }
-          - { label: "Descripción del equipo", name: "equipo_descripcion", widget: "text" }
+          - { label: "Título del equipo", name: "equipo_titulo", widget: "string", required: false }
+          - { label: "Descripción del equipo", name: "equipo_descripcion", widget: "text", required: false }
 
           - label: "Equipo destacado"
             name: "equipo"
@@ -84,18 +85,17 @@ collections:
               - { label: "Cargo", name: "cargo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
 
-          - { label: "Título sectores", name: "sectores_titulo", widget: "string" }
-
+          - { label: "Título sectores", name: "sectores_titulo", widget: "string", required: false }
           - label: "Sectores"
             name: "sectores"
             widget: "list"
             required: false
             field: { label: "Sector", name: "sector", widget: "string" }
 
-          - { label: "CTA final - título", name: "cta_final_titulo", widget: "string" }
-          - { label: "CTA final - descripción", name: "cta_final_descripcion", widget: "text" }
-          - { label: "CTA final - texto botón", name: "cta_final_boton_texto", widget: "string" }
-          - { label: "CTA final - link botón", name: "cta_final_boton_link", widget: "string" }
+          - { label: "CTA final - título", name: "cta_final_titulo", widget: "string", required: false }
+          - { label: "CTA final - descripción", name: "cta_final_descripcion", widget: "text", required: false }
+          - { label: "CTA final - texto botón", name: "cta_final_boton_texto", widget: "string", required: false }
+          - { label: "CTA final - link botón", name: "cta_final_boton_link", widget: "string", required: false }
 
           - { label: "Título novedades", name: "novedades_titulo", widget: "string", required: false }
           - { label: "Descripción novedades", name: "novedades_descripcion", widget: "text", required: false }
@@ -116,18 +116,18 @@ collections:
         name: "historia"
         file: "content/paginas/historia.json"
         fields:
-          - { label: "Badge", name: "badge", widget: "string" }
-          - { label: "Título", name: "titulo", widget: "string" }
-          - { label: "Descripción", name: "descripcion", widget: "text" }
-          - { label: "Título historia principal", name: "historia_titulo", widget: "string" }
-          - { label: "Texto historia principal", name: "historia_texto", widget: "markdown" }
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Título historia principal", name: "historia_titulo", widget: "string", required: false }
+          - { label: "Texto historia principal", name: "historia_texto", widget: "markdown", required: false }
 
           - label: "Bloques de trayectoria"
             name: "bloques"
             widget: "list"
             required: false
             fields:
-              - { label: "Año o etapa", name: "etapa", widget: "string" }
+              - { label: "Año o etapa", name: "etapa", widget: "string", required: false }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Texto", name: "texto", widget: "text" }
               - label: "Puntos"
@@ -145,7 +145,7 @@ collections:
             widget: "list"
             required: false
             fields:
-              - { label: "Número", name: "numero", widget: "string" }
+              - { label: "Número", name: "numero", widget: "string", required: false }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
 
@@ -153,9 +153,15 @@ collections:
         name: "capacidades"
         file: "content/paginas/capacidades.json"
         fields:
-          - { label: "Badge", name: "badge", widget: "string" }
-          - { label: "Título", name: "titulo", widget: "string" }
-          - { label: "Descripción", name: "descripcion", widget: "text" }
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+
+          - label: "Badges superiores"
+            name: "badges"
+            widget: "list"
+            required: false
+            field: { label: "Badge", name: "badge", widget: "string" }
 
           - label: "Lista de capacidades"
             name: "capacidades"
@@ -164,12 +170,10 @@ collections:
             fields:
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
-              - label: "Puntos"
-                name: "puntos"
-                widget: "list"
-                required: false
-                field: { label: "Punto", name: "punto", widget: "string" }
+              - { label: "Imagen", name: "imagen", widget: "image", required: false }
+              - { label: "Texto alternativo imagen", name: "alt", widget: "string", required: false }
               - { label: "Link", name: "link", widget: "string", required: false }
+              - { label: "Texto del link", name: "link_texto", widget: "string", required: false }
 
           - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
           - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
@@ -189,102 +193,82 @@ collections:
       - label: "Corte láser industrial"
         name: "corte_laser_industrial"
         file: "content/paginas/corte-laser-industrial.json"
-        fields:
+        fields: &capacidad_fields
           - { label: "Badge", name: "badge", widget: "string", required: false }
           - { label: "Título", name: "titulo", widget: "string", required: false }
-          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
-          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
-          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
-          - label: "Puntos clave"
-            name: "puntos"
+          - { label: "Descripción corta", name: "descripcion", widget: "text", required: false }
+          - { label: "Texto principal", name: "texto_principal", widget: "text", required: false }
+
+          - { label: "CTA principal texto", name: "cta_principal_texto", widget: "string", required: false }
+          - { label: "CTA principal link", name: "cta_principal_link", widget: "string", required: false }
+          - { label: "CTA secundario texto", name: "cta_secundario_texto", widget: "string", required: false }
+          - { label: "CTA secundario link", name: "cta_secundario_link", widget: "string", required: false }
+
+          - { label: "Qué es - título", name: "que_es_titulo", widget: "string", required: false }
+          - { label: "Qué es - descripción", name: "que_es_descripcion", widget: "text", required: false }
+          - { label: "Qué es - texto adicional", name: "que_es_texto", widget: "text", required: false }
+
+          - label: "Ventajas"
+            name: "ventajas"
             widget: "list"
             required: false
-            field: { label: "Punto", name: "punto", widget: "string" }
-          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
-          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
-          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
-          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+            field: { label: "Ventaja", name: "ventaja", widget: "string" }
+
+          - { label: "Problemas - título", name: "problemas_titulo", widget: "string", required: false }
+          - label: "Problemas"
+            name: "problemas"
+            widget: "list"
+            required: false
+            field: { label: "Problema", name: "problema", widget: "string" }
+
+          - { label: "Materiales / Capacidades - título", name: "materiales_titulo", widget: "string", required: false }
+          - label: "Materiales / Capacidades"
+            name: "materiales"
+            widget: "list"
+            required: false
+            field: { label: "Elemento", name: "elemento", widget: "string" }
+          - { label: "Nota de materiales / capacidades", name: "materiales_nota", widget: "text", required: false }
+
+          - { label: "Resultados / Aplicaciones - título", name: "resultados_titulo", widget: "string", required: false }
+          - label: "Resultados / Aplicaciones"
+            name: "resultados"
+            widget: "list"
+            required: false
+            field: { label: "Elemento", name: "elemento", widget: "string" }
+
+          - { label: "Proceso - título", name: "proceso_titulo", widget: "string", required: false }
+          - label: "Proceso"
+            name: "proceso"
+            widget: "list"
+            required: false
+            field: { label: "Paso", name: "paso", widget: "string" }
+
+          - { label: "CTA final título", name: "cta_final_titulo", widget: "string", required: false }
+          - { label: "CTA final descripción", name: "cta_final_descripcion", widget: "text", required: false }
+          - { label: "CTA final botón texto", name: "cta_final_boton_texto", widget: "string", required: false }
+          - { label: "CTA final botón link", name: "cta_final_boton_link", widget: "string", required: false }
+          - { label: "CTA final secundario texto", name: "cta_final_secundario_texto", widget: "string", required: false }
+          - { label: "CTA final secundario link", name: "cta_final_secundario_link", widget: "string", required: false }
 
       - label: "Corte CNC industrial"
         name: "corte_cnc_industrial"
         file: "content/paginas/corte-cnc-industrial.json"
-        fields:
-          - { label: "Badge", name: "badge", widget: "string", required: false }
-          - { label: "Título", name: "titulo", widget: "string", required: false }
-          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
-          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
-          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
-          - label: "Puntos clave"
-            name: "puntos"
-            widget: "list"
-            required: false
-            field: { label: "Punto", name: "punto", widget: "string" }
-          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
-          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
-          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
-          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+        fields: *capacidad_fields
 
       - label: "Manufactura industrial"
         name: "manufactura_industrial"
         file: "content/paginas/manufactura-industrial.json"
-        fields:
-          - { label: "Badge", name: "badge", widget: "string", required: false }
-          - { label: "Título", name: "titulo", widget: "string", required: false }
-          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
-          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
-          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
-          - label: "Puntos clave"
-            name: "puntos"
-            widget: "list"
-            required: false
-            field: { label: "Punto", name: "punto", widget: "string" }
-          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
-          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
-          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
-          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+        fields: *capacidad_fields
 
       - label: "Ingeniería de precisión"
         name: "ingenieria_de_precision"
         file: "content/paginas/ingenieria-de-precision.json"
-        fields:
-          - { label: "Badge", name: "badge", widget: "string", required: false }
-          - { label: "Título", name: "titulo", widget: "string", required: false }
-          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
-          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
-          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
-          - label: "Puntos clave"
-            name: "puntos"
-            widget: "list"
-            required: false
-            field: { label: "Punto", name: "punto", widget: "string" }
-          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
-          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
-          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
-          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+        fields: *capacidad_fields
 
       - label: "Diseño y modelado 3D"
         name: "diseno_y_modelado_3d"
         file: "content/paginas/diseno-y-modelado-3d-industrial.json"
-        fields:
-          - { label: "Badge", name: "badge", widget: "string", required: false }
-          - { label: "Título", name: "titulo", widget: "string", required: false }
-          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
-          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
-          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
-          - label: "Puntos clave"
-            name: "puntos"
-            widget: "list"
-            required: false
-            field: { label: "Punto", name: "punto", widget: "string" }
-          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
-          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
-          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
-          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+        fields: *capacidad_fields
 
       - label: "Contacto"
         name: "contacto"
