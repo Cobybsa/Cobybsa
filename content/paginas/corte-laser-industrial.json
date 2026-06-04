@@ -1,1 +1,72 @@
+{
+"badge": "COBYBSA | Capacidades",
+"titulo": "Corte Láser Industrial",
+"descripcion": "Corte de metal con alta precisión, geometrías complejas y acabado limpio para aplicaciones industriales.",
+
+"texto_principal": "En COBYBSA ofrecemos corte láser industrial en Costa Rica para proyectos donde la exactitud, la repetibilidad y la calidad de borde son críticas. Entregamos piezas listas para ensamblaje o para procesos posteriores, reduciendo retrabajos y tiempos de fabricación.",
+
+"cta_principal_texto": "Solicitar evaluación técnica",
+"cta_principal_link": "/contacto.html",
+
+"cta_secundario_texto": "Ver todas las capacidades",
+"cta_secundario_link": "/capacidades.html",
+
+"que_es_titulo": "¿Qué es el corte láser industrial?",
+"que_es_descripcion": "El corte láser industrial es un proceso de fabricación que utiliza un haz de alta energía para separar material con precisión, logrando cortes limpios y repetibles. Es ideal para geometrías complejas, perforaciones, contornos y piezas que requieren consistencia dimensional.",
+"que_es_texto": "En COBYBSA optimizamos el proceso para que la pieza salga lista para ensamblaje o para mecanizado CNC según el caso.",
+
+"ventajas": [
+"Alta precisión y repetibilidad",
+"Cortes limpios y consistentes",
+"Geometrías complejas",
+"Listo para ensamblaje"
+],
+
+"problemas_titulo": "Problemas que resolvemos",
+"problemas": [
+"Acabados irregulares y rebabas excesivas",
+"Variación dimensional entre piezas",
+"Retrabajos por cortes imprecisos",
+"Dificultad para cortar geometrías complejas",
+"Entregas lentas por múltiples proveedores"
+],
+
+"materiales_titulo": "Materiales típicos",
+"materiales": [
+"Acero inoxidable",
+"Acero al carbono",
+"Aluminio",
+"Láminas y placas metálicas"
+],
+
+"materiales_nota": "La viabilidad final depende de espesor, geometría y requerimiento de acabado.",
+
+"resultados_titulo": "Resultado esperado",
+"resultados": [
+"Corte limpio y consistente",
+"Dimensiones repetibles",
+"Menos retrabajos",
+"Piezas listas para integración",
+"Mejor tiempo de fabricación",
+"Calidad industrial"
+],
+
+"proceso_titulo": "Proceso de trabajo",
+"proceso": [
+"Revisión de requerimiento, material y geometría",
+"Validación de archivo o diseño para corte",
+"Planificación de producción y optimización del corte",
+"Ejecución de corte láser con control de calidad",
+"Entrega de piezas listas para ensamblaje o proceso posterior"
+],
+
+"cta_final_titulo": "¿Necesita corte láser industrial con resultados confiables?",
+"cta_final_descripcion": "Envíenos su requerimiento y le respondemos con una evaluación técnica clara.",
+
+"cta_final_boton_texto": "Solicitar evaluación técnica",
+"cta_final_boton_link": "/contacto.html",
+
+"cta_final_secundario_texto": "Ver Corte CNC Industrial",
+"cta_final_secundario_link": "/corte-cnc-industrial.html"
+}
 
