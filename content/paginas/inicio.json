@@ -7,7 +7,7 @@
   "descripcion": "En COBYBSA diseñamos y fabricamos estructuras, tanques, accesorios y soluciones industriales, con estándares de precisión que garantizan desempeño y confiabilidad.",
   "estadisticas": [
     {
-      "numero": "+31",
+      "numero": "+30",
       "texto": "Años de experiencia"
     },
     {
@@ -24,9 +24,10 @@
     }
   ],
   "equipo_descripcion": "Detrás de cada proyecto hay un equipo técnico con experiencia en taller, criterio de fabricación y compromiso con el resultado final.",
-  "extra": "Más de 31 años desarrollando soluciones industriales confiables en Costa Rica.",
+  "extra": "Más de 30 años desarrollando soluciones industriales confiables en Costa Rica.",
   "cta_final_titulo": "¿Tiene planos, medidas o una idea por fabricar?",
   "cta_final_boton_texto": "Solicitar cotización",
+  "novedades_destacadas": [],
   "sectores": [
     "Industria alimentaria",
     "Industria médica",
@@ -35,11 +36,11 @@
     "Proyectos a medida",
     "Acero inoxidable"
   ],
-  "cta_final_descripcion": "Envíenos la información del proyecto y le ayudamos a definir material, proceso y viabilidad técnica cms.",
+  "cta_final_descripcion": "Envíenos la información del proyecto y le ayudamos a definir material, proceso y viabilidad técnica.",
   "capacidades_destacadas": [
     {
       "numero": "01",
-      "titulo": "Corte láser industrial cms",
+      "titulo": "Corte láser industrial",
       "descripcion": "Corte preciso en acero inoxidable, acero al carbono y aluminio para piezas técnicas, prototipos y producción.",
       "link": "/corte-laser-industrial.html"
     },
@@ -57,7 +58,7 @@
     }
   ],
   "cta_secundario_link": "/proyectos.html",
-  "equipo_titulo": "La precisión empieza con las personas cms",
+  "equipo_titulo": "La precisión empieza con las personas",
   "titulo": "Soluciones metalmecánicas diseñadas para el nivel de exigencia de su industria",
   "cta_principal_link": "/contacto.html",
   "equipo": [
