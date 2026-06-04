@@ -25,6 +25,111 @@
       return el;
     };
 
+    const renderList = (id, items, className = "") => {
+      const container = document.getElementById(id);
+      if (!container || !Array.isArray(items)) return;
+
+      container.innerHTML = "";
+      items.forEach((item) => {
+        const text = typeof item === "string" ? item : item.punto || item.sector || item.texto || "";
+        if (!text) return;
+        container.appendChild(createEl("li", className, text));
+      });
+    };
+
+    const renderPills = (id, items, className = "pill") => {
+      const container = document.getElementById(id);
+      if (!container || !Array.isArray(items)) return;
+
+      container.innerHTML = "";
+      items.forEach((item) => {
+        const text = typeof item === "string" ? item : item.punto || item.sector || item.texto || "";
+        if (!text) return;
+        container.appendChild(createEl("div", className, text));
+      });
+    };
+
+    const renderItems = (id, items, className = "item") => {
+      const container = document.getElementById(id);
+      if (!container || !Array.isArray(items)) return;
+
+      container.innerHTML = "";
+      items.forEach((item) => {
+        const text = typeof item === "string" ? item : item.punto || item.texto || "";
+        if (!text) return;
+        container.appendChild(createEl("div", className, text));
+      });
+    };
+
+    const renderSteps = (id, items) => {
+      const container = document.getElementById(id);
+      if (!container || !Array.isArray(items)) return;
+
+      container.innerHTML = "";
+      items.forEach((item, index) => {
+        const text = typeof item === "string" ? item : item.texto || item.punto || "";
+        if (!text) return;
+
+        const li = createEl("li", "step");
+        li.appendChild(createEl("span", "num", String(index + 1)));
+        li.appendChild(createEl("p", "", text));
+        container.appendChild(li);
+      });
+    };
+
+    const renderCapabilityPage = async (jsonPath, prefix) => {
+      const data = await fetchJson(jsonPath);
+      if (!data) return;
+
+      setText(`cms-${prefix}-badge`, data.badge);
+      setText(`cms-${prefix}-title`, data.titulo);
+      setText(`cms-${prefix}-desc`, data.descripcion);
+      setText(`cms-${prefix}-main-text`, data.texto_principal);
+
+      setText(`cms-${prefix}-cta1-text`, data.cta_principal_texto);
+      setHref(`cms-${prefix}-cta1`, data.cta_principal_link);
+
+      setText(`cms-${prefix}-cta2-text`, data.cta_secundario_texto);
+      setHref(`cms-${prefix}-cta2`, data.cta_secundario_link);
+
+      setText(`cms-${prefix}-que-es-title`, data.que_es_titulo || data.seccion_titulo);
+      setText(`cms-${prefix}-que-es-desc`, data.que_es_descripcion || data.seccion_texto);
+      setText(`cms-${prefix}-que-es-text`, data.que_es_texto);
+
+      renderPills(`cms-${prefix}-ventajas`, data.ventajas || data.puntos, "pill");
+
+      setText(`cms-${prefix}-problemas-title`, data.problemas_titulo);
+      const problemasContainer = document.getElementById(`cms-${prefix}-problemas`);
+      if (problemasContainer && Array.isArray(data.problemas)) {
+        problemasContainer.innerHTML = "";
+        data.problemas.forEach((problema) => {
+          const li = createEl("li");
+          li.appendChild(createEl("span", "dot"));
+          li.appendChild(createEl("span", "", problema));
+          problemasContainer.appendChild(li);
+        });
+      }
+
+      setText(`cms-${prefix}-materiales-title`, data.materiales_titulo);
+      renderItems(`cms-${prefix}-materiales`, data.materiales, "item");
+      setText(`cms-${prefix}-materiales-nota`, data.materiales_nota);
+
+      setText(`cms-${prefix}-resultados-title`, data.resultados_titulo);
+      renderItems(`cms-${prefix}-resultados`, data.resultados, "item");
+
+      setText(`cms-${prefix}-proceso-title`, data.proceso_titulo);
+      renderSteps(`cms-${prefix}-proceso`, data.proceso);
+
+      setText(`cms-${prefix}-cta-final-title`, data.cta_final_titulo || data.cta_titulo);
+      setText(`cms-${prefix}-cta-final-desc`, data.cta_final_descripcion || data.cta_descripcion);
+
+      setText(`cms-${prefix}-cta-final-btn-text`, data.cta_final_boton_texto || data.cta_texto);
+      setHref(`cms-${prefix}-cta-final-btn`, data.cta_final_boton_link || data.cta_link);
+
+      setText(`cms-${prefix}-cta-final-secondary-text`, data.cta_final_secundario_texto);
+      setHref(`cms-${prefix}-cta-final-secondary`, data.cta_final_secundario_link);
+    };
+
     /* INICIO */
     const inicio = await fetchJson("/content/paginas/inicio.json");
 
@@ -61,7 +166,7 @@
           card.appendChild(createEl("p", "", item.descripcion));
 
           if (item.link) {
-            const link = createEl("a", "", "Ver capacidad");
+            const link = createEl("a", "", item.link_texto || "Ver capacidad");
             link.setAttribute("href", item.link);
             card.appendChild(link);
           }
@@ -81,7 +186,6 @@
         teamTrack.innerHTML = "";
         inicio.equipo.forEach((persona) => {
           const card = createEl("article", "team-card");
-
           const avatar = createEl("div", "team-avatar");
           avatar.setAttribute("aria-hidden", "true");
 
@@ -101,7 +205,8 @@
       if (industryList && Array.isArray(inicio.sectores)) {
         industryList.innerHTML = "";
         inicio.sectores.forEach((sector) => {
-          industryList.appendChild(createEl("span", "", sector));
+          const texto = typeof sector === "string" ? sector : sector.sector;
+          if (texto) industryList.appendChild(createEl("span", "", texto));
         });
       }
 
@@ -115,6 +220,42 @@
       if (ctaButton) {
         if (inicio.cta_final_boton_texto) ctaButton.textContent = inicio.cta_final_boton_texto;
         if (inicio.cta_final_boton_link) ctaButton.setAttribute("href", inicio.cta_final_boton_link);
+      }
+
+      setText("cms-novedades-title", inicio.novedades_titulo);
+      setText("cms-novedades-desc", inicio.novedades_descripcion);
+
+      const novedadesGrid = document.getElementById("cms-novedades-grid");
+      if (novedadesGrid && Array.isArray(inicio.novedades_destacadas)) {
+        novedadesGrid.innerHTML = "";
+
+        inicio.novedades_destacadas.forEach((item) => {
+          const card = createEl("article", "news-card");
+
+          if (item.imagen) {
+            const imageWrap = createEl("div", "news-image");
+            const img = createEl("img");
+            img.setAttribute("src", item.imagen);
+            img.setAttribute("alt", item.titulo || "Novedad COBYBSA");
+            img.setAttribute("loading", "lazy");
+            img.setAttribute("decoding", "async");
+            imageWrap.appendChild(img);
+            card.appendChild(imageWrap);
+          }
+
+          if (item.tag) card.appendChild(createEl("span", "news-tag", item.tag));
+          if (item.titulo) card.appendChild(createEl("h3", "", item.titulo));
+          if (item.descripcion) card.appendChild(createEl("p", "", item.descripcion));
+          if (item.fecha) card.appendChild(createEl("span", "news-date", item.fecha));
+
+          if (item.link) {
+            const link = createEl("a", "news-link", "Ver más");
+            link.setAttribute("href", item.link);
+            card.appendChild(link);
+          }
+
+          novedadesGrid.appendChild(card);
+        });
       }
     }
 
@@ -149,7 +290,8 @@
           if (Array.isArray(bloque.puntos) && bloque.puntos.length) {
             const ul = createEl("ul");
             bloque.puntos.forEach((punto) => {
-              ul.appendChild(createEl("li", "", punto));
+              const texto = typeof punto === "string" ? punto : punto.punto;
+              if (texto) ul.appendChild(createEl("li", "", texto));
             });
             article.appendChild(ul);
           }
@@ -158,8 +300,24 @@
         });
       }
 
-      const valoresContainer = document.getElementById("cms-historia-valores");
+      setText("cms-mision-kicker", historia.mision_kicker);
+      setText("cms-mision-title", historia.mision_titulo);
+      setText("cms-mision-desc", historia.mision_descripcion);
 
+      const principiosContainer = document.getElementById("cms-mision-principios");
+      if (principiosContainer && Array.isArray(historia.mision_principios)) {
+        principiosContainer.innerHTML = "";
+
+        historia.mision_principios.forEach((item) => {
+          const article = createEl("article");
+          article.appendChild(createEl("span", "", item.numero));
+          article.appendChild(createEl("h3", "", item.titulo));
+          article.appendChild(createEl("p", "", item.descripcion));
+          principiosContainer.appendChild(article);
+        });
+      }
+
+      const valoresContainer = document.getElementById("cms-historia-valores");
       if (valoresContainer && Array.isArray(historia.valores)) {
         valoresContainer.innerHTML = "";
 
@@ -176,6 +334,7 @@
     const contacto = await fetchJson("/content/paginas/contacto.json");
 
     if (contacto) {
+      setText("cms-contact-badge", contacto.badge);
       setText("cms-contact-title", contacto.titulo);
       setText("cms-contact-desc", contacto.descripcion);
 
@@ -194,58 +353,88 @@
       if (email && contacto.correo) {
         email.setAttribute("href", `mailto:${contacto.correo}`);
       }
+
+      setText("cms-contact-cotizar-title", contacto.cotizar_titulo);
+      setText("cms-contact-cotizar-desc", contacto.cotizar_descripcion);
+      renderList("cms-contact-cotizar-list", contacto.cotizar_lista);
     }
 
-    /* CAPACIDADES */
-const capacidades = await fetchJson("/content/paginas/capacidades.json");
+    /* CAPACIDADES GENERAL */
+    const capacidades = await fetchJson("/content/paginas/capacidades.json");
 
-if (capacidades) {
-  setText("cms-cap-title", capacidades.titulo);
-  setText("cms-cap-desc", capacidades.descripcion);
+    if (capacidades) {
+      setText("cms-cap-badge", capacidades.badge);
+      setText("cms-cap-title", capacidades.titulo);
+      setText("cms-cap-desc", capacidades.descripcion);
 
-  const badgesContainer = document.getElementById("cms-cap-badges");
-
-  if (badgesContainer && Array.isArray(capacidades.badges)) {
-    badgesContainer.innerHTML = "";
-
-    capacidades.badges.forEach((badge) => {
-      badgesContainer.appendChild(createEl("span", "cap-pill", badge));
-    });
-  }
-
-  const capList = document.getElementById("cms-cap-list");
-
-  if (capList && Array.isArray(capacidades.capacidades)) {
-    capList.innerHTML = "";
-
-    capacidades.capacidades.forEach((item) => {
-      const capability = createEl("div", "capability");
-      capability.setAttribute("data-cap-card", "");
-
-      const text = createEl("div", "capability-text");
-      text.appendChild(createEl("h3", "", item.titulo));
-      text.appendChild(createEl("p", "", item.descripcion));
-
-      if (item.link) {
-        const link = createEl("a", "capability-link", `${item.link_texto || "Ver capacidad"} →`);
-        link.setAttribute("href", item.link);
-        text.appendChild(link);
+      const badgesContainer = document.getElementById("cms-cap-badges");
+      if (badgesContainer && Array.isArray(capacidades.badges)) {
+        badgesContainer.innerHTML = "";
+        capacidades.badges.forEach((badge) => {
+          badgesContainer.appendChild(createEl("span", "cap-pill", badge));
+        });
       }
 
-      const imageWrap = createEl("div", "capability-image");
+      const capList = document.getElementById("cms-cap-list");
+      if (capList && Array.isArray(capacidades.capacidades)) {
+        capList.innerHTML = "";
 
-      if (item.imagen) {
-        const img = createEl("img");
-        img.setAttribute("src", item.imagen);
-        img.setAttribute("alt", item.alt || item.titulo || "Capacidad COBYBSA");
-        img.setAttribute("loading", "lazy");
-        img.setAttribute("decoding", "async");
-        imageWrap.appendChild(img);
+        capacidades.capacidades.forEach((item) => {
+          const capability = createEl("div", "capability");
+          capability.setAttribute("data-cap-card", "");
+
+          const text = createEl("div", "capability-text");
+          text.appendChild(createEl("h3", "", item.titulo));
+          text.appendChild(createEl("p", "", item.descripcion));
+
+          if (item.link) {
+            const link = createEl("a", "capability-link", `${item.link_texto || "Ver capacidad"} →`);
+            link.setAttribute("href", item.link);
+            text.appendChild(link);
+          }
+
+          const imageWrap = createEl("div", "capability-image");
+
+          if (item.imagen) {
+            const img = createEl("img");
+            img.setAttribute("src", item.imagen);
+            img.setAttribute("alt", item.alt || item.titulo || "Capacidad COBYBSA");
+            img.setAttribute("loading", "lazy");
+            img.setAttribute("decoding", "async");
+            imageWrap.appendChild(img);
+          }
+
+          capability.appendChild(text);
+          capability.appendChild(imageWrap);
+          capList.appendChild(capability);
+        });
       }
 
-      capability.appendChild(text);
-      capability.appendChild(imageWrap);
-      capList.appendChild(capability);
-    });
+      setText("cms-cap-cta-title", capacidades.cta_titulo);
+      setText("cms-cap-cta-desc", capacidades.cta_descripcion);
+    }
+
+    /* PROYECTOS PÁGINA */
+    const proyectosPagina = await fetchJson("/content/paginas/proyectos.json");
+
+    if (proyectosPagina) {
+      setText("cms-proyectos-badge", proyectosPagina.badge);
+      setText("cms-proyectos-title", proyectosPagina.titulo);
+      setText("cms-proyectos-desc", proyectosPagina.descripcion);
+      setText("cms-proyectos-cta-title", proyectosPagina.cta_titulo);
+      setText("cms-proyectos-cta-desc", proyectosPagina.cta_descripcion);
+      setText("cms-proyectos-cta-text", proyectosPagina.cta_texto);
+      setHref("cms-proyectos-cta", proyectosPagina.cta_link);
+    }
+
+    /* CAPACIDADES ESPECÍFICAS */
+    await renderCapabilityPage("/content/paginas/corte-laser-industrial.json", "laser");
+    await renderCapabilityPage("/content/paginas/corte-cnc-industrial.json", "cnc");
+    await renderCapabilityPage("/content/paginas/manufactura-industrial.json", "manufactura");
+    await renderCapabilityPage("/content/paginas/ingenieria-de-precision.json", "precision");
+    await renderCapabilityPage("/content/paginas/diseno-y-modelado-3d-industrial.json", "diseno");
+
+  } catch (err) {
+    console.error("Error cargando contenido CMS:", err);
   }
-}
+})();
