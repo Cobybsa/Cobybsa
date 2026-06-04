@@ -20,7 +20,7 @@ collections:
       - { label: "Contenido", name: "body", widget: "markdown" }
 
   - name: "proyectos"
-    label: "Proyectos"
+    label: "Proyectos individuales"
     folder: "content/proyectos"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -29,6 +29,7 @@ collections:
       - { label: "Cliente", name: "cliente", widget: "string", required: false }
       - { label: "Ubicación", name: "ubicacion", widget: "string", required: false }
       - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Categoría", name: "categoria", widget: "string", required: false }
       - { label: "Imagen principal", name: "image", widget: "image", required: false }
       - label: "Galería"
         name: "gallery"
@@ -50,7 +51,6 @@ collections:
           - { label: "Título del hero", name: "titulo", widget: "string" }
           - { label: "Descripción del hero", name: "descripcion", widget: "text" }
           - { label: "Texto extra del hero", name: "extra", widget: "text", required: false }
-
           - { label: "CTA principal - texto", name: "cta_principal_texto", widget: "string" }
           - { label: "CTA principal - link", name: "cta_principal_link", widget: "string" }
           - { label: "CTA secundario - texto", name: "cta_secundario_texto", widget: "string" }
@@ -78,15 +78,18 @@ collections:
           - label: "Equipo destacado"
             name: "equipo"
             widget: "list"
+            required: false
             fields:
               - { label: "Nombre", name: "nombre", widget: "string" }
               - { label: "Cargo", name: "cargo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
 
           - { label: "Título sectores", name: "sectores_titulo", widget: "string" }
+
           - label: "Sectores"
             name: "sectores"
             widget: "list"
+            required: false
             field: { label: "Sector", name: "sector", widget: "string" }
 
           - { label: "CTA final - título", name: "cta_final_titulo", widget: "string" }
@@ -122,15 +125,27 @@ collections:
           - label: "Bloques de trayectoria"
             name: "bloques"
             widget: "list"
+            required: false
             fields:
               - { label: "Año o etapa", name: "etapa", widget: "string" }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Texto", name: "texto", widget: "text" }
+              - label: "Puntos"
+                name: "puntos"
+                widget: "list"
+                required: false
+                field: { label: "Punto", name: "punto", widget: "string" }
 
-          - label: "Valores"
-            name: "valores"
+          - { label: "Misión kicker", name: "mision_kicker", widget: "string", required: false }
+          - { label: "Misión título", name: "mision_titulo", widget: "string", required: false }
+          - { label: "Misión descripción", name: "mision_descripcion", widget: "text", required: false }
+
+          - label: "Misión principios"
+            name: "mision_principios"
             widget: "list"
+            required: false
             fields:
+              - { label: "Número", name: "numero", widget: "string" }
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
 
@@ -145,6 +160,7 @@ collections:
           - label: "Lista de capacidades"
             name: "capacidades"
             widget: "list"
+            required: false
             fields:
               - { label: "Título", name: "titulo", widget: "string" }
               - { label: "Descripción", name: "descripcion", widget: "text" }
@@ -155,26 +171,143 @@ collections:
                 field: { label: "Punto", name: "punto", widget: "string" }
               - { label: "Link", name: "link", widget: "string", required: false }
 
-          - { label: "CTA título", name: "cta_titulo", widget: "string" }
-          - { label: "CTA descripción", name: "cta_descripcion", widget: "text" }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+
+      - label: "Proyectos"
+        name: "proyectos_pagina"
+        file: "content/paginas/proyectos.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+
+      - label: "Corte láser industrial"
+        name: "corte_laser_industrial"
+        file: "content/paginas/corte-laser-industrial.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
+          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
+          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
+          - label: "Puntos clave"
+            name: "puntos"
+            widget: "list"
+            required: false
+            field: { label: "Punto", name: "punto", widget: "string" }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+
+      - label: "Corte CNC industrial"
+        name: "corte_cnc_industrial"
+        file: "content/paginas/corte-cnc-industrial.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
+          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
+          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
+          - label: "Puntos clave"
+            name: "puntos"
+            widget: "list"
+            required: false
+            field: { label: "Punto", name: "punto", widget: "string" }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+
+      - label: "Manufactura industrial"
+        name: "manufactura_industrial"
+        file: "content/paginas/manufactura-industrial.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
+          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
+          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
+          - label: "Puntos clave"
+            name: "puntos"
+            widget: "list"
+            required: false
+            field: { label: "Punto", name: "punto", widget: "string" }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+
+      - label: "Ingeniería de precisión"
+        name: "ingenieria_de_precision"
+        file: "content/paginas/ingenieria-de-precision.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
+          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
+          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
+          - label: "Puntos clave"
+            name: "puntos"
+            widget: "list"
+            required: false
+            field: { label: "Punto", name: "punto", widget: "string" }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
+
+      - label: "Diseño y modelado 3D"
+        name: "diseno_y_modelado_3d"
+        file: "content/paginas/diseno-y-modelado-3d-industrial.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Imagen hero", name: "imagen", widget: "image", required: false }
+          - { label: "Título sección", name: "seccion_titulo", widget: "string", required: false }
+          - { label: "Texto sección", name: "seccion_texto", widget: "text", required: false }
+          - label: "Puntos clave"
+            name: "puntos"
+            widget: "list"
+            required: false
+            field: { label: "Punto", name: "punto", widget: "string" }
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
 
       - label: "Contacto"
         name: "contacto"
         file: "content/paginas/contacto.json"
         fields:
-          - { label: "Badge", name: "badge", widget: "string" }
-          - { label: "Título", name: "titulo", widget: "string" }
-          - { label: "Descripción", name: "descripcion", widget: "text" }
-
-          - { label: "Teléfono", name: "telefono", widget: "string" }
-          - { label: "Correo", name: "correo", widget: "string" }
-          - { label: "Ubicación", name: "ubicacion", widget: "string" }
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - { label: "Teléfono", name: "telefono", widget: "string", required: false }
+          - { label: "Correo", name: "correo", widget: "string", required: false }
+          - { label: "Ubicación", name: "ubicacion", widget: "string", required: false }
           - { label: "Texto adicional", name: "extra", widget: "text", required: false }
-
-          - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string" }
-          - { label: "Descripción información para cotizar", name: "cotizar_descripcion", widget: "text" }
+          - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string", required: false }
+          - { label: "Descripción información para cotizar", name: "cotizar_descripcion", widget: "text", required: false }
 
           - label: "Lista"
             name: "cotizar_lista"
             widget: "list"
+            required: false
             field: { label: "Elemento", name: "elemento", widget: "string" }
+
+          - label: "Sectores"
+            name: "sectores"
+            widget: "list"
+            required: false
+            field: { label: "Sector", name: "sector", widget: "string" }
