@@ -9,13 +9,17 @@
     const setText = (id, value) => {
       const el = document.getElementById(id);
       if (!el) return;
-      if (typeof value === "string" && value.trim()) el.textContent = value;
+      if (typeof value === "string" && value.trim()) {
+        el.textContent = value;
+      }
     };
 
     const setHref = (id, value) => {
       const el = document.getElementById(id);
       if (!el) return;
-      if (typeof value === "string" && value.trim()) el.setAttribute("href", value);
+      if (typeof value === "string" && value.trim()) {
+        el.setAttribute("href", value);
+      }
     };
 
     const createEl = (tag, className, text) => {
@@ -25,13 +29,22 @@
       return el;
     };
 
+    const getText = (item) => {
+      if (typeof item === "string") return item;
+      if (!item || typeof item !== "object") return "";
+      return item.punto || item.sector || item.texto || item.titulo || "";
+    };
+
+    const hasItems = (items) => Array.isArray(items) && items.length > 0;
+
     const renderList = (id, items, className = "") => {
       const container = document.getElementById(id);
-      if (!container || !Array.isArray(items)) return;
+      if (!container || !hasItems(items)) return;
 
       container.innerHTML = "";
+
       items.forEach((item) => {
-        const text = typeof item === "string" ? item : item.punto || item.sector || item.texto || "";
+        const text = getText(item);
         if (!text) return;
         container.appendChild(createEl("li", className, text));
       });
@@ -39,11 +52,12 @@
 
     const renderPills = (id, items, className = "pill") => {
       const container = document.getElementById(id);
-      if (!container || !Array.isArray(items)) return;
+      if (!container || !hasItems(items)) return;
 
       container.innerHTML = "";
+
       items.forEach((item) => {
-        const text = typeof item === "string" ? item : item.punto || item.sector || item.texto || "";
+        const text = getText(item);
         if (!text) return;
         container.appendChild(createEl("div", className, text));
       });
@@ -51,11 +65,12 @@
 
     const renderItems = (id, items, className = "item") => {
       const container = document.getElementById(id);
-      if (!container || !Array.isArray(items)) return;
+      if (!container || !hasItems(items)) return;
 
       container.innerHTML = "";
+
       items.forEach((item) => {
-        const text = typeof item === "string" ? item : item.punto || item.texto || "";
+        const text = getText(item);
         if (!text) return;
         container.appendChild(createEl("div", className, text));
       });
@@ -63,11 +78,12 @@
 
     const renderSteps = (id, items) => {
       const container = document.getElementById(id);
-      if (!container || !Array.isArray(items)) return;
+      if (!container || !hasItems(items)) return;
 
       container.innerHTML = "";
+
       items.forEach((item, index) => {
-        const text = typeof item === "string" ? item : item.texto || item.punto || "";
+        const text = getText(item);
         if (!text) return;
 
         const li = createEl("li", "step");
@@ -99,13 +115,18 @@
       renderPills(`cms-${prefix}-ventajas`, data.ventajas || data.puntos, "pill");
 
       setText(`cms-${prefix}-problemas-title`, data.problemas_titulo);
+
       const problemasContainer = document.getElementById(`cms-${prefix}-problemas`);
-      if (problemasContainer && Array.isArray(data.problemas)) {
+      if (problemasContainer && hasItems(data.problemas)) {
         problemasContainer.innerHTML = "";
+
         data.problemas.forEach((problema) => {
+          const text = getText(problema);
+          if (!text) return;
+
           const li = createEl("li");
           li.appendChild(createEl("span", "dot"));
-          li.appendChild(createEl("span", "", problema));
+          li.appendChild(createEl("span", "", text));
           problemasContainer.appendChild(li);
         });
       }
@@ -146,8 +167,10 @@
       setHref("cms-hero-cta2", inicio.cta_secundario_link || "/proyectos.html");
 
       const statsContainer = document.querySelector(".stats-inner");
-      if (statsContainer && Array.isArray(inicio.estadisticas)) {
+
+      if (statsContainer && hasItems(inicio.estadisticas)) {
         statsContainer.innerHTML = "";
+
         inicio.estadisticas.forEach((item) => {
           const stat = createEl("div", "stat-item");
           stat.appendChild(createEl("span", "stat-number", item.numero));
@@ -157,10 +180,13 @@
       }
 
       const capabilitiesContainer = document.querySelector(".capability-grid");
-      if (capabilitiesContainer && Array.isArray(inicio.capacidades_destacadas)) {
+
+      if (capabilitiesContainer && hasItems(inicio.capacidades_destacadas)) {
         capabilitiesContainer.innerHTML = "";
+
         inicio.capacidades_destacadas.forEach((item) => {
           const card = createEl("article", "capability-card");
+
           card.appendChild(createEl("span", "", item.numero));
           card.appendChild(createEl("h3", "", item.titulo));
           card.appendChild(createEl("p", "", item.descripcion));
@@ -178,12 +204,19 @@
       const teamTitle = document.querySelector(".team-head h2");
       const teamDesc = document.querySelector(".team-head p:not(.section-kicker)");
 
-      if (teamTitle && inicio.equipo_titulo) teamTitle.textContent = inicio.equipo_titulo;
-      if (teamDesc && inicio.equipo_descripcion) teamDesc.textContent = inicio.equipo_descripcion;
+      if (teamTitle && inicio.equipo_titulo) {
+        teamTitle.textContent = inicio.equipo_titulo;
+      }
+
+      if (teamDesc && inicio.equipo_descripcion) {
+        teamDesc.textContent = inicio.equipo_descripcion;
+      }
 
       const teamTrack = document.querySelector(".team-track");
-      if (teamTrack && Array.isArray(inicio.equipo)) {
+
+      if (teamTrack && hasItems(inicio.equipo)) {
         teamTrack.innerHTML = "";
+
         inicio.equipo.forEach((persona) => {
           const card = createEl("article", "team-card");
           const avatar = createEl("div", "team-avatar");
@@ -199,11 +232,16 @@
       }
 
       const sectorTitle = document.querySelector(".home-industries .section-head h2");
-      if (sectorTitle && inicio.sectores_titulo) sectorTitle.textContent = inicio.sectores_titulo;
+
+      if (sectorTitle && inicio.sectores_titulo) {
+        sectorTitle.textContent = inicio.sectores_titulo;
+      }
 
       const industryList = document.querySelector(".industry-list");
-      if (industryList && Array.isArray(inicio.sectores)) {
+
+      if (industryList && hasItems(inicio.sectores)) {
         industryList.innerHTML = "";
+
         inicio.sectores.forEach((sector) => {
           const texto = typeof sector === "string" ? sector : sector.sector;
           if (texto) industryList.appendChild(createEl("span", "", texto));
@@ -214,19 +252,30 @@
       const ctaDesc = document.querySelector(".home-cta p:not(.section-kicker)");
       const ctaButton = document.querySelector(".home-cta .btn");
 
-      if (ctaTitle && inicio.cta_final_titulo) ctaTitle.textContent = inicio.cta_final_titulo;
-      if (ctaDesc && inicio.cta_final_descripcion) ctaDesc.textContent = inicio.cta_final_descripcion;
+      if (ctaTitle && inicio.cta_final_titulo) {
+        ctaTitle.textContent = inicio.cta_final_titulo;
+      }
+
+      if (ctaDesc && inicio.cta_final_descripcion) {
+        ctaDesc.textContent = inicio.cta_final_descripcion;
+      }
 
       if (ctaButton) {
-        if (inicio.cta_final_boton_texto) ctaButton.textContent = inicio.cta_final_boton_texto;
-        if (inicio.cta_final_boton_link) ctaButton.setAttribute("href", inicio.cta_final_boton_link);
+        if (inicio.cta_final_boton_texto) {
+          ctaButton.textContent = inicio.cta_final_boton_texto;
+        }
+
+        if (inicio.cta_final_boton_link) {
+          ctaButton.setAttribute("href", inicio.cta_final_boton_link);
+        }
       }
 
       setText("cms-novedades-title", inicio.novedades_titulo);
       setText("cms-novedades-desc", inicio.novedades_descripcion);
 
       const novedadesGrid = document.getElementById("cms-novedades-grid");
-      if (novedadesGrid && Array.isArray(inicio.novedades_destacadas)) {
+
+      if (novedadesGrid && hasItems(inicio.novedades_destacadas)) {
         novedadesGrid.innerHTML = "";
 
         inicio.novedades_destacadas.forEach((item) => {
@@ -235,10 +284,12 @@
           if (item.imagen) {
             const imageWrap = createEl("div", "news-image");
             const img = createEl("img");
+
             img.setAttribute("src", item.imagen);
             img.setAttribute("alt", item.titulo || "Novedad COBYBSA");
             img.setAttribute("loading", "lazy");
             img.setAttribute("decoding", "async");
+
             imageWrap.appendChild(img);
             card.appendChild(imageWrap);
           }
@@ -271,7 +322,7 @@
 
       const bloquesContainer = document.getElementById("cms-historia-bloques");
 
-      if (bloquesContainer && Array.isArray(historia.bloques)) {
+      if (bloquesContainer && hasItems(historia.bloques)) {
         bloquesContainer.innerHTML = "";
 
         historia.bloques.forEach((bloque) => {
@@ -287,12 +338,14 @@
           article.appendChild(head);
           article.appendChild(createEl("p", "", bloque.texto));
 
-          if (Array.isArray(bloque.puntos) && bloque.puntos.length) {
+          if (hasItems(bloque.puntos)) {
             const ul = createEl("ul");
+
             bloque.puntos.forEach((punto) => {
-              const texto = typeof punto === "string" ? punto : punto.punto;
+              const texto = getText(punto);
               if (texto) ul.appendChild(createEl("li", "", texto));
             });
+
             article.appendChild(ul);
           }
 
@@ -305,7 +358,8 @@
       setText("cms-mision-desc", historia.mision_descripcion);
 
       const principiosContainer = document.getElementById("cms-mision-principios");
-      if (principiosContainer && Array.isArray(historia.mision_principios)) {
+
+      if (principiosContainer && hasItems(historia.mision_principios)) {
         principiosContainer.innerHTML = "";
 
         historia.mision_principios.forEach((item) => {
@@ -318,7 +372,8 @@
       }
 
       const valoresContainer = document.getElementById("cms-historia-valores");
-      if (valoresContainer && Array.isArray(historia.valores)) {
+
+      if (valoresContainer && hasItems(historia.valores)) {
         valoresContainer.innerHTML = "";
 
         historia.valores.forEach((valor) => {
@@ -344,12 +399,14 @@
       setText("cms-contact-extra", contacto.extra);
 
       const phone = document.getElementById("cms-contact-phone");
+
       if (phone && contacto.telefono) {
         const cleanPhone = contacto.telefono.replace(/[^\d+]/g, "");
         phone.setAttribute("href", `tel:${cleanPhone}`);
       }
 
       const email = document.getElementById("cms-contact-email");
+
       if (email && contacto.correo) {
         email.setAttribute("href", `mailto:${contacto.correo}`);
       }
@@ -368,15 +425,18 @@
       setText("cms-cap-desc", capacidades.descripcion);
 
       const badgesContainer = document.getElementById("cms-cap-badges");
-      if (badgesContainer && Array.isArray(capacidades.badges)) {
+
+      if (badgesContainer && hasItems(capacidades.badges)) {
         badgesContainer.innerHTML = "";
+
         capacidades.badges.forEach((badge) => {
           badgesContainer.appendChild(createEl("span", "cap-pill", badge));
         });
       }
 
       const capList = document.getElementById("cms-cap-list");
-      if (capList && Array.isArray(capacidades.capacidades)) {
+
+      if (capList && hasItems(capacidades.capacidades)) {
         capList.innerHTML = "";
 
         capacidades.capacidades.forEach((item) => {
@@ -384,6 +444,7 @@
           capability.setAttribute("data-cap-card", "");
 
           const text = createEl("div", "capability-text");
+
           text.appendChild(createEl("h3", "", item.titulo));
           text.appendChild(createEl("p", "", item.descripcion));
 
@@ -397,10 +458,12 @@
 
           if (item.imagen) {
             const img = createEl("img");
+
             img.setAttribute("src", item.imagen);
             img.setAttribute("alt", item.alt || item.titulo || "Capacidad COBYBSA");
             img.setAttribute("loading", "lazy");
             img.setAttribute("decoding", "async");
+
             imageWrap.appendChild(img);
           }
 
