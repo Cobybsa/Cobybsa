@@ -397,38 +397,45 @@
 
         capacidades.capacidades.forEach((item) => {
           const capability = createEl("div", "capability");
-          capability.setAttribute("data-cap-card", "");
+         capability.setAttribute("data-cap-card", "");
 
-          const text = createEl("div", "capability-text");
-          text.appendChild(createEl("h3", "", item.titulo));
-          text.appendChild(createEl("p", "", item.descripcion));
+const text = createEl("div", "capability-text");
 
-          if (item.link) {
-            const link = createEl("a", "capability-link", `${item.link_texto || "Ver capacidad"} →`);
-            link.setAttribute("href", item.link);
-            text.appendChild(link);
-          }
+if (item.titulo) {
+  text.appendChild(createEl("h3", "", item.titulo));
+}
 
-          const imageWrap = createEl("div", "capability-image");
+if (item.descripcion) {
+  text.appendChild(createEl("p", "", item.descripcion));
+}
 
-          if (item.imagen) {
-            const img = createEl("img");
-            img.setAttribute("src", item.imagen);
-            img.setAttribute("alt", item.alt || item.titulo || "Capacidad COBYBSA");
-            img.setAttribute("loading", "lazy");
-            img.setAttribute("decoding", "async");
-            imageWrap.appendChild(img);
-          }
+if (item.link) {
+  const link = createEl(
+    "a",
+    "capability-link",
+    `${item.link_texto || "Ver capacidad"} →`
+  );
 
-          capability.appendChild(text);
-          capability.appendChild(imageWrap);
-          capList.appendChild(capability);
-        });
-      }
+  link.setAttribute("href", item.link);
+  text.appendChild(link);
+}
 
-      setText("cms-cap-cta-title", capacidades.cta_titulo);
-      setText("cms-cap-cta-desc", capacidades.cta_descripcion);
-    }
+capability.appendChild(text);
+
+if (item.imagen) {
+  const imageWrap = createEl("div", "capability-image");
+  const img = createEl("img");
+
+  img.setAttribute("src", item.imagen);
+  img.setAttribute("alt", item.alt || item.titulo || "Capacidad COBYBSA");
+  img.setAttribute("loading", "lazy");
+  img.setAttribute("decoding", "async");
+
+  imageWrap.appendChild(img);
+  capability.appendChild(imageWrap);
+}
+          
+capList.appendChild(capability);
 
     /* PROYECTOS PÁGINA */
     const proyectosPagina = await fetchJson("/content/paginas/proyectos.json");
