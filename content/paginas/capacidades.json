@@ -3,10 +3,11 @@
   "titulo": "Capacidades",
   "descripcion": "Procesos integrados para resolver proyectos metalmecánicos con precisión, calidad y cumplimiento: desde el diseño y modelado 3D hasta fabricación, corte y mecanizado.",
   "badges": [
+    "Manufactura",
+    "Ingeniería de precisión",
     "Corte láser",
     "CNC",
-    "Modelado 3D",
-    "Fabricación"
+    "Modelado 3D"
   ],
   "capacidades": [
     {
@@ -15,7 +16,7 @@
       "imagen": "/img/capacidades-manufactura.png",
       "alt": "Manufactura industrial metalmecánica en Costa Rica COBYBSA",
       "link": "/manufactura-industrial.html",
-      "link_texto": "Ver capacidad de Manufactura Industrial"
+      "link_texto": "Ver Manufactura Industrial"
     },
     {
       "titulo": "Ingeniería de Precisión",
@@ -45,8 +46,8 @@
       "titulo": "Diseño y Modelado 3D Industrial",
       "descripcion": "Diseño técnico y modelado 3D industrial para el desarrollo de piezas, estructuras y equipos a medida. Acompañamos al cliente desde la idea inicial hasta la fabricación, optimizando geometrías y reduciendo errores antes de producción.",
       "imagen": "/img/capacidades-3d.png",
-      "alt": "Diseño y modelado 3D industrial para fabricación COBYBSA",
-      "link": "/diseno-modelado-3d-industrial.html",
+      "alt": "Diseño y modelado 3D industrial para fabricación metalmecánica COBYBSA",
+      "link": "/diseno-y-modelado-3d.html",
       "link_texto": "Ver Diseño y Modelado 3D"
     }
   ],
