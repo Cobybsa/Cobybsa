@@ -451,17 +451,108 @@
       setText("cms-cap-cta-desc", capacidades.cta_descripcion);
     }
     
-    /* PROYECTOS PÁGINA */
-    const proyectosPagina = await fetchJson("/content/paginas/proyectos.json");
+/* PROYECTOS PÁGINA */
+const proyectosPagina = await fetchJson("/content/paginas/proyectos.json");
 
-    if (proyectosPagina) {
-      setText("cms-proyectos-badge", proyectosPagina.badge);
-      setText("cms-proyectos-title", proyectosPagina.titulo);
-      setText("cms-proyectos-desc", proyectosPagina.descripcion);
-      setText("cms-proyectos-cta-title", proyectosPagina.cta_titulo);
-      setText("cms-proyectos-cta-desc", proyectosPagina.cta_descripcion);
-      setText("cms-proyectos-cta-text", proyectosPagina.cta_texto);
-      setHref("cms-proyectos-cta", proyectosPagina.cta_link);
+if (proyectosPagina) {
+  setText("cms-proyectos-badge", proyectosPagina.badge);
+  setText("cms-proyectos-title", proyectosPagina.titulo);
+  setText("cms-proyectos-desc", proyectosPagina.descripcion);
+
+  setText("cms-proyectos-cta-title", proyectosPagina.cta_titulo);
+  setText("cms-proyectos-cta-desc", proyectosPagina.cta_descripcion);
+  setText("cms-proyectos-cta-text", proyectosPagina.cta_texto);
+  setHref("cms-proyectos-cta", proyectosPagina.cta_link);
+
+  const proyectosGrid = document.getElementById("cms-proyectos-grid");
+
+  if (
+    proyectosGrid &&
+    hasItems(proyectosPagina.proyectos)
+  ) {
+    proyectosGrid.innerHTML = "";
+
+    proyectosPagina.proyectos.forEach((proyecto, index) => {
+      const article = createEl("article", "project-card");
+
+      const imageWrap = createEl("div", "project-image");
+      const gallery = createEl("div", "project-gallery");
+
+      const leftBtn = createEl(
+        "button",
+        "proj-arrow left",
+        "‹"
+      );
+
+      leftBtn.type = "button";
+      leftBtn.setAttribute(
+        "aria-label",
+        "Ver imagen anterior"
+      );
+
+      const galleryId = `cms-proj-${index + 1}`;
+
+      leftBtn.onclick = () =>
+        scrollProyecto(galleryId, -1);
+
+      const track = createEl(
+        "div",
+        "project-gallery-track"
+      );
+
+      track.id = galleryId;
+
+      if (Array.isArray(proyecto.imagenes)) {
+        proyecto.imagenes.forEach((imgSrc, imgIndex) => {
+          const img = document.createElement("img");
+
+          img.src = imgSrc;
+          img.loading = "lazy";
+          img.decoding = "async";
+
+          img.alt =
+            `${proyecto.titulo} - imagen ${imgIndex + 1}`;
+
+          track.appendChild(img);
+        });
+      }
+
+      const rightBtn = createEl(
+        "button",
+        "proj-arrow right",
+        "›"
+      );
+
+      rightBtn.type = "button";
+
+      rightBtn.setAttribute(
+        "aria-label",
+        "Ver imagen siguiente"
+      );
+
+      rightBtn.onclick = () =>
+        scrollProyecto(galleryId, 1);
+
+      gallery.appendChild(leftBtn);
+      gallery.appendChild(track);
+      gallery.appendChild(rightBtn);
+
+      imageWrap.appendChild(gallery);
+
+      article.appendChild(imageWrap);
+
+      article.appendChild(
+        createEl("h3", "", proyecto.titulo)
+      );
+
+      article.appendChild(
+        createEl("p", "", proyecto.descripcion)
+      );
+
+      proyectosGrid.appendChild(article);
+    });
+  }
+}
     }
 
     /* CAPACIDADES ESPECÍFICAS */
