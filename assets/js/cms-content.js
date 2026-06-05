@@ -468,42 +468,49 @@ if (proyectosPagina) {
 
   if (
     proyectosGrid &&
-    hasItems(proyectosPagina.proyectos)
+    Array.isArray(proyectosPagina.proyectos)
   ) {
     proyectosGrid.innerHTML = "";
 
     proyectosPagina.proyectos.forEach((proyecto, index) => {
-      const article = createEl("article", "project-card");
 
-      const imageWrap = createEl("div", "project-image");
-      const gallery = createEl("div", "project-gallery");
+      const galleryId = `proj${index + 1}`;
 
-      const leftBtn = createEl(
-        "button",
-        "proj-arrow left",
-        "‹"
-      );
+      const article = document.createElement("article");
+      article.className = "project-card";
+      article.setAttribute("role", "listitem");
 
+      const imageWrap = document.createElement("div");
+      imageWrap.className = "project-image";
+
+      const gallery = document.createElement("div");
+      gallery.className = "project-gallery";
+
+      const leftBtn = document.createElement("button");
+      leftBtn.className = "proj-arrow left";
       leftBtn.type = "button";
       leftBtn.setAttribute(
         "aria-label",
         "Ver imagen anterior"
       );
-
-      const galleryId = `cms-proj-${index + 1}`;
-
+      leftBtn.textContent = "‹";
       leftBtn.onclick = () =>
         scrollProyecto(galleryId, -1);
 
-      const track = createEl(
-        "div",
-        "project-gallery-track"
-      );
-
+      const track = document.createElement("div");
+      track.className = "project-gallery-track";
       track.id = galleryId;
 
       if (Array.isArray(proyecto.imagenes)) {
-        proyecto.imagenes.forEach((imgSrc, imgIndex) => {
+        proyecto.imagenes.forEach((imgItem, imgIndex) => {
+
+          const imgSrc =
+            typeof imgItem === "string"
+              ? imgItem
+              : imgItem.imagen || imgItem.image || "";
+
+          if (!imgSrc) return;
+
           const img = document.createElement("img");
 
           img.src = imgSrc;
@@ -511,25 +518,20 @@ if (proyectosPagina) {
           img.decoding = "async";
 
           img.alt =
-            `${proyecto.titulo} - imagen ${imgIndex + 1}`;
+            `${proyecto.titulo || "Proyecto"} - imagen ${imgIndex + 1}`;
 
           track.appendChild(img);
         });
       }
 
-      const rightBtn = createEl(
-        "button",
-        "proj-arrow right",
-        "›"
-      );
-
+      const rightBtn = document.createElement("button");
+      rightBtn.className = "proj-arrow right";
       rightBtn.type = "button";
-
       rightBtn.setAttribute(
         "aria-label",
         "Ver imagen siguiente"
       );
-
+      rightBtn.textContent = "›";
       rightBtn.onclick = () =>
         scrollProyecto(galleryId, 1);
 
@@ -541,19 +543,18 @@ if (proyectosPagina) {
 
       article.appendChild(imageWrap);
 
-      article.appendChild(
-        createEl("h3", "", proyecto.titulo)
-      );
+      const title = document.createElement("h3");
+      title.textContent = proyecto.titulo || "";
+      article.appendChild(title);
 
-      article.appendChild(
-        createEl("p", "", proyecto.descripcion)
-      );
+      const desc = document.createElement("p");
+      desc.textContent = proyecto.descripcion || "";
+      article.appendChild(desc);
 
       proyectosGrid.appendChild(article);
     });
   }
 }
-    }
 
     /* CAPACIDADES ESPECÍFICAS */
     await renderCapabilityPage("/content/paginas/corte-laser-industrial.json", "laser");
