@@ -1,1 +1,11 @@
+{
+  "badge": "Proyectos industriales",
+  "titulo": "Proyectos",
+  "descripcion": "Una selección de proyectos realizados para distintos sectores: industrial, alimentario, médico y soluciones personalizadas.",
 
+  "cta_titulo": "¿Tiene un proyecto similar?",
+  "cta_descripcion": "Podemos ayudarle a desarrollar tanques, equipos, estructuras, gabinetes y soluciones metalmecánicas a medida.",
+
+  "cta_texto": "Solicitar cotización",
+  "cta_link": "/contacto.html"
+}
