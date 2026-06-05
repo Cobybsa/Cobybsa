@@ -443,6 +443,8 @@
 
           capList.appendChild(capability);
         });
+
+        document.dispatchEvent(new Event("capacidadesCMSReady"));
       }
 
       setText("cms-cap-cta-title", capacidades.cta_titulo);
