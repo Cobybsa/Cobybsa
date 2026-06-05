@@ -13,7 +13,7 @@
     {
       "titulo": "Manufactura Industrial",
       "descripcion": "Fabricación metalmecánica a medida orientada a aplicaciones industriales. En COBYBSA desarrollamos componentes, ensambles y soluciones completas integrando distintos procesos bajo un mismo control técnico, garantizando funcionalidad, durabilidad y cumplimiento en proyectos industriales.",
-      "imagen": "/assets/img/capacidades-manufactura.png",
+      "imagen": "/assets/js/img/capacidades-manufactura.png",
       "alt": "Manufactura industrial metalmecánica en Costa Rica COBYBSA",
       "link": "/manufactura-industrial.html",
       "link_texto": "Ver Manufactura Industrial"
@@ -21,7 +21,7 @@
     {
       "titulo": "Ingeniería de Precisión",
       "descripcion": "Ingeniería de precisión industrial enfocada en control dimensional, tolerancias estrictas y repetibilidad. Fabricamos piezas donde la exactitud es crítica, reduciendo fallos, reprocesos y problemas de ensamblaje en aplicaciones industriales exigentes.",
-      "imagen": "/assets/img/capacidades-precision.png",
+      "imagen": "/assets/js/img/capacidades-precision.png",
       "alt": "Ingeniería de precisión y control dimensional industrial COBYBSA",
       "link": "/ingenieria-de-precision.html",
       "link_texto": "Ver Ingeniería de Precisión"
@@ -29,7 +29,7 @@
     {
       "titulo": "Corte Láser Industrial",
       "descripcion": "Servicio de corte láser industrial en Costa Rica para acero al carbono, acero inoxidable y aluminio. Realizamos cortes limpios, precisos y repetibles, ideales para geometrías complejas y piezas listas para procesos posteriores o ensamblaje.",
-      "imagen": "/assets/img/capacidades-laser.png",
+      "imagen": "/assets/js/img/capacidades-laser.png",
       "alt": "Corte láser industrial en Costa Rica COBYBSA",
       "link": "/corte-laser-industrial.html",
       "link_texto": "Ver Corte Láser Industrial"
@@ -37,7 +37,7 @@
     {
       "titulo": "Corte CNC Industrial",
       "descripcion": "Corte y mecanizado CNC industrial para piezas técnicas, cavidades, perforaciones y geometrías complejas. Esta capacidad permite alcanzar niveles de precisión y acabado requeridos en componentes industriales funcionales.",
-      "imagen": "/assets/img/capacidades-cnc.png",
+      "imagen": "/assets/js/img/capacidades-cnc.png",
       "alt": "Corte CNC industrial y mecanizado de precisión COBYBSA",
       "link": "/corte-cnc-industrial.html",
       "link_texto": "Ver Corte CNC Industrial"
@@ -45,7 +45,7 @@
     {
       "titulo": "Diseño y Modelado 3D Industrial",
       "descripcion": "Diseño técnico y modelado 3D industrial para el desarrollo de piezas, estructuras y equipos a medida. Acompañamos al cliente desde la idea inicial hasta la fabricación, optimizando geometrías y reduciendo errores antes de producción.",
-      "imagen": "/assets/img/capacidades-3d.png",
+      "imagen": "/assets/js/img/capacidades-3d.png",
       "alt": "Diseño y modelado 3D industrial para fabricación metalmecánica COBYBSA",
       "link": "/diseno-modelado-3d-industrial.html",
       "link_texto": "Ver Diseño y Modelado 3D"
