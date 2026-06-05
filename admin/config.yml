@@ -178,39 +178,35 @@ collections:
           - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
           - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
 
-      - label: "Proyectos"
-  name: "proyectos_pagina"
-  file: "content/paginas/proyectos.json"
-  fields:
+            - label: "Proyectos"
+        name: "proyectos_pagina"
+        file: "content/paginas/proyectos.json"
+        fields:
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Título", name: "titulo", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text", required: false }
 
-    - { label: "Badge", name: "badge", widget: "string", required: false }
-    - { label: "Título", name: "titulo", widget: "string", required: false }
-    - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+          - label: "Proyectos"
+            name: "proyectos"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
 
-    - label: "Proyectos"
-      name: "proyectos"
-      widget: "list"
-      fields:
+              - label: "Imágenes"
+                name: "imagenes"
+                widget: "list"
+                required: false
+                field:
+                  label: "Imagen"
+                  name: "imagen"
+                  widget: "image"
 
-        - { label: "Título", name: "titulo", widget: "string" }
-
-        - { label: "Descripción", name: "descripcion", widget: "text" }
-
-        - label: "Imágenes"
-          name: "imagenes"
-          widget: "list"
-          field:
-            label: "Imagen"
-            name: "imagen"
-            widget: "image"
-
-    - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
-
-    - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
-
-    - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
-
-    - { label: "CTA link", name: "cta_link", widget: "string", required: false }w
+          - { label: "CTA título", name: "cta_titulo", widget: "string", required: false }
+          - { label: "CTA descripción", name: "cta_descripcion", widget: "text", required: false }
+          - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
+          - { label: "CTA link", name: "cta_link", widget: "string", required: false }
 
       - label: "Corte láser industrial"
         name: "corte_laser_industrial"
