@@ -1,8 +1,93 @@
 {
+  "badge": "Contacto técnico y cotizaciones",
+
   "titulo": "Contacto",
-  "descripcion": "Solicite una evaluación técnica o cotización.",
+
+  "descripcion": "Solicite una evaluación técnica o cotización para proyectos metalmecánicos, fabricación industrial, corte láser, CNC y soluciones a medida.",
+
+  "hero_cta1_texto": "Solicitar cotización",
+  "hero_cta1_link": "/cotizacion.html",
+
+  "hero_cta2_texto": "Ver proyectos",
+  "hero_cta2_link": "/proyectos.html",
+
+  "sectores_titulo": "Experiencia en distintos sectores",
+
+  "sectores_descripcion": "Participamos en proyectos industriales, fabricación a medida y soluciones metalmecánicas para distintos entornos de trabajo.",
+
+  "sectores": [
+    {
+      "sector": "Industrial"
+    },
+    {
+      "sector": "Alimentario"
+    },
+    {
+      "sector": "Médico"
+    },
+    {
+      "sector": "Construcción"
+    },
+    {
+      "sector": "Soluciones a medida"
+    }
+  ],
+
+  "cotizar_titulo": "Información útil para cotizar",
+
+  "cotizar_descripcion": "Si nos comparte estos datos desde el inicio, podemos revisar su solicitud con mayor claridad y precisión.",
+
+  "cotizar_lista": [
+    {
+      "elemento": "Material y espesor si ya están definidos"
+    },
+    {
+      "elemento": "Cantidad requerida o volumen estimado"
+    },
+    {
+      "elemento": "Acabado, tolerancias o condiciones especiales si aplican"
+    },
+    {
+      "elemento": "Plazo esperado y si desea discutir detalles de proyecto"
+    }
+  ],
+
+  "enfoque_titulo": "Enfoque de trabajo",
+
+  "enfoque_descripcion": "Cada proyecto se atiende con criterio técnico, orden de ejecución y atención al detalle.",
+
+  "enfoque_items": [
+    {
+      "titulo": "Evaluación técnica",
+      "descripcion": "Revisión de materiales, proceso y factibilidad."
+    },
+    {
+      "titulo": "Calidad",
+      "descripcion": "Cuidado en acabados, soldadura y fabricación."
+    },
+    {
+      "titulo": "Orden",
+      "descripcion": "Seguimiento claro en taller y ejecución."
+    },
+    {
+      "titulo": "Acompañamiento",
+      "descripcion": "Soporte desde la definición hasta la entrega."
+    }
+  ],
+
+  "info_titulo": "Información de contacto",
+
   "telefono": "+506 2268-9797",
-  "email": "info@cobybsa.com",
+
+  "correo": "info@cobybsa.com",
+
   "ubicacion": "Concepción, San Rafael, Heredia, Costa Rica",
-  "texto_extra": "También podemos coordinar una visita a planta o reunión presencial para revisar detalles técnicos de su proyecto."
+
+  "extra": "También podemos coordinar una visita a planta o reunión presencial para revisar detalles técnicos de su proyecto.",
+
+  "final_cta1_texto": "Solicitar cotización",
+  "final_cta1_link": "/cotizacion.html",
+
+  "final_cta2_texto": "Ver capacidades",
+  "final_cta2_link": "/capacidades.html"
 }
