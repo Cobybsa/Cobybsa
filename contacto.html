@@ -57,7 +57,7 @@
         <div class="contact-hero-text">
           <p class="contact-kicker">
             <span class="contact-dot" aria-hidden="true"></span>
-            Contacto técnico y cotizaciones
+            <span id="cms-contact-badge">Contacto técnico y cotizaciones</span>
           </p>
 
           <h1 class="contact-title" id="cms-contact-title">Contacto</h1>
@@ -67,8 +67,21 @@
           </p>
 
           <div class="contact-hero-actions">
-            <a class="btn btn-primary" href="/cotizacion.html">Solicitar cotización</a>
-            <a class="btn btn-ghost" href="/proyectos.html">Ver proyectos</a>
+            <a
+              class="btn btn-primary"
+              id="cms-contact-hero-cta1"
+              href="/cotizacion.html"
+            >
+              <span id="cms-contact-hero-cta1-text">Solicitar cotización</span>
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              id="cms-contact-hero-cta2"
+              href="/proyectos.html"
+            >
+              <span id="cms-contact-hero-cta2-text">Ver proyectos</span>
+            </a>
           </div>
         </div>
 
@@ -79,13 +92,20 @@
     <section class="contact-proof">
       <div class="container">
         <div class="proof-head">
-          <h2 class="proof-title">Experiencia en distintos sectores</h2>
-          <p class="proof-sub">
+          <h2 class="proof-title" id="cms-contact-sectores-title">
+            Experiencia en distintos sectores
+          </h2>
+
+          <p class="proof-sub" id="cms-contact-sectores-desc">
             Participamos en proyectos industriales, fabricación a medida y soluciones metalmecánicas para distintos entornos de trabajo.
           </p>
         </div>
 
-        <div class="sector-pills" aria-label="Sectores">
+        <div
+          class="sector-pills"
+          id="cms-contact-sectores"
+          aria-label="Sectores"
+        >
           <span class="pill">Industrial</span>
           <span class="pill">Alimentario</span>
           <span class="pill">Médico</span>
@@ -101,12 +121,15 @@
         <div class="how-grid">
 
           <article class="how-card" data-contact-card>
-            <h2 class="how-title">Información útil para cotizar</h2>
-            <p class="how-desc">
+            <h2 class="how-title" id="cms-contact-cotizar-title">
+              Información útil para cotizar
+            </h2>
+
+            <p class="how-desc" id="cms-contact-cotizar-desc">
               Si nos comparte estos datos desde el inicio, podemos revisar su solicitud con mayor claridad y precisión.
             </p>
 
-            <ul class="how-list">
+            <ul class="how-list" id="cms-contact-cotizar-list">
               <li><strong>Material</strong> y <strong>espesor</strong> si ya están definidos</li>
               <li><strong>Cantidad</strong> requerida o volumen estimado</li>
               <li><strong>Acabado</strong>, tolerancias o condiciones especiales si aplican</li>
@@ -115,24 +138,30 @@
           </article>
 
           <article class="trust-card" data-contact-card>
-            <h2 class="how-title">Enfoque de trabajo</h2>
-            <p class="how-desc">
+            <h2 class="how-title" id="cms-contact-enfoque-title">
+              Enfoque de trabajo
+            </h2>
+
+            <p class="how-desc" id="cms-contact-enfoque-desc">
               Cada proyecto se atiende con criterio técnico, orden de ejecución y atención al detalle.
             </p>
 
-            <div class="trust-grid">
+            <div class="trust-grid" id="cms-contact-enfoque-items">
               <div class="trust-item">
                 <div class="trust-k">Evaluación técnica</div>
                 <div class="trust-v">Revisión de materiales, proceso y factibilidad</div>
               </div>
+
               <div class="trust-item">
                 <div class="trust-k">Calidad</div>
                 <div class="trust-v">Cuidado en acabados, soldadura y fabricación</div>
               </div>
+
               <div class="trust-item">
                 <div class="trust-k">Orden</div>
                 <div class="trust-v">Seguimiento claro en taller y ejecución</div>
               </div>
+
               <div class="trust-item">
                 <div class="trust-k">Acompañamiento</div>
                 <div class="trust-v">Soporte desde la definición hasta la entrega</div>
@@ -150,22 +179,38 @@
 
         <div class="contact-grid contact-grid--single">
           <article class="contact-box" data-contact-card>
-            <h3>Información de contacto</h3>
+            <h3 id="cms-contact-info-title">
+              Información de contacto
+            </h3>
 
             <div class="contact-rows">
               <p>
                 <strong>Teléfono:</strong>
-                <a class="contact-link" id="cms-contact-phone" href="tel:+50622689797">+506 2268-9797</a>
+                <a
+                  class="contact-link"
+                  id="cms-contact-phone"
+                  href="tel:+50622689797"
+                >
+                  +506 2268-9797
+                </a>
               </p>
 
               <p>
                 <strong>Correo:</strong>
-                <a class="contact-link" id="cms-contact-email" href="mailto:info@cobybsa.com">info@cobybsa.com</a>
+                <a
+                  class="contact-link"
+                  id="cms-contact-email"
+                  href="mailto:info@cobybsa.com"
+                >
+                  info@cobybsa.com
+                </a>
               </p>
 
               <p>
                 <strong>Ubicación:</strong>
-                <span id="cms-contact-location">Concepción, San Rafael, Heredia, Costa Rica</span>
+                <span id="cms-contact-location">
+                  Concepción, San Rafael, Heredia, Costa Rica
+                </span>
               </p>
             </div>
 
@@ -174,8 +219,21 @@
             </p>
 
             <div class="contact-actions">
-              <a class="btn btn-primary" href="/cotizacion.html">Solicitar cotización</a>
-              <a class="btn btn-ghost" href="/capacidades.html">Ver capacidades</a>
+              <a
+                class="btn btn-primary"
+                id="cms-contact-final-cta1"
+                href="/cotizacion.html"
+              >
+                <span id="cms-contact-final-cta1-text">Solicitar cotización</span>
+              </a>
+
+              <a
+                class="btn btn-ghost"
+                id="cms-contact-final-cta2"
+                href="/capacidades.html"
+              >
+                <span id="cms-contact-final-cta2-text">Ver capacidades</span>
+              </a>
             </div>
           </article>
         </div>
