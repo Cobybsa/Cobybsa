@@ -16,21 +16,11 @@
   "sectores_descripcion": "Participamos en proyectos industriales, fabricación a medida y soluciones metalmecánicas para distintos entornos de trabajo.",
 
   "sectores": [
-    {
-      "sector": "Industrial"
-    },
-    {
-      "sector": "Alimentario"
-    },
-    {
-      "sector": "Médico"
-    },
-    {
-      "sector": "Construcción"
-    },
-    {
-      "sector": "Soluciones a medida"
-    }
+    "Industrial",
+    "Alimentario",
+    "Médico",
+    "Construcción",
+    "Soluciones a medida"
   ],
 
   "cotizar_titulo": "Información útil para cotizar",
@@ -42,8 +32,8 @@
     "Cantidad requerida o volumen estimado",
     "Acabado, tolerancias o condiciones especiales si aplican",
     "Plazo esperado y si desea discutir detalles de proyecto"
-   ],
-  
+  ],
+
   "enfoque_titulo": "Enfoque de trabajo",
 
   "enfoque_descripcion": "Cada proyecto se atiende con criterio técnico, orden de ejecución y atención al detalle.",
