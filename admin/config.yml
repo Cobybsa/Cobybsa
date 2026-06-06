@@ -208,7 +208,7 @@ collections:
           - { label: "CTA texto", name: "cta_texto", widget: "string", required: false }
           - { label: "CTA link", name: "cta_link", widget: "string", required: false }
 
-      - label: "Corte láser industrial"
+            - label: "Corte láser industrial"
         name: "corte_laser_industrial"
         file: "content/paginas/corte-laser-industrial.json"
         fields: &capacidad_fields
@@ -233,6 +233,7 @@ collections:
             field: { label: "Ventaja", name: "ventaja", widget: "string" }
 
           - { label: "Problemas - título", name: "problemas_titulo", widget: "string", required: false }
+
           - label: "Problemas"
             name: "problemas"
             widget: "list"
@@ -240,14 +241,17 @@ collections:
             field: { label: "Problema", name: "problema", widget: "string" }
 
           - { label: "Materiales / Capacidades - título", name: "materiales_titulo", widget: "string", required: false }
+
           - label: "Materiales / Capacidades"
             name: "materiales"
             widget: "list"
             required: false
             field: { label: "Elemento", name: "elemento", widget: "string" }
+
           - { label: "Nota de materiales / capacidades", name: "materiales_nota", widget: "text", required: false }
 
           - { label: "Resultados / Aplicaciones - título", name: "resultados_titulo", widget: "string", required: false }
+
           - label: "Resultados / Aplicaciones"
             name: "resultados"
             widget: "list"
@@ -255,6 +259,7 @@ collections:
             field: { label: "Elemento", name: "elemento", widget: "string" }
 
           - { label: "Proceso - título", name: "proceso_titulo", widget: "string", required: false }
+
           - label: "Proceso"
             name: "proceso"
             widget: "list"
@@ -283,7 +288,7 @@ collections:
         file: "content/paginas/ingenieria-de-precision.json"
         fields: *capacidad_fields
 
-      - label: "Diseño y modelado 3d industrial"
+      - label: "Diseño y modelado 3D industrial"
         name: "diseno_y_modelado_3d_industrial"
         file: "content/paginas/diseno-y-modelado-3d-industrial.json"
         fields: *capacidad_fields
@@ -292,7 +297,6 @@ collections:
         name: "contacto"
         file: "content/paginas/contacto.json"
         fields:
-
           - { label: "Badge", name: "badge", widget: "string", required: false }
           - { label: "Título", name: "titulo", widget: "string", required: false }
           - { label: "Descripción", name: "descripcion", widget: "text", required: false }
@@ -312,6 +316,7 @@ collections:
             required: false
             field:
               label: "Sector"
+              name: "sector"
               widget: "string"
 
           - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string", required: false }
@@ -323,6 +328,7 @@ collections:
             required: false
             field:
               label: "Texto"
+              name: "texto"
               widget: "string"
 
           - { label: "Título enfoque", name: "enfoque_titulo", widget: "string", required: false }
