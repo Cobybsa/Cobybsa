@@ -38,20 +38,12 @@
   "cotizar_descripcion": "Si nos comparte estos datos desde el inicio, podemos revisar su solicitud con mayor claridad y precisión.",
 
   "cotizar_lista": [
-    {
-      "elemento": "Material y espesor si ya están definidos"
-    },
-    {
-      "elemento": "Cantidad requerida o volumen estimado"
-    },
-    {
-      "elemento": "Acabado, tolerancias o condiciones especiales si aplican"
-    },
-    {
-      "elemento": "Plazo esperado y si desea discutir detalles de proyecto"
-    }
-  ],
-
+    "Material y espesor si ya están definidos",
+    "Cantidad requerida o volumen estimado",
+    "Acabado, tolerancias o condiciones especiales si aplican",
+    "Plazo esperado y si desea discutir detalles de proyecto"
+   ],
+  
   "enfoque_titulo": "Enfoque de trabajo",
 
   "enfoque_descripcion": "Cada proyecto se atiende con criterio técnico, orden de ejecución y atención al detalle.",
