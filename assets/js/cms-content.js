@@ -347,33 +347,179 @@
     }
 
     /* CONTACTO */
-    const contacto = await fetchJson("/content/paginas/contacto.json");
+const contacto = await fetchJson("/content/paginas/contacto.json");
 
-    if (contacto) {
-      setText("cms-contact-badge", contacto.badge);
-      setText("cms-contact-title", contacto.titulo);
-      setText("cms-contact-desc", contacto.descripcion);
+if (contacto) {
+  setText("cms-contact-badge", contacto.badge);
+  setText("cms-contact-title", contacto.titulo);
+  setText("cms-contact-desc", contacto.descripcion);
 
-      setText("cms-contact-phone", contacto.telefono);
-      setText("cms-contact-email", contacto.correo);
-      setText("cms-contact-location", contacto.ubicacion);
-      setText("cms-contact-extra", contacto.extra);
+  setText("cms-contact-phone", contacto.telefono);
+  setText("cms-contact-email", contacto.correo);
+  setText("cms-contact-location", contacto.ubicacion);
+  setText("cms-contact-extra", contacto.extra);
 
-      const phone = document.getElementById("cms-contact-phone");
-      if (phone && contacto.telefono) {
-        const cleanPhone = contacto.telefono.replace(/[^\d+]/g, "");
-        phone.setAttribute("href", `tel:${cleanPhone}`);
+  const phone = document.getElementById("cms-contact-phone");
+
+  if (phone && contacto.telefono) {
+    const cleanPhone =
+      contacto.telefono.replace(/[^\d+]/g, "");
+
+    phone.setAttribute(
+      "href",
+      `tel:${cleanPhone}`
+    );
+  }
+
+  const email =
+    document.getElementById(
+      "cms-contact-email"
+    );
+
+  if (email && contacto.correo) {
+    email.setAttribute(
+      "href",
+      `mailto:${contacto.correo}`
+    );
+  }
+
+  setText(
+    "cms-contact-cotizar-title",
+    contacto.cotizar_titulo
+  );
+
+  setText(
+    "cms-contact-cotizar-desc",
+    contacto.cotizar_descripcion
+  );
+
+  renderList(
+    "cms-contact-cotizar-list",
+    contacto.cotizar_lista
+  );
+
+  /* SECTORES */
+
+  setText(
+    "cms-contact-sectores-title",
+    contacto.sectores_titulo
+  );
+
+  setText(
+    "cms-contact-sectores-desc",
+    contacto.sectores_descripcion
+  );
+
+  renderPills(
+    "cms-contact-sectores",
+    contacto.sectores
+  );
+
+  /* ENFOQUE */
+
+  setText(
+    "cms-contact-enfoque-title",
+    contacto.enfoque_titulo
+  );
+
+  setText(
+    "cms-contact-enfoque-desc",
+    contacto.enfoque_descripcion
+  );
+
+  const enfoqueItems =
+    document.getElementById(
+      "cms-contact-enfoque-items"
+    );
+
+  if (
+    enfoqueItems &&
+    hasItems(contacto.enfoque_items)
+  ) {
+    enfoqueItems.innerHTML = "";
+
+    contacto.enfoque_items.forEach(
+      (item) => {
+        const trustItem =
+          createEl(
+            "div",
+            "trust-item"
+          );
+
+        trustItem.appendChild(
+          createEl(
+            "div",
+            "trust-k",
+            item.titulo
+          )
+        );
+
+        trustItem.appendChild(
+          createEl(
+            "div",
+            "trust-v",
+            item.descripcion
+          )
+        );
+
+        enfoqueItems.appendChild(
+          trustItem
+        );
       }
+    );
+  }
 
-      const email = document.getElementById("cms-contact-email");
-      if (email && contacto.correo) {
-        email.setAttribute("href", `mailto:${contacto.correo}`);
-      }
+  /* INFORMACIÓN DE CONTACTO */
 
-      setText("cms-contact-cotizar-title", contacto.cotizar_titulo);
-      setText("cms-contact-cotizar-desc", contacto.cotizar_descripcion);
-      renderList("cms-contact-cotizar-list", contacto.cotizar_lista);
-    }
+  setText(
+    "cms-contact-info-title",
+    contacto.info_titulo
+  );
+
+  /* HERO CTA */
+
+  setText(
+    "cms-contact-hero-cta1-text",
+    contacto.hero_cta1_texto
+  );
+
+  setHref(
+    "cms-contact-hero-cta1",
+    contacto.hero_cta1_link
+  );
+
+  setText(
+    "cms-contact-hero-cta2-text",
+    contacto.hero_cta2_texto
+  );
+
+  setHref(
+    "cms-contact-hero-cta2",
+    contacto.hero_cta2_link
+  );
+
+  /* CTA FINAL */
+
+  setText(
+    "cms-contact-final-cta1-text",
+    contacto.final_cta1_texto
+  );
+
+  setHref(
+    "cms-contact-final-cta1",
+    contacto.final_cta1_link
+  );
+
+  setText(
+    "cms-contact-final-cta2-text",
+    contacto.final_cta2_texto
+  );
+
+  setHref(
+    "cms-contact-final-cta2",
+    contacto.final_cta2_link
+  );
+}
 
     /* CAPACIDADES GENERAL */
     const capacidades = await fetchJson("/content/paginas/capacidades.json");
