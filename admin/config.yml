@@ -283,12 +283,12 @@ collections:
         file: "content/paginas/ingenieria-de-precision.json"
         fields: *capacidad_fields
 
-      - label: "Diseño y modelado 3D"
-        name: "diseno_y_modelado_3d"
+      - label: "Diseño y modelado 3d industrial"
+        name: "diseno_y_modelado_3d_industrial"
         file: "content/paginas/diseno-y-modelado-3d-industrial.json"
         fields: *capacidad_fields
 
-            - label: "Contacto"
+      - label: "Contacto"
         name: "contacto"
         file: "content/paginas/contacto.json"
         fields:
