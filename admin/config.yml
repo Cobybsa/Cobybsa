@@ -288,28 +288,63 @@ collections:
         file: "content/paginas/diseno-y-modelado-3d-industrial.json"
         fields: *capacidad_fields
 
-      - label: "Contacto"
+            - label: "Contacto"
         name: "contacto"
         file: "content/paginas/contacto.json"
         fields:
+
           - { label: "Badge", name: "badge", widget: "string", required: false }
           - { label: "Título", name: "titulo", widget: "string", required: false }
           - { label: "Descripción", name: "descripcion", widget: "text", required: false }
-          - { label: "Teléfono", name: "telefono", widget: "string", required: false }
-          - { label: "Correo", name: "correo", widget: "string", required: false }
-          - { label: "Ubicación", name: "ubicacion", widget: "string", required: false }
-          - { label: "Texto adicional", name: "extra", widget: "text", required: false }
-          - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string", required: false }
-          - { label: "Descripción información para cotizar", name: "cotizar_descripcion", widget: "text", required: false }
 
-          - label: "Lista"
-            name: "cotizar_lista"
-            widget: "list"
-            required: false
-            field: { label: "Elemento", name: "elemento", widget: "string" }
+          - { label: "Hero CTA 1 texto", name: "hero_cta1_texto", widget: "string", required: false }
+          - { label: "Hero CTA 1 link", name: "hero_cta1_link", widget: "string", required: false }
+
+          - { label: "Hero CTA 2 texto", name: "hero_cta2_texto", widget: "string", required: false }
+          - { label: "Hero CTA 2 link", name: "hero_cta2_link", widget: "string", required: false }
+
+          - { label: "Título sectores", name: "sectores_titulo", widget: "string", required: false }
+          - { label: "Descripción sectores", name: "sectores_descripcion", widget: "text", required: false }
 
           - label: "Sectores"
             name: "sectores"
             widget: "list"
             required: false
-            field: { label: "Sector", name: "sector", widget: "string" }
+            field:
+              label: "Sector"
+              widget: "string"
+
+          - { label: "Título información para cotizar", name: "cotizar_titulo", widget: "string", required: false }
+          - { label: "Descripción información para cotizar", name: "cotizar_descripcion", widget: "text", required: false }
+
+          - label: "Lista para cotizar"
+            name: "cotizar_lista"
+            widget: "list"
+            required: false
+            field:
+              label: "Texto"
+              widget: "string"
+
+          - { label: "Título enfoque", name: "enfoque_titulo", widget: "string", required: false }
+          - { label: "Descripción enfoque", name: "enfoque_descripcion", widget: "text", required: false }
+
+          - label: "Elementos de enfoque"
+            name: "enfoque_items"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+
+          - { label: "Título información de contacto", name: "info_titulo", widget: "string", required: false }
+
+          - { label: "Teléfono", name: "telefono", widget: "string", required: false }
+          - { label: "Correo", name: "correo", widget: "string", required: false }
+          - { label: "Ubicación", name: "ubicacion", widget: "string", required: false }
+          - { label: "Texto adicional", name: "extra", widget: "text", required: false }
+
+          - { label: "CTA final 1 texto", name: "final_cta1_texto", widget: "string", required: false }
+          - { label: "CTA final 1 link", name: "final_cta1_link", widget: "string", required: false }
+
+          - { label: "CTA final 2 texto", name: "final_cta2_texto", widget: "string", required: false }
+          - { label: "CTA final 2 link", name: "final_cta2_link", widget: "string", required: false }
