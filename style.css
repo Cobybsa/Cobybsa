@@ -170,6 +170,14 @@ color: #f9fafb;
 width: 100%;
 }
 
+.main-nav a.is-active {
+color: #f9fafb;
+}
+
+.main-nav a.is-active::after {
+width: 100%;
+}
+
 /* NAV: versión móvil con scroll horizontal + ocultar meta para no chocar */
 @media (max-width: 768px) {
 .main-nav {
