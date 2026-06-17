@@ -415,38 +415,79 @@ a.ct-info-value:hover { color: var(--ct-accent); }
   .ct-title { font-size: clamp(2.4rem, 4vw, 3.4rem); }
 }
 
+/* Tablet y teléfonos — colapsa a 1 columna */
 @media (max-width: 860px) {
   .ct-hero {
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
-  .ct-left  { border-right: none; border-bottom: 1px solid var(--ct-line); }
-  .ct-right { overflow: visible; }
+  .ct-left {
+    border-right: none;
+    border-bottom: 1px solid var(--ct-line);
+  }
 
-  .ct-left-inner,
-  .ct-right-inner {
-    padding: 52px 28px;
+  .ct-left-inner {
+    padding: 56px 32px 48px;
     height: auto;
   }
 
-  .ct-sectors { margin-top: 2rem; }
+  .ct-right-inner {
+    padding: 48px 32px 64px;
+  }
 
+  /* Sectores: margin-top auto no funciona en height: auto */
+  .ct-sectors { margin-top: 2.5rem; }
+
+  /* Grilla de enfoque: 1 columna en tablet */
   .ct-enfoque-grid { grid-template-columns: 1fr; }
 
+  /* Dots más chicos — menos ruido en mobile */
   .ct-left::before { background-size: 22px 22px; }
+
+  /* Botones apilados desde tablet chico */
+  .ct-hero-actions { flex-direction: column; }
+  .ct-btn-primary,
+  .ct-btn-ghost {
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
+/* Teléfonos chicos */
 @media (max-width: 520px) {
   .ct-left-inner,
-  .ct-right-inner { padding: 40px 20px; }
+  .ct-right-inner { padding-left: 20px; padding-right: 20px; }
 
-  .ct-title { font-size: clamp(2rem, 9vw, 2.8rem); }
+  .ct-title { font-size: clamp(2.1rem, 9vw, 2.8rem); }
 
-  .ct-hero-actions { flex-direction: column; }
-  .ct-btn-primary, .ct-btn-ghost { text-align: center; }
+  /* Info rows: apila label encima del valor */
+  .ct-info-row {
+    flex-direction: column;
+    gap: .2rem;
+    padding: .75rem 0;
+  }
 
-  .ct-info-value { font-size: .95rem; }
+  /* Teléfono: más chico en móvil */
+  .ct-info-row:first-child .ct-info-value { font-size: 1.2rem; }
+  .ct-info-value { font-size: .97rem; }
+
+  .ct-card { padding: 1.25rem 1.25rem; }
+
+  .ct-enfoque-grid { gap: .6rem; }
+}
+
+/* iPhone SE y similares (≤375px) */
+@media (max-width: 375px) {
+  .ct-left-inner,
+  .ct-right-inner { padding-left: 16px; padding-right: 16px; }
+
+  .ct-title { font-size: 2rem; }
+
+  .ct-info-row:first-child .ct-info-value { font-size: 1.05rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
