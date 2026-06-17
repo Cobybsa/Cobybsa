@@ -115,8 +115,6 @@ body.capacidades-page main {
 .cap-wrap {
   display: flex;
   flex-direction: column;
-  gap: 1px;          /* separador fino entre cards */
-  background: var(--cap-line);  /* el 1px viene del gap */
   border: 1px solid var(--cap-line);
   border-radius: 16px;
   overflow: hidden;
@@ -129,6 +127,7 @@ body.capacidades-page main {
   gap: 0;
   align-items: stretch;
   background: var(--cap-bg-2);
+  border-bottom: 1px solid var(--cap-line);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity .6s ease, transform .6s ease, background .25s ease;
@@ -138,6 +137,10 @@ body.capacidades-page main {
 .capability.is-inview {
   opacity: 1;
   transform: translateY(0);
+}
+
+.capability:last-child {
+  border-bottom: none;
 }
 
 .capability:hover {
