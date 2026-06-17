@@ -115,36 +115,24 @@ body.capacidades-page main {
 .cap-wrap {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--cap-line);
-  border-radius: 16px;
-  overflow: hidden;
+  gap: 5rem;
 }
 
 /* ——— Card ——— */
 .capability {
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr 480px;
   gap: 0;
-  align-items: stretch;
-  background: var(--cap-bg-2);
-  border-bottom: 1px solid var(--cap-line);
+  align-items: center;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .6s ease, transform .6s ease, background .25s ease;
+  transform: translateY(24px);
+  transition: opacity .65s ease, transform .65s ease;
   will-change: opacity, transform;
 }
 
 .capability.is-inview {
   opacity: 1;
   transform: translateY(0);
-}
-
-.capability:last-child {
-  border-bottom: none;
-}
-
-.capability:hover {
-  background: #0f1520;
 }
 
 /* Alternancia imagen/texto */
@@ -156,12 +144,15 @@ body.capacidades-page main {
 
 /* ——— Texto ——— */
 .capability-text {
-  padding: 3rem 3.5rem;
+  padding: 0 4rem 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0;
+}
+
+.capability:nth-child(even) .capability-text {
+  padding: 0 0 0 4rem;
 }
 
 /* Número watermark */
@@ -256,41 +247,37 @@ body.capacidades-page main {
 .capability-image {
   position: relative;
   overflow: hidden;
-  background: rgba(255,255,255,.02);
+  border-radius: 12px;
+  aspect-ratio: 16/10;
 }
 
 .capability-image img {
   width: 100%;
   height: 100%;
-  min-height: 300px;
   object-fit: cover;
   display: block;
-  filter: saturate(.9) brightness(.92);
-  transition: transform .6s ease, filter .6s ease;
+  filter: saturate(.88) brightness(.9);
+  transition: transform .7s ease, filter .7s ease;
 }
 
 .capability:hover .capability-image img {
   transform: scale(1.04);
-  filter: saturate(1) brightness(.98);
+  filter: saturate(1) brightness(.97);
 }
 
-/* línea naranja sutil en el borde de la imagen al hover */
+/* overlay sutil al hover */
 .capability-image::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-left: 2px solid transparent;
-  transition: border-color .3s ease;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.07);
+  transition: box-shadow .3s ease;
   pointer-events: none;
 }
 
-.capability:nth-child(even) .capability-image::after {
-  border-left: none;
-  border-right: 2px solid transparent;
-}
-
 .capability:hover .capability-image::after {
-  border-color: var(--cap-accent);
+  box-shadow: inset 0 0 0 1px rgba(224,112,16,.3);
 }
 
 /* ==============================
@@ -301,47 +288,19 @@ body.capacidades-page main {
   .capability,
   .capability:nth-child(even) {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  .capability:nth-child(even) .capability-text { order: 1; }
+  .capability:nth-child(even) .capability-text { order: 1; padding: 0; }
   .capability:nth-child(even) .capability-image { order: 2; }
+  .capability-text { padding: 0; }
 
-  .capability-text {
-    padding: 2.5rem 2rem;
-  }
-
-  .capability-image img {
-    min-height: 240px;
-    height: 240px;
-  }
-
-  .cap-num {
-    font-size: 4rem;
-    top: 1rem;
-    right: 1.25rem;
-  }
+  .cap-wrap { gap: 4rem; }
 }
 
 @media (max-width: 560px) {
-  .cap-hero {
-    padding: 60px 0 40px;
-  }
-
-  .capabilities-section {
-    padding: 40px 0 72px;
-  }
-
-  .cap-wrap {
-    border-radius: 12px;
-  }
-
-  .capability-text {
-    padding: 2rem 1.5rem;
-  }
-
-  .capability-image img {
-    min-height: 200px;
-    height: 200px;
-  }
+  .cap-hero { padding: 60px 0 40px; }
+  .capabilities-section { padding: 40px 0 72px; }
+  .cap-wrap { gap: 3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
