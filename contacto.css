@@ -1,539 +1,445 @@
 /* ==========================================
-   CONTACTO — Premium limpio y profesional
-   Archivo: contacto.css
-   Requiere: style.css (global)
-   Scope: body.contacto-page
+   CONTACTO — Split editorial layout
    ========================================== */
 
-:root{
-  --c-bg: #0b0f14;
-  --c-ink: #e9eef5;
-  --c-muted: rgba(233,238,245,.72);
-  --c-line: rgba(233,238,245,.14);
-  --c-soft: rgba(233,238,245,.08);
-
-  --c-accent: #e78804;
-  --c-accent2: #32b7ff;
-
-  --c-radius: 20px;
-  --c-shadow: 0 22px 70px rgba(0,0,0,.45);
-  --c-shadow-soft: 0 16px 55px rgba(0,0,0,.32);
+:root {
+  --ct-bg:      #07090d;
+  --ct-bg-l:    #09101a;
+  --ct-bg-r:    #0c1018;
+  --ct-ink:     #edf1f7;
+  --ct-muted:   rgba(237,241,247,.52);
+  --ct-line:    rgba(237,241,247,.08);
+  --ct-accent:  #e07010;
+  --ct-radius:  12px;
 }
 
-/* ===== Scope SOLO contacto ===== */
-body.contacto-page{
-  background: var(--c-bg);
-  color: var(--c-ink);
+body.contacto-page {
+  background: var(--ct-bg);
+  color: var(--ct-ink);
 }
 
-body.contacto-page main{
-  background: transparent;
+body.contacto-page main { background: transparent; }
+
+/* ==============================
+   HERO SPLIT
+   ============================== */
+
+.ct-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 64px);
 }
 
-/* ==========================================
-   HERO CONTACTO
-   ========================================== */
-body.contacto-page .contact-hero{
+/* ==============================
+   LADO IZQUIERDO
+   ============================== */
+
+.ct-left {
   position: relative;
-  padding: 74px 0 54px;
+  background: var(--ct-bg-l);
+  border-right: 1px solid var(--ct-line);
   overflow: hidden;
 }
 
-body.contacto-page .contact-hero::before{
-  content:"";
-  position:absolute;
-  inset:-80px;
-  background:
-    radial-gradient(980px 600px at 12% 10%, rgba(231,136,4,.18), transparent 62%),
-    radial-gradient(860px 520px at 88% 0%, rgba(50,183,255,.16), transparent 62%),
-    radial-gradient(1100px 640px at 55% 120%, rgba(233,238,245,.06), transparent 66%);
-  filter: blur(8px);
-  opacity: .95;
-  pointer-events:none;
+/* Grilla de puntos — identidad técnica */
+.ct-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(237,241,247,.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
 }
 
-body.contacto-page .contact-hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    repeating-linear-gradient(
-      110deg,
-      rgba(255,255,255,.014) 0px,
-      rgba(255,255,255,.014) 2px,
-      transparent 2px,
-      transparent 150px
-    );
-  opacity:.48;
-  pointer-events:none;
+/* Gradiente naranja esquina superior izquierda */
+.ct-left::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px 500px at -10% -10%, rgba(224,112,16,.12), transparent 60%);
+  pointer-events: none;
 }
 
-body.contacto-page .contact-hero .container{
+.ct-left-inner {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  padding: 72px 56px 72px 52px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-body.contacto-page .contact-hero-inner{
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 22px;
-  align-items: stretch;
-}
-
-/* texto hero */
-body.contacto-page .contact-kicker{
+/* Kicker */
+.ct-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
+  gap: .55rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ct-accent);
+  margin: 0 0 1.5rem;
+}
+
+.ct-kicker-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ct-accent);
+  animation: ct-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes ct-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .4; transform: scale(.7); }
+}
+
+/* Título principal */
+.ct-title {
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  font-weight: 900;
+  letter-spacing: -.045em;
+  line-height: .95;
+  color: var(--ct-ink);
+  margin: 0 0 1.5rem;
+}
+
+/* Lead */
+.ct-lead {
+  font-size: .98rem;
+  line-height: 1.75;
+  color: var(--ct-muted);
+  max-width: 38ch;
+  margin: 0;
+}
+
+/* Separador naranja */
+.ct-divider {
+  width: 36px;
+  height: 2px;
+  background: var(--ct-accent);
+  opacity: .55;
+  margin: 2rem 0;
+  flex-shrink: 0;
+}
+
+/* ——— Bloque de datos ——— */
+.ct-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2.25rem;
+}
+
+.ct-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: .9rem 0;
+  border-bottom: 1px solid var(--ct-line);
+}
+
+.ct-info-row:first-child { border-top: 1px solid var(--ct-line); }
+
+.ct-info-label {
+  font-size: .62rem;
+  font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(233,238,245,.72);
-  margin: 0 0 14px 0;
+  color: var(--ct-accent);
+  min-width: 80px;
+  flex-shrink: 0;
 }
 
-body.contacto-page .contact-dot{
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
-  box-shadow: 0 0 0 3px rgba(231,136,4,.10);
-}
-
-body.contacto-page .contact-title{
-  margin: 0;
-  font-weight: 950;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  font-size: clamp(2rem, 4.6vw, 3.2rem);
-  color: var(--c-ink);
-  line-height: 1.05;
-}
-
-body.contacto-page .contact-lead{
-  margin: 14px 0 0;
-  max-width: 70ch;
-  color: var(--c-muted);
-  line-height: 1.75;
-  font-size: 1.03rem;
-}
-
-body.contacto-page .contact-hero-actions{
-  margin-top: 18px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* card hero derecha */
-body.contacto-page .contact-hero-card{
-  border: 1px solid var(--c-line);
-  border-radius: var(--c-radius);
-  background:
-    radial-gradient(760px 260px at 12% 0%, var(--c-soft), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  box-shadow: var(--c-shadow-soft);
-  overflow: hidden;
-  position: relative;
-}
-
-body.contacto-page .contact-hero-card::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: calc(var(--c-radius) + 2px);
-  background:
-    radial-gradient(650px 240px at 16% 0%, rgba(231,136,4,.12), transparent 60%),
-    radial-gradient(650px 240px at 88% 0%, rgba(50,183,255,.10), transparent 60%);
-  opacity: .55;
-  pointer-events: none;
-}
-
-body.contacto-page .contact-hero-card-inner{
-  padding: 18px;
-  display: grid;
-  gap: 12px;
-}
-
-body.contacto-page .contact-hero-metric{
-  border: 1px solid rgba(233,238,245,.12);
-  border-radius: 16px;
-  padding: 14px 14px;
-  background: rgba(255,255,255,.03);
-}
-
-body.contacto-page .metric-big{
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  font-size: 14px;
-  color: rgba(233,238,245,.95);
-}
-
-body.contacto-page .metric-sub{
-  margin-top: 6px;
-  color: rgba(233,238,245,.70);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-/* ==========================================
-   RESPALDO / SECTORES
-   ========================================== */
-body.contacto-page .contact-proof{
-  padding: 22px 0 34px;
-}
-
-body.contacto-page .proof-head{
-  display: grid;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-body.contacto-page .proof-title{
-  margin: 0;
-  font-size: 14px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(233,238,245,.92);
-}
-
-body.contacto-page .proof-sub{
-  margin: 0;
-  color: var(--c-muted);
-  line-height: 1.7;
-  max-width: 90ch;
-}
-
-body.contacto-page .sector-pills{
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-body.contacto-page .pill{
-  border: 1px solid rgba(233,238,245,.14);
-  background: rgba(255,255,255,.02);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(233,238,245,.74);
-}
-
-/* ==========================================
-   QUÉ ENVIAR + ENFOQUE DE TRABAJO
-   ========================================== */
-body.contacto-page .contact-how{
-  padding: 10px 0 30px;
-}
-
-body.contacto-page .how-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  align-items: stretch;
-}
-
-body.contacto-page .how-card,
-body.contacto-page .trust-card{
-  position: relative;
-  border: 1px solid var(--c-line);
-  border-radius: var(--c-radius);
-  padding: 22px;
-  background:
-    radial-gradient(760px 260px at 12% 0%, var(--c-soft), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  box-shadow: var(--c-shadow-soft);
-  overflow: hidden;
-
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity .7s ease, transform .7s ease, border-color .35s ease;
-  will-change: opacity, transform;
-}
-
-body.contacto-page .how-card.is-inview,
-body.contacto-page .trust-card.is-inview{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-body.contacto-page .how-card::before,
-body.contacto-page .trust-card::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: calc(var(--c-radius) + 2px);
-  background:
-    radial-gradient(650px 240px at 16% 0%, rgba(231,136,4,.10), transparent 60%),
-    radial-gradient(650px 240px at 88% 0%, rgba(50,183,255,.08), transparent 60%);
-  opacity: 0;
-  transition: opacity .35s ease;
-  pointer-events: none;
-}
-
-body.contacto-page .how-card:hover,
-body.contacto-page .trust-card:hover{
-  border-color: rgba(233,238,245,.26);
-}
-
-body.contacto-page .how-card:hover::before,
-body.contacto-page .trust-card:hover::before{
-  opacity: 1;
-}
-
-body.contacto-page .how-title{
-  margin: 0 0 10px;
-  font-size: 1.02rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-weight: 950;
-  color: rgba(233,238,245,.96);
-}
-
-body.contacto-page .how-desc{
-  margin: 0 0 14px;
-  color: var(--c-muted);
-  line-height: 1.75;
-}
-
-body.contacto-page .how-list{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(233,238,245,.70);
-  line-height: 1.8;
-}
-
-body.contacto-page .how-list li{
-  margin-bottom: 8px;
-}
-
-body.contacto-page .how-list strong{
-  color: rgba(233,238,245,.92);
-}
-
-body.contacto-page .how-actions{
-  margin-top: 16px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* trust grid */
-body.contacto-page .trust-grid{
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-body.contacto-page .trust-item{
-  border: 1px solid rgba(233,238,245,.12);
-  background: rgba(255,255,255,.03);
-  border-radius: 16px;
-  padding: 12px;
-}
-
-body.contacto-page .trust-k{
-  font-weight: 900;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-  font-size: 12px;
-  color: rgba(233,238,245,.92);
-}
-
-body.contacto-page .trust-v{
-  margin-top: 6px;
-  color: rgba(233,238,245,.70);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-/* ==========================================
-   SECCIÓN CONTACTO FINAL
-   ========================================== */
-body.contacto-page .section-contacto{
-  position: relative;
-  padding: 8px 0 60px;
-  overflow: visible;
-}
-
-body.contacto-page .section-contacto .container{
-  position: relative;
-  z-index: 2;
-}
-
-body.contacto-page .section-contacto::before,
-body.contacto-page .section-contacto::after{
-  content: none;
-}
-
-body.contacto-page .contact-grid{
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 18px;
-  align-items: start;
-}
-
-body.contacto-page .contact-grid--single{
-  grid-template-columns: minmax(0, 820px);
-  justify-content: start;
-}
-
-/* card final */
-body.contacto-page .contact-box{
-  position: relative;
-  border: 1px solid var(--c-line);
-  border-radius: var(--c-radius);
-  padding: 22px;
-  background:
-    radial-gradient(760px 260px at 12% 0%, var(--c-soft), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  box-shadow: var(--c-shadow-soft);
-  overflow: hidden;
-
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity .7s ease, transform .7s ease, border-color .35s ease;
-  will-change: opacity, transform;
-}
-
-body.contacto-page .contact-box.is-inview{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-body.contacto-page .contact-box::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: calc(var(--c-radius) + 2px);
-  background:
-    radial-gradient(650px 240px at 16% 0%, rgba(231,136,4,.10), transparent 60%),
-    radial-gradient(650px 240px at 88% 0%, rgba(50,183,255,.08), transparent 60%);
-  opacity: 0;
-  transition: opacity .35s ease;
-  pointer-events: none;
-}
-
-body.contacto-page .contact-box:hover{
-  border-color: rgba(233,238,245,.26);
-}
-
-body.contacto-page .contact-box:hover::before{
-  opacity: 1;
-}
-
-body.contacto-page .contact-box h3{
-  margin: 0 0 14px;
-  font-size: 1.02rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-weight: 950;
-  color: rgba(233,238,245,.96);
-}
-
-body.contacto-page .contact-rows p{
-  margin: 10px 0;
-  line-height: 1.75;
-  color: var(--c-muted);
-  font-size: 1.02rem;
-}
-
-body.contacto-page .contact-rows strong{
-  color: rgba(233,238,245,.88);
-}
-
-body.contacto-page .contact-link{
-  color: rgba(233,238,245,.92);
+.ct-info-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ct-ink);
   text-decoration: none;
-  border-bottom: 1px solid rgba(233,238,245,.18);
-  padding-bottom: 2px;
-  transition: border-color .25s ease, opacity .25s ease;
+  letter-spacing: -.01em;
+  transition: color .2s;
 }
 
-body.contacto-page .contact-link:hover{
-  border-color: rgba(231,136,4,.55);
-  opacity: .9;
-}
+a.ct-info-value:hover { color: var(--ct-accent); }
 
-body.contacto-page .contact-note{
-  margin-top: 14px;
-  color: var(--c-muted);
-  line-height: 1.75;
-  max-width: 60ch;
-}
-
-body.contacto-page .contact-actions{
-  margin-top: 16px;
+/* ——— Botones ——— */
+.ct-hero-actions {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 2.5rem;
 }
 
-/* ==========================================
-   Reduced motion
-   ========================================== */
-@media (prefers-reduced-motion: reduce){
-  body.contacto-page .contact-box,
-  body.contacto-page .how-card,
-  body.contacto-page .trust-card{
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+.ct-btn-primary {
+  display: inline-block;
+  background: var(--ct-accent);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .85rem 1.75rem;
+  border-radius: 6px;
+  transition: background .2s, transform .2s;
 }
 
-/* ==========================================
-   Responsive
-   ========================================== */
-@media (max-width: 980px){
-  body.contacto-page .contact-hero-inner{
-    grid-template-columns: 1fr;
-  }
-
-  body.contacto-page .how-grid{
-    grid-template-columns: 1fr;
-  }
-
-  body.contacto-page .contact-grid,
-  body.contacto-page .contact-grid--single{
-    grid-template-columns: 1fr;
-  }
-
-  body.contacto-page .contact-hero{
-    padding: 58px 0 40px;
-  }
-
-  body.contacto-page .section-contacto{
-    padding: 8px 0 70px;
-  }
+.ct-btn-primary:hover {
+  background: #c8620e;
+  transform: translateY(-2px);
 }
 
-@media (max-width: 560px){
-  body.contacto-page .trust-grid{
+.ct-btn-ghost {
+  display: inline-block;
+  color: rgba(237,241,247,.6);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-decoration: none;
+  padding: .85rem 1.4rem;
+  border: 1px solid var(--ct-line);
+  border-radius: 6px;
+  transition: color .2s, border-color .2s;
+}
+
+.ct-btn-ghost:hover {
+  color: var(--ct-ink);
+  border-color: rgba(237,241,247,.28);
+}
+
+/* ——— Sectores ——— */
+.ct-sectors { margin-top: auto; }
+
+.ct-sectors-label {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ct-muted);
+  margin: 0 0 .75rem;
+}
+
+.ct-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.ct-pills span {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(237,241,247,.5);
+  border: 1px solid rgba(237,241,247,.10);
+  background: rgba(255,255,255,.025);
+  padding: .28rem .72rem;
+  border-radius: 4px;
+}
+
+/* ==============================
+   LADO DERECHO
+   ============================== */
+
+.ct-right {
+  position: relative;
+  background: var(--ct-bg-r);
+  overflow-y: auto;
+}
+
+/* Gradiente sutil esquina inferior derecha */
+.ct-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(700px 500px at 110% 110%, rgba(224,112,16,.06), transparent 55%);
+  pointer-events: none;
+}
+
+.ct-right-inner {
+  position: relative;
+  z-index: 1;
+  padding: 72px 52px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* ——— Tarjetas derecha ——— */
+.ct-card {
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--ct-line);
+  border-radius: var(--ct-radius);
+  padding: 1.75rem 2rem;
+  position: relative;
+  transition: border-color .25s;
+}
+
+.ct-card:hover { border-color: rgba(224,112,16,.22); }
+
+.ct-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--ct-accent);
+  border-radius: 3px 0 0 3px;
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.ct-card:hover::before { opacity: 1; }
+
+.ct-card--alt { background: rgba(255,255,255,.015); }
+
+.ct-card-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ct-accent);
+  margin: 0 0 .6rem;
+}
+
+.ct-card-sub {
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--ct-muted);
+  margin: 0 0 1.25rem;
+}
+
+/* ——— Lista numerada ——— */
+.ct-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  counter-reset: ct-step;
+}
+
+.ct-steps li {
+  counter-increment: ct-step;
+  display: flex;
+  align-items: baseline;
+  gap: .85rem;
+  padding: .65rem 0;
+  border-bottom: 1px solid var(--ct-line);
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--ct-ink);
+}
+
+.ct-steps li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.ct-steps li::before {
+  content: counter(ct-step, decimal-leading-zero);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--ct-accent);
+  flex-shrink: 0;
+  padding-top: .12rem;
+}
+
+/* ——— Enfoque grid ——— */
+.ct-enfoque-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem 1.25rem;
+}
+
+.ct-enfoque-item {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  padding: .75rem;
+  background: rgba(255,255,255,.025);
+  border-radius: 8px;
+  border: 1px solid var(--ct-line);
+  transition: border-color .2s, background .2s;
+}
+
+.ct-enfoque-item:hover {
+  border-color: rgba(224,112,16,.2);
+  background: rgba(224,112,16,.04);
+}
+
+.ct-enfoque-k {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ct-ink);
+}
+
+.ct-enfoque-v {
+  font-size: .8rem;
+  line-height: 1.55;
+  color: var(--ct-muted);
+}
+
+/* ——— Nota final ——— */
+.ct-note {
+  font-size: .83rem;
+  line-height: 1.7;
+  color: rgba(237,241,247,.38);
+  border-left: 2px solid rgba(237,241,247,.1);
+  padding-left: 1rem;
+  margin: .5rem 0 0;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
+@media (max-width: 1024px) {
+  .ct-left-inner  { padding: 60px 40px; }
+  .ct-right-inner { padding: 60px 40px; }
+  .ct-title { font-size: clamp(2.4rem, 4vw, 3.4rem); }
+}
+
+@media (max-width: 860px) {
+  .ct-hero {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
-  body.contacto-page .contact-title{
-    letter-spacing: .05em;
+  .ct-left  { border-right: none; border-bottom: 1px solid var(--ct-line); }
+  .ct-right { overflow: visible; }
+
+  .ct-left-inner,
+  .ct-right-inner {
+    padding: 52px 28px;
+    height: auto;
   }
 
-  body.contacto-page .contact-hero-actions,
-  body.contacto-page .contact-actions,
-  body.contacto-page .how-actions{
-    flex-direction: column;
-    align-items: stretch;
-  }
+  .ct-sectors { margin-top: 2rem; }
 
-  body.contacto-page .contact-hero-actions .btn,
-  body.contacto-page .contact-actions .btn,
-  body.contacto-page .how-actions .btn{
-    width: 100%;
-    justify-content: center;
-  }
+  .ct-enfoque-grid { grid-template-columns: 1fr; }
+
+  .ct-left::before { background-size: 22px 22px; }
+}
+
+@media (max-width: 520px) {
+  .ct-left-inner,
+  .ct-right-inner { padding: 40px 20px; }
+
+  .ct-title { font-size: clamp(2rem, 9vw, 2.8rem); }
+
+  .ct-hero-actions { flex-direction: column; }
+  .ct-btn-primary, .ct-btn-ghost { text-align: center; }
+
+  .ct-info-value { font-size: .95rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-kicker-dot { animation: none; }
+  .ct-btn-primary:hover { transform: none; }
 }
