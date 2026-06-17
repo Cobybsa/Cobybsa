@@ -1,363 +1,367 @@
 /* ==========================================
-   PROYECTOS — Diseño premium (portafolio industrial)
-   Archivo: proyectos.css
-   Requiere: style.css (global)
+   PROYECTOS — Portfolio industrial
    ========================================== */
 
-:root{
-  --p-bg: #0b0f14;
-  --p-ink: #e9eef5;
-  --p-muted: rgba(233,238,245,.72);
-  --p-line: rgba(233,238,245,.16);
-  --p-soft: rgba(233,238,245,.10);
-  --p-glow: rgba(233,238,245,.08);
-
-  --p-radius: 18px;
-  --p-radius-sm: 14px;
-  --p-shadow: 0 24px 70px rgba(0,0,0,.42);
-  --p-shadow-soft: 0 18px 50px rgba(0,0,0,.32);
+:root {
+  --p-bg:     #07090d;
+  --p-bg-2:   #0c1018;
+  --p-ink:    #edf1f7;
+  --p-muted:  rgba(237,241,247,.58);
+  --p-line:   rgba(237,241,247,.09);
+  --p-accent: #e07010;
+  --p-radius: 12px;
 }
 
-/* ===== Scope SOLO en Proyectos ===== */
-body.proyectos-page{
+body.proyectos-page {
   background: var(--p-bg);
   color: var(--p-ink);
 }
 
-/* Evita “franjas” si style.css mete backgrounds */
-body.proyectos-page main{
-  background: transparent;
-}
+body.proyectos-page main { background: transparent; }
 
-/* Container general */
-body.proyectos-page .projects-inner{
-  max-width: 1180px;
-}
+/* ==============================
+   HERO
+   ============================== */
 
-/* ==========================================
-   Header (más “case studies”)
-   ========================================== */
-body.proyectos-page .projects-header{
-  padding: 74px 0 22px;
-  border-bottom: 1px solid var(--p-line);
+.proj-hero {
+  padding: 88px 0 64px;
   position: relative;
+  border-bottom: 1px solid var(--p-line);
 }
 
-body.proyectos-page .projects-header::after{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  bottom:-10px;
-  height:1px;
-  background: rgba(233,238,245,.08);
+.proj-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(800px 400px at 0% 0%, rgba(224,112,16,.08), transparent 55%);
+  pointer-events: none;
 }
 
-body.proyectos-page .projects-header h1,
-body.proyectos-page .projects-header h2{
-  margin: 0;
-  color: var(--p-ink);
-  letter-spacing: .10em;
+.proj-hero .container { position: relative; z-index: 1; }
+
+.proj-kicker {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .2em;
   text-transform: uppercase;
+  color: var(--p-accent);
+  border-left: 2px solid var(--p-accent);
+  padding-left: .65rem;
+  margin-bottom: 1.25rem;
+}
+
+.proj-title {
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
   font-weight: 900;
-  font-size: clamp(2.1rem, 4.8vw, 3.3rem);
-  line-height: 1.03;
+  letter-spacing: -.04em;
+  line-height: .95;
+  color: var(--p-ink);
+  margin: 0 0 1.5rem;
 }
 
-body.proyectos-page .projects-header p{
-  margin: 16px 0 0;
-  max-width: 85ch;
+.proj-lead {
+  font-size: 1rem;
+  line-height: 1.8;
   color: var(--p-muted);
-  line-height: 1.75;
-  font-size: 1.05rem;
+  max-width: 640px;
+  margin: 0;
 }
 
-/* ==========================================
-   Grid (más sólido)
-   ========================================== */
-body.proyectos-page .projects-grid{
-  margin-top: 34px;
+/* ==============================
+   GRID DE PROYECTOS
+   ============================== */
+
+.proj-grid-section { padding: 52px 0; }
+
+body.proyectos-page .projects-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
 }
 
-/* ==========================================
-   Cards (premium + overlays)
-   ========================================== */
-body.proyectos-page .project-card{
+/* ==============================
+   CARDS
+   ============================== */
+
+body.proyectos-page .project-card {
   grid-column: span 6;
+  background: var(--p-bg-2);
   border: 1px solid var(--p-line);
   border-radius: var(--p-radius);
   overflow: hidden;
-  padding: 16px;
+  padding: 14px;
   position: relative;
-  box-shadow: var(--p-shadow-soft);
-  transform: translateZ(0);
-  background:
-    radial-gradient(900px 340px at 15% 0%, rgba(233,238,245,.09), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.028));
-  transition:
-    transform .32s ease,
-    box-shadow .32s ease,
-    border-color .32s ease;
+  transition: border-color .25s ease, background .25s ease;
 }
 
-/* Overlay sutil para profundidad */
-body.proyectos-page .project-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(700px 240px at 70% 0%, rgba(233,238,245,.05), transparent 60%),
-    linear-gradient(180deg, transparent, rgba(0,0,0,.18));
-  opacity: .85;
-  pointer-events: none;
+body.proyectos-page .project-card:hover {
+  border-color: rgba(224,112,16,.28);
+  background: #0f1520;
 }
 
-/* Glow hover */
-body.proyectos-page .project-card::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: calc(var(--p-radius) + 2px);
-  background: radial-gradient(620px 260px at 25% 0%, var(--p-glow), transparent 60%);
-  opacity: 0;
-  transition: opacity .35s ease;
-  pointer-events: none;
-}
-
-body.proyectos-page .project-card:hover{
-  transform: translateY(-6px);
-  border-color: rgba(233,238,245,.28);
-  box-shadow: var(--p-shadow);
-}
-
-body.proyectos-page .project-card:hover::before{
-  opacity: 1;
-}
-
-/* Hero projects */
+/* Cards destacadas: 1ª, 6ª y 7ª full width */
 body.proyectos-page .project-card:nth-child(1),
 body.proyectos-page .project-card:nth-child(6),
-body.proyectos-page .project-card:nth-child(7){
+body.proyectos-page .project-card:nth-child(7) {
   grid-column: span 12;
-  padding: 18px;
 }
 
-/* ===== REVEAL SEGURO (NO se desaparece si JS falla) ===== */
-/* Por defecto SIEMPRE visible */
-body.proyectos-page .project-card{
-  opacity: 1;
-}
+/* Reveal con JS */
+body.proyectos-page .project-card { opacity: 1; }
 
-/* SOLO si JS está activo, inicia oculto y revela */
-html.js body.proyectos-page .project-card{
+html.js body.proyectos-page .project-card {
   opacity: 0;
-  transform: translateY(18px) scale(.985);
-  transition:
-    opacity .65s ease,
-    transform .65s ease,
-    box-shadow .32s ease,
-    border-color .32s ease;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease, border-color .25s ease, background .25s ease;
 }
 
-html.js body.proyectos-page .project-card.is-inview{
+html.js body.proyectos-page .project-card.is-inview {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
-/* ==========================================
-   Galería
-   ========================================== */
-body.proyectos-page .project-image{
-  margin: 0 0 14px;
+/* ==============================
+   GALERÍA
+   ============================== */
+
+body.proyectos-page .project-image {
+  margin: 0 0 12px;
   position: relative;
-  z-index: 1; /* encima del overlay */
 }
 
-body.proyectos-page .project-gallery{
+body.proyectos-page .project-gallery {
   position: relative;
-  border-radius: var(--p-radius-sm);
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(233,238,245,.14);
-  background: rgba(255,255,255,.03);
+  background: rgba(255,255,255,.02);
 }
 
-/* Track */
-body.proyectos-page .project-gallery-track{
+body.proyectos-page .project-gallery-track {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 10px;
+  padding: 8px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-body.proyectos-page .project-gallery-track::-webkit-scrollbar{ height: 8px; }
-body.proyectos-page .project-gallery-track::-webkit-scrollbar-thumb{
-  background: rgba(233,238,245,.14);
-  border-radius: 999px;
-}
+body.proyectos-page .project-gallery-track::-webkit-scrollbar { display: none; }
 
-body.proyectos-page .project-gallery-track img{
-  width: min(560px, 88%);
-  height: 290px;
+body.proyectos-page .project-gallery-track img {
+  width: min(580px, 90%);
+  height: 300px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 6px;
   scroll-snap-align: start;
-  border: 1px solid rgba(233,238,245,.12);
-  filter: contrast(1.02) saturate(1.03);
-  transform: translateZ(0);
-  transition: transform .45s ease, filter .45s ease;
+  flex-shrink: 0;
+  filter: saturate(.9) brightness(.92);
+  transition: filter .4s ease;
 }
 
-body.proyectos-page .project-card:hover .project-gallery-track img{
-  filter: contrast(1.06) saturate(1.06);
+body.proyectos-page .project-card:hover .project-gallery-track img {
+  filter: saturate(1) brightness(1);
 }
 
-/* ==========================================
-   Flechas slider (más pro + accesible)
-   ========================================== */
-body.proyectos-page .proj-arrow{
+/* Cards full-width: imagen más alta */
+body.proyectos-page .project-card:nth-child(1) .project-gallery-track img,
+body.proyectos-page .project-card:nth-child(6) .project-gallery-track img,
+body.proyectos-page .project-card:nth-child(7) .project-gallery-track img {
+  height: 400px;
+  width: min(780px, 88%);
+}
+
+/* ==============================
+   FLECHAS SLIDER
+   ============================== */
+
+body.proyectos-page .proj-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(233,238,245,.24);
-  background: rgba(10,12,16,.62);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(237,241,247,.18);
+  background: rgba(7,9,13,.75);
   color: var(--p-ink);
   display: grid;
   place-items: center;
   cursor: pointer;
   z-index: 3;
-  backdrop-filter: blur(10px);
-  transition: transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
-  opacity: .92;
-  user-select: none;
+  backdrop-filter: blur(8px);
+  transition: background .2s, border-color .2s, opacity .2s;
+  opacity: .85;
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
-body.proyectos-page .proj-arrow.left{ left: 10px; }
-body.proyectos-page .proj-arrow.right{ right: 10px; }
+body.proyectos-page .proj-arrow.left  { left: 10px; }
+body.proyectos-page .proj-arrow.right { right: 10px; }
 
-body.proyectos-page .proj-arrow:hover{
-  background: rgba(10,12,16,.82);
-  border-color: rgba(233,238,245,.40);
-  transform: translateY(-50%) scale(1.06);
+body.proyectos-page .proj-arrow:hover {
+  background: rgba(224,112,16,.85);
+  border-color: transparent;
+  opacity: 1;
 }
 
-body.proyectos-page .proj-arrow:active{
-  transform: translateY(-50%) scale(.98);
+body.proyectos-page .proj-arrow:focus-visible {
+  outline: 2px solid var(--p-accent);
+  outline-offset: 2px;
 }
 
-/* Si el JS detecta que no hay overflow, oculta flechas */
-body.proyectos-page .project-gallery.no-arrows .proj-arrow{
+body.proyectos-page .project-gallery.no-arrows .proj-arrow {
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
-/* Focus accesible */
-body.proyectos-page .proj-arrow:focus-visible{
-  outline: 2px solid rgba(233,238,245,.55);
-  outline-offset: 2px;
-}
+/* ==============================
+   TEXTO DEL CARD
+   ============================== */
 
-/* ==========================================
-   Texto del card (jerarquía + legibilidad)
-   ========================================== */
-body.proyectos-page .project-card h3,
-body.proyectos-page .project-card p{
-  position: relative;
-  z-index: 1; /* encima del overlay */
-}
-
-body.proyectos-page .project-card h3{
-  margin: 10px 6px 10px;
+body.proyectos-page .project-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.3;
   color: var(--p-ink);
-  font-weight: 900;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-size: 1.03rem;
-  line-height: 1.25;
+  margin: 10px 4px 8px;
 }
 
-body.proyectos-page .project-card p{
-  margin: 0 6px 12px;
-  color: var(--p-muted);
-  line-height: 1.8;
-  font-size: 1.0rem;
-}
-
-/* Ajuste para cards grandes */
 body.proyectos-page .project-card:nth-child(1) h3,
 body.proyectos-page .project-card:nth-child(6) h3,
-body.proyectos-page .project-card:nth-child(7) h3{
-  font-size: 1.16rem;
+body.proyectos-page .project-card:nth-child(7) h3 {
+  font-size: 1.2rem;
 }
 
-/* ==========================================
-   Reduced motion
-   ========================================== */
-@media (prefers-reduced-motion: reduce){
-  html.js body.proyectos-page .project-card{
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  body.proyectos-page .project-gallery-track{
-    scroll-behavior: auto;
-  }
-  body.proyectos-page .project-card:hover{
-    transform: none;
+body.proyectos-page .project-card p {
+  font-size: .9rem;
+  line-height: 1.75;
+  color: var(--p-muted);
+  margin: 0 4px 8px;
+}
+
+/* ==============================
+   CTA FINAL
+   ============================== */
+
+.proj-cta-section {
+  border-top: 1px solid var(--p-line);
+  padding: 80px 0 100px;
+  position: relative;
+}
+
+.proj-cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(900px 400px at 100% 100%, rgba(224,112,16,.07), transparent 55%);
+  pointer-events: none;
+}
+
+.proj-cta-inner {
+  position: relative;
+  text-align: center;
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.proj-cta-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin: 0 0 1.25rem;
+}
+
+.proj-cta-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  color: var(--p-ink);
+  margin: 0 0 1rem;
+}
+
+.proj-cta-desc {
+  font-size: .97rem;
+  line-height: 1.75;
+  color: var(--p-muted);
+  margin: 0 0 2.25rem;
+}
+
+.proj-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.proj-btn-primary {
+  display: inline-block;
+  background: var(--p-accent);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .9rem 2rem;
+  border-radius: 6px;
+  transition: background .2s, transform .2s;
+}
+
+.proj-btn-primary:hover {
+  background: #c8620e;
+  transform: translateY(-2px);
+}
+
+.proj-btn-ghost {
+  display: inline-block;
+  color: rgba(237,241,247,.65);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-decoration: none;
+  padding: .9rem 1.5rem;
+  border: 1px solid rgba(237,241,247,.15);
+  border-radius: 6px;
+  transition: color .2s, border-color .2s;
+}
+
+.proj-btn-ghost:hover {
+  color: var(--p-ink);
+  border-color: rgba(237,241,247,.35);
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
+@media (max-width: 900px) {
+  body.proyectos-page .project-card { grid-column: span 12; }
+
+  body.proyectos-page .project-gallery-track img { height: 260px; }
+
+  body.proyectos-page .project-card:nth-child(1) .project-gallery-track img,
+  body.proyectos-page .project-card:nth-child(6) .project-gallery-track img,
+  body.proyectos-page .project-card:nth-child(7) .project-gallery-track img {
+    height: 300px;
   }
 }
 
-/* ==========================================
-   Responsive
-   ========================================== */
-@media (max-width: 1100px){
-  body.proyectos-page .project-gallery-track img{
-    height: 265px;
-  }
+@media (max-width: 520px) {
+  .proj-hero { padding: 64px 0 48px; }
+  body.proyectos-page .project-gallery-track img { height: 220px; }
+  .proj-cta-actions { flex-direction: column; align-items: center; }
 }
 
-@media (max-width: 900px){
-  body.proyectos-page .projects-header{
-    padding-top: 56px;
+@media (prefers-reduced-motion: reduce) {
+  html.js body.proyectos-page .project-card {
+    opacity: 1; transform: none; transition: none;
   }
-
-  body.proyectos-page .project-card{
-    grid-column: span 12;
-  }
-
-  body.proyectos-page .project-gallery-track img{
-    width: 92%;
-    height: 240px;
-  }
-}
-
-@media (max-width: 560px){
-  body.proyectos-page .projects-grid{
-    gap: 14px;
-  }
-
-  body.proyectos-page .project-card{
-    border-radius: 16px;
-    padding: 14px;
-  }
-
-  body.proyectos-page .project-gallery-track{
-    padding: 8px;
-  }
-
-  body.proyectos-page .project-gallery-track img{
-    height: 210px;
-  }
-
-  body.proyectos-page .proj-arrow{
-    width: 38px;
-    height: 38px;
-  }
+  body.proyectos-page .project-gallery-track { scroll-behavior: auto; }
 }
