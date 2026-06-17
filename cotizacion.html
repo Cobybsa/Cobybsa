@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -12,340 +12,223 @@
   <meta property="og:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
   <meta property="og:url" content="https://cobybsa.com/cotizacion.html" />
   <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
 
-  <style>
-    .cot-nav{position:sticky;top:0;z-index:100;background:rgba(11,15,26,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07);}
-    .cot-nav-inner{max-width:960px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:60px;}
-    .cot-nav-logo img{height:34px;width:auto;display:block;}
-    .cot-nav-links{display:flex;gap:1.5rem;}
-    .cot-nav-links a{color:rgba(237,241,247,.6);text-decoration:none;font-size:.82rem;font-weight:600;transition:color .2s;}
-    .cot-nav-links a:hover{color:rgba(237,241,247,.95);}
-    .cot-footer{border-top:1px solid rgba(255,255,255,.07);padding:40px 0 28px;margin-top:40px;background:rgba(11,15,26,.6);}
-    .cot-footer-inner{max-width:960px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:1.5rem;}
-    .cot-footer-logo img{height:38px;width:auto;margin-bottom:.6rem;display:block;}
-    .cot-footer-desc{font-size:.78rem;color:rgba(255,255,255,.38);line-height:1.65;max-width:22ch;margin:0;}
-    .cot-footer-col-title{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin:0 0 .65rem;}
-    .cot-footer-col nav{display:flex;flex-direction:column;gap:.35rem;}
-    .cot-footer-col nav a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.78rem;transition:color .2s;}
-    .cot-footer-col nav a:hover{color:rgba(255,255,255,.82);}
-    .cot-footer-bottom{max-width:960px;margin:1.5rem auto 0;padding:1rem 16px 0;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;font-size:.7rem;color:rgba(255,255,255,.25);}
-    .cot-wa{position:fixed;bottom:24px;right:24px;z-index:200;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.35);transition:transform .2s;}
-    .cot-wa:hover{transform:scale(1.08);}
-    .cot-wa svg{width:26px;height:26px;}
-    @media(max-width:700px){.cot-nav-links{display:none;}.cot-footer-inner{grid-template-columns:1fr 1fr;}.cot-footer-logo{grid-column:span 2;}}
-    @media(max-width:420px){.cot-footer-inner{grid-template-columns:1fr;}.cot-footer-logo{grid-column:span 1;}}
-  </style>
-
-  <style>
-    :root{
-      --bg:#0b0f1a;
-      --card: rgba(255,255,255,.07);
-      --card2: rgba(255,255,255,.03);
-      --border: rgba(255,255,255,.10);
-      --border2: rgba(255,255,255,.16);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.52);
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 18px;
-    }
-
-    *{box-sizing:border-box}
-
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      margin:0; padding:0;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 20% -10%, rgba(56,189,248,.18), transparent 55%),
-        radial-gradient(900px 500px at 80% 0%, rgba(245,158,11,.14), transparent 55%),
-        var(--bg);
-    }
-
-    .wrap{max-width: 960px; margin:0 auto; padding:56px 16px;}
-
-    .card{
-      position:relative;
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:26px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .card:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius: var(--radius);
-      padding:1px;
-      background: linear-gradient(135deg, rgba(56,189,248,.35), rgba(245,158,11,.30), rgba(255,255,255,.10));
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      pointer-events:none;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:18px;
-    }
-
-    h1{
-      margin:0;
-      font-size: 28px;
-      letter-spacing: .2px;
-      line-height:1.15;
-    }
-
-    .subtitle{
-      margin:8px 0 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.55;
-      max-width: 62ch;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      color: var(--muted);
-      font-size:12px;
-      white-space:nowrap;
-    }
-
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,.08);
-      margin: 16px 0 10px 0;
-    }
-
-    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-
-    label{
-      display:block;
-      margin: 12px 0 8px;
-      font-weight: 650;
-      font-size: 13px;
-      color: rgba(255,255,255,.86);
-      letter-spacing:.2px;
-    }
-
-    input, select, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.20);
-      color: var(--text);
-      outline:none;
-      transition: border-color .15s ease, background .15s ease, box-shadow .15s ease, transform .05s ease;
-    }
-
-    input::placeholder, textarea::placeholder{color: var(--muted2);}
-
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(56,189,248,.55);
-      box-shadow: 0 0 0 4px rgba(56,189,248,.12);
-      background: rgba(0,0,0,.26);
-    }
-
-    textarea{resize:vertical; min-height:140px;}
-
-    .btn{
-      margin-top:18px;
-      width:100%;
-      padding: 13px 16px;
-      border:none;
-      border-radius: 14px;
-      cursor:pointer;
-      font-weight: 800;
-      font-size: 15px;
-      letter-spacing: .2px;
-      background: linear-gradient(90deg, #f59e0b, #38bdf8);
-      color: #0b0f1a;
-      transition: transform .06s ease, filter .15s ease;
-    }
-    .btn:hover{filter: brightness(1.05);}
-    .btn:active{transform: translateY(1px);}
-
-    .note{
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--muted2);
-      line-height:1.45;
-    }
-
-    @media (max-width: 760px){
-      .grid{grid-template-columns:1fr;}
-      .wrap{padding:40px 14px;}
-      .card{padding:22px;}
-      .badge{display:none;}
-    }
-  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/cotizacion.css" />
 </head>
 
-<body>
+<body class="cotizacion-page">
 
-<header class="cot-nav">
-  <div class="cot-nav-inner">
-    <a href="/" aria-label="COBYBSA"><img src="/img/logo-cobybsa.png" alt="COBYBSA" style="height:34px;display:block;" /></a>
-    <nav class="cot-nav-links" aria-label="Navegación principal">
-      <a href="/">Inicio</a>
-      <a href="/historia.html">Historia</a>
-      <a href="/capacidades.html">Capacidades</a>
-      <a href="/proyectos.html">Proyectos</a>
-      <a href="/contacto.html">Contacto</a>
-    </nav>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Ir al inicio">
+        <img src="/img/logo-cobybsa.png" alt="COBYBSA Construcción Industrial" />
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/">Inicio</a>
+        <a href="/historia.html">Historia</a>
+        <a href="/capacidades.html">Capacidades</a>
+        <a href="/proyectos.html">Proyectos</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="wrap">
-    <div class="card">
-      <div class="topbar">
-        <div>
-          <h1>Solicitud de Cotización</h1>
-          <p class="subtitle">Complete el formulario y le respondemos para coordinar el proyecto o con una cotización.</p>
+  <main>
+    <div class="cq-split">
+
+      <!-- ── IZQUIERDA: info ── -->
+      <div class="cq-left">
+        <div class="cq-left-inner">
+
+          <p class="cq-kicker">
+            <span class="cq-kicker-dot"></span>
+            Evaluación técnica
+          </p>
+
+          <h1 class="cq-title">Cuéntenos<br>qué necesita.</h1>
+
+          <p class="cq-lead">
+            Revisamos su solicitud con criterio técnico y le respondemos con una cotización clara, sin rodeos.
+          </p>
+
+          <div class="cq-divider"></div>
+
+          <p class="cq-process-label">¿Qué pasa después de enviar?</p>
+
+          <div class="cq-steps">
+            <div class="cq-step">
+              <span class="cq-step-num">01</span>
+              <span class="cq-step-text">Revisamos los detalles técnicos de su solicitud</span>
+            </div>
+            <div class="cq-step">
+              <span class="cq-step-num">02</span>
+              <span class="cq-step-text">Le contactamos si necesitamos aclarar algo</span>
+            </div>
+            <div class="cq-step">
+              <span class="cq-step-num">03</span>
+              <span class="cq-step-text">Le enviamos una cotización detallada a la brevedad</span>
+            </div>
+          </div>
+
+          <div class="cq-contact-row">
+            <div class="cq-contact-item">
+              <span class="cq-contact-label">Teléfono</span>
+              <a class="cq-contact-val" href="tel:+50689807122">+506 8980-7122</a>
+            </div>
+            <div class="cq-contact-item">
+              <span class="cq-contact-label">Correo</span>
+              <a class="cq-contact-val" href="mailto:info@cobybsa.com">info@cobybsa.com</a>
+            </div>
+          </div>
+
         </div>
-        <div class="badge">Respuesta rápida • COBYBSA</div>
       </div>
 
-      <div class="divider"></div>
+      <!-- ── DERECHA: formulario ── -->
+      <div class="cq-right">
+        <div class="cq-right-inner">
 
-      <form action="https://formspree.io/f/mjgreedw" method="POST">
-        <!-- Formspree -->
-        <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA">
-        <input type="hidden" name="_next" value="https://cobybsa.com/gracias.html">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <p class="cq-form-title">Solicitud de cotización</p>
+          <p class="cq-form-sub">Complete los datos y le respondemos con la evaluación técnica de su proyecto.</p>
+          <div class="cq-form-divider"></div>
 
-        <div class="grid">
-          <div>
-            <label for="nombre">Nombre completo</label>
-            <input id="nombre" type="text" name="nombre" required autocomplete="name" />
-          </div>
-          <div>
-            <label for="empresa">Empresa (opcional)</label>
-            <input id="empresa" type="text" name="empresa" autocomplete="organization" />
-          </div>
+          <form class="cq-form" action="https://formspree.io/f/mjgreedw" method="POST">
+            <input type="hidden" name="_subject" value="Nueva solicitud de cotización – COBYBSA" />
+            <input type="hidden" name="_next" value="https://cobybsa.com/gracias.html" />
+            <input class="cq-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+
+            <div class="cq-row">
+              <div class="cq-field">
+                <label class="cq-label" for="nombre">Nombre completo <span>*</span></label>
+                <input class="cq-input" id="nombre" type="text" name="nombre" required autocomplete="name" placeholder="Su nombre" />
+              </div>
+              <div class="cq-field">
+                <label class="cq-label" for="empresa">Empresa</label>
+                <input class="cq-input" id="empresa" type="text" name="empresa" autocomplete="organization" placeholder="Opcional" />
+              </div>
+            </div>
+
+            <div class="cq-row">
+              <div class="cq-field">
+                <label class="cq-label" for="email">Correo electrónico <span>*</span></label>
+                <input class="cq-input" id="email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="correo@empresa.com" />
+              </div>
+              <div class="cq-field">
+                <label class="cq-label" for="whatsapp">WhatsApp <span>*</span></label>
+                <input class="cq-input" id="whatsapp" type="tel" name="whatsapp" required autocomplete="tel" inputmode="tel" placeholder="+506 8888 8888" pattern="^\+?[0-9\s\-()]{8,}$" title="Ingrese un número válido" />
+              </div>
+            </div>
+
+            <div class="cq-field">
+              <label class="cq-label" for="servicio">Tipo de servicio <span>*</span></label>
+              <select class="cq-select" id="servicio" name="servicio" required>
+                <option value="" disabled selected>Seleccione…</option>
+                <option value="Corte láser">Corte láser</option>
+                <option value="Mecanizado CNC">Mecanizado CNC</option>
+                <option value="Manufactura industrial">Manufactura industrial</option>
+                <option value="Ingeniería de precisión">Ingeniería de precisión</option>
+                <option value="Diseño y modelado 3D">Diseño y modelado 3D</option>
+                <option value="Fabricación / ensamble">Fabricación / ensamble</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="cq-field">
+              <label class="cq-label" for="detalle">Detalle del proyecto <span>*</span></label>
+              <textarea class="cq-textarea" id="detalle" name="detalle" required placeholder="Material, medidas, cantidad, uso previsto, acabado requerido, tolerancias…"></textarea>
+            </div>
+
+            <div class="cq-row">
+              <div class="cq-field">
+                <label class="cq-label" for="cantidad">Cantidad aproximada <span>*</span></label>
+                <select class="cq-select" id="cantidad" name="cantidad" required>
+                  <option value="" disabled selected>Seleccione…</option>
+                  <option value="1">1</option>
+                  <option value="2–10">2 – 10</option>
+                  <option value="11–50">11 – 50</option>
+                  <option value="Más de 50">Más de 50</option>
+                  <option value="No definido">No definido aún</option>
+                </select>
+              </div>
+              <div class="cq-field">
+                <label class="cq-label" for="plazo">Plazo objetivo <span>*</span></label>
+                <select class="cq-select" id="plazo" name="fecha_objetivo" required>
+                  <option value="" disabled selected>Seleccione…</option>
+                  <option value="Urgente (menos de 1 mes)">Urgente — menos de 1 mes</option>
+                  <option value="1–2 meses">1 – 2 meses</option>
+                  <option value="3–6 meses">3 – 6 meses</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="cq-submit" type="submit">Enviar solicitud</button>
+
+            <p class="cq-note">Al enviar acepta que lo contactemos para aclarar detalles y enviarle la cotización.</p>
+          </form>
+
         </div>
+      </div>
 
-        <div class="grid">
-          <div>
-            <label for="email">Correo</label>
-            <input id="email" type="email" name="email" required autocomplete="email" inputmode="email" />
-          </div>
-          <div>
-            <label for="whatsapp">WhatsApp</label>
-            <input
-              id="whatsapp"
-              type="tel"
-              name="whatsapp"
-              placeholder="+506 8888 8888"
-              required
-              autocomplete="tel"
-              inputmode="tel"
-              pattern="^\+?[0-9\s\-()]{8,}$"
-              title="Ingrese un número válido (ej: +506 8888 8888)"
-            />
-          </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="Ir al inicio">
+            <img src="/img/logo-cobybsa.png" alt="COBYBSA" class="footer-logo" />
+          </a>
+          <p class="footer-desc">Ingeniería metalmecánica de precisión para proyectos industriales en Costa Rica.</p>
         </div>
-
-        <label for="servicio">Tipo de servicio</label>
-        <select id="servicio" name="servicio" required>
-          <option value="" disabled selected>Seleccione…</option>
-          <option value="Corte láser">Corte láser</option>
-          <option value="CNC">CNC</option>
-          <option value="Hidroforming">Hidroforming</option>
-          <option value="Ingeniería de precisión">Ingeniería de precisión</option>
-          <option value="Fabricación / ensamble">Fabricación / ensamble</option>
-          <option value="Gabinetes / paneles eléctricos">Gabinetes / paneles eléctricos</option>
-          <option value="Otro">Otro</option>
-        </select>
-
-        <label for="detalle">Detalle de lo que necesita</label>
-        <textarea
-          id="detalle"
-          name="detalle"
-          placeholder="Medidas, material, cantidad, uso, ubicación, referencias, etc."
-          required
-        ></textarea>
-
-        <div class="grid">
-          <div>
-            <label for="cantidad">Cantidad aproximada</label>
-            <select id="cantidad" name="cantidad" required>
-              <option value="" disabled selected>Seleccione…</option>
-              <option value="1">1</option>
-              <option value="2–10">2–10</option>
-              <option value="11–50">11–50</option>
-              <option value="Más de 50">Más de 50</option>
-              <option value="No definido">No definido</option>
-            </select>
-          </div>
-          <div>
-            <label for="fecha_objetivo">Fecha objetivo</label>
-            <select id="fecha_objetivo" name="fecha_objetivo" required>
-              <option value="" disabled selected>Seleccione…</option>
-              <option value="Urgente (menos de 1 mes)">Urgente (menos de 1 mes)</option>
-              <option value="1–2 meses">1–2 meses</option>
-              <option value="3–6 meses">3–6 meses</option>
-              <option value="Flexible">Flexible</option>
-            </select>
-          </div>
+        <div class="footer-nav-group">
+          <p class="footer-nav-title">Empresa</p>
+          <nav>
+            <a href="/">Inicio</a>
+            <a href="/historia.html">Historia</a>
+            <a href="/equipo.html">Equipo</a>
+            <a href="/proyectos.html">Proyectos</a>
+          </nav>
         </div>
-
-        <button class="btn" type="submit">Enviar solicitud</button>
-
-        <div class="note">
-          Al enviar este formulario, usted acepta que lo contactemos para aclarar detalles y enviarle la cotización.
+        <div class="footer-nav-group">
+          <p class="footer-nav-title">Servicios</p>
+          <nav>
+            <a href="/corte-laser-industrial.html">Corte láser</a>
+            <a href="/corte-cnc-industrial.html">Mecanizado CNC</a>
+            <a href="/manufactura-industrial.html">Manufactura</a>
+            <a href="/diseno-modelado-3d-industrial.html">Diseño 3D</a>
+          </nav>
         </div>
-      </form>
+        <div class="footer-nav-group">
+          <p class="footer-nav-title">Contacto</p>
+          <nav>
+            <a href="/contacto.html">Contáctenos</a>
+            <a href="/cotizacion.html">Solicitar cotización</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> COBYBSA. Todos los derechos reservados.</p>
+        <p>Fabricación metalmecánica en Costa Rica.</p>
+      </div>
     </div>
-  </div>
+  </footer>
 
-<footer class="cot-footer">
-  <div class="cot-footer-inner">
-    <div class="cot-footer-logo">
-      <a href="/"><img src="/img/logo-cobybsa.png" alt="COBYBSA" /></a>
-      <p class="cot-footer-desc">Ingeniería metalmecánica de precisión para proyectos industriales en Costa Rica.</p>
-    </div>
-    <div class="cot-footer-col">
-      <p class="cot-footer-col-title">Empresa</p>
-      <nav><a href="/">Inicio</a><a href="/historia.html">Historia</a><a href="/proyectos.html">Proyectos</a></nav>
-    </div>
-    <div class="cot-footer-col">
-      <p class="cot-footer-col-title">Servicios</p>
-      <nav><a href="/corte-laser-industrial.html">Corte láser</a><a href="/corte-cnc-industrial.html">CNC</a><a href="/manufactura-industrial.html">Manufactura</a></nav>
-    </div>
-    <div class="cot-footer-col">
-      <p class="cot-footer-col-title">Contacto</p>
-      <nav><a href="/contacto.html">Contáctenos</a><a href="/cotizacion.html">Cotización</a></nav>
-    </div>
-  </div>
-  <div class="cot-footer-bottom">
-    <p>© <span id="year"></span> COBYBSA. Todos los derechos reservados.</p>
-    <p>Fabricación metalmecánica en Costa Rica.</p>
-  </div>
-</footer>
+  <a href="https://wa.me/50689807122?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20de%20COBYBSA"
+     class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+     aria-label="Contactar por WhatsApp" title="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
 
-<a href="https://wa.me/50689807122?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20de%20COBYBSA"
-   class="cot-wa" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
-<script src="/assets/js/cms-content.js"></script>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="/assets/js/cms-content.js"></script>
 </body>
 </html>
