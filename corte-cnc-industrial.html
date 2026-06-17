@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 DOCUMENTO: Corte CNC Industrial | COBYBSA
 ARCHIVO:  corte-cnc-industrial.html
 URL:      https://cobybsa.com/corte-cnc-industrial
@@ -13,6 +13,11 @@ URL:      https://cobybsa.com/corte-cnc-industrial
   <meta name="description" content="Corte CNC industrial en Costa Rica. Mecanizado y geometrías complejas con precisión, repetibilidad y acabados técnicos. COBYBSA." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="canonical" href="https://cobybsa.com/corte-cnc-industrial" />
+  <link rel="icon" href="/img/favicon.png" type="image/png" />
+  <meta property="og:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://cobybsa.com/img/og-cobybsa.jpg" />
 
   <style>
     :root{
@@ -279,7 +284,29 @@ URL:      https://cobybsa.com/corte-cnc-industrial
       .icon-row{ grid-template-columns: 1fr; }
       .hero{ padding: 26px 18px 22px; }
     }
-  </style>
+
+    .sp-nav{position:sticky;top:0;z-index:100;background:rgba(2,8,25,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07);}
+    .sp-nav-inner{max-width:var(--max);margin:0 auto;padding:0 7vw;display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .sp-nav-logo{display:flex;align-items:center;text-decoration:none;}
+    .sp-nav-logo img{height:36px;width:auto;}
+    .sp-nav-links{display:flex;gap:1.75rem;align-items:center;}
+    .sp-nav-links a{color:rgba(237,241,247,.62);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.02em;transition:color .2s;}
+    .sp-nav-links a:hover{color:rgba(237,241,247,.95);}
+    .sp-nav-links a.sp-active{color:#e07010;}
+    .sp-footer{margin-top:60px;border-top:1px solid rgba(255,255,255,.07);padding:48px 0 32px;background:rgba(2,8,25,.6);}
+    .sp-footer-inner{max-width:var(--max);margin:0 auto;padding:0 7vw;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;}
+    .sp-footer-logo img{height:44px;width:auto;margin-bottom:.75rem;display:block;}
+    .sp-footer-desc{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.7;max-width:22ch;margin:0;}
+    .sp-footer-col-title{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin:0 0 .75rem;}
+    .sp-footer-col nav{display:flex;flex-direction:column;gap:.4rem;}
+    .sp-footer-col nav a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.82rem;transition:color .2s;}
+    .sp-footer-col nav a:hover{color:rgba(255,255,255,.85);}
+    .sp-footer-bottom{max-width:var(--max);margin:2rem auto 0;padding:1rem 7vw 0;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.75rem;color:rgba(255,255,255,.28);}
+    .sp-wa{position:fixed;bottom:24px;right:24px;z-index:200;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .2s,box-shadow .2s;}
+    .sp-wa:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,.5);}
+    .sp-wa svg{width:28px;height:28px;}
+    @media(max-width:700px){.sp-nav-links{display:none;}.sp-footer-inner{grid-template-columns:1fr 1fr;}.sp-footer-logo{grid-column:span 2;}}
+    @media(max-width:420px){.sp-footer-inner{grid-template-columns:1fr;}.sp-footer-logo{grid-column:span 1;}}  </style>
 </head>
 
 <body>
@@ -299,7 +326,7 @@ URL:      https://cobybsa.com/corte-cnc-industrial
       </p>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/cotizacion">Solicitar evaluación técnica</a>
+        <a class="btn btn-primary" href="/cotizacion.html">Solicitar evaluación técnica</a>
         <a class="btn btn-ghost" href="/#capacidades">Ver todas las capacidades</a>
       </div>
     </section>
@@ -393,7 +420,7 @@ URL:      https://cobybsa.com/corte-cnc-industrial
           </p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="/cotizacion">Solicitar evaluación técnica</a>
+            <a class="btn btn-primary" href="/cotizacion.html">Solicitar evaluación técnica</a>
             <a class="link" href="/diseno-modelado-3d-industrial">
               Ver Diseño y Modelado 3D Industrial
               <svg class="arrow" width="18" height="10" viewBox="0 0 18 10" aria-hidden="true">
