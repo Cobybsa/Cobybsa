@@ -224,23 +224,22 @@ body.historia-page main * {
 /* Columna principal */
 .np-section-label {
   font-size: .68rem;
-  letter-spacing: .2em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--ink-3);
-  border-top: 3px solid var(--ink);
-  padding-top: .4rem;
-  margin-bottom: .8rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-top: 3px solid var(--accent);
+  padding-top: .45rem;
+  margin-bottom: 1rem;
 }
 
 .np-headline-xl {
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
-  line-height: 1.05;
-  letter-spacing: -.02em;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  line-height: 1.0;
+  letter-spacing: -.03em;
   font-weight: 900;
-  margin: 0 0 .5rem;
+  margin: 0 0 1rem;
   color: var(--ink);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: .6rem;
 }
 
 .np-dateline {
@@ -249,35 +248,38 @@ body.historia-page main * {
   text-transform: uppercase;
   color: var(--ink-3);
   font-style: italic;
-  margin: 0 0 .9rem;
+  margin: 0 0 1.1rem;
 }
 
+/* Lead — primer párrafo que el lector debe leer */
 .np-lead-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1.2rem;
+  line-height: 1.65;
   font-weight: 700;
   color: var(--ink);
-  margin: 0 0 .9rem;
-  border-left: 3px solid var(--ink);
-  padding-left: .9rem;
+  margin: 0 0 1.1rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
 }
 
+/* Cuerpo — apoyo al lead, ligeramente más bajo en jerarquía */
 .np-body-text {
   font-size: .97rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--ink-2);
-  margin: 0 0 .9rem;
+  margin: 0 0 1rem;
 }
 
+/* Pull quote — interrumpe el flujo, llama la atención */
 .np-pullquote {
-  border-top: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  margin: 1.2rem 0;
-  padding: .9rem .5rem;
-  font-size: 1.25rem;
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  margin: 1.8rem 0;
+  padding: 1.1rem 1.5rem;
+  font-size: 1.35rem;
   font-style: italic;
   line-height: 1.4;
-  color: var(--ink);
+  color: var(--accent);
   text-align: center;
   quotes: none;
 }
@@ -294,11 +296,12 @@ body.historia-page main * {
 
 .np-stats-title {
   font-size: .68rem;
-  letter-spacing: .2em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--ink-3);
-  border-top: 3px solid var(--ink);
-  padding-top: .4rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-top: 3px solid var(--accent);
+  padding-top: .45rem;
   margin-bottom: .85rem;
 }
 
@@ -306,21 +309,21 @@ body.historia-page main * {
   display: flex;
   align-items: baseline;
   gap: .6rem;
-  padding: .4rem 0;
+  padding: .5rem 0;
 }
 
 .np-stat-n {
   font-family: Georgia, serif;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 900;
-  letter-spacing: -.04em;
+  letter-spacing: -.05em;
   line-height: 1;
   color: var(--ink);
 }
 
 .np-stat-l {
-  font-size: .75rem;
-  letter-spacing: .04em;
+  font-size: .78rem;
+  letter-spacing: .03em;
   color: var(--ink-2);
   line-height: 1.3;
 }
@@ -338,11 +341,11 @@ body.historia-page main * {
 }
 
 .np-sidebar-note-title {
-  font-size: .68rem;
+  font-size: .66rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--ink-3);
+  color: var(--accent);
   margin-bottom: .5rem;
 }
 
@@ -392,10 +395,13 @@ body.historia-page main * {
 }
 
 .np-divider-title {
-  font-size: .68rem;
+  font-size: .65rem;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--ink);
+  padding: .25rem .75rem;
   white-space: nowrap;
 }
 
@@ -442,11 +448,13 @@ body.historia-page main * {
 }
 
 .np-issue-tag {
-  font-size: .65rem;
+  font-size: .64rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--paper);
+  background: var(--accent);
+  padding: .15rem .5rem;
 }
 
 .np-article-date {
@@ -457,12 +465,17 @@ body.historia-page main * {
 }
 
 .np-article-headline {
-  font-size: 1.15rem;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  line-height: 1.18;
   font-weight: 900;
-  letter-spacing: -.01em;
-  margin: 0 0 .35rem;
+  letter-spacing: -.02em;
+  margin: .6rem 0 .35rem;
   color: var(--ink);
+}
+
+/* Artículo destacado: titular más grande */
+.np-article--featured .np-article-headline {
+  font-size: 1.45rem;
 }
 
 .np-article-dateline {
