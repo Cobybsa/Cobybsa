@@ -446,6 +446,7 @@ body.historia-page main * {
   pointer-events: none;
   letter-spacing: -.06em;
   user-select: none;
+  z-index: 0;
 }
 
 .np-article:last-child { border-right: none; }
@@ -475,6 +476,11 @@ body.historia-page main * {
 
 .np-article:nth-child(3)::before {
   background: rgba(17,17,17,.35);
+}
+
+.np-article-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .np-article-header {
@@ -677,6 +683,7 @@ body.historia-page main * {
   pointer-events: none;
   letter-spacing: -.08em;
   user-select: none;
+  z-index: 0;
 }
 
 /* Franja superior por principio */
