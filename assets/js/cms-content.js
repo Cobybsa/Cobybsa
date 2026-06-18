@@ -290,28 +290,37 @@
       if (bloquesContainer && hasItems(historia.bloques)) {
         bloquesContainer.innerHTML = "";
 
-        historia.bloques.forEach((bloque) => {
-          const article = createEl("article", "hx-step");
+        const eraKeys = ["90s", "2k", "'25"];
 
-          const head = createEl("div", "hx-step-head");
-          head.appendChild(createEl("span", "hx-tag", bloque.etapa));
+        historia.bloques.forEach((bloque, i) => {
+          const isFeatured = i === 0;
+          const article = createEl("article", isFeatured ? "np-article np-article--featured" : "np-article");
+          article.setAttribute("data-era", eraKeys[i] || "");
 
-          const title = createEl("h3", "", bloque.titulo);
-          title.setAttribute("data-decrypt", "");
-          head.appendChild(title);
+          const inner = createEl("div", "np-article-inner");
 
-          article.appendChild(head);
-          article.appendChild(createEl("p", "", bloque.texto));
+          const header = createEl("div", "np-article-header");
+          header.appendChild(createEl("span", "np-issue-tag", bloque.etapa));
+          const dateMatch = bloque.titulo.match(/\d{4}s?|\d{4}[–-]\d{4}/);
+          header.appendChild(createEl("time", "np-article-date", dateMatch ? dateMatch[0] : ""));
+          inner.appendChild(header);
+
+          const h3 = createEl("h3", "np-article-headline", bloque.titulo);
+          inner.appendChild(h3);
+
+          const body = createEl("p", "np-article-body np-dropcap", bloque.texto);
+          inner.appendChild(body);
 
           if (hasItems(bloque.puntos)) {
-            const ul = createEl("ul");
+            const ul = createEl("ul", "np-article-list");
             bloque.puntos.forEach((punto) => {
               const text = getText(punto);
               if (text) ul.appendChild(createEl("li", "", text));
             });
-            article.appendChild(ul);
+            inner.appendChild(ul);
           }
 
+          article.appendChild(inner);
           bloquesContainer.appendChild(article);
         });
       }
@@ -325,9 +334,12 @@
         principiosContainer.innerHTML = "";
 
         historia.mision_principios.forEach((item) => {
-          const article = createEl("article");
-          article.appendChild(createEl("span", "", item.numero));
-          article.appendChild(createEl("h3", "", item.titulo));
+          const article = createEl("article", "np-principle");
+          article.setAttribute("data-num", item.numero);
+          article.appendChild(createEl("span", "np-principle-num", item.numero));
+          const rule = createEl("div", "np-principle-rule");
+          article.appendChild(rule);
+          article.appendChild(createEl("h3", "np-principle-title", item.titulo));
           article.appendChild(createEl("p", "", item.descripcion));
           principiosContainer.appendChild(article);
         });
