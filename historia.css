@@ -421,50 +421,99 @@ body.historia-page main * {
   border: 1px solid var(--rule-dark);
   border-bottom: 3px double var(--rule-dark);
   margin-bottom: 0;
+  box-shadow: 0 4px 24px rgba(17,17,17,.08);
 }
 
 .np-article {
-  padding: 1.5rem;
+  padding: 2rem 1.75rem 1.75rem;
   border-right: 1px solid var(--rule-dark);
-  transition: background .2s;
+  transition: background .25s;
+  position: relative;
+  overflow: hidden;
 }
 
-.np-article:last-child {
-  border-right: none;
+/* Número de era decorativo en el fondo */
+.np-article::after {
+  content: attr(data-era);
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.25rem;
+  font-family: Georgia, serif;
+  font-size: 9rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(17,17,17,.045);
+  pointer-events: none;
+  letter-spacing: -.06em;
+  user-select: none;
 }
 
-.np-article:hover {
+.np-article:last-child { border-right: none; }
+
+.np-article:hover { background: rgba(17,17,17,.04); }
+
+.np-article--featured {
   background: rgba(17,17,17,.03);
 }
 
-.np-article--featured {
-  background: rgba(17,17,17,.025);
+/* Franja de color superior por columna */
+.np-article::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--rule-dark);
+}
+
+.np-article--featured::before {
+  background: var(--accent);
+}
+
+.np-article:nth-child(2)::before {
+  background: rgba(17,17,17,.5);
+}
+
+.np-article:nth-child(3)::before {
+  background: rgba(17,17,17,.35);
 }
 
 .np-article-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: .6rem;
-  padding-bottom: .4rem;
+  margin-bottom: 1rem;
+  padding-bottom: .6rem;
   border-bottom: 2px solid var(--ink);
 }
 
 .np-issue-tag {
   font-size: .74rem;
-  letter-spacing: .18em;
+  letter-spacing: .16em;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--paper);
   background: var(--accent);
-  padding: .15rem .5rem;
+  padding: .22rem .65rem;
+}
+
+.np-article--featured .np-issue-tag {
+  background: var(--accent);
+}
+
+.np-article:nth-child(2) .np-issue-tag {
+  background: rgba(17,17,17,.75);
+}
+
+.np-article:nth-child(3) .np-issue-tag {
+  background: rgba(17,17,17,.55);
 }
 
 .np-article-date {
-  font-size: .78rem;
+  font-size: .82rem;
   letter-spacing: .08em;
   color: var(--ink-3);
   font-style: italic;
+  font-weight: 600;
 }
 
 .np-article-headline {
@@ -472,13 +521,12 @@ body.historia-page main * {
   line-height: 1.18;
   font-weight: 900;
   letter-spacing: -.02em;
-  margin: .6rem 0 .35rem;
+  margin: 0 0 .5rem;
   color: var(--ink);
 }
 
-/* Artículo destacado: titular más grande */
 .np-article--featured .np-article-headline {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
 }
 
 .np-article-dateline {
@@ -487,24 +535,24 @@ body.historia-page main * {
   text-transform: uppercase;
   color: var(--ink-3);
   font-style: italic;
-  margin: 0 0 .75rem;
+  margin: 0 0 1rem;
 }
 
 .np-article-body {
   font-size: 1rem;
   line-height: 1.85;
   color: var(--ink-2);
-  margin: 0 0 .9rem;
+  margin: 0 0 1rem;
 }
 
-/* Drop cap */
+/* Drop cap más dramático */
 .np-dropcap::first-letter {
   float: left;
-  font-size: 3.6em;
-  line-height: .78;
+  font-size: 4em;
+  line-height: .75;
   font-weight: 900;
-  margin: .06em .12em 0 0;
-  color: var(--ink);
+  margin: .05em .12em 0 0;
+  color: var(--accent);
   font-family: Georgia, serif;
 }
 
@@ -512,25 +560,30 @@ body.historia-page main * {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--rule);
-  padding-top: .6rem;
+  border-top: 2px solid var(--rule);
+  padding-top: .75rem;
+  position: relative;
+  z-index: 1;
 }
 
 .np-article-list li {
-  font-size: .93rem;
+  font-size: .95rem;
   color: var(--ink-2);
-  padding: .22rem 0;
+  padding: .3rem 0 .3rem 1.1rem;
   border-bottom: 1px dotted var(--rule);
-  padding-left: 1rem;
   position: relative;
+  line-height: 1.5;
 }
+
+.np-article-list li:last-child { border-bottom: none; }
 
 .np-article-list li::before {
   content: "▸";
   position: absolute;
   left: 0;
   color: var(--accent);
-  font-size: .7rem;
+  font-size: .75rem;
+  top: .38rem;
 }
 
 /* ==============================
@@ -595,43 +648,95 @@ body.historia-page main * {
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   border: 1px solid var(--rule-dark);
+  box-shadow: 0 4px 24px rgba(17,17,17,.08);
 }
 
 .np-principle {
-  padding: 1.5rem;
+  padding: 2.25rem 1.75rem 2rem;
   border-right: 1px solid var(--rule-dark);
+  position: relative;
+  overflow: hidden;
+  transition: background .25s;
 }
 
 .np-principle:last-child { border-right: none; }
 
-.np-principle-num {
-  display: block;
-  font-size: .76rem;
-  letter-spacing: .2em;
-  color: var(--ink-3);
-  margin-bottom: .5rem;
+.np-principle:hover { background: rgba(17,17,17,.035); }
+
+/* Número enorme de fondo — efecto watermark */
+.np-principle::after {
+  content: attr(data-num);
+  position: absolute;
+  bottom: -1.5rem;
+  right: -.5rem;
+  font-family: Georgia, serif;
+  font-size: 10rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(17,17,17,.055);
+  pointer-events: none;
+  letter-spacing: -.08em;
+  user-select: none;
 }
+
+/* Franja superior por principio */
+.np-principle::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.np-principle:nth-child(1)::before { background: var(--accent); }
+.np-principle:nth-child(2)::before { background: rgba(17,17,17,.65); }
+.np-principle:nth-child(3)::before { background: rgba(17,17,17,.4); }
+
+.np-principle-num {
+  display: inline-block;
+  font-size: 2.8rem;
+  font-weight: 900;
+  font-family: Georgia, serif;
+  letter-spacing: -.04em;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: .5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.np-principle:nth-child(2) .np-principle-num { color: rgba(17,17,17,.55); }
+.np-principle:nth-child(3) .np-principle-num { color: rgba(17,17,17,.38); }
 
 .np-principle-rule {
-  height: 2px;
-  background: var(--ink);
-  margin-bottom: .75rem;
-  width: 2rem;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 1rem;
+  width: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
+.np-principle:nth-child(2) .np-principle-rule { background: rgba(17,17,17,.5); }
+.np-principle:nth-child(3) .np-principle-rule { background: rgba(17,17,17,.35); }
+
 .np-principle-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 900;
-  letter-spacing: -.01em;
-  margin: 0 0 .5rem;
+  letter-spacing: -.02em;
+  margin: 0 0 .75rem;
   color: var(--ink);
+  line-height: 1.15;
+  position: relative;
+  z-index: 1;
 }
 
 .np-principle p {
-  font-size: .96rem;
-  line-height: 1.75;
+  font-size: .98rem;
+  line-height: 1.8;
   color: var(--ink-2);
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* ==============================
