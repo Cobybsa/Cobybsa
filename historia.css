@@ -3,14 +3,14 @@
    ============================== */
 
 :root {
-  --paper:   #f5f0e8;
-  --paper-2: #ede6d6;
-  --ink:     #111111;
-  --ink-2:   rgba(17,17,17,.68);
-  --ink-3:   rgba(17,17,17,.42);
-  --rule:    rgba(17,17,17,.15);
-  --rule-dark: rgba(17,17,17,.75);
-  --accent:  #8b1a1a;
+  --paper:   #f0ece6;
+  --paper-2: #e6e0d8;
+  --ink:     #1a1a1a;
+  --ink-2:   rgba(26,26,26,.72);
+  --ink-3:   rgba(26,26,26,.48);
+  --rule:    rgba(26,26,26,.14);
+  --rule-dark: rgba(26,26,26,.65);
+  --accent:  #7c1f1f;
 }
 
 /* Fondo papel con textura grain */
@@ -51,7 +51,7 @@ body.historia-page main * {
   display: flex;
   align-items: center;
   gap: .6rem;
-  font-size: .72rem;
+  font-size: .82rem;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -90,7 +90,7 @@ body.historia-page main * {
 
 .np-tagline {
   text-align: center;
-  font-size: .78rem;
+  font-size: .88rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -108,7 +108,7 @@ body.historia-page main * {
 }
 
 .np-masthead-bottom > span {
-  font-size: .75rem;
+  font-size: .88rem;
   letter-spacing: .06em;
   color: var(--ink-2);
   font-style: italic;
@@ -127,12 +127,12 @@ body.historia-page main * {
   background: var(--ink);
   color: var(--paper);
   font-family: Georgia, serif;
-  font-size: .78rem;
+  font-size: .88rem;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: .55rem 1.25rem;
+  padding: .6rem 1.35rem;
   border: 1px solid var(--ink);
   transition: background .2s, color .2s;
 }
@@ -146,10 +146,10 @@ body.historia-page main * {
   display: inline-block;
   color: var(--ink);
   font-family: Georgia, serif;
-  font-size: .78rem;
+  font-size: .88rem;
   letter-spacing: .04em;
   text-decoration: none;
-  padding: .55rem .5rem;
+  padding: .6rem .5rem;
   border-bottom: 1px solid var(--ink-3);
   transition: border-color .2s, color .2s;
 }
@@ -195,7 +195,7 @@ body.historia-page main * {
 
 .np-ticker-track span {
   white-space: nowrap;
-  font-size: .68rem;
+  font-size: .78rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(245,240,232,.7);
@@ -227,7 +227,7 @@ body.historia-page main * {
 
 /* Columna principal */
 .np-section-label {
-  font-size: .68rem;
+  font-size: .78rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   font-weight: 700;
@@ -247,7 +247,7 @@ body.historia-page main * {
 }
 
 .np-dateline {
-  font-size: .72rem;
+  font-size: .82rem;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -257,7 +257,7 @@ body.historia-page main * {
 
 /* Lead — primer párrafo que el lector debe leer */
 .np-lead-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.65;
   font-weight: 700;
   color: var(--ink);
@@ -266,9 +266,8 @@ body.historia-page main * {
   padding-left: 1rem;
 }
 
-/* Cuerpo — apoyo al lead, ligeramente más bajo en jerarquía */
 .np-body-text {
-  font-size: .97rem;
+  font-size: 1.05rem;
   line-height: 1.85;
   color: var(--ink-2);
   margin: 0 0 1rem;
@@ -299,7 +298,7 @@ body.historia-page main * {
 }
 
 .np-stats-title {
-  font-size: .68rem;
+  font-size: .78rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   font-weight: 700;
@@ -326,7 +325,7 @@ body.historia-page main * {
 }
 
 .np-stat-l {
-  font-size: .78rem;
+  font-size: .88rem;
   letter-spacing: .03em;
   color: var(--ink-2);
   line-height: 1.3;
@@ -345,7 +344,7 @@ body.historia-page main * {
 }
 
 .np-sidebar-note-title {
-  font-size: .66rem;
+  font-size: .76rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -354,7 +353,7 @@ body.historia-page main * {
 }
 
 .np-sidebar-note p {
-  font-size: .84rem;
+  font-size: .95rem;
   line-height: 1.7;
   color: var(--ink-2);
   margin: 0;
@@ -368,7 +367,7 @@ body.historia-page main * {
 }
 
 .np-sidebar-list li {
-  font-size: .84rem;
+  font-size: .95rem;
   color: var(--ink-2);
   padding: .25rem 0;
   border-bottom: 1px dotted var(--rule);
@@ -452,7 +451,7 @@ body.historia-page main * {
 }
 
 .np-issue-tag {
-  font-size: .64rem;
+  font-size: .74rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -462,14 +461,14 @@ body.historia-page main * {
 }
 
 .np-article-date {
-  font-size: .68rem;
+  font-size: .78rem;
   letter-spacing: .08em;
   color: var(--ink-3);
   font-style: italic;
 }
 
 .np-article-headline {
-  font-size: 1.2rem;
+  font-size: 1.32rem;
   line-height: 1.18;
   font-weight: 900;
   letter-spacing: -.02em;
@@ -479,11 +478,11 @@ body.historia-page main * {
 
 /* Artículo destacado: titular más grande */
 .np-article--featured .np-article-headline {
-  font-size: 1.45rem;
+  font-size: 1.6rem;
 }
 
 .np-article-dateline {
-  font-size: .68rem;
+  font-size: .78rem;
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -492,8 +491,8 @@ body.historia-page main * {
 }
 
 .np-article-body {
-  font-size: .9rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.85;
   color: var(--ink-2);
   margin: 0 0 .9rem;
 }
@@ -518,7 +517,7 @@ body.historia-page main * {
 }
 
 .np-article-list li {
-  font-size: .82rem;
+  font-size: .93rem;
   color: var(--ink-2);
   padding: .22rem 0;
   border-bottom: 1px dotted var(--rule);
@@ -552,7 +551,7 @@ body.historia-page main * {
 
 .np-editorial-label {
   display: block;
-  font-size: .68rem;
+  font-size: .78rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--accent);
@@ -582,7 +581,7 @@ body.historia-page main * {
 }
 
 .np-editorial-col p {
-  font-size: .97rem;
+  font-size: 1.05rem;
   line-height: 1.85;
   color: var(--ink-2);
   margin: 0 0 .9rem;
@@ -607,7 +606,7 @@ body.historia-page main * {
 
 .np-principle-num {
   display: block;
-  font-size: .68rem;
+  font-size: .76rem;
   letter-spacing: .2em;
   color: var(--ink-3);
   margin-bottom: .5rem;
@@ -629,7 +628,7 @@ body.historia-page main * {
 }
 
 .np-principle p {
-  font-size: .85rem;
+  font-size: .96rem;
   line-height: 1.75;
   color: var(--ink-2);
   margin: 0;
@@ -670,7 +669,7 @@ body.historia-page main * {
 }
 
 .np-cta-sub {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--ink-2);
   font-style: italic;
   margin: 0 0 1.5rem;
